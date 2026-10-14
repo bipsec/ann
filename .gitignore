@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Data (too large for git)
+data/emb/
+data/gt/
+data/indexes/
+data/*.jsonl
+data/*.npy
+data/*.json
+data/*.f32
+
+# Derived results (regenerable from raw)
+results/tuned/
+results/summary/
+
+# Figures (regenerable)
+figures/*.png
+figures/*.pdf
+figures/*.svg
+
+# OS / IDE
+.DS_Store
+*.swp
+.idea/
+.vscode/
