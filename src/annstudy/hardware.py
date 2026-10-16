@@ -1,0 +1,112 @@
+"""Hardware and environment snapshot for reproducibility."""
+
+import hashlib
+import json
+import os
+import platform
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+def _get_git_commit() -> str:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        if result.returncode == 0:
+            sha = result.stdout.strip()
+            dirty = subprocess.run(
+                ["git", "diff", "--quiet"],
+                capture_output=True,
+                timeout=5,
+            )
+            return sha if dirty.returncode == 0 else f"{sha}-dirty"
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        pass
+    return "no-repo"
+
+
+def _get_package_version(name: str) -> str:
+    try:
+        from importlib.metadata import version
+        return version(name)
+    except Exception:
+        return "not-installed"
+
+
+def snapshot() -> dict:
+    """Capture a reproducible snapshot of the execution environment."""
+    import psutil
+
+    cpu_model = platform.processor() or "unknown"
+    try:
+        with open("/proc/cpuinfo") as f:
+            for line in f:
+                if line.startswith("model name"):
+                    cpu_model = line.split(":")[1].strip()
+                    break
+    except FileNotFoundError:
+        pass
+
+    mem = psutil.virtual_memory()
+    physical_cores = psutil.cpu_count(logical=False) or 0
+    logical_cores = psutil.cpu_count(logical=True) or 0
+
+    packages = [
+        "faiss-cpu", "numpy", "pandas", "pyarrow", "scipy",
+        "scikit-learn", "matplotlib", "psutil", "torch",
+        "sentence-transformers", "openai", "hnswlib", "tqdm",
+    ]
+    library_versions = {pkg: _get_package_version(pkg) for pkg in packages}
+
+    snap = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "cpu_model": cpu_model,
+        "physical_cores": physical_cores,
+        "logical_cores": logical_cores,
+        "ram_total_gb": round(mem.total / (1024**3), 1),
+        "os": f"{platform.system()} {platform.release()}",
+        "python": sys.version,
+        "git_commit": _get_git_commit(),
+        "hostname": platform.node(),
+        "library_versions": library_versions,
+    }
+
+    hw_key = f"{cpu_model}|{physical_cores}|{int(mem.total)}"
+    snap["hardware_id"] = hashlib.sha256(hw_key.encode()).hexdigest()[:16]
+
+    return snap
+
+
+def save_snapshot(path: str = "results/hardware.json") -> dict:
+    """Write the hardware snapshot to a JSON file and return it."""
+    snap = snapshot()
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(snap, f, indent=2)
+    return snap
+
+
+def check_ram_minimum(min_gb: int = 64) -> bool:
+    """Return True if total RAM >= min_gb. Print a warning if not."""
+    import psutil
+    total_gb = psutil.virtual_memory().total / (1024**3)
+    if total_gb < min_gb:
+        print(
+            f"WARNING: System has {total_gb:.1f} GB RAM, "
+            f"but {min_gb} GB is recommended for full workloads. "
+            f"Development and small-N runs are fine."
+        )
+        return False
+    return True
+
+
+def load_snapshot(path: str = "results/hardware.json") -> dict:
+    """Load an existing hardware snapshot."""
+    with open(path) as f:
+        return json.load(f)

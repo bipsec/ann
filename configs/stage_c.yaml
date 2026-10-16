@@ -1,0 +1,43 @@
+stage: C
+description: "Filtering study"
+
+cells:
+  N: [500_000, 1_000_000]
+  D: [384, 1536]
+
+reuse_indexes_from: stage_b
+
+indexes:
+  hnsw: {}
+  ivf_flat: {}
+
+strategies:
+  - pre_filter_exact
+  - in_index_filtered
+  - post_filter_overfetch
+
+filters:
+  uncorrelated:
+    n_attributes: 10_000
+    seed: 42
+    selectivities: [1.0, 0.5, 0.1, 0.01, 0.001]
+  correlated:
+    n_clusters: 1000
+    seed: 42
+    selectivities: [0.1, 0.01, 0.001]
+    types: [positive, negative]
+
+post_filter:
+  safety_factors: [1.5, 3]
+
+recall_targets: [0.90, 0.95, 0.99]
+
+k: 10
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1
+  threads_throughput: null

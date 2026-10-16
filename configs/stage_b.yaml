@@ -1,0 +1,50 @@
+stage: B
+description: "Scale study across N and D"
+
+cells:
+  N: [100_000, 500_000, 1_000_000]
+  D: [384, 1536]
+
+reuse_from: stage_a
+reuse_cells:
+  N: [500_000]
+  D: [384, 1536]
+
+indexes:
+  flat: {}
+  hnsw:
+    M: [16, 32, 64]
+    ef_construction: 200
+  ivf_flat:
+    c: [2, 4, 8]
+  ivf_pq:
+    c: [2, 4, 8]
+    m_divisor: [16, 8, 4]
+    nbits: 8
+  ivf_pq_refine:
+    c: [2, 4, 8]
+    m_divisor: [16, 8, 4]
+    nbits: 8
+    k_factor: [4, 16]
+
+search_grids:
+  hnsw:
+    ef_search: [16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024]
+  ivf:
+    nprobe: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+
+recall_targets: [0.90, 0.95, 0.99]
+memory_budgets: [null, 1.5, 0.5, 0.1]
+
+k: 10
+keep_indexes: true
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1
+  threads_throughput: null
+
+repeat_builds: 3

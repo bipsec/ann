@@ -1,0 +1,35 @@
+stage: D
+description: "Update study"
+
+cell:
+  N: 500_000
+  D: 768
+
+indexes: [hnsw, ivf_flat, ivf_pq]
+
+update:
+  initial_fraction: 0.9
+  insert_batches: 10
+  batch_size: 5_000
+  retrain_at_end: true
+  recall_target_for_tuning: 0.95
+
+hnsw:
+  M: 32
+  ef_construction: 200
+ivf_flat:
+  c: 4
+ivf_pq:
+  c: 4
+  m_divisor: 8
+  nbits: 8
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1
+  threads_throughput: null
+
+k: 10

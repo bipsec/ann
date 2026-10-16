@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "annstudy"
+version = "0.1.0"
+description = "ANN index selection study: cost surfaces over dimensionality, scale, and filter selectivity"
+requires-python = ">=3.11"
+dependencies = [
+    "faiss-cpu>=1.9.0",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "pyarrow>=17.0",
+    "pyyaml>=6.0",
+    "scipy>=1.14",
+    "scikit-learn>=1.5",
+    "matplotlib>=3.9",
+    "tqdm>=4.66",
+    "psutil>=6.0",
+]
+
+[project.optional-dependencies]
+embed-api = ["openai>=1.40"]
+embed-local = ["sentence-transformers>=3.0", "torch>=2.4"]
+hnswlib = ["hnswlib>=0.8"]
+dev = ["pytest>=8.0", "pytest-cov", "ruff"]
+
+[project.scripts]
+annstudy-run = "annstudy.runner:main"
+annstudy-embed = "annstudy.embed:main"
+annstudy-gt = "annstudy.groundtruth:main"
+annstudy-tune = "annstudy.tune:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/annstudy"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

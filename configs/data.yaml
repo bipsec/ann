@@ -1,0 +1,32 @@
+corpus:
+  source: msmarco-passage
+  sample_size: 1_000_000
+  seed: 0
+  nested_prefixes: [100_000, 500_000]
+
+queries:
+  source: msmarco-train
+  sample_size: 10_000
+  seed: 1
+  tuning_size: 2_000
+  test_size: 8_000
+
+embedding:
+  model: text-embedding-3-large
+  provider: openai
+  max_dim: 1536
+  truncations: [128, 384, 768, 1536]
+  normalize: true
+  shard_size: 10_000
+
+ground_truth:
+  k: 100
+  batch_size: 256
+  verify_n: 100
+  verify_k: 10
+  verify_seed: 99
+
+lid:
+  n_sample: 10_000
+  k: 20
+  seed: 42
