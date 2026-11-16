@@ -73,6 +73,16 @@ def make_correlated_mask(
     N = len(cluster_ids)
     target_count = max(1, int(target_S * N))
 
+    # Guard against a stale cache built with a different k: with 1000 cached centroids and
+    # n_clusters=10_000, the negative branch's far half `sorted[5000:]` is EMPTY, the mask is all
+    # False, and an empty predicate used to score as recall 1.0 — a silent fake success.
+    if len(centroids) != n_clusters:
+        raise ValueError(f"centroids has {len(centroids)} rows but n_clusters={n_clusters}; "
+                         f"the cluster cache does not match this filter config")
+    if centroids.shape[1] != query.shape[-1]:
+        raise ValueError(f"query dim {query.shape[-1]} != centroid dim {centroids.shape[1]}; "
+                         f"correlated masks must be built from queries at the clustering D")
+
     dists_to_centroids = np.sum((centroids - query) ** 2, axis=1)
     sorted_cluster_idx = np.argsort(dists_to_centroids)
 
@@ -97,6 +107,8 @@ def make_correlated_mask(
             break
 
     mask = np.isin(cluster_ids, list(selected_clusters))
+    if not mask.any():
+        raise ValueError(f"{correlation} predicate at S={target_S} admits no vectors")
     return mask
 
 

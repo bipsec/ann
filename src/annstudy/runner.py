@@ -152,7 +152,7 @@ def run_single_spec(spec: dict) -> dict:
 
     build_fn = {
         "flat": lambda: idx_mod.build_flat(passage_arr, D),
-        "hnsw": lambda: idx_mod.build_hnsw(passage_arr, D, **build_params),
+        "hnsw": lambda: idx_mod.build_hnsw(passage_arr, D, seed=seed, **build_params),
         "hnsw_sq": lambda: idx_mod.build_hnsw_sq(passage_arr, D, seed=seed, **build_params),
         "ivf_flat": lambda: idx_mod.build_ivf_flat(passage_arr, D, seed=seed, **build_params),
         "ivf_pq": lambda: idx_mod.build_ivf_pq(passage_arr, D, seed=seed, **build_params),

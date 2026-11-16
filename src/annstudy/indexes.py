@@ -45,17 +45,36 @@ def build_flat(vectors: np.ndarray, dim: int) -> tuple:
     return index, meta
 
 
+FAISS_HNSW_DEFAULT_SEED = 12345  # faiss::HNSW's built-in level-generator seed
+
+
+def _seed_hnsw_levels(index, seed) -> None:
+    """Seed the HNSW level generator so repeat builds are genuinely different graphs.
+
+    FAISS HNSW draws node levels from a generator with a FIXED seed, and its parallel insertion
+    turned out to be deterministic too: repeat builds were byte-identical (verified 2026-11-16),
+    so "3 builds per configuration" carried no build variance at all for HNSW. ``seed`` is an
+    offset from FAISS's default, so seed 0 (or None) reproduces every earlier index exactly.
+    """
+    import faiss
+
+    if seed:
+        index.hnsw.rng = faiss.RandomGenerator(FAISS_HNSW_DEFAULT_SEED + int(seed))
+
+
 def build_hnsw(
     vectors: np.ndarray,
     dim: int,
     M: int,
     ef_construction: int = 200,
+    seed: int | None = None,
 ) -> tuple:
     """Build IndexHNSWFlat. Returns (index, metadata)."""
     import faiss
 
     index = faiss.IndexHNSWFlat(dim, M)
     index.hnsw.efConstruction = ef_construction
+    _seed_hnsw_levels(index, seed)
 
     _, add_sec = _time_it(lambda: index.add(np.ascontiguousarray(vectors)))
 
@@ -89,6 +108,7 @@ def build_hnsw_sq(
 
     index = faiss.IndexHNSWSQ(dim, faiss.ScalarQuantizer.QT_8bit, M)
     index.hnsw.efConstruction = ef_construction
+    _seed_hnsw_levels(index, seed)
     vecs = np.ascontiguousarray(vectors)
     _, train_sec = _time_it(lambda: index.train(vecs))  # SQ needs training
     _, add_sec = _time_it(lambda: index.add(vecs))

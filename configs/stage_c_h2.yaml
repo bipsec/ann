@@ -1,0 +1,70 @@
+stage: C_H2
+description: >
+  Decisive H2 rerun: does the filter crossover S* move with dimension? Replaces
+  stage_c_rerun.yaml (whose cache/job-key bugs would have corrupted results). Fixes every
+  confound found in the 2026-11-16 audit of the original Stage C: one campaign over all four D
+  at a FIXED shard count with D-interleaved job order (no session/load aliasing onto D); one
+  shared clustering at D=1536 so a correlated predicate admits the SAME passages at every D;
+  filter structures built outside the timed region; BLAS/OMP pinned to one thread; filtered GT
+  precomputed before timing; 3 index builds per cell so CIs include build variance; dense S
+  around the original crossovers; a drift canary; and distance-computation counters per row.
+  Run with scripts/stage_c_h2.sh.
+
+cells:
+  N: [500_000]
+  D: [128, 384, 768, 1536]   # 4-point dose-response instead of a single 384-vs-1536 pair
+
+# Stage-local index builds (not reused from Stage B): one fixed build config per family so the
+# crossover is compared at the SAME index configuration across D.
+build:
+  index_dir: data/indexes/stage_c_h2
+  hnsw: {M: 32, ef_construction: 200}
+  ivf_flat: {c: 4}
+repeat_builds: 3
+interleave_dimensions: true
+
+indexes:
+  hnsw: {}
+  ivf_flat: {}
+
+strategies:
+  - pre_filter_exact
+  - in_index_filtered        # post-filter over-fetch was dominated everywhere in Stage C
+
+filters:
+  uncorrelated:
+    n_attributes: 100_000
+    seed: 42
+    # Original uncorrelated S* ~ 0.010-0.013: bracket it densely; 1.0 is the acceptance anchor.
+    selectivities: [1.0, 0.1, 0.05, 0.02, 0.01, 0.005, 0.002]
+  correlated:
+    n_clusters: 10_000       # ~50 vectors/cluster at N=500K, so S=0.0005 is reachable from above
+    seed: 42
+    cluster_D: 1536          # ONE clustering shared by every D (the original clustered per D)
+    types: [positive]
+    # Original positive S* ~ 0.0010-0.0041 (measured S at nominal 0.001 was 0.0016).
+    selectivities: [0.01, 0.005, 0.002, 0.001, 0.0005]
+
+# A single anti-correlated level, with an nprobe = nlist point for IVF, to separate
+# "approximate search fails" from "the swept nprobe was never exhaustive" (paper section 5.8).
+negative_check:
+  selectivities: [0.01]
+exhaustive_nprobe_for_negative: true
+
+recall_targets: [0.95, 0.99]
+k: 10
+
+canary:
+  every: 10                  # jobs per shard between canary measurements
+  N: 500_000
+  D: 384
+  index_type: hnsw
+  search_param: {ef_search: 64}
+  n_queries: 1000
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1

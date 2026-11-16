@@ -1,0 +1,59 @@
+stage: C_H2_SMOKE
+description: >
+  Driver validation for stage_c_h2.yaml at a cheap cell (N=100K, D in {128, 384}), fully
+  isolated under /tmp. Exercises stage-local builds with repeats, the shared clustering
+  (cluster_D), D-interleaving, the canary, the exhaustive-nprobe negative check, and the new
+  row columns. NOT a result-producing config: run with --max-*-queries and a /tmp results dir.
+
+cells:
+  N: [100_000]
+  D: [128, 384]
+
+build:
+  index_dir: /tmp/annstudy_h2_smoke/indexes
+  hnsw: {M: 16, ef_construction: 100}
+  ivf_flat: {c: 4}
+repeat_builds: 2
+interleave_dimensions: true
+filter_cache_dir: /tmp/annstudy_h2_smoke/filters
+gt_dir: /tmp/annstudy_h2_smoke/gt
+
+indexes:
+  hnsw: {}
+  ivf_flat: {}
+
+strategies: [pre_filter_exact, in_index_filtered]
+
+filters:
+  uncorrelated:
+    n_attributes: 100_000
+    seed: 42
+    selectivities: [1.0, 0.01]
+  correlated:
+    n_clusters: 500
+    seed: 42
+    cluster_D: 384
+    types: [positive]
+    selectivities: [0.01]
+
+negative_check:
+  selectivities: [0.05]
+exhaustive_nprobe_for_negative: true
+
+recall_targets: [0.95]
+k: 10
+
+canary:
+  every: 4
+  N: 100_000
+  D: 128
+  index_type: hnsw
+  search_param: {ef_search: 64}
+  n_queries: 200
+
+measurement:
+  latency_passes: 2
+  warmup_queries: 20
+  bootstrap_resamples: 50
+  bootstrap_ci: 0.95
+  threads_latency: 1
