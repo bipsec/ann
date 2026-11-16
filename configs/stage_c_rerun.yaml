@@ -1,0 +1,61 @@
+stage: C
+description: "Filtering study RERUN — finer correlated filters, extra selectivity levels, build intervals"
+
+# Addresses the reviewer's filter-headline items. Everything downstream (crossover S*, H2/H2b, the
+# strategy rule's oracle labels + proxy) depends on this rerun, so run it before re-reporting.
+
+cells:
+  N: [500_000, 1_000_000]
+  D: [384, 1536]
+
+reuse_indexes_from: stage_b
+
+indexes:
+  hnsw: {}
+  ivf_flat: {}
+
+strategies:
+  - pre_filter_exact
+  - in_index_filtered
+  - post_filter_overfetch
+
+filters:
+  uncorrelated:
+    n_attributes: 100_000           # finer attribute grid so small S levels are exact
+    seed: 42
+    # Extra levels densify the crossover curve for a tighter S* interpolation.
+    selectivities: [1.0, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01, 0.005, 0.002, 0.001]
+  correlated:
+    n_clusters: 10_000              # was 1000: too coarse to form S=0.001 from whole-cluster unions
+    seed: 42                        # with ~50-100 vectors/cluster, a 0.001 union is now reachable from above
+    selectivities: [0.2, 0.1, 0.05, 0.02, 0.01, 0.005, 0.002, 0.001]
+    types: [positive, negative]
+
+post_filter:
+  safety_factors: [1.5, 3]
+
+# Anti-correlation exhaustive check: for negative-correlation IVF jobs, add nprobe = nlist so the
+# scan is exhaustive. This separates "approximate search fails outright" from "the swept nprobe
+# (<=512) was never exhaustive while nlist >= 1414". Requires the filter runner to honour this knob
+# (append nprobe=nlist to the IVF sweep for negative-correlation jobs); see REMAINING_WORK.
+exhaustive_nprobe_for_negative: true
+
+recall_targets: [0.90, 0.95, 0.99]
+
+k: 10
+
+# Rebuild each cell's base index a few times with different seeds so the crossover bootstrap can
+# include build-to-build variance, not only query variance. Interleave D=384 and D=1536 jobs in the
+# run order so between-session latency drift (section 4.2) averages across dimensions rather than
+# aliasing onto one.
+repeat_builds: 3
+interleave_dimensions: true
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1
+  threads_throughput: null
+  bootstrap_over_builds: true

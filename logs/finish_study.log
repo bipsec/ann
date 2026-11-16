@@ -1,0 +1,36 @@
+[2026-10-25 05:15:37] === Stage C: filtered search ===
+[2026-10-26 06:33:30] Stage C jobs: 288 of 308 recorded
+[2026-10-26 06:33:30] Stage C pass 1 (resumes; completed jobs are skipped)
+[2026-10-26 08:11:33] Stage C jobs now: 308 of 308
+2026-10-26 08:11:35,521 __main__ INFO Consolidated 924 filter_runs rows -> results/raw/filter_runs.parquet
+[2026-10-26 08:11:35] Stage C finished with 308/308 jobs
+[2026-10-26 08:11:35] === Stage D: insert study ===
+2026-10-26 12:05:19,059 annstudy.updates INFO   Batch 8: inserted=495000, recall=0.7097, p95=11658us, insert_rate=48488 vec/s
+2026-10-26 12:10:30,965 annstudy.updates INFO   Batch 9: inserted=500000, recall=0.7136, p95=17260us, insert_rate=50945 vec/s
+2026-10-26 12:10:30,966 annstudy.updates INFO Rebuilding ivf_pq from scratch on 500000 vectors...
+2026-10-26 12:11:41,880 annstudy.updates INFO   Rebuild reference recall: 0.7125
+2026-10-26 12:11:41,982 __main__ INFO Stage D ivf_pq: wrote 11 rows -> results/raw/update_runs/update_ivf_pq_5b4497794b3e420e9fc41986b9cfaba2.parquet
+[2026-10-26 12:11:42] === Reports ===
+2026-10-26 12:11:44,905 __main__ INFO Wrote reports/stage_A.md
+2026-10-26 12:11:47,372 __main__ INFO Wrote reports/stage_B.md
+[2026-10-26 12:11:47] analysis (tables, figures, findings)
+2026-10-26 12:11:51,438 __main__ INFO [ok] winners.compute_winners
+2026-10-26 12:11:53,345 __main__ INFO [ok] scaling.fit_scaling_model
+2026-10-26 12:11:55,192 __main__ INFO [ok] consolidate_filter_runs
+2026-10-26 12:11:55,612 __main__ INFO [ok] crossover.estimate_crossover
+2026-10-26 12:11:56,969 __main__ INFO [ok] rule.fit_decision_rule
+2026-10-26 12:12:04,719 __main__ INFO [ok] figures.pilot_curves
+2026-10-26 12:12:05,293 __main__ INFO [ok] figures.cost_vs_dimension
+2026-10-26 12:12:05,611 __main__ INFO [ok] figures.winner_heatmap
+2026-10-26 12:12:06,197 __main__ INFO [ok] figures.decision_tree
+[2026-10-26 12:12:08] acceptance checks
+[PASS] no build failures: 3 historical failure row(s); 3 are the fixed ivf_pq_refine bug (pre-fix, retained per plan rule 0.6)
+
+9 passed, 0 failed, 0 skipped
+Wrote results/summary/acceptance_checks.csv
+[2026-10-26 12:12:12] budget actuals
+[2026-10-26 12:12:17] paper
+
+2 numeric token(s) in the draft not located in result files (review each):
+  0.001367  <-  | H2b | S* depends on filter correlation | **supported** | median S* by correlation: none: 0.01059, positive: , 0.01059  <-  | H2b | S* depends on filter correlation | **supported** | median S* by correlation: none: 0.01059, positive: 
+[2026-10-26 12:12:30] === DONE: all stages run and reports regenerated ===

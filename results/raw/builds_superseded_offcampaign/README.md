@@ -1,0 +1,1 @@
+# Superseded hnsw_sq builds\n\nThe first hnsw_sq rows accumulated across three sessions (10-30, 11-03, 11-04) in which a stage-wide re-measurement was also running, so they are not a single clean campaign. Re-measured in one pass alongside plain HNSW for a within-campaign comparison. Retained per EXPERIMENT_PLAN rule 0.6.\n

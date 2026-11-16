@@ -1,0 +1,10 @@
+check,status,detail
+flat recall == 1.0,pass,min recall over 10 flat rows = 1.000000
+hnsw recall monotone in ef_search,pass,monotone within tolerance
+ivf_flat recall monotone in nprobe,pass,monotone within tolerance
+ivf_pq recall monotone in nprobe,pass,monotone within tolerance
+ivf_pq_refine recall monotone in nprobe,pass,monotone within tolerance
+HNSW reaches 0.95 at ef <= 256,pass,every HNSW build reaches 0.95 in range
+no implausibly perfect ANN recall,pass,min-effort HNSW recall is below 1.0 as expected
+index coverage per cell,pass,"10 cell(s), 5 index types each"
+no build failures,pass,"3 historical failure row(s); 3 are the fixed ivf_pq_refine bug (pre-fix, retained per plan rule 0.6)"

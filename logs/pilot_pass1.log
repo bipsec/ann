@@ -1,0 +1,41 @@
+2026-10-16 23:21:04,839 annstudy.coordinate INFO 20 specs enumerated; 0 already done; 20 to run.
+2026-10-16 23:21:05,009 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=128 params={} threads=1
+2026-10-16 23:21:05,010 annstudy.coordinate INFO [core 1] start sweep hnsw N=100000 D=128 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-16 23:21:05,011 annstudy.coordinate INFO [core 2] start sweep ivf_flat N=100000 D=128 params={'nlist': 632} threads=1
+2026-10-16 23:21:05,012 annstudy.coordinate INFO [core 3] start sweep ivf_pq N=100000 D=128 params={'nlist': 632, 'm': 8, 'nbits': 8} threads=1
+2026-10-16 23:21:05,013 annstudy.coordinate INFO [core 4] start sweep ivf_pq_refine N=100000 D=128 params={'nlist': 632, 'm': 8, 'nbits': 8} threads=1
+2026-10-16 23:21:05,018 annstudy.coordinate INFO [core 5] start sweep flat N=100000 D=384 params={} threads=1
+2026-10-16 23:21:05,019 annstudy.coordinate INFO [core 6] start sweep hnsw N=100000 D=384 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-16 23:21:05,022 annstudy.coordinate INFO [core 7] start sweep ivf_flat N=100000 D=384 params={'nlist': 632} threads=1
+2026-10-16 23:21:05,023 annstudy.coordinate INFO [core 8] start sweep ivf_pq N=100000 D=384 params={'nlist': 632, 'm': 24, 'nbits': 8} threads=1
+2026-10-16 23:21:05,025 annstudy.coordinate INFO [core 9] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 24, 'nbits': 8} threads=1
+2026-10-16 23:21:05,027 annstudy.coordinate INFO [core 10] start sweep flat N=100000 D=768 params={} threads=1
+2026-10-16 23:21:05,029 annstudy.coordinate INFO [core 11] start sweep hnsw N=100000 D=768 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-16 23:21:05,031 annstudy.coordinate INFO [core 12] start sweep ivf_flat N=100000 D=768 params={'nlist': 632} threads=1
+2026-10-16 23:21:05,035 annstudy.coordinate INFO [core 13] start sweep ivf_pq N=100000 D=768 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=1
+2026-10-16 23:21:05,036 annstudy.coordinate INFO [core 14] start sweep ivf_pq_refine N=100000 D=768 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=1
+2026-10-16 23:21:05,037 annstudy.coordinate INFO [core 15] start sweep flat N=100000 D=1536 params={} threads=1
+2026-10-16 23:21:28,164 annstudy.coordinate INFO [core 0] done f4d3bdf462ed482ab3f806959d97d2d9 in 23.2s
+2026-10-16 23:21:28,177 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=1536 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-16 23:21:31,480 annstudy.coordinate INFO [core 3] done 4a8b503939fe42b7be28ee2d13db210d in 26.5s
+2026-10-16 23:21:31,486 annstudy.coordinate INFO [core 3] start sweep ivf_flat N=100000 D=1536 params={'nlist': 632} threads=1
+2026-10-16 23:21:50,105 annstudy.coordinate INFO [core 2] done bf12ad29d8004c40aada1cd7e6706fb7 in 45.1s
+2026-10-16 23:21:50,118 annstudy.coordinate INFO [core 2] start sweep ivf_pq N=100000 D=1536 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=1
+2026-10-16 23:21:53,423 annstudy.coordinate INFO [core 4] done 6ea33c1d725248c99859ffcf6af7c151 in 48.4s
+2026-10-16 23:21:53,434 annstudy.coordinate INFO [core 4] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=1
+2026-10-16 23:22:08,755 annstudy.coordinate INFO [core 8] done 2737f5fd92854c2f82b1f1ab5ee6b99b in 63.7s
+2026-10-16 23:22:19,567 annstudy.coordinate INFO [core 5] done e5a8ed45cdca4ff88f291d4b137f0624 in 74.5s
+2026-10-16 23:22:42,989 annstudy.coordinate INFO [core 1] done ebeaf47c98a245b78f5825048a352dda in 98.0s
+2026-10-16 23:22:57,404 annstudy.coordinate INFO [core 9] done 0e84e0ad88cf4c9295e26cd9691399f2 in 112.4s
+2026-10-16 23:23:02,218 annstudy.coordinate INFO [core 13] done cc560d86d59640039a9ce4278c698336 in 117.2s
+2026-10-16 23:23:10,025 annstudy.coordinate INFO [core 10] done 46afd31d936840769ac9a704c203eade in 125.0s
+2026-10-16 23:23:25,653 annstudy.coordinate INFO [core 7] done cc0ee71444904916b348482656becb3d in 140.6s
+2026-10-16 23:23:32,868 annstudy.coordinate INFO [core 6] done 4264fc4fe8694eb28d76ae4cdda0231d in 147.8s
+2026-10-16 23:24:41,337 annstudy.coordinate INFO [core 14] done 753d3b1b1e674c87992cf006e8e975c5 in 216.3s
+2026-10-16 23:24:41,668 annstudy.coordinate INFO [core 11] done 4e09be20e86c424f8438d7df7f72987e in 216.6s
+2026-10-16 23:24:47,102 annstudy.coordinate INFO [core 15] done 607d1fb492a541099ef265bde7c1ac8a in 222.1s
+2026-10-16 23:25:47,455 annstudy.coordinate INFO [core 12] done df2b02c7fbb54e808cfc829fcd3da160 in 282.4s
+2026-10-16 23:25:56,179 annstudy.coordinate INFO [core 2] done 31be4c484ed3461b864d3d70d09d58ef in 246.1s
+2026-10-16 23:28:10,040 annstudy.coordinate INFO [core 0] done 30807d7d274744908b1c131db9e822b8 in 401.9s
+2026-10-16 23:28:15,782 annstudy.coordinate INFO [core 4] done 634a652cc8ab45df852ce03f0e921bb3 in 382.3s
+2026-10-16 23:33:08,139 annstudy.coordinate INFO [core 3] done 6edf5a9fe0e94556819305da0e86d817 in 696.7s

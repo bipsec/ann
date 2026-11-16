@@ -1,0 +1,36 @@
+2026-10-17 00:16:47,492 annstudy.tune INFO Sweep rows: kept 261/371 for hardware_id=1d3d9b66e7d3e1ac (dropped rows measured on other hosts)
+2026-10-17 00:16:47,540 annstudy.coordinate INFO Tuning winners saved: results/tuned/tuned_tuning.parquet (60 rows)
+2026-10-17 00:16:47,886 annstudy.coordinate INFO Re-measuring 15 winner builds on the test split.
+2026-10-17 00:16:47,886 annstudy.coordinate INFO 15 specs enumerated; 0 already done; 15 to run.
+2026-10-17 00:16:48,036 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 24, 'nbits': 8} threads=1
+2026-10-17 00:16:48,037 annstudy.coordinate INFO [core 1] start sweep hnsw N=100000 D=1536 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-17 00:16:48,038 annstudy.coordinate INFO [core 2] start sweep hnsw N=100000 D=384 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-17 00:16:48,039 annstudy.coordinate INFO [core 3] start sweep flat N=100000 D=768 params={} threads=1
+2026-10-17 00:16:48,041 annstudy.coordinate INFO [core 4] start sweep hnsw N=100000 D=768 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-17 00:16:48,042 annstudy.coordinate INFO [core 5] start sweep flat N=100000 D=1536 params={} threads=1
+2026-10-17 00:16:48,043 annstudy.coordinate INFO [core 6] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=1
+2026-10-17 00:16:48,044 annstudy.coordinate INFO [core 7] start sweep ivf_flat N=100000 D=1536 params={'nlist': 632} threads=1
+2026-10-17 00:16:48,045 annstudy.coordinate INFO [core 8] start sweep ivf_pq_refine N=100000 D=768 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=1
+2026-10-17 00:16:48,047 annstudy.coordinate INFO [core 9] start sweep ivf_flat N=100000 D=128 params={'nlist': 632} threads=1
+2026-10-17 00:16:48,048 annstudy.coordinate INFO [core 10] start sweep ivf_flat N=100000 D=384 params={'nlist': 632} threads=1
+2026-10-17 00:16:48,049 annstudy.coordinate INFO [core 11] start sweep ivf_flat N=100000 D=768 params={'nlist': 632} threads=1
+2026-10-17 00:16:48,050 annstudy.coordinate INFO [core 12] start sweep flat N=100000 D=384 params={} threads=1
+2026-10-17 00:16:48,052 annstudy.coordinate INFO [core 13] start sweep hnsw N=100000 D=128 params={'M': 16, 'ef_construction': 200} threads=1
+2026-10-17 00:16:48,056 annstudy.coordinate INFO [core 14] start sweep flat N=100000 D=128 params={} threads=1
+2026-10-17 00:17:16,888 annstudy.coordinate INFO [core 0] done b887884947574d879f391c703ff93569 in 28.9s
+2026-10-17 00:17:56,533 annstudy.coordinate INFO [core 9] done ac0085fe4189455b8a95b052b70b3a91 in 68.5s
+2026-10-17 00:17:59,236 annstudy.coordinate INFO [core 13] done d9a8d4affbe8466a895d02985a58c177 in 71.2s
+2026-10-17 00:18:11,849 annstudy.coordinate INFO [core 14] done c9c79688a49849819b50b898341c2658 in 83.8s
+2026-10-17 00:18:18,756 annstudy.coordinate INFO [core 8] done cfc6af4ff1cb4eb9afaed9c9761e6775 in 90.7s
+2026-10-17 00:18:30,466 annstudy.coordinate INFO [core 2] done dd727291676847449571ab7f5c2cdb1e in 102.4s
+2026-10-17 00:19:13,685 annstudy.coordinate INFO [core 4] done e4e30ae552f74f6cb251ebaaa96c3742 in 145.6s
+2026-10-17 00:19:49,702 annstudy.coordinate INFO [core 6] done 99f4b2164e6b4b7ea2f7fd01bf2685b3 in 181.7s
+2026-10-17 00:20:46,127 annstudy.coordinate INFO [core 10] done 07fb0267c8e74028b0b232b0765764ee in 238.1s
+2026-10-17 00:21:30,545 annstudy.coordinate INFO [core 1] done 4fdc9c618db44a4faeaba08b66650635 in 282.5s
+2026-10-17 00:22:09,560 annstudy.coordinate INFO [core 12] done ad12b151c7c640108db220a3475bb700 in 321.5s
+2026-10-17 00:23:25,791 annstudy.coordinate INFO [core 11] done 77271474ed3b4b2db7b2f040f48ab74b in 397.7s
+2026-10-17 00:25:10,238 annstudy.coordinate INFO [core 3] done df8673a2b7954ab186d6f9a847f8a3ac in 502.2s
+2026-10-17 00:30:11,263 annstudy.coordinate INFO [core 7] done 11b9ae208b3248e8820340f3d0207a25 in 803.2s
+2026-10-17 00:34:49,469 annstudy.coordinate INFO [core 5] done 4b87b28272554005b4f5dc05730acef1 in 1081.4s
+2026-10-17 00:34:49,849 annstudy.tune INFO Sweep rows: kept 294/404 for hardware_id=1d3d9b66e7d3e1ac (dropped rows measured on other hosts)
+2026-10-17 00:34:50,627 annstudy.coordinate INFO Final tuned (test-measured) saved: results/tuned/tuned.parquet (60 rows)

@@ -58,12 +58,17 @@ def make_correlated_mask(
     target_S: float,
     correlation: str,
     n_clusters: int = 1000,
+    seed: int = 42,
 ) -> np.ndarray:
     """Boolean mask for correlated filters.
 
     For positive: admit clusters nearest to the query.
     For negative: admit clusters among the 50% farthest from the query.
     Unions clusters until target size is reached.
+
+    ``seed`` controls the random cluster choice for negative correlation only. Callers should
+    vary it per query (e.g. base_seed + query position) so the negative filters are not the
+    same draw for every query, while staying reproducible.
     """
     N = len(cluster_ids)
     target_count = max(1, int(target_S * N))
@@ -76,8 +81,8 @@ def make_correlated_mask(
     if correlation == "positive":
         order = sorted_cluster_idx
     elif correlation == "negative":
-        far_half = sorted_cluster_idx[n_clusters // 2:]
-        rng = np.random.default_rng(42)
+        far_half = sorted_cluster_idx[n_clusters // 2:].copy()  # copy: do not shuffle the view
+        rng = np.random.default_rng(seed)
         rng.shuffle(far_half)
         order = far_half
     else:

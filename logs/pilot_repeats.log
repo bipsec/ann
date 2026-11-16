@@ -1,0 +1,187 @@
+2026-10-16 23:41:52,586 annstudy.tune INFO Sweep rows: kept 216/326 for hardware_id=1d3d9b66e7d3e1ac (dropped rows measured on other hosts)
+2026-10-16 23:41:52,633 annstudy.coordinate INFO Tuning winners saved: results/tuned/tuned_tuning.parquet (60 rows)
+2026-10-16 23:41:52,766 annstudy.coordinate INFO Running 45 repeat builds for 15 winners at 16 threads, one at a time (build time and QPS must be T-threaded).
+2026-10-16 23:41:57,590 annstudy.coordinate INFO 45 specs enumerated; 0 already done; 45 to run.
+2026-10-16 23:41:57,750 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 24, 'nbits': 8} threads=16
+2026-10-16 23:42:05,556 annstudy.coordinate INFO [core 0] done d79c0626f23a457492d569ebefd09009 in 7.8s
+2026-10-16 23:42:05,558 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 24, 'nbits': 8} threads=16
+2026-10-16 23:42:13,365 annstudy.coordinate INFO [core 0] done b96a8ac7c83f443f854a5733865ccc0b in 7.8s
+2026-10-16 23:42:13,367 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 24, 'nbits': 8} threads=16
+2026-10-16 23:42:21,475 annstudy.coordinate INFO [core 0] done b403a7e176e143439bb54b7def29665a in 8.1s
+2026-10-16 23:42:21,477 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=1536 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:43:42,628 annstudy.coordinate INFO [core 0] done 5cf24837b83d4550bd3826c988b7f4d9 in 81.2s
+2026-10-16 23:43:42,631 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=1536 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:45:01,300 annstudy.coordinate INFO [core 0] done b970acdba64f4ebab32628e7fe45c512 in 78.7s
+2026-10-16 23:45:01,302 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=1536 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:46:19,998 annstudy.coordinate INFO [core 0] done c621c73820b34d3594425f131bbc328c in 78.7s
+2026-10-16 23:46:20,001 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=384 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:46:35,014 annstudy.coordinate INFO [core 0] done c0fef48af67145dcbc2b8f583a1d4f15 in 15.0s
+2026-10-16 23:46:35,017 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=384 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:46:50,335 annstudy.coordinate INFO [core 0] done e5e8a9bac32c44afa53bb8b825106bc1 in 15.3s
+2026-10-16 23:46:50,340 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=384 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:47:05,054 annstudy.coordinate INFO [core 0] done a91203c89d134b838a65d1a63fbb9ec6 in 14.7s
+2026-10-16 23:47:05,057 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=768 params={} threads=16
+2026-10-16 23:47:19,465 annstudy.coordinate INFO [core 0] done a5b05d57b4da43c4872502053df32f27 in 14.4s
+2026-10-16 23:47:19,468 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=768 params={} threads=16
+2026-10-16 23:47:33,275 annstudy.coordinate INFO [core 0] done 0d416822ce2e44b788112b1a40d2346b in 13.8s
+2026-10-16 23:47:33,277 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=768 params={} threads=16
+2026-10-16 23:47:47,386 annstudy.coordinate INFO [core 0] done 2536bba8f948444c8a01ffe955fc4df1 in 14.1s
+2026-10-16 23:47:47,388 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=768 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:48:21,940 annstudy.coordinate INFO [core 0] done 42fd386d3e8b4e8b8952e58856da4c7d in 34.6s
+2026-10-16 23:48:21,942 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=768 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:48:56,183 annstudy.coordinate INFO [core 0] done b01eb716f17c4501b669a2e189b908a6 in 34.2s
+2026-10-16 23:48:56,185 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=768 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-16 23:49:30,426 annstudy.coordinate INFO [core 0] done b2092a900ba743b59d51be3730837802 in 34.2s
+2026-10-16 23:49:30,428 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=1536 params={} threads=16
+2026-10-16 23:49:52,941 annstudy.coordinate INFO [core 0] done e5ba333767fd4ce8905e03082942814e in 22.5s
+2026-10-16 23:49:52,944 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=1536 params={} threads=16
+2026-10-16 23:50:15,456 annstudy.coordinate INFO [core 0] done b0c2f24254ee4b308d8b109ca2b4c5d6 in 22.5s
+2026-10-16 23:50:15,458 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=1536 params={} threads=16
+2026-10-16 23:50:38,270 annstudy.coordinate INFO [core 0] done af77e74fea704a95b1c0d0367f32ae71 in 22.8s
+2026-10-16 23:50:38,272 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=16
+2026-10-16 23:51:05,894 annstudy.coordinate INFO [core 0] done ea8dc24a1e664897845b4b244db96d23 in 27.6s
+2026-10-16 23:51:05,896 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=16
+2026-10-16 23:51:32,012 annstudy.coordinate INFO [core 0] done 8ae864ae2d5c4684bc0e8a44ff7e9623 in 26.1s
+2026-10-16 23:51:32,014 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=16
+2026-10-16 23:52:00,235 annstudy.coordinate INFO [core 0] done 0cca9eb302144b53a018758d26304d5a in 28.2s
+2026-10-16 23:52:00,237 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 632} threads=16
+2026-10-16 23:56:29,582 annstudy.coordinate INFO [core 0] done 2895bbb50a3744c3813311af4e148355 in 269.3s
+2026-10-16 23:56:29,586 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 632} threads=16
+2026-10-17 00:00:49,319 annstudy.coordinate INFO [core 0] done a8dba4f36ce7433d844ea8aa47c19f06 in 259.7s
+2026-10-17 00:00:49,321 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 632} threads=16
+2026-10-17 00:04:59,459 annstudy.coordinate INFO [core 0] done 76efc7e46176478d8f5653568f5346d0 in 250.1s
+2026-10-17 00:04:59,461 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=768 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=16
+2026-10-17 00:05:15,075 annstudy.coordinate INFO [core 0] done aab8921f7d8d482fb3360a7e417a1308 in 15.6s
+2026-10-17 00:05:15,077 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=768 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=16
+2026-10-17 00:05:30,690 annstudy.coordinate INFO [core 0] done 4bf7f4977151499ea9f8f7b90389aa09 in 15.6s
+2026-10-17 00:05:30,693 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=768 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=16
+2026-10-17 00:05:46,004 annstudy.coordinate INFO [core 0] done c054af3ff64843b69559abf9d0fb66a7 in 15.3s
+2026-10-17 00:05:46,006 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=128 params={'nlist': 632} threads=16
+2026-10-17 00:05:51,410 annstudy.coordinate INFO [core 0] done 96bc2a16922a43d2b52c0c020fd2da7b in 5.4s
+2026-10-17 00:05:51,413 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=128 params={'nlist': 632} threads=16
+2026-10-17 00:05:56,817 annstudy.coordinate INFO [core 0] done db3365c2406348cba2a2a7d7d20d538f in 5.4s
+2026-10-17 00:05:56,819 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=128 params={'nlist': 632} threads=16
+2026-10-17 00:06:02,825 annstudy.coordinate INFO [core 0] done a3c4a13f41d544ebac24545d63d601ce in 6.0s
+2026-10-17 00:06:02,828 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=384 params={'nlist': 632} threads=16
+2026-10-17 00:06:47,564 annstudy.coordinate INFO [core 0] done a31a352f4d564919addb38d38b6b6730 in 44.7s
+2026-10-17 00:06:47,566 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=384 params={'nlist': 632} threads=16
+2026-10-17 00:07:32,604 annstudy.coordinate INFO [core 0] done f1800b6fb4ae44c9a5b25617b42a51d4 in 45.0s
+2026-10-17 00:07:32,607 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=384 params={'nlist': 632} threads=16
+2026-10-17 00:08:16,451 annstudy.coordinate INFO [core 0] done d25d2060217145448253c06b86aefa49 in 43.8s
+2026-10-17 00:08:16,454 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=768 params={'nlist': 632} threads=16
+2026-10-17 00:10:06,649 annstudy.coordinate INFO [core 0] done 971a43dc5eab46e9b89e3af59300bfa7 in 110.2s
+2026-10-17 00:10:06,651 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=768 params={'nlist': 632} threads=16
+2026-10-17 00:12:01,961 annstudy.coordinate INFO [core 0] done 446c31ff05a94fcdb34e04ee80cf0df2 in 115.3s
+2026-10-17 00:12:01,965 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=768 params={'nlist': 632} threads=16
+2026-10-17 00:13:55,186 annstudy.coordinate INFO [core 0] done 47dd1ef417b64cdca7eee54ac6ebb6db in 113.2s
+2026-10-17 00:13:55,189 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=384 params={} threads=16
+2026-10-17 00:14:05,095 annstudy.coordinate INFO [core 0] done 89153f97c0da46fa86e7dc2022db706b in 9.9s
+2026-10-17 00:14:05,097 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=384 params={} threads=16
+2026-10-17 00:14:15,305 annstudy.coordinate INFO [core 0] done a7444e665746440b90209f29f4f9ea16 in 10.2s
+2026-10-17 00:14:15,307 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=384 params={} threads=16
+2026-10-17 00:14:25,212 annstudy.coordinate INFO [core 0] done c6b8ba62c98a4bfdb3155e2b029cce8b in 9.9s
+2026-10-17 00:14:25,215 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=128 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-17 00:14:31,220 annstudy.coordinate INFO [core 0] done ddad873bea454af991d6689248f7b59a in 6.0s
+2026-10-17 00:14:31,222 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=128 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-17 00:14:36,928 annstudy.coordinate INFO [core 0] done f795136a36cd4f8681d9fb2f986dc522 in 5.7s
+2026-10-17 00:14:36,932 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=128 params={'M': 16, 'ef_construction': 200} threads=16
+2026-10-17 00:14:42,937 annstudy.coordinate INFO [core 0] done 68a8083a19a6439987780cb0731f3ac0 in 6.0s
+2026-10-17 00:14:42,939 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=128 params={} threads=16
+2026-10-17 00:14:50,445 annstudy.coordinate INFO [core 0] done 84badc8370cb415aa08f07f13c894747 in 7.5s
+2026-10-17 00:14:50,448 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=128 params={} threads=16
+2026-10-17 00:14:58,254 annstudy.coordinate INFO [core 0] done 9b67daa78a294af18cc3ba3dd6c815cd in 7.8s
+2026-10-17 00:14:58,256 annstudy.coordinate INFO [core 0] start sweep flat N=100000 D=128 params={} threads=16
+2026-10-17 00:15:05,762 annstudy.coordinate INFO [core 0] done 24c382866b3143faa1ccb96c5f29eaf2 in 7.5s
+2026-10-17 00:15:05,764 annstudy.coordinate INFO Measuring index RAM for 45 indexes.
+2026-10-17 00:15:05,764 annstudy.coordinate INFO 45 specs enumerated; 0 already done; 45 to run.
+2026-10-17 00:15:05,766 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=384 params=None threads=16
+2026-10-17 00:15:06,967 annstudy.coordinate INFO [core 0] done 7512910a8a594d6f8ffd1433f087e950 in 1.2s
+2026-10-17 00:15:06,969 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=384 params=None threads=16
+2026-10-17 00:15:07,870 annstudy.coordinate INFO [core 0] done 7edbf7bd8acf4af7acaca00f410bce81 in 0.9s
+2026-10-17 00:15:07,873 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=384 params=None threads=16
+2026-10-17 00:15:09,074 annstudy.coordinate INFO [core 0] done b59099d136e245bea233446baef73569 in 1.2s
+2026-10-17 00:15:09,077 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:10,578 annstudy.coordinate INFO [core 0] done fc9a47808a3046789d2fd30c2cb4fe08 in 1.5s
+2026-10-17 00:15:10,581 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:12,082 annstudy.coordinate INFO [core 0] done ac196d23eafb4c34823a6d8f2748a3ab in 1.5s
+2026-10-17 00:15:12,083 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:13,585 annstudy.coordinate INFO [core 0] done c547f7b17b7a4319872ce3e5f5a5f4c0 in 1.5s
+2026-10-17 00:15:13,587 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=384 params=None threads=16
+2026-10-17 00:15:14,489 annstudy.coordinate INFO [core 0] done fb21eff48a1d4d798c54b1c80f64ca0e in 0.9s
+2026-10-17 00:15:14,491 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=384 params=None threads=16
+2026-10-17 00:15:15,392 annstudy.coordinate INFO [core 0] done 11b6fe9351b249bba7cb47252666ec17 in 0.9s
+2026-10-17 00:15:15,394 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=384 params=None threads=16
+2026-10-17 00:15:16,596 annstudy.coordinate INFO [core 0] done 2a0047a4e60c4636bc4521c7a1ae7fdc in 1.2s
+2026-10-17 00:15:16,598 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=768 params=None threads=16
+2026-10-17 00:15:18,400 annstudy.coordinate INFO [core 0] done 114a3eb8afec4c73957e1fb369a3f02a in 1.8s
+2026-10-17 00:15:18,402 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=768 params=None threads=16
+2026-10-17 00:15:20,204 annstudy.coordinate INFO [core 0] done f40340645866499387ae703614793ee6 in 1.8s
+2026-10-17 00:15:20,206 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=768 params=None threads=16
+2026-10-17 00:15:22,008 annstudy.coordinate INFO [core 0] done e5c2ffe8f9b0483b809d0709d2673808 in 1.8s
+2026-10-17 00:15:22,009 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=768 params=None threads=16
+2026-10-17 00:15:23,210 annstudy.coordinate INFO [core 0] done c78ad59965874f36b1e37a23c35f14a3 in 1.2s
+2026-10-17 00:15:23,212 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=768 params=None threads=16
+2026-10-17 00:15:24,113 annstudy.coordinate INFO [core 0] done c35904d7754a4d95a108d8ad063583fc in 0.9s
+2026-10-17 00:15:24,115 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=768 params=None threads=16
+2026-10-17 00:15:25,316 annstudy.coordinate INFO [core 0] done ed464eb3f5d34573b755e553ea5262a9 in 1.2s
+2026-10-17 00:15:25,318 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:28,622 annstudy.coordinate INFO [core 0] done 85d3bb7a455b4ed5ad6c058c6eb44b9b in 3.3s
+2026-10-17 00:15:28,624 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:36,441 annstudy.coordinate INFO [core 0] done 4c151896da384e7c86d923813ac23922 in 7.8s
+2026-10-17 00:15:36,444 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:45,462 annstudy.coordinate INFO [core 0] done 1a6f1ccae3424c2a9f39b38f3fd8fadc in 9.0s
+2026-10-17 00:15:45,464 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:48,166 annstudy.coordinate INFO [core 0] done 962295c46c8543c48c1d360995251279 in 2.7s
+2026-10-17 00:15:48,168 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:50,273 annstudy.coordinate INFO [core 0] done be0b3b515ed6417c9abd1ceafa2db9dc in 2.1s
+2026-10-17 00:15:50,275 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:51,776 annstudy.coordinate INFO [core 0] done 9127e8e2e09142e1af667049796ff0a1 in 1.5s
+2026-10-17 00:15:51,779 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:53,280 annstudy.coordinate INFO [core 0] done ca56e4512168403ab83d7bbd22c9c4e8 in 1.5s
+2026-10-17 00:15:53,282 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:54,784 annstudy.coordinate INFO [core 0] done 903cae1f51af4025876fa9783cb20605 in 1.5s
+2026-10-17 00:15:54,787 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=1536 params=None threads=16
+2026-10-17 00:15:56,288 annstudy.coordinate INFO [core 0] done 315126e332b345fd8c37150b9f6eec2c in 1.5s
+2026-10-17 00:15:56,290 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=768 params=None threads=16
+2026-10-17 00:15:57,492 annstudy.coordinate INFO [core 0] done 19ccf4d3c23a430f843ed08181811f8a in 1.2s
+2026-10-17 00:15:57,494 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=768 params=None threads=16
+2026-10-17 00:15:58,695 annstudy.coordinate INFO [core 0] done 78e3751078a84332961b5dffa04ab049 in 1.2s
+2026-10-17 00:15:58,697 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=768 params=None threads=16
+2026-10-17 00:15:59,899 annstudy.coordinate INFO [core 0] done 4305f43f0aa74e78b9c8eca63fc9ff79 in 1.2s
+2026-10-17 00:15:59,901 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=128 params=None threads=16
+2026-10-17 00:16:00,802 annstudy.coordinate INFO [core 0] done f98aaa2a45314a1497bd14e32ff5ba68 in 0.9s
+2026-10-17 00:16:00,804 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=128 params=None threads=16
+2026-10-17 00:16:01,705 annstudy.coordinate INFO [core 0] done 855a256e52e348c8a9022629b5108350 in 0.9s
+2026-10-17 00:16:01,707 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=128 params=None threads=16
+2026-10-17 00:16:02,608 annstudy.coordinate INFO [core 0] done f0178b19880c479bb8bc536e771582aa in 0.9s
+2026-10-17 00:16:02,610 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=384 params=None threads=16
+2026-10-17 00:16:03,511 annstudy.coordinate INFO [core 0] done 3f81a722ee644eaeb9188869cbc51c44 in 0.9s
+2026-10-17 00:16:03,514 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=384 params=None threads=16
+2026-10-17 00:16:04,415 annstudy.coordinate INFO [core 0] done 022a8db5e087401ebc0399255148a3d6 in 0.9s
+2026-10-17 00:16:04,417 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=384 params=None threads=16
+2026-10-17 00:16:05,318 annstudy.coordinate INFO [core 0] done 310d1b4150294e6798720394b8dc7f13 in 0.9s
+2026-10-17 00:16:05,320 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=768 params=None threads=16
+2026-10-17 00:16:06,522 annstudy.coordinate INFO [core 0] done def0cdb6051f49e9bbbe4e2ac3d09afe in 1.2s
+2026-10-17 00:16:06,524 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=768 params=None threads=16
+2026-10-17 00:16:07,726 annstudy.coordinate INFO [core 0] done dcc7c8b3039e472bbce664a376b660ea in 1.2s
+2026-10-17 00:16:07,728 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=768 params=None threads=16
+2026-10-17 00:16:08,929 annstudy.coordinate INFO [core 0] done 6320b61dbbc34d19b1541f0b0d406f84 in 1.2s
+2026-10-17 00:16:08,931 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=384 params=None threads=16
+2026-10-17 00:16:10,134 annstudy.coordinate INFO [core 0] done 5eecf5b174914911bf6ead46b2ccb54d in 1.2s
+2026-10-17 00:16:10,136 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=384 params=None threads=16
+2026-10-17 00:16:11,338 annstudy.coordinate INFO [core 0] done a02d3aed51c5416ca31f22ec525f283e in 1.2s
+2026-10-17 00:16:11,340 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=384 params=None threads=16
+2026-10-17 00:16:12,542 annstudy.coordinate INFO [core 0] done 2e37617133d6473a8bee24389e848ee3 in 1.2s
+2026-10-17 00:16:12,544 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=128 params=None threads=16
+2026-10-17 00:16:13,445 annstudy.coordinate INFO [core 0] done e73c7bbb69f044fa808ffea5665deab4 in 0.9s
+2026-10-17 00:16:13,447 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=128 params=None threads=16
+2026-10-17 00:16:14,349 annstudy.coordinate INFO [core 0] done ea9bf450eb9e4739b36405124e31f767 in 0.9s
+2026-10-17 00:16:14,351 annstudy.coordinate INFO [core 0] start memory hnsw N=100000 D=128 params=None threads=16
+2026-10-17 00:16:14,951 annstudy.coordinate INFO [core 0] done c1fef07f5f6e472baa13f8bb2ec9e262 in 0.6s
+2026-10-17 00:16:14,953 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=128 params=None threads=16
+2026-10-17 00:16:15,855 annstudy.coordinate INFO [core 0] done a72418d04bf34e7f89c1b96ff371c731 in 0.9s
+2026-10-17 00:16:15,857 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=128 params=None threads=16
+2026-10-17 00:16:16,758 annstudy.coordinate INFO [core 0] done f6e4a6ac8fb14995ab89cc9b5bbd78d7 in 0.9s
+2026-10-17 00:16:16,777 annstudy.coordinate INFO [core 0] start memory flat N=100000 D=128 params=None threads=16
+2026-10-17 00:16:17,678 annstudy.coordinate INFO [core 0] done 2f2fe48a3dab43e682b9d05b6fe69ee0 in 0.9s
+2026-10-17 00:16:18,740 annstudy.coordinate INFO Recorded 15 selected winners in results/raw/selected.parquet

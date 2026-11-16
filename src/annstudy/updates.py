@@ -3,12 +3,48 @@
 import logging
 import time
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import numpy as np
 import pandas as pd
 
 logger = logging.getLogger(__name__)
+
+
+def prefix_ground_truth(passages, queries, n_vectors: int, k: int = 100,
+                        cache_dir: str = "data/gt/prefix", threads: int = 0):
+    """Exact top-k over ``passages[:n_vectors]`` only. Cached per (n_vectors, D).
+
+    Needed because an index part-way through an insert run holds a PREFIX of the corpus.
+    Scoring it against full-corpus ground truth counts the not-yet-inserted vectors as misses,
+    so recall rises mechanically with every batch and measures completeness rather than drift.
+    Restricting ground truth to what the index actually contains isolates the quantity Stage D
+    is about. Ground truth is reference data, so it may use every core.
+    """
+    from pathlib import Path
+
+    import faiss
+
+    D = passages.shape[1]
+    path = Path(cache_dir) / f"gt_prefix_N{n_vectors}_D{D}.npz"
+    if path.exists():
+        try:
+            z = np.load(path)
+            if z["distances"].shape[0] == len(queries):
+                return z["ids"], z["distances"]
+        except Exception as e:
+            logger.warning(f"Ignoring unreadable prefix GT {path} ({e}); recomputing.")
+
+    if threads:
+        faiss.omp_set_num_threads(threads)
+    flat = faiss.IndexFlatL2(D)
+    flat.add(np.ascontiguousarray(passages[:n_vectors]))
+    dists, ids = flat.search(np.ascontiguousarray(queries), k)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp.npz")
+    np.savez(tmp, ids=ids, distances=dists)
+    tmp.replace(path)  # atomic publish, as several index types share these caches
+    return ids, dists
 
 
 def run_update_study(
@@ -24,6 +60,7 @@ def run_update_study(
     batch_size: int = 5_000,
     k: int = 10,
     seed: int = 0,
+    gt_threads: int = 0,
 ) -> pd.DataFrame:
     """Run the update study for one index type.
 
@@ -33,7 +70,7 @@ def run_update_study(
     4. Compare with a rebuild from scratch.
     """
     from annstudy.indexes import set_search_params
-    from annstudy.metrics import measure_latency, latency_stats, recall_at_k_batch
+    from annstudy.metrics import latency_stats, measure_latency, recall_at_k_batch
 
     dim = passages.shape[1]
 
@@ -59,19 +96,28 @@ def run_update_study(
         lat = latency_stats(per_query_ns)
 
         _, ret_ids = index.search(queries, k)
+        # Drift measure: ground truth over the vectors the index actually contains.
+        _, gt_pref = prefix_ground_truth(passages, queries, total_inserted,
+                                         k=max(k, 100), threads=gt_threads)
         per_q_recall = recall_at_k_batch(
+            ret_ids, gt_pref, passages[:total_inserted], queries, k=k,
+        )
+        # Completeness measure, retained for transparency: the same answers scored against
+        # full-corpus ground truth, which rises mechanically as the corpus fills up.
+        per_q_recall_full = recall_at_k_batch(
             ret_ids, gt_distances, passages[:total_inserted], queries, k=k,
         )
 
         row = {
             "run_id": str(uuid.uuid4()),
-            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "index_type": index_type,
             "batch_id": batch_id,
             "inserted_total": total_inserted,
             "insert_seconds": insert_sec,
             "inserts_per_second": batch_size / insert_sec,
             "recall_at_fixed_params": float(np.mean(per_q_recall)),
+            "recall_vs_full_corpus_gt": float(np.mean(per_q_recall_full)),
             "lat_p95_us": lat["lat_p95_us"],
             "retrained": False,
             "rebuild_reference_recall": None,
@@ -90,20 +136,25 @@ def run_update_study(
     set_search_params(rebuild_index, index_type, search_params)
 
     _, ret_ids = rebuild_index.search(queries, k)
+    _, gt_pref = prefix_ground_truth(passages, queries, total_inserted,
+                                     k=max(k, 100), threads=gt_threads)
     per_q_recall = recall_at_k_batch(
-        ret_ids, gt_distances, passages[:total_inserted], queries, k=k,
+        ret_ids, gt_pref, passages[:total_inserted], queries, k=k,
     )
     rebuild_recall = float(np.mean(per_q_recall))
+    rebuild_recall_full = float(np.mean(recall_at_k_batch(
+        ret_ids, gt_distances, passages[:total_inserted], queries, k=k)))
 
     rebuild_row = {
         "run_id": str(uuid.uuid4()),
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
         "index_type": index_type,
         "batch_id": n_batches,
         "inserted_total": total_inserted,
         "insert_seconds": 0.0,
         "inserts_per_second": 0.0,
         "recall_at_fixed_params": rebuild_recall,
+        "recall_vs_full_corpus_gt": rebuild_recall_full,
         "lat_p95_us": 0.0,
         "retrained": False,
         "rebuild_reference_recall": rebuild_recall,

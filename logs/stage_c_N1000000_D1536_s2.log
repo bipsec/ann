@@ -1,0 +1,376 @@
+2026-10-25 14:30:06,454 faiss.loader INFO Loading faiss with AVX2 support.
+2026-10-25 14:30:06,454 faiss.loader INFO Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-10-25 14:30:06,454 faiss.loader INFO Loading faiss.
+2026-10-25 14:30:06,475 faiss.loader INFO Successfully loaded faiss.
+2026-10-25 14:30:06,495 __main__ INFO Stage C: 25 jobs in this shard, 25 pending.
+2026-10-25 14:30:06,498 __main__ INFO Cell N=1000000 D=1536: 25 jobs, 2000 tuning / 8000 test queries
+2026-10-25 14:30:06,527 __main__ INFO k-means (k=1000) on N=1000000 D=1536 ...
+2026-10-25 14:35:03,529 __main__ INFO   job pre_filter_exact exact none S=0.1 safety=None
+2026-10-25 14:51:50,412 __main__ INFO     tuning {}: recall=1.0000 p95=194648us
+2026-10-25 15:59:56,586 __main__ INFO     R=0.9: {} recall_test=1.0000 p95=196334us measured_S=0.0999
+2026-10-25 15:59:56,777 __main__ INFO     R=0.95: {} recall_test=1.0000 p95=196334us measured_S=0.0999
+2026-10-25 15:59:56,966 __main__ INFO     R=0.99: {} recall_test=1.0000 p95=196334us measured_S=0.0999
+2026-10-25 15:59:57,022 __main__ INFO   job pre_filter_exact exact positive S=0.1 safety=None
+2026-10-25 17:17:07,727 __main__ INFO     tuning {}: recall=1.0000 p95=146512us
+2026-10-25 18:15:01,047 __main__ INFO     R=0.9: {} recall_test=1.0000 p95=160512us measured_S=0.1007
+2026-10-25 18:15:01,238 __main__ INFO     R=0.95: {} recall_test=1.0000 p95=160512us measured_S=0.1007
+2026-10-25 18:15:01,427 __main__ INFO     R=0.99: {} recall_test=1.0000 p95=160512us measured_S=0.1007
+2026-10-25 18:15:01,450 __main__ INFO   job pre_filter_exact exact negative S=0.1 safety=None
+2026-10-25 19:32:36,437 __main__ INFO     tuning {}: recall=1.0000 p95=165132us
+2026-10-25 20:36:19,273 __main__ INFO     R=0.9: {} recall_test=1.0000 p95=169219us measured_S=0.1005
+2026-10-25 20:36:19,463 __main__ INFO     R=0.95: {} recall_test=1.0000 p95=169219us measured_S=0.1005
+2026-10-25 20:36:19,653 __main__ INFO     R=0.99: {} recall_test=1.0000 p95=169219us measured_S=0.1005
+2026-10-25 20:36:20,853 __main__ INFO   loading hnsw index: data/indexes/stage_b/idx_3ced67cb5e464b1cb070533957b76f9e.faiss
+2026-10-25 20:36:46,796 __main__ INFO   job in_index_filtered hnsw none S=1 safety=None
+2026-10-25 20:36:48,655 __main__ INFO     tuning {'ef_search': 16}: recall=0.9204 p95=211us
+2026-10-25 20:36:50,594 __main__ INFO     tuning {'ef_search': 24}: recall=0.9491 p95=284us
+2026-10-25 20:36:52,919 __main__ INFO     tuning {'ef_search': 32}: recall=0.9615 p95=354us
+2026-10-25 20:36:55,953 __main__ INFO     tuning {'ef_search': 48}: recall=0.9761 p95=525us
+2026-10-25 20:36:59,814 __main__ INFO     tuning {'ef_search': 64}: recall=0.9822 p95=689us
+2026-10-25 20:37:04,965 __main__ INFO     tuning {'ef_search': 96}: recall=0.9887 p95=1058us
+2026-10-25 20:37:10,939 __main__ INFO     tuning {'ef_search': 128}: recall=0.9916 p95=1369us
+2026-10-25 20:37:19,754 __main__ INFO     tuning {'ef_search': 192}: recall=0.9939 p95=2056us
+2026-10-25 20:37:31,554 __main__ INFO     tuning {'ef_search': 256}: recall=0.9958 p95=2748us
+2026-10-25 20:37:51,771 __main__ INFO     tuning {'ef_search': 384}: recall=0.9970 p95=4270us
+2026-10-25 20:38:17,583 __main__ INFO     tuning {'ef_search': 512}: recall=0.9980 p95=5734us
+2026-10-25 20:38:59,238 __main__ INFO     tuning {'ef_search': 768}: recall=0.9985 p95=9357us
+2026-10-25 20:39:53,695 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9993 p95=11945us
+2026-10-25 20:40:27,521 __main__ INFO     R=0.9: {'ef_search': 16} recall_test=0.9135 p95=219us measured_S=1
+2026-10-25 20:40:36,075 __main__ INFO     R=0.95: {'ef_search': 32} recall_test=0.9586 p95=363us measured_S=1
+2026-10-25 20:40:36,264 __main__ INFO     R=0.99: {'ef_search': 128} recall_test=0.9906 p95=1500us measured_S=1
+2026-10-25 20:40:36,289 __main__ INFO   job in_index_filtered hnsw none S=0.01 safety=None
+2026-10-25 20:40:37,830 __main__ INFO     tuning {'ef_search': 16}: recall=0.1750 p95=211us
+2026-10-25 20:40:39,443 __main__ INFO     tuning {'ef_search': 24}: recall=0.2253 p95=282us
+2026-10-25 20:40:41,270 __main__ INFO     tuning {'ef_search': 32}: recall=0.2669 p95=336us
+2026-10-25 20:40:43,911 __main__ INFO     tuning {'ef_search': 48}: recall=0.3417 p95=514us
+2026-10-25 20:40:47,201 __main__ INFO     tuning {'ef_search': 64}: recall=0.4041 p95=679us
+2026-10-25 20:40:51,928 __main__ INFO     tuning {'ef_search': 96}: recall=0.5039 p95=1048us
+2026-10-25 20:40:57,712 __main__ INFO     tuning {'ef_search': 128}: recall=0.5781 p95=1341us
+2026-10-25 20:41:06,341 __main__ INFO     tuning {'ef_search': 192}: recall=0.6842 p95=1998us
+2026-10-25 20:41:17,985 __main__ INFO     tuning {'ef_search': 256}: recall=0.7548 p95=2696us
+2026-10-25 20:41:36,381 __main__ INFO     tuning {'ef_search': 384}: recall=0.8439 p95=4235us
+2026-10-25 20:42:01,567 __main__ INFO     tuning {'ef_search': 512}: recall=0.8930 p95=5745us
+2026-10-25 20:42:40,027 __main__ INFO     tuning {'ef_search': 768}: recall=0.9430 p95=8533us
+2026-10-25 20:43:34,046 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9639 p95=11699us
+2026-10-25 20:46:39,283 __main__ INFO     R=0.9: {'ef_search': 768} recall_test=0.9394 p95=8681us measured_S=0.01001
+2026-10-25 20:50:15,060 __main__ INFO     R=0.95: {'ef_search': 1024} recall_test=0.9629 p95=12012us measured_S=0.01001
+2026-10-25 20:50:15,061 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.9639)
+2026-10-25 20:50:15,083 __main__ INFO   job in_index_filtered hnsw positive S=0.01 safety=None
+2026-10-25 20:50:40,183 __main__ INFO     tuning {'ef_search': 16}: recall=0.9163 p95=472us
+2026-10-25 20:51:05,936 __main__ INFO     tuning {'ef_search': 24}: recall=0.9460 p95=604us
+2026-10-25 20:51:31,734 __main__ INFO     tuning {'ef_search': 32}: recall=0.9599 p95=608us
+2026-10-25 20:52:00,139 __main__ INFO     tuning {'ef_search': 48}: recall=0.9765 p95=819us
+2026-10-25 20:52:28,919 __main__ INFO     tuning {'ef_search': 64}: recall=0.9831 p95=988us
+2026-10-25 20:52:57,594 __main__ INFO     tuning {'ef_search': 96}: recall=0.9907 p95=1234us
+2026-10-25 20:53:28,330 __main__ INFO     tuning {'ef_search': 128}: recall=0.9935 p95=1623us
+2026-10-25 20:54:04,294 __main__ INFO     tuning {'ef_search': 192}: recall=0.9966 p95=2452us
+2026-10-25 20:54:42,696 __main__ INFO     tuning {'ef_search': 256}: recall=0.9982 p95=3284us
+2026-10-25 20:55:28,930 __main__ INFO     tuning {'ef_search': 384}: recall=0.9991 p95=4511us
+2026-10-25 20:56:21,829 __main__ INFO     tuning {'ef_search': 512}: recall=0.9996 p95=5860us
+2026-10-25 20:57:25,246 __main__ INFO     tuning {'ef_search': 768}: recall=0.9997 p95=8611us
+2026-10-25 20:58:37,305 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9997 p95=10848us
+2026-10-25 21:02:15,274 __main__ INFO     R=0.9: {'ef_search': 16} recall_test=0.9054 p95=502us measured_S=0.01068
+2026-10-25 21:03:48,909 __main__ INFO     R=0.95: {'ef_search': 32} recall_test=0.9573 p95=594us measured_S=0.01068
+2026-10-25 21:05:44,053 __main__ INFO     R=0.99: {'ef_search': 96} recall_test=0.9901 p95=1265us measured_S=0.01068
+2026-10-25 21:05:44,074 __main__ INFO   job in_index_filtered hnsw negative S=0.01 safety=None
+2026-10-25 21:06:06,046 __main__ INFO     tuning {'ef_search': 16}: recall=0.0060 p95=470us
+2026-10-25 21:06:28,445 __main__ INFO     tuning {'ef_search': 24}: recall=0.0078 p95=555us
+2026-10-25 21:06:51,672 __main__ INFO     tuning {'ef_search': 32}: recall=0.0100 p95=635us
+2026-10-25 21:07:15,011 __main__ INFO     tuning {'ef_search': 48}: recall=0.0143 p95=762us
+2026-10-25 21:07:39,206 __main__ INFO     tuning {'ef_search': 64}: recall=0.0192 p95=906us
+2026-10-25 21:08:05,409 __main__ INFO     tuning {'ef_search': 96}: recall=0.0276 p95=1227us
+2026-10-25 21:08:33,758 __main__ INFO     tuning {'ef_search': 128}: recall=0.0348 p95=1627us
+2026-10-25 21:09:08,500 __main__ INFO     tuning {'ef_search': 192}: recall=0.0496 p95=2439us
+2026-10-25 21:09:45,694 __main__ INFO     tuning {'ef_search': 256}: recall=0.0638 p95=3202us
+2026-10-25 21:10:31,182 __main__ INFO     tuning {'ef_search': 384}: recall=0.0891 p95=4676us
+2026-10-25 21:11:21,672 __main__ INFO     tuning {'ef_search': 512}: recall=0.1117 p95=5827us
+2026-10-25 21:12:22,150 __main__ INFO     tuning {'ef_search': 768}: recall=0.1521 p95=8438us
+2026-10-25 21:13:39,070 __main__ INFO     tuning {'ef_search': 1024}: recall=0.1913 p95=11648us
+2026-10-25 21:15:41,952 __main__ INFO     R=0.9: UNREACHABLE (best tuning recall 0.1913)
+2026-10-25 21:15:41,953 __main__ INFO     R=0.95: UNREACHABLE (best tuning recall 0.1913)
+2026-10-25 21:15:41,953 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.1913)
+2026-10-25 21:15:41,974 __main__ INFO   job post_filter_overfetch hnsw none S=1 safety=3
+2026-10-25 21:15:43,644 __main__ INFO     tuning {'ef_search': 16}: recall=0.9204 p95=232us
+2026-10-25 21:15:45,335 __main__ INFO     tuning {'ef_search': 24}: recall=0.9491 p95=294us
+2026-10-25 21:15:47,329 __main__ INFO     tuning {'ef_search': 32}: recall=0.9615 p95=357us
+2026-10-25 21:15:49,986 __main__ INFO     tuning {'ef_search': 48}: recall=0.9761 p95=513us
+2026-10-25 21:15:53,317 __main__ INFO     tuning {'ef_search': 64}: recall=0.9822 p95=678us
+2026-10-25 21:15:58,059 __main__ INFO     tuning {'ef_search': 96}: recall=0.9887 p95=1042us
+2026-10-25 21:16:04,284 __main__ INFO     tuning {'ef_search': 128}: recall=0.9916 p95=1443us
+2026-10-25 21:16:13,623 __main__ INFO     tuning {'ef_search': 192}: recall=0.9939 p95=2175us
+2026-10-25 21:16:26,157 __main__ INFO     tuning {'ef_search': 256}: recall=0.9958 p95=2897us
+2026-10-25 21:16:45,413 __main__ INFO     tuning {'ef_search': 384}: recall=0.9970 p95=4366us
+2026-10-25 21:17:11,274 __main__ INFO     tuning {'ef_search': 512}: recall=0.9980 p95=5917us
+2026-10-25 21:17:52,088 __main__ INFO     tuning {'ef_search': 768}: recall=0.9985 p95=8918us
+2026-10-25 21:18:43,620 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9993 p95=11447us
+2026-10-25 21:19:16,628 __main__ INFO     R=0.9: {'ef_search': 16} recall_test=0.9135 p95=232us measured_S=1
+2026-10-25 21:19:25,216 __main__ INFO     R=0.95: {'ef_search': 32} recall_test=0.9586 p95=369us measured_S=1
+2026-10-25 21:19:25,409 __main__ INFO     R=0.99: {'ef_search': 128} recall_test=0.9906 p95=1472us measured_S=1
+2026-10-25 21:19:25,419 __main__ INFO   job post_filter_overfetch hnsw none S=0.1 safety=1.5
+2026-10-25 21:19:27,158 __main__ INFO     tuning {'ef_search': 16}: recall=0.6039 p95=256us
+2026-10-25 21:19:29,082 __main__ INFO     tuning {'ef_search': 24}: recall=0.7016 p95=321us
+2026-10-25 21:19:31,320 __main__ INFO     tuning {'ef_search': 32}: recall=0.7682 p95=387us
+2026-10-25 21:19:34,359 __main__ INFO     tuning {'ef_search': 48}: recall=0.8513 p95=552us
+2026-10-25 21:19:38,144 __main__ INFO     tuning {'ef_search': 64}: recall=0.8949 p95=717us
+2026-10-25 21:19:43,327 __main__ INFO     tuning {'ef_search': 96}: recall=0.9394 p95=1074us
+2026-10-25 21:19:50,000 __main__ INFO     tuning {'ef_search': 128}: recall=0.9575 p95=1450us
+2026-10-25 21:19:59,759 __main__ INFO     tuning {'ef_search': 192}: recall=0.9725 p95=2145us
+2026-10-25 21:20:12,318 __main__ INFO     tuning {'ef_search': 256}: recall=0.9780 p95=2837us
+2026-10-25 21:20:31,552 __main__ INFO     tuning {'ef_search': 384}: recall=0.9836 p95=4454us
+2026-10-25 21:20:57,431 __main__ INFO     tuning {'ef_search': 512}: recall=0.9862 p95=5798us
+2026-10-25 21:21:35,933 __main__ INFO     tuning {'ef_search': 768}: recall=0.9879 p95=8809us
+2026-10-25 21:22:28,205 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9889 p95=11184us
+2026-10-25 21:23:17,440 __main__ INFO     R=0.9: {'ef_search': 96} recall_test=0.9356 p95=1085us measured_S=0.0999
+2026-10-25 21:23:17,629 __main__ INFO     R=0.95: {'ef_search': 128} recall_test=0.9546 p95=1489us measured_S=0.0999
+2026-10-25 21:23:17,630 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.9889)
+2026-10-25 21:23:17,648 __main__ INFO   job post_filter_overfetch hnsw none S=0.01 safety=3
+2026-10-25 21:23:20,216 __main__ INFO     tuning {'ef_search': 16}: recall=0.1750 p95=425us
+2026-10-25 21:23:23,049 __main__ INFO     tuning {'ef_search': 24}: recall=0.2253 p95=510us
+2026-10-25 21:23:26,332 __main__ INFO     tuning {'ef_search': 32}: recall=0.2669 p95=593us
+2026-10-25 21:23:30,572 __main__ INFO     tuning {'ef_search': 48}: recall=0.3417 p95=795us
+2026-10-25 21:23:35,848 __main__ INFO     tuning {'ef_search': 64}: recall=0.4041 p95=1014us
+2026-10-25 21:23:43,092 __main__ INFO     tuning {'ef_search': 96}: recall=0.5039 p95=1473us
+2026-10-25 21:23:52,327 __main__ INFO     tuning {'ef_search': 128}: recall=0.5781 p95=1967us
+2026-10-25 21:24:05,558 __main__ INFO     tuning {'ef_search': 192}: recall=0.6842 p95=2919us
+2026-10-25 21:24:22,094 __main__ INFO     tuning {'ef_search': 256}: recall=0.7548 p95=3734us
+2026-10-25 21:24:46,505 __main__ INFO     tuning {'ef_search': 384}: recall=0.8439 p95=5391us
+2026-10-25 21:25:20,194 __main__ INFO     tuning {'ef_search': 512}: recall=0.8930 p95=7490us
+2026-10-25 21:26:09,518 __main__ INFO     tuning {'ef_search': 768}: recall=0.9430 p95=10282us
+2026-10-25 21:27:10,642 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9639 p95=12878us
+2026-10-25 21:30:59,285 __main__ INFO     R=0.9: {'ef_search': 768} recall_test=0.9394 p95=10193us measured_S=0.01001
+2026-10-25 21:35:00,338 __main__ INFO     R=0.95: {'ef_search': 1024} recall_test=0.9629 p95=12686us measured_S=0.01001
+2026-10-25 21:35:00,338 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.9639)
+2026-10-25 21:35:00,361 __main__ INFO   job post_filter_overfetch hnsw positive S=0.1 safety=1.5
+2026-10-25 21:35:17,703 __main__ INFO     tuning {'ef_search': 16}: recall=0.9206 p95=488us
+2026-10-25 21:35:37,192 __main__ INFO     tuning {'ef_search': 24}: recall=0.9494 p95=580us
+2026-10-25 21:35:58,063 __main__ INFO     tuning {'ef_search': 32}: recall=0.9623 p95=662us
+2026-10-25 21:36:19,254 __main__ INFO     tuning {'ef_search': 48}: recall=0.9770 p95=764us
+2026-10-25 21:36:41,105 __main__ INFO     tuning {'ef_search': 64}: recall=0.9832 p95=899us
+2026-10-25 21:37:05,358 __main__ INFO     tuning {'ef_search': 96}: recall=0.9898 p95=1271us
+2026-10-25 21:37:31,183 __main__ INFO     tuning {'ef_search': 128}: recall=0.9926 p95=1632us
+2026-10-25 21:37:57,987 __main__ INFO     tuning {'ef_search': 192}: recall=0.9945 p95=2271us
+2026-10-25 21:38:28,156 __main__ INFO     tuning {'ef_search': 256}: recall=0.9962 p95=3004us
+2026-10-25 21:39:07,487 __main__ INFO     tuning {'ef_search': 384}: recall=0.9973 p95=4254us
+2026-10-25 21:39:52,420 __main__ INFO     tuning {'ef_search': 512}: recall=0.9982 p95=5508us
+2026-10-25 21:40:48,697 __main__ INFO     tuning {'ef_search': 768}: recall=0.9987 p95=8008us
+2026-10-25 21:41:52,833 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9994 p95=10457us
+2026-10-25 21:44:44,475 __main__ INFO     R=0.9: {'ef_search': 16} recall_test=0.9143 p95=449us measured_S=0.1007
+2026-10-25 21:46:06,783 __main__ INFO     R=0.95: {'ef_search': 32} recall_test=0.9601 p95=671us measured_S=0.1007
+2026-10-25 21:46:06,978 __main__ INFO     R=0.99: {'ef_search': 128} recall_test=0.9922 p95=1637us measured_S=0.1007
+2026-10-25 21:46:06,999 __main__ INFO   job post_filter_overfetch hnsw positive S=0.01 safety=3
+2026-10-25 21:46:32,102 __main__ INFO     tuning {'ef_search': 16}: recall=0.9163 p95=564us
+2026-10-25 21:46:57,002 __main__ INFO     tuning {'ef_search': 24}: recall=0.9460 p95=705us
+2026-10-25 21:47:22,258 __main__ INFO     tuning {'ef_search': 32}: recall=0.9599 p95=788us
+2026-10-25 21:47:49,527 __main__ INFO     tuning {'ef_search': 48}: recall=0.9765 p95=947us
+2026-10-25 21:48:16,717 __main__ INFO     tuning {'ef_search': 64}: recall=0.9831 p95=1127us
+2026-10-25 21:48:46,879 __main__ INFO     tuning {'ef_search': 96}: recall=0.9907 p95=1524us
+2026-10-25 21:49:19,368 __main__ INFO     tuning {'ef_search': 128}: recall=0.9935 p95=1966us
+2026-10-25 21:49:54,751 __main__ INFO     tuning {'ef_search': 192}: recall=0.9966 p95=2856us
+2026-10-25 21:50:35,131 __main__ INFO     tuning {'ef_search': 256}: recall=0.9982 p95=3694us
+2026-10-25 21:51:26,093 __main__ INFO     tuning {'ef_search': 384}: recall=0.9991 p95=5199us
+2026-10-25 21:52:21,791 __main__ INFO     tuning {'ef_search': 512}: recall=0.9996 p95=6496us
+2026-10-25 21:53:36,267 __main__ INFO     tuning {'ef_search': 768}: recall=0.9997 p95=10153us
+2026-10-25 21:55:00,344 __main__ INFO     tuning {'ef_search': 1024}: recall=0.9997 p95=12583us
+2026-10-25 21:58:47,597 __main__ INFO     R=0.9: {'ef_search': 16} recall_test=0.9054 p95=562us measured_S=0.01068
+2026-10-25 22:00:32,390 __main__ INFO     R=0.95: {'ef_search': 32} recall_test=0.9573 p95=819us measured_S=0.01068
+2026-10-25 22:02:34,295 __main__ INFO     R=0.99: {'ef_search': 96} recall_test=0.9901 p95=1665us measured_S=0.01068
+2026-10-25 22:02:34,313 __main__ INFO   job post_filter_overfetch hnsw negative S=0.1 safety=1.5
+2026-10-25 22:02:54,600 __main__ INFO     tuning {'ef_search': 16}: recall=0.0132 p95=542us
+2026-10-25 22:03:14,005 __main__ INFO     tuning {'ef_search': 24}: recall=0.0112 p95=582us
+2026-10-25 22:03:34,345 __main__ INFO     tuning {'ef_search': 32}: recall=0.0109 p95=763us
+2026-10-25 22:03:55,786 __main__ INFO     tuning {'ef_search': 48}: recall=0.0104 p95=967us
+2026-10-25 22:04:18,287 __main__ INFO     tuning {'ef_search': 64}: recall=0.0105 p95=1101us
+2026-10-25 22:04:42,572 __main__ INFO     tuning {'ef_search': 96}: recall=0.0095 p95=1380us
+2026-10-25 22:05:07,203 __main__ INFO     tuning {'ef_search': 128}: recall=0.0096 p95=1746us
+2026-10-25 22:05:35,774 __main__ INFO     tuning {'ef_search': 192}: recall=0.0094 p95=2609us
+2026-10-25 22:06:09,221 __main__ INFO     tuning {'ef_search': 256}: recall=0.0094 p95=3098us
+2026-10-25 22:06:48,287 __main__ INFO     tuning {'ef_search': 384}: recall=0.0095 p95=4281us
+2026-10-25 22:07:35,240 __main__ INFO     tuning {'ef_search': 512}: recall=0.0094 p95=5657us
+2026-10-25 22:08:30,744 __main__ INFO     tuning {'ef_search': 768}: recall=0.0095 p95=8305us
+2026-10-25 22:09:41,858 __main__ INFO     tuning {'ef_search': 1024}: recall=0.0095 p95=11074us
+2026-10-25 22:11:24,558 __main__ INFO     R=0.9: UNREACHABLE (best tuning recall 0.0132)
+2026-10-25 22:11:24,559 __main__ INFO     R=0.95: UNREACHABLE (best tuning recall 0.0132)
+2026-10-25 22:11:24,559 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.0132)
+2026-10-25 22:11:24,585 __main__ INFO   job post_filter_overfetch hnsw negative S=0.01 safety=3
+2026-10-25 22:11:48,063 __main__ INFO     tuning {'ef_search': 16}: recall=0.0060 p95=575us
+2026-10-25 22:12:12,482 __main__ INFO     tuning {'ef_search': 24}: recall=0.0078 p95=689us
+2026-10-25 22:12:36,635 __main__ INFO     tuning {'ef_search': 32}: recall=0.0100 p95=774us
+2026-10-25 22:13:00,950 __main__ INFO     tuning {'ef_search': 48}: recall=0.0143 p95=956us
+2026-10-25 22:13:28,836 __main__ INFO     tuning {'ef_search': 64}: recall=0.0192 p95=1146us
+2026-10-25 22:13:59,133 __main__ INFO     tuning {'ef_search': 96}: recall=0.0276 p95=1573us
+2026-10-25 22:14:32,120 __main__ INFO     tuning {'ef_search': 128}: recall=0.0348 p95=2057us
+2026-10-25 22:15:07,507 __main__ INFO     tuning {'ef_search': 192}: recall=0.0494 p95=2999us
+2026-10-25 22:15:48,558 __main__ INFO     tuning {'ef_search': 256}: recall=0.0602 p95=3920us
+2026-10-25 22:16:38,240 __main__ INFO     tuning {'ef_search': 384}: recall=0.0660 p95=5255us
+2026-10-25 22:17:31,904 __main__ INFO     tuning {'ef_search': 512}: recall=0.0656 p95=6351us
+2026-10-25 22:18:41,250 __main__ INFO     tuning {'ef_search': 768}: recall=0.0633 p95=9573us
+2026-10-25 22:20:03,299 __main__ INFO     tuning {'ef_search': 1024}: recall=0.0654 p95=12519us
+2026-10-25 22:22:10,548 __main__ INFO     R=0.9: UNREACHABLE (best tuning recall 0.0660)
+2026-10-25 22:22:10,548 __main__ INFO     R=0.95: UNREACHABLE (best tuning recall 0.0660)
+2026-10-25 22:22:10,548 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.0660)
+2026-10-25 22:22:11,861 __main__ INFO   loading ivf_flat index: data/indexes/stage_b/idx_d65b1b2e96e948f49514be2f8bdf3aa2.faiss
+2026-10-25 22:22:41,257 __main__ INFO   job in_index_filtered ivf_flat none S=1 safety=None
+2026-10-25 22:22:45,631 __main__ INFO     tuning {'nprobe': 1}: recall=0.5302 p95=767us
+2026-10-25 22:22:50,986 __main__ INFO     tuning {'nprobe': 2}: recall=0.6726 p95=1184us
+2026-10-25 22:23:00,148 __main__ INFO     tuning {'nprobe': 4}: recall=0.7811 p95=1948us
+2026-10-25 22:23:17,142 __main__ INFO     tuning {'nprobe': 8}: recall=0.8552 p95=3410us
+2026-10-25 22:23:48,618 __main__ INFO     tuning {'nprobe': 16}: recall=0.9069 p95=6588us
+2026-10-25 22:24:45,891 __main__ INFO     tuning {'nprobe': 32}: recall=0.9395 p95=11118us
+2026-10-25 22:26:16,174 __main__ INFO     tuning {'nprobe': 64}: recall=0.9639 p95=18621us
+2026-10-25 22:29:44,870 __main__ INFO     tuning {'nprobe': 128}: recall=0.9803 p95=40512us
+2026-10-25 22:36:06,376 __main__ INFO     tuning {'nprobe': 256}: recall=0.9904 p95=70375us
+2026-10-25 22:48:23,371 __main__ INFO     tuning {'nprobe': 512}: recall=0.9956 p95=140165us
+2026-10-25 22:53:50,115 __main__ INFO     R=0.9: {'nprobe': 16} recall_test=0.8866 p95=4655us measured_S=1
+2026-10-25 23:01:05,556 __main__ INFO     R=0.95: {'nprobe': 64} recall_test=0.9529 p95=21932us measured_S=1
+2026-10-25 23:27:17,945 __main__ INFO     R=0.99: {'nprobe': 256} recall_test=0.9856 p95=74737us measured_S=1
+2026-10-25 23:27:17,968 __main__ INFO   job in_index_filtered ivf_flat none S=0.01 safety=None
+2026-10-25 23:27:20,582 __main__ INFO     tuning {'nprobe': 1}: recall=0.2326 p95=389us
+2026-10-25 23:27:23,028 __main__ INFO     tuning {'nprobe': 2}: recall=0.3486 p95=392us
+2026-10-25 23:27:25,537 __main__ INFO     tuning {'nprobe': 4}: recall=0.4748 p95=403us
+2026-10-25 23:27:28,178 __main__ INFO     tuning {'nprobe': 8}: recall=0.5958 p95=419us
+2026-10-25 23:27:31,036 __main__ INFO     tuning {'nprobe': 16}: recall=0.7020 p95=455us
+2026-10-25 23:27:34,371 __main__ INFO     tuning {'nprobe': 32}: recall=0.7846 p95=533us
+2026-10-25 23:27:38,657 __main__ INFO     tuning {'nprobe': 64}: recall=0.8540 p95=711us
+2026-10-25 23:27:44,919 __main__ INFO     tuning {'nprobe': 128}: recall=0.9107 p95=1137us
+2026-10-25 23:27:55,848 __main__ INFO     tuning {'nprobe': 256}: recall=0.9478 p95=2006us
+2026-10-25 23:28:18,799 __main__ INFO     tuning {'nprobe': 512}: recall=0.9765 p95=3992us
+2026-10-25 23:28:56,206 __main__ INFO     R=0.9: {'nprobe': 128} recall_test=0.8930 p95=1061us measured_S=0.01001
+2026-10-25 23:30:21,596 __main__ INFO     R=0.95: {'nprobe': 512} recall_test=0.9724 p95=3747us measured_S=0.01001
+2026-10-25 23:30:21,596 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.9765)
+2026-10-25 23:30:21,619 __main__ INFO   job in_index_filtered ivf_flat positive S=0.01 safety=None
+2026-10-25 23:30:52,725 __main__ INFO     tuning {'nprobe': 1}: recall=0.5525 p95=1185us
+2026-10-25 23:31:23,970 __main__ INFO     tuning {'nprobe': 2}: recall=0.7016 p95=1529us
+2026-10-25 23:31:58,574 __main__ INFO     tuning {'nprobe': 4}: recall=0.8168 p95=2200us
+2026-10-25 23:32:38,809 __main__ INFO     tuning {'nprobe': 8}: recall=0.8957 p95=3276us
+2026-10-25 23:33:23,630 __main__ INFO     tuning {'nprobe': 16}: recall=0.9462 p95=4397us
+2026-10-25 23:34:15,604 __main__ INFO     tuning {'nprobe': 32}: recall=0.9725 p95=5764us
+2026-10-25 23:35:20,035 __main__ INFO     tuning {'nprobe': 64}: recall=0.9867 p95=7929us
+2026-10-25 23:36:25,615 __main__ INFO     tuning {'nprobe': 128}: recall=0.9942 p95=7578us
+2026-10-25 23:37:34,469 __main__ INFO     tuning {'nprobe': 256}: recall=0.9978 p95=8295us
+2026-10-25 23:38:50,539 __main__ INFO     tuning {'nprobe': 512}: recall=0.9995 p95=9291us
+2026-10-25 23:45:10,307 __main__ INFO     R=0.9: {'nprobe': 16} recall_test=0.9391 p95=4331us measured_S=0.01068
+2026-10-25 23:45:10,497 __main__ INFO     R=0.95: {'nprobe': 32} recall_test=0.9675 p95=5505us measured_S=0.01068
+2026-10-25 23:49:21,674 __main__ INFO     R=0.99: {'nprobe': 128} recall_test=0.9920 p95=7453us measured_S=0.01068
+2026-10-25 23:49:21,696 __main__ INFO   job in_index_filtered ivf_flat negative S=0.01 safety=None
+2026-10-25 23:49:46,342 __main__ INFO     tuning {'nprobe': 1}: recall=0.0056 p95=781us
+2026-10-25 23:50:10,825 __main__ INFO     tuning {'nprobe': 2}: recall=0.0104 p95=762us
+2026-10-25 23:50:35,484 __main__ INFO     tuning {'nprobe': 4}: recall=0.0164 p95=787us
+2026-10-25 23:50:59,890 __main__ INFO     tuning {'nprobe': 8}: recall=0.0293 p95=802us
+2026-10-25 23:51:27,351 __main__ INFO     tuning {'nprobe': 16}: recall=0.0452 p95=1176us
+2026-10-25 23:51:53,729 __main__ INFO     tuning {'nprobe': 32}: recall=0.0721 p95=901us
+2026-10-25 23:52:19,966 __main__ INFO     tuning {'nprobe': 64}: recall=0.1076 p95=994us
+2026-10-25 23:52:46,568 __main__ INFO     tuning {'nprobe': 128}: recall=0.1492 p95=1163us
+2026-10-25 23:53:17,064 __main__ INFO     tuning {'nprobe': 256}: recall=0.2041 p95=1798us
+2026-10-25 23:53:54,288 __main__ INFO     tuning {'nprobe': 512}: recall=0.2980 p95=2897us
+2026-10-25 23:55:38,171 __main__ INFO     R=0.9: UNREACHABLE (best tuning recall 0.2980)
+2026-10-25 23:55:38,171 __main__ INFO     R=0.95: UNREACHABLE (best tuning recall 0.2980)
+2026-10-25 23:55:38,171 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.2980)
+2026-10-25 23:55:38,192 __main__ INFO   job post_filter_overfetch ivf_flat none S=1 safety=3
+2026-10-25 23:55:44,772 __main__ INFO     tuning {'nprobe': 1}: recall=0.5302 p95=799us
+2026-10-25 23:55:50,956 __main__ INFO     tuning {'nprobe': 2}: recall=0.6726 p95=1145us
+2026-10-25 23:56:00,617 __main__ INFO     tuning {'nprobe': 4}: recall=0.7811 p95=1908us
+2026-10-25 23:56:17,528 __main__ INFO     tuning {'nprobe': 8}: recall=0.8552 p95=3193us
+2026-10-25 23:56:48,126 __main__ INFO     tuning {'nprobe': 16}: recall=0.9069 p95=5567us
+2026-10-25 23:57:39,236 __main__ INFO     tuning {'nprobe': 32}: recall=0.9395 p95=9719us
+2026-10-25 23:59:30,816 __main__ INFO     tuning {'nprobe': 64}: recall=0.9639 p95=22547us
+2026-10-26 00:02:45,970 __main__ INFO     tuning {'nprobe': 128}: recall=0.9803 p95=37249us
+2026-10-26 00:09:28,003 __main__ INFO     tuning {'nprobe': 256}: recall=0.9904 p95=73088us
+2026-10-26 00:22:21,431 __main__ INFO     tuning {'nprobe': 512}: recall=0.9956 p95=139592us
+2026-10-26 00:27:35,509 __main__ INFO     R=0.9: {'nprobe': 16} recall_test=0.8866 p95=4606us measured_S=1
+2026-10-26 00:34:28,406 __main__ INFO     R=0.95: {'nprobe': 64} recall_test=0.9529 p95=19959us measured_S=1
+2026-10-26 01:00:29,655 __main__ INFO     R=0.99: {'nprobe': 256} recall_test=0.9856 p95=72349us measured_S=1
+2026-10-26 01:00:29,679 __main__ INFO   job post_filter_overfetch ivf_flat none S=0.1 safety=1.5
+2026-10-26 01:00:34,054 __main__ INFO     tuning {'nprobe': 1}: recall=0.4315 p95=837us
+2026-10-26 01:00:39,921 __main__ INFO     tuning {'nprobe': 2}: recall=0.5678 p95=1255us
+2026-10-26 01:00:50,248 __main__ INFO     tuning {'nprobe': 4}: recall=0.6800 p95=2095us
+2026-10-26 01:01:06,522 __main__ INFO     tuning {'nprobe': 8}: recall=0.7691 p95=3319us
+2026-10-26 01:01:34,801 __main__ INFO     tuning {'nprobe': 16}: recall=0.8399 p95=5529us
+2026-10-26 01:02:32,284 __main__ INFO     tuning {'nprobe': 32}: recall=0.8878 p95=11044us
+2026-10-26 01:04:22,646 __main__ INFO     tuning {'nprobe': 64}: recall=0.9243 p95=21610us
+2026-10-26 01:07:43,885 __main__ INFO     tuning {'nprobe': 128}: recall=0.9532 p95=35667us
+2026-10-26 01:14:10,870 __main__ INFO     tuning {'nprobe': 256}: recall=0.9688 p95=69495us
+2026-10-26 01:27:00,888 __main__ INFO     tuning {'nprobe': 512}: recall=0.9815 p95=138566us
+2026-10-26 01:37:21,424 __main__ INFO     R=0.9: {'nprobe': 64} recall_test=0.9090 p95=21055us measured_S=0.0999
+2026-10-26 01:48:44,715 __main__ INFO     R=0.95: {'nprobe': 128} recall_test=0.9397 p95=35986us measured_S=0.0999
+2026-10-26 01:48:44,716 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.9815)
+2026-10-26 01:48:44,739 __main__ INFO   job post_filter_overfetch ivf_flat none S=0.01 safety=3
+2026-10-26 01:48:50,204 __main__ INFO     tuning {'nprobe': 1}: recall=0.2326 p95=1167us
+2026-10-26 01:48:58,149 __main__ INFO     tuning {'nprobe': 2}: recall=0.3486 p95=1798us
+2026-10-26 01:49:12,404 __main__ INFO     tuning {'nprobe': 4}: recall=0.4748 p95=3014us
+2026-10-26 01:49:35,320 __main__ INFO     tuning {'nprobe': 8}: recall=0.5958 p95=4463us
+2026-10-26 01:50:10,858 __main__ INFO     tuning {'nprobe': 16}: recall=0.7020 p95=6709us
+2026-10-26 01:50:59,939 __main__ INFO     tuning {'nprobe': 32}: recall=0.7846 p95=9284us
+2026-10-26 01:52:56,323 __main__ INFO     tuning {'nprobe': 64}: recall=0.8540 p95=22101us
+2026-10-26 01:56:25,662 __main__ INFO     tuning {'nprobe': 128}: recall=0.9107 p95=39662us
+2026-10-26 02:03:10,683 __main__ INFO     tuning {'nprobe': 256}: recall=0.9478 p95=76164us
+2026-10-26 02:16:19,200 __main__ INFO     tuning {'nprobe': 512}: recall=0.9765 p95=146711us
+2026-10-26 02:34:28,138 __main__ INFO     R=0.9: {'nprobe': 128} recall_test=0.8930 p95=40397us measured_S=0.01001
+2026-10-26 03:27:43,283 __main__ INFO     R=0.95: {'nprobe': 512} recall_test=0.9724 p95=147654us measured_S=0.01001
+2026-10-26 03:27:43,284 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.9765)
+2026-10-26 03:27:43,307 __main__ INFO   job post_filter_overfetch ivf_flat positive S=0.1 safety=1.5
+2026-10-26 03:28:05,119 __main__ INFO     tuning {'nprobe': 1}: recall=0.5335 p95=1249us
+2026-10-26 03:28:29,073 __main__ INFO     tuning {'nprobe': 2}: recall=0.6766 p95=1708us
+2026-10-26 03:28:57,425 __main__ INFO     tuning {'nprobe': 4}: recall=0.7861 p95=2564us
+2026-10-26 03:29:38,763 __main__ INFO     tuning {'nprobe': 8}: recall=0.8620 p95=4848us
+2026-10-26 03:30:30,350 __main__ INFO     tuning {'nprobe': 16}: recall=0.9145 p95=6949us
+2026-10-26 03:31:36,505 __main__ INFO     tuning {'nprobe': 32}: recall=0.9484 p95=9337us
+2026-10-26 03:33:24,041 __main__ INFO     tuning {'nprobe': 64}: recall=0.9734 p95=16994us
+2026-10-26 03:36:27,367 __main__ INFO     tuning {'nprobe': 128}: recall=0.9891 p95=29566us
+2026-10-26 03:42:52,475 __main__ INFO     tuning {'nprobe': 256}: recall=0.9961 p95=70295us
+2026-10-26 03:56:01,471 __main__ INFO     tuning {'nprobe': 512}: recall=0.9988 p95=137319us
+2026-10-26 04:04:08,126 __main__ INFO     R=0.9: {'nprobe': 16} recall_test=0.8986 p95=6176us measured_S=0.1007
+2026-10-26 04:12:35,791 __main__ INFO     R=0.95: {'nprobe': 64} recall_test=0.9667 p95=21243us measured_S=0.1007
+2026-10-26 04:38:58,793 __main__ INFO     R=0.99: {'nprobe': 256} recall_test=0.9947 p95=69120us measured_S=0.1007
+2026-10-26 04:38:58,818 __main__ INFO   job post_filter_overfetch ivf_flat positive S=0.01 safety=3
+2026-10-26 04:39:31,822 __main__ INFO     tuning {'nprobe': 1}: recall=0.5525 p95=2619us
+2026-10-26 04:40:05,896 __main__ INFO     tuning {'nprobe': 2}: recall=0.7016 p95=2893us
+2026-10-26 04:40:44,714 __main__ INFO     tuning {'nprobe': 4}: recall=0.8168 p95=3316us
+2026-10-26 04:41:32,699 __main__ INFO     tuning {'nprobe': 8}: recall=0.8957 p95=4864us
+2026-10-26 04:42:34,698 __main__ INFO     tuning {'nprobe': 16}: recall=0.9462 p95=7429us
+2026-10-26 04:43:59,255 __main__ INFO     tuning {'nprobe': 32}: recall=0.9725 p95=11865us
+2026-10-26 04:46:17,442 __main__ INFO     tuning {'nprobe': 64}: recall=0.9867 p95=21674us
+2026-10-26 04:50:06,596 __main__ INFO     tuning {'nprobe': 128}: recall=0.9942 p95=38138us
+2026-10-26 04:57:01,457 __main__ INFO     tuning {'nprobe': 256}: recall=0.9978 p95=70044us
+2026-10-26 05:09:35,518 __main__ INFO     tuning {'nprobe': 512}: recall=0.9995 p95=133089us
+2026-10-26 05:18:49,840 __main__ INFO     R=0.9: {'nprobe': 16} recall_test=0.9391 p95=7767us measured_S=0.01068
+2026-10-26 05:18:50,035 __main__ INFO     R=0.95: {'nprobe': 32} recall_test=0.9675 p95=11479us measured_S=0.01068
+2026-10-26 05:33:09,225 __main__ INFO     R=0.99: {'nprobe': 128} recall_test=0.9920 p95=34784us measured_S=0.01068
+2026-10-26 05:33:09,253 __main__ INFO   job post_filter_overfetch ivf_flat negative S=0.1 safety=1.5
+2026-10-26 05:33:34,274 __main__ INFO     tuning {'nprobe': 1}: recall=0.0063 p95=1949us
+2026-10-26 05:34:01,035 __main__ INFO     tuning {'nprobe': 2}: recall=0.0044 p95=2636us
+2026-10-26 05:34:29,932 __main__ INFO     tuning {'nprobe': 4}: recall=0.0039 p95=3397us
+2026-10-26 05:35:07,080 __main__ INFO     tuning {'nprobe': 8}: recall=0.0035 p95=5131us
+2026-10-26 05:35:55,338 __main__ INFO     tuning {'nprobe': 16}: recall=0.0033 p95=7597us
+2026-10-26 05:37:03,008 __main__ INFO     tuning {'nprobe': 32}: recall=0.0033 p95=10755us
+2026-10-26 05:38:57,587 __main__ INFO     tuning {'nprobe': 64}: recall=0.0035 p95=18953us
+2026-10-26 05:42:14,025 __main__ INFO     tuning {'nprobe': 128}: recall=0.0035 p95=33464us
+2026-10-26 05:48:23,006 __main__ INFO     tuning {'nprobe': 256}: recall=0.0038 p95=64242us
+2026-10-26 05:59:08,442 __main__ INFO     tuning {'nprobe': 512}: recall=0.0042 p95=112236us
+2026-10-26 06:03:34,047 __main__ INFO     R=0.9: UNREACHABLE (best tuning recall 0.0063)
+2026-10-26 06:03:34,048 __main__ INFO     R=0.95: UNREACHABLE (best tuning recall 0.0063)
+2026-10-26 06:03:34,048 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.0063)
+2026-10-26 06:03:34,088 __main__ INFO   job post_filter_overfetch ivf_flat negative S=0.01 safety=3
+2026-10-26 06:04:00,059 __main__ INFO     tuning {'nprobe': 1}: recall=0.0056 p95=1185us
+2026-10-26 06:04:27,942 __main__ INFO     tuning {'nprobe': 2}: recall=0.0104 p95=1603us
+2026-10-26 06:05:00,230 __main__ INFO     tuning {'nprobe': 4}: recall=0.0163 p95=2638us
+2026-10-26 06:05:39,551 __main__ INFO     tuning {'nprobe': 8}: recall=0.0235 p95=4056us
+2026-10-26 06:06:31,086 __main__ INFO     tuning {'nprobe': 16}: recall=0.0232 p95=6333us
+2026-10-26 06:07:46,750 __main__ INFO     tuning {'nprobe': 32}: recall=0.0229 p95=11082us
+2026-10-26 06:09:42,138 __main__ INFO     tuning {'nprobe': 64}: recall=0.0228 p95=18232us
+2026-10-26 06:13:00,246 __main__ INFO     tuning {'nprobe': 128}: recall=0.0235 p95=32410us
+2026-10-26 06:18:48,362 __main__ INFO     tuning {'nprobe': 256}: recall=0.0249 p95=61130us
+2026-10-26 06:28:54,899 __main__ INFO     tuning {'nprobe': 512}: recall=0.0290 p95=120287us
+2026-10-26 06:33:07,891 __main__ INFO     R=0.9: UNREACHABLE (best tuning recall 0.0290)
+2026-10-26 06:33:07,892 __main__ INFO     R=0.95: UNREACHABLE (best tuning recall 0.0290)
+2026-10-26 06:33:07,892 __main__ INFO     R=0.99: UNREACHABLE (best tuning recall 0.0290)
+2026-10-26 06:33:08,513 __main__ INFO Stage C: completed 25 jobs.
+2026-10-26 06:33:09,589 __main__ INFO Consolidated 864 filter_runs rows -> results/raw/filter_runs.parquet
+2026-10-26 08:11:30,274 faiss.loader INFO Loading faiss with AVX2 support.
+2026-10-26 08:11:30,274 faiss.loader INFO Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-10-26 08:11:30,274 faiss.loader INFO Loading faiss.
+2026-10-26 08:11:30,294 faiss.loader INFO Successfully loaded faiss.
+2026-10-26 08:11:30,314 __main__ INFO Stage C: 25 jobs in this shard, 0 pending.
+2026-10-26 08:11:30,316 __main__ INFO Stage C: completed 0 jobs.
+2026-10-26 08:11:31,447 __main__ INFO Consolidated 924 filter_runs rows -> results/raw/filter_runs.parquet

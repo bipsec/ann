@@ -1,0 +1,10 @@
+|--- D <= 256.00
+|   |--- log10_N <= 5.35
+|   |   |--- class: hnsw
+|   |--- log10_N >  5.35
+|   |   |--- memory_budget_mult <= 500.25
+|   |   |   |--- class: ivf_flat
+|   |   |--- memory_budget_mult >  500.25
+|   |   |   |--- class: hnsw
+|--- D >  256.00
+|   |--- class: hnsw

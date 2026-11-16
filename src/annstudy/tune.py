@@ -9,26 +9,49 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 
-def load_sweep_results(sweeps_dir: str = "results/raw/sweeps") -> pd.DataFrame:
-    """Load and concatenate all sweep Parquet files."""
+def load_sweep_results(
+    sweeps_dir: str = "results/raw/sweeps",
+    hardware_id: str | None = None,
+) -> pd.DataFrame:
+    """Load and concatenate all sweep Parquet files.
+
+    ``hardware_id`` restricts the result to one machine. Latency and throughput are host
+    properties, so rows carried over from another machine must never be tuned against or
+    reported alongside this host's measurements.
+    """
     sweeps_dir = Path(sweeps_dir)
     files = list(sweeps_dir.glob("sweep_*.parquet"))
     if not files:
         raise FileNotFoundError(f"No sweep files found in {sweeps_dir}")
 
-    dfs = [pd.read_parquet(f) for f in files]
-    return pd.concat(dfs, ignore_index=True)
+    df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
+    if hardware_id is not None and "hardware_id" in df.columns:
+        before = len(df)
+        df = df[df["hardware_id"] == hardware_id].reset_index(drop=True)
+        if len(df) < before:
+            logger.info(
+                f"Sweep rows: kept {len(df)}/{before} for hardware_id={hardware_id} "
+                f"(dropped rows measured on other hosts)"
+            )
+    return df
 
 
 def find_cheapest_setting(
     sweep_df: pd.DataFrame,
     recall_targets: list[float] | None = None,
 ) -> pd.DataFrame:
-    """For each (index_type, build_run_id, R), find the cheapest setting reaching R.
+    """For each (cell, index_type, R), find the cheapest configuration reaching R.
 
-    Operates on tuning-query sweep rows only.
-    Returns a DataFrame with one row per (index_type, build_run_id, R),
-    including a 'reachable' column.
+    Selection is joint over BUILD VARIANTS and search settings, which is what the study asks:
+    "the cheapest configuration of Flat, HNSW, IVF-Flat and IVF-PQ that reaches recall@10 >= R"
+    (plan section 1), with the tuned table defined as "one row per cell, index, R"
+    (plan section 5). Grouping by ``build_run_id`` instead would emit one row per build
+    variant — e.g. all three HNSW M values — which both departs from that schema and multiplies
+    the downstream cost, since every such row is then rebuilt three times at T threads and has
+    its memory measured.
+
+    Operates on tuning-query sweep rows only. Returns one row per (index_type, N, D, R) with a
+    ``reachable`` column, and ``best_build_run_id`` identifying the chosen build variant.
     """
     if recall_targets is None:
         recall_targets = [0.90, 0.95, 0.99]
@@ -36,7 +59,7 @@ def find_cheapest_setting(
     tuning = sweep_df[sweep_df["query_split"] == "tuning"].copy()
 
     rows = []
-    group_cols = ["index_type", "build_run_id", "N", "D"]
+    group_cols = ["index_type", "N", "D"]
     for group_key, group_df in tuning.groupby(group_cols):
         for R in recall_targets:
             meets_target = group_df[group_df["recall_mean"] >= R]

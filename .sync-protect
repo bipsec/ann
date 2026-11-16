@@ -1,0 +1,10 @@
+# Paths that scripts/sync-from-remote.sh must NEVER overwrite with the VM's copy.
+# One repo-relative path per line (files or directories); '#' starts a comment.
+#
+# Use this for files whose authoritative version lives on THIS machine. Pushing them
+# (scripts/push-to-remote.sh) is still how the VM gets them — protection only stops a
+# pull from reverting local work that has not been pushed yet.
+
+# Figure generator: rewritten locally (fixed winner maps, cost-vs-D, pilot frontiers,
+# strategy tree). The VM's older copy was reverting it on every pull.
+src/annstudy/analysis/figures.py

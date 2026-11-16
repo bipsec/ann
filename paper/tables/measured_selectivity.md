@@ -1,0 +1,13 @@
+| correlation   |   target_S |   measured_S_mean |   relative_error_pct | within_20pct   |
+|:--------------|-----------:|------------------:|---------------------:|:---------------|
+| negative      |      0.001 |          0.001544 |                 54.4 | False          |
+| negative      |      0.01  |          0.010542 |                  5.4 | True           |
+| negative      |      0.1   |          0.100543 |                  0.5 | True           |
+| none          |      0.001 |          0.000975 |                 -2.5 | True           |
+| none          |      0.01  |          0.010065 |                  0.6 | True           |
+| none          |      0.1   |          0.099884 |                 -0.1 | True           |
+| none          |      0.5   |          0.499852 |                 -0   | True           |
+| none          |      1     |          1        |                  0   | True           |
+| positive      |      0.001 |          0.001611 |                 61.1 | False          |
+| positive      |      0.01  |          0.010657 |                  6.6 | True           |
+| positive      |      0.1   |          0.100668 |                  0.7 | True           |

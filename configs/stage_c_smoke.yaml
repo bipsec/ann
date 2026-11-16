@@ -1,0 +1,48 @@
+stage: C_SMOKE
+description: >
+  Stage C driver validation at the cheapest available cell (N=100K, D=128), reusing the
+  serialized pilot indexes. Exercises all three strategies, both correlated directions, and
+  the plan's acceptance checks (exact scan recall 1.0; S=1.0 in-index matches unfiltered;
+  measured selectivity within 20% of target) before any expensive cell is committed.
+  NOT a result-producing config: queries are subsampled and the grids are short.
+
+cells:
+  N: [100_000]
+  D: [128]
+
+reuse_indexes_from: stage_pilot
+
+indexes:
+  hnsw: {}
+  ivf_flat: {}
+
+strategies:
+  - pre_filter_exact
+  - in_index_filtered
+  - post_filter_overfetch
+
+filters:
+  uncorrelated:
+    n_attributes: 10_000
+    seed: 42
+    selectivities: [1.0, 0.01]
+  correlated:
+    n_clusters: 100
+    seed: 42
+    selectivities: [0.1]
+    types: [positive, negative]
+
+post_filter:
+  safety_factors: [3]
+
+recall_targets: [0.90, 0.95, 0.99]
+
+k: 10
+
+measurement:
+  latency_passes: 1
+  warmup_queries: 50
+  bootstrap_resamples: 50
+  bootstrap_ci: 0.95
+  threads_latency: 1
+  threads_throughput: null

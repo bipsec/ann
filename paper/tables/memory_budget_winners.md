@@ -1,0 +1,14 @@
+|       N |    D | 0.1x raw   | 0.5x raw   | 1.5x raw   | unbounded   |
+|--------:|-----:|:-----------|:-----------|:-----------|:------------|
+|  100000 |  128 | none       | none       | hnsw       | hnsw        |
+|  100000 |  384 | none       | none       | hnsw       | hnsw        |
+|  100000 |  768 | none       | none       | hnsw       | hnsw        |
+|  100000 | 1536 | none       | none       | hnsw       | hnsw        |
+|  500000 |  128 | none       | none       | ivf_flat   | hnsw        |
+|  500000 |  384 | none       | hnsw_sq    | hnsw_sq    | hnsw_sq     |
+|  500000 |  768 | none       | none       | hnsw       | hnsw        |
+|  500000 | 1536 | none       | hnsw_sq    | hnsw_sq    | hnsw_sq     |
+| 1000000 |  128 | nan        | nan        | nan        | nan         |
+| 1000000 |  384 | none       | none       | hnsw       | hnsw        |
+| 1000000 |  768 | nan        | nan        | nan        | nan         |
+| 1000000 | 1536 | none       | none       | hnsw       | hnsw        |

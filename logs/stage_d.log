@@ -1,0 +1,23 @@
+2026-10-28 17:46:23,100 faiss.loader INFO Loading faiss with AVX2 support.
+2026-10-28 17:46:23,100 faiss.loader INFO Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-10-28 17:46:23,100 faiss.loader INFO Loading faiss.
+2026-10-28 17:46:23,122 faiss.loader INFO Successfully loaded faiss.
+2026-10-28 17:52:54,923 annstudy.update_runner INFO Stage D pretune hnsw: chose {'ef_search': 1024} (R>=0.95 MISS->max effort)
+2026-10-28 17:52:55,123 annstudy.updates INFO Building initial hnsw index on 450000 vectors...
+2026-10-28 18:04:32,206 annstudy.updates INFO   Batch 0: inserted=455000, recall=0.9998, p95=17562us, insert_rate=989 vec/s
+2026-10-28 18:08:57,385 annstudy.updates INFO   Batch 1: inserted=460000, recall=0.9998, p95=11370us, insert_rate=1489 vec/s
+2026-10-28 18:13:14,826 annstudy.updates INFO   Batch 2: inserted=465000, recall=0.9998, p95=11111us, insert_rate=1565 vec/s
+2026-10-28 18:17:22,903 annstudy.updates INFO   Batch 3: inserted=470000, recall=0.9998, p95=10471us, insert_rate=1764 vec/s
+2026-10-28 18:21:37,669 annstudy.updates INFO   Batch 4: inserted=475000, recall=0.9998, p95=10645us, insert_rate=1623 vec/s
+2026-10-28 18:26:02,270 annstudy.updates INFO   Batch 5: inserted=480000, recall=0.9998, p95=11273us, insert_rate=1475 vec/s
+2026-10-28 18:30:42,766 annstudy.updates INFO   Batch 6: inserted=485000, recall=0.9998, p95=10998us, insert_rate=1595 vec/s
+2026-10-28 18:35:16,190 annstudy.updates INFO   Batch 7: inserted=490000, recall=0.9998, p95=11230us, insert_rate=1116 vec/s
+2026-10-28 18:39:43,131 annstudy.updates INFO   Batch 8: inserted=495000, recall=0.9997, p95=11218us, insert_rate=1129 vec/s
+2026-10-28 18:44:05,078 annstudy.updates INFO   Batch 9: inserted=500000, recall=0.9997, p95=10585us, insert_rate=992 vec/s
+2026-10-28 18:44:05,079 annstudy.updates INFO Rebuilding hnsw from scratch on 500000 vectors...
+2026-10-28 18:49:56,610 annstudy.updates INFO   Rebuild reference recall: 0.9997
+2026-10-28 18:49:57,004 annstudy.update_runner INFO Stage D hnsw: wrote 11 rows -> results/raw/update_runs/update_hnsw_caf082ac35b1459982690e583b6a3666.parquet
+2026-10-28 18:54:43,257 annstudy.update_runner INFO Stage D pretune ivf_flat: chose {'nprobe': 512} (R>=0.95 MISS->max effort)
+2026-10-28 18:54:43,434 annstudy.updates INFO Building initial ivf_flat index on 450000 vectors...
+2026-10-28 19:06:31,386 annstudy.updates INFO   Batch 0: inserted=455000, recall=0.9925, p95=22009us, insert_rate=19973 vec/s

@@ -1,0 +1,16 @@
+|--- log10_S <= -1.98
+|   |--- R <= 0.92
+|   |   |--- log10_S <= -2.79
+|   |   |   |--- class: pre_filter_exact
+|   |   |--- log10_S >  -2.79
+|   |   |   |--- class: in_index_filtered
+|   |--- R >  0.92
+|   |   |--- class: pre_filter_exact
+|--- log10_S >  -1.98
+|   |--- corr_proxy <= -1.04
+|   |   |--- class: pre_filter_exact
+|   |--- corr_proxy >  -1.04
+|   |   |--- log10_S <= -1.00
+|   |   |   |--- class: in_index_filtered
+|   |   |--- log10_S >  -1.00
+|   |   |   |--- class: post_filter_overfetch

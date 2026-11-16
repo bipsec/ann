@@ -1,0 +1,2 @@
+objective,n_train,n_test,n_classes_train,feature_names,max_depth,train_max_N,train_accuracy,tree_depth,train_regret,test_accuracy,test_regret,baseline_always_hnsw_accuracy,baseline_always_hnsw_regret,baseline_budget_aware_accuracy,baseline_budget_aware_regret,lodo_mean_accuracy
+lat_p95_us,48,12,2,"log10_N,D,R,memory_budget_mult",3,500000,0.9791666666666666,3,0.03090492111404486,1.0,0.0,1.0,0.0,1.0,0.0,0.875

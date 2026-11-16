@@ -1,0 +1,70 @@
+[
+  {
+    "N": 500000,
+    "D": 384,
+    "jobs": 77,
+    "shards": 16
+  },
+  {
+    "N": 500000,
+    "D": 1536,
+    "jobs": 77,
+    "shards": 6
+  },
+  {
+    "N": 1000000,
+    "D": 384,
+    "jobs": 77,
+    "shards": 12
+  },
+  {
+    "N": 1000000,
+    "D": 1536,
+    "jobs": 77,
+    "shards": 3
+  }
+]
+=== cell N=500000 D=384 with 16 shard(s) ===
+=== cell N=500000 D=384 done ===
+=== cell N=500000 D=1536 with 6 shard(s) ===
+=== cell N=500000 D=1536 done ===
+=== cell N=1000000 D=384 with 12 shard(s) ===
+=== cell N=1000000 D=384 done ===
+=== cell N=1000000 D=1536 with 3 shard(s) ===
+=== cell N=1000000 D=1536 done ===
+2026-10-26 06:33:12,606 __main__ INFO Consolidated 864 filter_runs rows -> results/raw/filter_runs.parquet
+[
+  {
+    "N": 500000,
+    "D": 384,
+    "jobs": 77,
+    "shards": 16
+  },
+  {
+    "N": 500000,
+    "D": 1536,
+    "jobs": 77,
+    "shards": 6
+  },
+  {
+    "N": 1000000,
+    "D": 384,
+    "jobs": 77,
+    "shards": 12
+  },
+  {
+    "N": 1000000,
+    "D": 1536,
+    "jobs": 77,
+    "shards": 3
+  }
+]
+=== cell N=500000 D=384 with 16 shard(s) ===
+=== cell N=500000 D=384 done ===
+=== cell N=500000 D=1536 with 6 shard(s) ===
+=== cell N=500000 D=1536 done ===
+=== cell N=1000000 D=384 with 12 shard(s) ===
+=== cell N=1000000 D=384 done ===
+=== cell N=1000000 D=1536 with 3 shard(s) ===
+=== cell N=1000000 D=1536 done ===
+2026-10-26 08:11:33,568 __main__ INFO Consolidated 924 filter_runs rows -> results/raw/filter_runs.parquet

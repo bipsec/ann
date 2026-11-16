@@ -5,7 +5,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy import optimize
 
 logger = logging.getLogger(__name__)
 
@@ -52,12 +51,21 @@ def fit_scaling_model(
                 log_N * log_D,
             ])
 
+            # Column names differ between the finalized (test-measured) tuned table and the
+            # tuning-only one; take whichever is present so the latency fit is not silently
+            # skipped (it was, before: the finalized table writes lat_p95_us).
+            lat_col = next(
+                (c for c in ("lat_p95_us", "lat_p95_us_tuning") if c in subset.columns), None,
+            )
+            build_col = next(
+                (c for c in ("build_seconds_mean", "build_seconds") if c in subset.columns), None,
+            )
             for metric_col, metric_name in [
-                ("lat_p95_us_tuning", "p95_latency"),
-                ("build_seconds", "build_time"),
+                (lat_col, "p95_latency"),
+                (build_col, "build_time"),
                 ("rss_bytes", "ram"),
             ]:
-                if metric_col not in subset.columns:
+                if metric_col is None or metric_col not in subset.columns:
                     continue
                 y_raw = subset[metric_col].values.astype(float)
                 valid = y_raw > 0

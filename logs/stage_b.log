@@ -1,0 +1,1033 @@
+2026-10-18 19:12:42,022 annstudy.coordinate INFO 150 specs enumerated; 60 already done; 90 to run.
+2026-10-18 19:12:42,022 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 19.3 GB
+2026-10-18 19:12:42,182 annstudy.coordinate INFO [core 0] start sweep hnsw N=100000 D=384 params={'M': 32, 'ef_construction': 200} threads=1 est=0.8GB committed=0.8GB queued=89
+2026-10-18 19:12:42,184 annstudy.coordinate INFO [core 1] start sweep hnsw N=100000 D=384 params={'M': 64, 'ef_construction': 200} threads=1 est=0.8GB committed=1.6GB queued=88
+2026-10-18 19:12:42,185 annstudy.coordinate INFO [core 2] start sweep ivf_flat N=100000 D=384 params={'nlist': 1265} threads=1 est=1.0GB committed=2.6GB queued=87
+2026-10-18 19:12:42,186 annstudy.coordinate INFO [core 3] start sweep ivf_flat N=100000 D=384 params={'nlist': 2530} threads=1 est=1.0GB committed=3.5GB queued=86
+2026-10-18 19:12:42,191 annstudy.coordinate INFO [core 4] start sweep ivf_pq N=100000 D=384 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=1 est=0.8GB committed=4.3GB queued=85
+2026-10-18 19:12:42,192 annstudy.coordinate INFO [core 5] start sweep ivf_pq N=100000 D=384 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=1 est=0.8GB committed=5.2GB queued=84
+2026-10-18 19:12:42,193 annstudy.coordinate INFO [core 6] start sweep ivf_pq N=100000 D=384 params={'nlist': 1265, 'm': 24, 'nbits': 8} threads=1 est=0.8GB committed=6.0GB queued=83
+2026-10-18 19:12:42,194 annstudy.coordinate INFO [core 7] start sweep ivf_pq N=100000 D=384 params={'nlist': 1265, 'm': 48, 'nbits': 8} threads=1 est=0.8GB committed=6.8GB queued=82
+2026-10-18 19:12:42,196 annstudy.coordinate INFO [core 8] start sweep ivf_pq N=100000 D=384 params={'nlist': 1265, 'm': 96, 'nbits': 8} threads=1 est=0.8GB committed=7.6GB queued=81
+2026-10-18 19:12:42,199 annstudy.coordinate INFO [core 9] start sweep ivf_pq N=100000 D=384 params={'nlist': 2530, 'm': 24, 'nbits': 8} threads=1 est=0.8GB committed=8.4GB queued=80
+2026-10-18 19:12:42,200 annstudy.coordinate INFO [core 10] start sweep ivf_pq N=100000 D=384 params={'nlist': 2530, 'm': 48, 'nbits': 8} threads=1 est=0.8GB committed=9.2GB queued=79
+2026-10-18 19:12:42,202 annstudy.coordinate INFO [core 11] start sweep ivf_pq N=100000 D=384 params={'nlist': 2530, 'm': 96, 'nbits': 8} threads=1 est=0.8GB committed=10.0GB queued=78
+2026-10-18 19:12:42,205 annstudy.coordinate INFO [core 12] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=1 est=1.0GB committed=11.0GB queued=77
+2026-10-18 19:12:42,207 annstudy.coordinate INFO [core 13] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=1 est=1.0GB committed=12.0GB queued=76
+2026-10-18 19:12:42,208 annstudy.coordinate INFO [core 14] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 1265, 'm': 24, 'nbits': 8} threads=1 est=1.0GB committed=12.9GB queued=75
+2026-10-18 19:12:42,211 annstudy.coordinate INFO [core 15] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 1265, 'm': 48, 'nbits': 8} threads=1 est=1.0GB committed=13.9GB queued=74
+2026-10-18 19:13:47,684 annstudy.coordinate INFO [core 6] done d1ce8d2712b3418b8c156fe3f95bcb3e in 65.5s
+2026-10-18 19:13:47,688 annstudy.coordinate INFO [core 6] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 1265, 'm': 96, 'nbits': 8} threads=1 est=1.0GB committed=14.1GB queued=73
+2026-10-18 19:13:58,800 annstudy.coordinate INFO [core 9] done 7a7ba5c7e9ab438ca80babd3c27d19bf in 76.6s
+2026-10-18 19:13:58,803 annstudy.coordinate INFO [core 9] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 2530, 'm': 24, 'nbits': 8} threads=1 est=1.0GB committed=14.2GB queued=72
+2026-10-18 19:13:59,404 annstudy.coordinate INFO [core 3] done 352f076d06c548a0a47ff4c080117aa0 in 77.2s
+2026-10-18 19:13:59,408 annstudy.coordinate INFO [core 3] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 2530, 'm': 48, 'nbits': 8} threads=1 est=1.0GB committed=14.2GB queued=71
+2026-10-18 19:14:05,414 annstudy.coordinate INFO [core 7] done 0f867c12d63b4abd99665830c49bdf39 in 83.2s
+2026-10-18 19:14:05,417 annstudy.coordinate INFO [core 7] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 2530, 'm': 96, 'nbits': 8} threads=1 est=1.0GB committed=14.4GB queued=70
+2026-10-18 19:14:09,321 annstudy.coordinate INFO [core 4] done 0354996f1c1a49afbd332a11d0e892d5 in 87.1s
+2026-10-18 19:14:09,325 annstudy.coordinate INFO [core 4] start sweep hnsw N=100000 D=1536 params={'M': 32, 'ef_construction': 200} threads=1 est=1.7GB committed=15.3GB queued=69
+2026-10-18 19:14:13,529 annstudy.coordinate INFO [core 10] done c53dd8b17d9f48b6a9d44a451bd64c17 in 91.3s
+2026-10-18 19:14:13,533 annstudy.coordinate INFO [core 10] start sweep hnsw N=100000 D=1536 params={'M': 64, 'ef_construction': 200} threads=1 est=1.7GB committed=16.2GB queued=68
+2026-10-18 19:14:26,146 annstudy.coordinate INFO [core 2] done 3c1852cd8786467c9b21a70a9ad176d5 in 104.0s
+2026-10-18 19:14:26,149 annstudy.coordinate INFO [core 2] start sweep ivf_flat N=100000 D=1536 params={'nlist': 1265} threads=1 est=2.3GB committed=17.6GB queued=67
+2026-10-18 19:14:27,951 annstudy.coordinate INFO [core 14] done 26f5d7745e8e4588a2ede76e845f2a69 in 105.7s
+2026-10-18 19:14:27,956 annstudy.coordinate INFO [core 14] start sweep ivf_flat N=100000 D=1536 params={'nlist': 2530} threads=1 est=2.3GB committed=19.0GB queued=66
+2026-10-18 19:15:05,791 annstudy.coordinate INFO [core 8] done 946779008efc4d0989e10606663e31ba in 143.6s
+2026-10-18 19:15:05,797 annstudy.coordinate INFO [core 8] start sweep ivf_pq N=100000 D=1536 params={'nlist': 632, 'm': 192, 'nbits': 8} threads=1 est=1.7GB committed=19.9GB queued=65
+2026-10-18 19:15:06,999 annstudy.coordinate INFO [core 11] done e3ce6c7a6fec4a86b41c8bf5eb032bf4 in 144.8s
+2026-10-18 19:15:07,004 annstudy.coordinate INFO [core 11] start sweep ivf_pq N=100000 D=1536 params={'nlist': 632, 'm': 384, 'nbits': 8} threads=1 est=1.8GB committed=20.9GB queued=64
+2026-10-18 19:15:16,013 annstudy.coordinate INFO [core 15] done 823ec70c0421449e82ba9388eddee710 in 153.8s
+2026-10-18 19:15:16,017 annstudy.coordinate INFO [core 15] start sweep ivf_pq N=100000 D=1536 params={'nlist': 1265, 'm': 96, 'nbits': 8} threads=1 est=1.7GB committed=21.6GB queued=63
+2026-10-18 19:15:22,323 annstudy.coordinate INFO [core 5] done 9bdffa3512bd480cb0af2c7a6aa5ffeb in 160.1s
+2026-10-18 19:15:22,327 annstudy.coordinate INFO [core 5] start sweep ivf_pq N=100000 D=1536 params={'nlist': 1265, 'm': 192, 'nbits': 8} threads=1 est=1.7GB committed=22.6GB queued=62
+2026-10-18 19:15:27,132 annstudy.coordinate INFO [core 12] done 5005f0c5afe84aae8ab276b8d2507e46 in 164.9s
+2026-10-18 19:15:27,137 annstudy.coordinate INFO [core 12] start sweep ivf_pq N=100000 D=1536 params={'nlist': 1265, 'm': 384, 'nbits': 8} threads=1 est=1.8GB committed=23.4GB queued=61
+2026-10-18 19:16:03,170 annstudy.coordinate INFO [core 9] done a1adee8db2234eb89d17bd51f5653cf1 in 124.4s
+2026-10-18 19:16:03,174 annstudy.coordinate INFO [core 9] start sweep ivf_pq N=100000 D=1536 params={'nlist': 2530, 'm': 96, 'nbits': 8} threads=1 est=1.7GB committed=24.1GB queued=60
+2026-10-18 19:16:33,806 annstudy.coordinate INFO [core 3] done 30c968f21b96417393c74f41d49133f0 in 154.4s
+2026-10-18 19:16:33,808 annstudy.coordinate INFO [core 3] start sweep ivf_pq N=100000 D=1536 params={'nlist': 2530, 'm': 192, 'nbits': 8} threads=1 est=1.7GB committed=24.9GB queued=59
+2026-10-18 19:16:34,409 annstudy.coordinate INFO [core 0] done e648081b6e714078b22a7b1f9418c088 in 232.2s
+2026-10-18 19:16:34,413 annstudy.coordinate INFO [core 0] start sweep ivf_pq N=100000 D=1536 params={'nlist': 2530, 'm': 384, 'nbits': 8} threads=1 est=1.8GB committed=25.9GB queued=58
+2026-10-18 19:17:21,856 annstudy.coordinate INFO [core 1] done b73fb42a02594ff898b4d2ab38abd173 in 279.7s
+2026-10-18 19:17:21,859 annstudy.coordinate INFO [core 1] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 192, 'nbits': 8} threads=1 est=2.4GB committed=27.4GB queued=57
+2026-10-18 19:18:13,210 annstudy.coordinate INFO [core 6] done 167af0569de74ff4bd95d6a48915449e in 265.5s
+2026-10-18 19:18:13,213 annstudy.coordinate INFO [core 6] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 384, 'nbits': 8} threads=1 est=2.4GB committed=28.9GB queued=56
+2026-10-18 19:18:15,915 annstudy.coordinate INFO [core 13] done 285e583ae61641f6a9b2ec6394571e22 in 333.7s
+2026-10-18 19:18:15,920 annstudy.coordinate INFO [core 13] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 1265, 'm': 96, 'nbits': 8} threads=1 est=2.4GB committed=30.2GB queued=55
+2026-10-18 19:18:16,220 annstudy.coordinate INFO [core 7] done 5abb94860d404ff98a600a2344ea5e06 in 250.8s
+2026-10-18 19:18:16,222 annstudy.coordinate INFO [core 7] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 1265, 'm': 192, 'nbits': 8} threads=1 est=2.4GB committed=31.6GB queued=54
+2026-10-18 19:19:17,775 annstudy.coordinate INFO [core 15] done 031e843a1fd749aba2df0a3383ff844f in 241.8s
+2026-10-18 19:19:17,777 annstudy.coordinate INFO [core 15] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 1265, 'm': 384, 'nbits': 8} threads=1 est=2.4GB committed=32.3GB queued=53
+2026-10-18 19:20:42,467 annstudy.coordinate INFO [core 14] done 6856ada5e9a440f783ddeaec74252308 in 374.5s
+2026-10-18 19:20:42,471 annstudy.coordinate INFO [core 14] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 2530, 'm': 96, 'nbits': 8} threads=1 est=2.4GB committed=32.3GB queued=52
+2026-10-18 19:21:11,302 annstudy.coordinate INFO [core 5] done c5f57eb1a05944a097e43df5b8ecdf8a in 349.0s
+2026-10-18 19:21:11,307 annstudy.coordinate INFO [core 5] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 2530, 'm': 192, 'nbits': 8} threads=1 est=2.4GB committed=32.9GB queued=51
+2026-10-18 19:21:15,811 annstudy.coordinate INFO [core 9] done 740f177d17f043f9a0afd3bb6f704bd9 in 312.6s
+2026-10-18 19:21:15,813 annstudy.coordinate INFO [core 9] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 2530, 'm': 384, 'nbits': 8} threads=1 est=2.4GB committed=33.5GB queued=50
+2026-10-18 19:21:29,027 annstudy.coordinate INFO [core 8] done efb4c5455b7e416d850065cb278b584f in 383.2s
+2026-10-18 19:21:29,031 annstudy.coordinate INFO [core 8] start sweep flat N=1000000 D=384 params={} threads=1 est=3.6GB committed=35.4GB queued=49
+2026-10-18 19:22:32,101 annstudy.coordinate INFO [core 2] done ddfbe45ee1ae4f878bd8def135a5de26 in 486.0s
+2026-10-18 19:22:32,106 annstudy.coordinate INFO [core 2] start sweep hnsw N=1000000 D=384 params={'M': 16, 'ef_construction': 200} threads=1 est=3.6GB committed=36.6GB queued=48
+2026-10-18 19:23:01,535 annstudy.coordinate INFO [core 3] done f8ac3d8de1344823a79c2a81a996e52a in 387.7s
+2026-10-18 19:23:01,539 annstudy.coordinate INFO [core 3] start sweep hnsw N=1000000 D=384 params={'M': 32, 'ef_construction': 200} threads=1 est=3.6GB committed=38.4GB queued=47
+2026-10-18 19:25:09,179 annstudy.coordinate INFO [core 13] done d6001cac7e614d2797190c776672adce in 413.3s
+2026-10-18 19:25:09,182 annstudy.coordinate INFO [core 13] start sweep hnsw N=1000000 D=384 params={'M': 64, 'ef_construction': 200} threads=1 est=3.6GB committed=39.6GB queued=46
+2026-10-18 19:25:56,636 annstudy.coordinate INFO [core 4] done 8a918127917a4482b85247590a911cbd in 707.3s
+2026-10-18 19:25:56,639 annstudy.coordinate INFO [core 4] start sweep ivf_flat N=1000000 D=384 params={'nlist': 2000} threads=1 est=4.4GB committed=42.3GB queued=45
+2026-10-18 19:26:03,547 annstudy.coordinate INFO [core 12] done 32ccf4e2ad454c60bb5a6b37b900429b in 636.4s
+2026-10-18 19:26:03,551 annstudy.coordinate INFO [core 12] start sweep ivf_flat N=1000000 D=384 params={'nlist': 4000} threads=1 est=5.1GB committed=45.6GB queued=44
+2026-10-18 19:27:09,623 annstudy.coordinate INFO [core 10] done 081272d372d344babdd16df61acbd6e4 in 776.1s
+2026-10-18 19:27:50,784 annstudy.coordinate INFO [core 0] done 41e0ae83d79246188a5fa9be76191464 in 676.4s
+2026-10-18 19:27:50,788 annstudy.coordinate INFO [core 10] start sweep ivf_pq N=1000000 D=384 params={'nlist': 2000, 'm': 24, 'nbits': 8} threads=1 est=2.8GB committed=45.0GB queued=43
+2026-10-18 19:28:16,624 annstudy.coordinate INFO [core 14] done 5868ef9a19694a88be09ebf7762b3368 in 454.2s
+2026-10-18 19:28:16,628 annstudy.coordinate INFO [core 0] start sweep ivf_pq N=1000000 D=384 params={'nlist': 2000, 'm': 48, 'nbits': 8} threads=1 est=2.9GB committed=45.5GB queued=42
+2026-10-18 19:29:00,490 annstudy.coordinate INFO [core 7] done 2bf91a50916443338f4c6c8b28079c0d in 644.3s
+2026-10-18 19:29:00,494 annstudy.coordinate INFO [core 14] start sweep ivf_pq N=1000000 D=384 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=1 est=2.9GB committed=46.0GB queued=41
+2026-10-18 19:29:20,321 annstudy.coordinate INFO [core 11] done 69423e1e2c7e4c56818a372ebf24a3e9 in 853.3s
+2026-10-18 19:29:24,826 annstudy.coordinate INFO [core 1] done 85fc80a5e8a64bfab43bd41660987de0 in 723.0s
+2026-10-18 19:29:24,828 annstudy.coordinate INFO [core 7] start sweep ivf_pq N=1000000 D=384 params={'nlist': 4000, 'm': 24, 'nbits': 8} threads=1 est=3.6GB committed=45.5GB queued=40
+2026-10-18 19:32:02,502 annstudy.coordinate INFO [core 5] done df74d3c5a74745cfaa5bde65db19bf34 in 651.2s
+2026-10-18 19:32:25,024 annstudy.coordinate INFO [core 10] done f85e843d8e2c4fd49f0896f636412116 in 274.2s
+2026-10-18 19:32:25,027 annstudy.coordinate INFO [core 11] start sweep ivf_flat N=1000000 D=384 params={'nlist': 8000} threads=1 est=5.1GB committed=45.4GB queued=39
+2026-10-18 19:33:27,487 annstudy.coordinate INFO [core 0] done 58faf9e559744cc6b6e73f17c9670428 in 310.9s
+2026-10-18 19:33:27,491 annstudy.coordinate INFO [core 1] start sweep ivf_pq N=1000000 D=384 params={'nlist': 4000, 'm': 48, 'nbits': 8} threads=1 est=3.6GB committed=46.1GB queued=38
+2026-10-18 19:34:02,032 annstudy.coordinate INFO [core 8] done fd2ed77954df41328c0082215adfd89c in 753.0s
+2026-10-18 19:34:02,034 annstudy.coordinate INFO [core 5] start sweep ivf_pq N=1000000 D=384 params={'nlist': 4000, 'm': 96, 'nbits': 8} threads=1 est=3.7GB committed=46.2GB queued=37
+2026-10-18 19:36:06,342 annstudy.coordinate INFO [core 4] done 4f99f285a79b4aebb2c75cd824e2238d in 609.7s
+2026-10-18 19:36:06,344 annstudy.coordinate INFO [core 10] start sweep ivf_pq N=1000000 D=384 params={'nlist': 8000, 'm': 24, 'nbits': 8} threads=1 est=3.6GB committed=45.5GB queued=36
+2026-10-18 19:36:49,587 annstudy.coordinate INFO [core 14] done 959294dbe3a04b44af92cf172422d8b7 in 469.1s
+2026-10-18 19:36:49,589 annstudy.coordinate INFO [core 0] start sweep ivf_pq N=1000000 D=384 params={'nlist': 8000, 'm': 48, 'nbits': 8} threads=1 est=3.6GB committed=46.2GB queued=35
+2026-10-18 19:37:19,620 annstudy.coordinate INFO [core 12] done e026a80ff2fb4df49a9833b8b114d096 in 676.1s
+2026-10-18 19:37:19,622 annstudy.coordinate INFO [core 8] start sweep ivf_pq N=1000000 D=384 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=1 est=3.7GB committed=44.7GB queued=34
+2026-10-18 19:38:20,580 annstudy.coordinate INFO [core 7] done c90d596562a448e5975af9e4ef943809 in 535.8s
+2026-10-18 19:38:20,582 annstudy.coordinate INFO [core 4] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 2000, 'm': 24, 'nbits': 8} threads=1 est=4.4GB committed=45.5GB queued=33
+2026-10-18 19:39:44,955 annstudy.coordinate INFO [core 15] done bf40b95ededa4177aae926ac87e7b409 in 1227.2s
+2026-10-18 19:39:50,960 annstudy.coordinate INFO [core 9] done 421caba0bcf448fa842e2c305913204b in 1115.1s
+2026-10-18 19:39:50,962 annstudy.coordinate INFO [core 14] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 2000, 'm': 48, 'nbits': 8} threads=1 est=4.4GB committed=45.2GB queued=32
+2026-10-18 19:42:35,514 annstudy.coordinate INFO [core 1] done 26f1ba388a50442e97a0e8956d095494 in 548.0s
+2026-10-18 19:42:35,516 annstudy.coordinate INFO [core 12] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=1 est=4.5GB committed=46.0GB queued=31
+2026-10-18 19:43:22,361 annstudy.coordinate INFO [core 6] done 1eb7ceea017340a6b4cb2c81177f8bf1 in 1509.1s
+2026-10-18 19:44:18,800 annstudy.coordinate INFO [core 2] done f7408cc1fdf9483683d215aa84e13667 in 1306.7s
+2026-10-18 19:44:18,802 annstudy.coordinate INFO [core 7] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 4000, 'm': 24, 'nbits': 8} threads=1 est=5.1GB committed=45.2GB queued=30
+2026-10-18 19:44:51,822 annstudy.coordinate INFO [core 5] done 09015aae29774b8aaf45f3fa25e4cd8d in 649.8s
+2026-10-18 19:44:56,324 annstudy.coordinate INFO [core 4] done bb735377ee3441679de8dff2ff465f8e in 395.7s
+2026-10-18 19:44:56,326 annstudy.coordinate INFO [core 15] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 4000, 'm': 48, 'nbits': 8} threads=1 est=5.2GB committed=42.3GB queued=29
+2026-10-18 19:47:06,925 annstudy.coordinate INFO [core 3] done 99176495f9884d618b217a05953bd7d7 in 1445.4s
+2026-10-18 19:47:06,927 annstudy.coordinate INFO [core 9] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 4000, 'm': 96, 'nbits': 8} threads=1 est=5.2GB committed=43.9GB queued=28
+2026-10-18 19:47:51,377 annstudy.coordinate INFO [core 14] done dac964deb9714e329e17413a570e153d in 480.4s
+2026-10-18 19:47:51,383 annstudy.coordinate INFO [core 1] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 8000, 'm': 24, 'nbits': 8} threads=1 est=5.1GB committed=44.6GB queued=27
+2026-10-18 19:48:23,204 annstudy.coordinate INFO [core 11] done 38cfee01d4304fefad77e491e26146eb in 958.2s
+2026-10-18 19:48:23,206 annstudy.coordinate INFO [core 6] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 8000, 'm': 48, 'nbits': 8} threads=1 est=5.2GB committed=44.7GB queued=26
+2026-10-18 19:51:28,118 annstudy.coordinate INFO [core 10] done a6fe6b81cdb34e7cabd474e2adf67d12 in 921.8s
+2026-10-18 19:52:27,865 annstudy.coordinate INFO [core 0] done aa848161d8db43578fd90d3d7fbf0e37 in 938.3s
+2026-10-18 19:52:27,868 annstudy.coordinate INFO [core 2] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=1 est=5.2GB committed=42.7GB queued=25
+2026-10-18 19:53:50,129 annstudy.coordinate INFO [core 8] done 23ca304fdc284222a6503e7c61b87281 in 990.5s
+2026-10-18 19:54:41,762 annstudy.coordinate INFO [core 7] done d5f2311aa24041a18bf82831e6ddc956 in 623.0s
+2026-10-18 19:54:41,764 annstudy.coordinate INFO [core 5] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=1 est=9.9GB committed=43.8GB queued=24
+2026-10-18 19:55:37,907 annstudy.coordinate INFO [core 12] done b6e43ce33adc46fa823a931013b9ed5b in 782.4s
+2026-10-18 19:56:22,938 annstudy.coordinate INFO [core 15] done ad845549f3304003a410ccd483329ddc in 686.6s
+2026-10-18 19:56:22,940 annstudy.coordinate INFO [core 4] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 2000, 'm': 192, 'nbits': 8} threads=1 est=10.0GB committed=44.1GB queued=23
+2026-10-18 19:57:24,187 annstudy.coordinate INFO [core 13] done 0c720a39198e47ccb6bc8f6bf7f43f9c in 1935.0s
+2026-10-18 20:01:20,136 annstudy.coordinate INFO [core 9] done f0da1b52312d4daf8030bf5d3d942b41 in 853.2s
+2026-10-18 20:01:20,138 annstudy.coordinate INFO [core 3] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 2000, 'm': 384, 'nbits': 8} threads=1 est=10.2GB committed=45.5GB queued=22
+2026-10-18 20:04:46,080 annstudy.coordinate INFO [core 1] done 1627d0ee3e824fdd9dd4fa5d2478f23f in 1014.7s
+2026-10-18 20:05:46,123 annstudy.coordinate INFO [core 6] done 61048f05c9bd48baa2b2cbe7864a774f in 1042.9s
+2026-10-18 20:11:04,638 annstudy.coordinate INFO [core 5] done cccbd61df8204d5f965f3c8a74ab3b85 in 982.9s
+2026-10-18 20:11:04,644 annstudy.coordinate INFO [core 14] start sweep flat N=1000000 D=1536 params={} threads=1 est=12.8GB committed=38.1GB queued=21
+2026-10-18 20:12:13,991 annstudy.coordinate INFO [core 2] done 2196783ff977489cb12759760b59fc65 in 1186.1s
+2026-10-18 20:12:13,993 annstudy.coordinate INFO [core 11] start sweep hnsw N=1000000 D=1536 params={'M': 16, 'ef_construction': 200} threads=1 est=12.8GB committed=45.7GB queued=20
+2026-10-18 20:17:07,242 annstudy.coordinate INFO [core 4] done adf8af6b84b84398846676e9b74939c2 in 1244.3s
+2026-10-18 20:36:23,145 annstudy.coordinate INFO [core 3] done 303a23facf7443b79188f23d6ab890d4 in 2103.0s
+2026-10-18 20:36:23,149 annstudy.coordinate INFO [core 10] start sweep hnsw N=1000000 D=1536 params={'M': 32, 'ef_construction': 200} threads=1 est=12.8GB committed=38.4GB queued=19
+2026-10-18 20:51:08,660 annstudy.coordinate INFO [core 11] done 5da51fd77e744391a3117bc67de13765 in 2334.7s
+2026-10-18 20:51:08,674 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=1536 params={'M': 64, 'ef_construction': 200} threads=1 est=12.8GB committed=38.4GB queued=18
+2026-10-18 20:52:49,847 annstudy.coordinate INFO [core 14] done f7f6dfba189345d998898c2de40032e1 in 2505.2s
+2026-10-18 20:52:49,849 annstudy.coordinate INFO [core 8] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 2000} threads=1 est=15.9GB committed=41.5GB queued=17
+2026-10-18 21:25:59,864 annstudy.coordinate INFO [core 8] done 3884cd4792fd4705b60017592055f9e5 in 1990.0s
+2026-10-18 21:25:59,876 annstudy.coordinate INFO [core 7] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 4000} threads=1 est=18.9GB committed=44.5GB queued=16
+2026-10-18 21:29:25,472 annstudy.coordinate INFO [core 10] done dbe6bfd9d9384337979089f7e2d12b99 in 3182.3s
+2026-10-18 21:29:25,481 annstudy.coordinate INFO [core 12] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 4000, 'm': 96, 'nbits': 8} threads=1 est=12.9GB committed=44.6GB queued=15
+2026-10-18 21:52:52,669 annstudy.coordinate INFO [core 0] done 129777503f1042eaac6890ba6483d473 in 3704.0s
+2026-10-18 21:52:52,673 annstudy.coordinate INFO [core 15] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 4000, 'm': 192, 'nbits': 8} threads=1 est=13.0GB committed=44.8GB queued=14
+2026-10-18 22:03:20,014 annstudy.coordinate INFO [core 12] done a9f88ee483fc438c9fedd017508d5e00 in 2034.5s
+2026-10-18 22:03:20,016 annstudy.coordinate INFO [core 13] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 4000, 'm': 384, 'nbits': 8} threads=1 est=13.2GB committed=45.1GB queued=13
+2026-10-18 22:07:23,456 annstudy.coordinate INFO [core 7] done e4634bb271b642b6a53e877189ff1157 in 2483.6s
+2026-10-18 22:07:23,460 annstudy.coordinate INFO [core 9] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 8000} threads=1 est=18.9GB committed=45.1GB queued=12
+2026-10-18 22:29:24,840 annstudy.coordinate INFO [core 15] done 7ed10d7c05304949a29a822361d92ba9 in 2192.2s
+2026-10-18 22:29:24,844 annstudy.coordinate INFO [core 1] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=1 est=12.9GB committed=45.0GB queued=11
+2026-10-18 22:49:13,683 annstudy.coordinate INFO [core 13] done b24a318010c04f8e8ef030014b5a77eb in 2753.7s
+2026-10-18 22:49:13,687 annstudy.coordinate INFO [core 6] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 8000, 'm': 192, 'nbits': 8} threads=1 est=13.0GB committed=44.8GB queued=10
+2026-10-18 23:11:49,413 annstudy.coordinate INFO [core 9] done 634287f37d90432096bf7227dea0b1c5 in 3866.0s
+2026-10-18 23:11:49,416 annstudy.coordinate INFO [core 5] start sweep ivf_pq N=1000000 D=1536 params={'nlist': 8000, 'm': 384, 'nbits': 8} threads=1 est=13.2GB committed=39.0GB queued=9
+2026-10-18 23:31:29,023 annstudy.coordinate INFO [core 1] done 28356eb760984900a9fb98699651c307 in 3724.2s
+2026-10-18 23:31:29,027 annstudy.coordinate INFO [core 2] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=1 est=16.0GB committed=42.2GB queued=8
+2026-10-18 23:50:48,319 annstudy.coordinate INFO [core 6] done 35445683b2324142bb79399988f45742 in 3694.6s
+2026-10-18 23:50:48,322 annstudy.coordinate INFO [core 4] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 2000, 'm': 192, 'nbits': 8} threads=1 est=16.1GB committed=45.3GB queued=7
+2026-10-18 23:54:46,037 annstudy.coordinate INFO [core 2] done 5c108e2481e3409ca1dd30d3f61d70c5 in 1397.0s
+2026-10-18 23:54:46,039 annstudy.coordinate INFO [core 3] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 2000, 'm': 384, 'nbits': 8} threads=1 est=16.3GB committed=45.6GB queued=6
+2026-10-19 00:21:54,396 annstudy.coordinate INFO [core 5] done 060e189b6be841ffa5d05e78d097029d in 4205.0s
+2026-10-19 00:25:02,277 annstudy.coordinate INFO [core 4] done 538ab9d39d6f4b99b2ef0e50c9f582a8 in 2054.0s
+2026-10-19 00:25:02,281 annstudy.coordinate INFO [core 11] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 4000, 'm': 96, 'nbits': 8} threads=1 est=19.0GB committed=35.3GB queued=5
+2026-10-19 00:57:15,482 annstudy.coordinate INFO [core 3] done ffc3e5190be1451eba96e64a8ed4c40b in 3749.4s
+2026-10-19 00:57:15,485 annstudy.coordinate INFO [core 14] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 4000, 'm': 192, 'nbits': 8} threads=1 est=19.1GB committed=38.2GB queued=4
+2026-10-19 01:05:42,434 annstudy.coordinate INFO [core 11] done 7866455853b6440194a29c87ad27d0c2 in 2440.2s
+2026-10-19 01:05:42,436 annstudy.coordinate INFO [core 8] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 4000, 'm': 384, 'nbits': 8} threads=1 est=19.3GB committed=38.4GB queued=3
+2026-10-19 01:44:32,761 annstudy.coordinate INFO [core 14] done 3ddc213cad0143af9b3f822c7faa93be in 2837.3s
+2026-10-19 01:44:32,764 annstudy.coordinate INFO [core 10] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=1 est=19.0GB committed=38.3GB queued=2
+2026-10-19 02:10:22,935 annstudy.coordinate INFO [core 8] done 18b9a2e94032476a97406570714a0b6c in 3880.5s
+2026-10-19 02:10:22,939 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 8000, 'm': 192, 'nbits': 8} threads=1 est=19.1GB committed=38.2GB queued=1
+2026-10-19 02:52:25,575 annstudy.coordinate INFO [core 10] done c94ef63908444a0f8ece45bb7d6e0202 in 4072.8s
+2026-10-19 02:52:25,579 annstudy.coordinate INFO [core 12] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 8000, 'm': 384, 'nbits': 8} threads=1 est=19.3GB committed=38.4GB queued=0
+2026-10-19 03:21:03,473 annstudy.coordinate INFO [core 0] done 5cc8f588d779431f9df392e9fa423c9a in 4240.5s
+2026-10-19 04:20:34,284 annstudy.coordinate INFO [core 12] done 313d04e4daec4e818c75fed48d7c6a68 in 5288.7s
+2026-10-19 04:20:40,146 annstudy.tune INFO Sweep rows: kept 3071/3181 for hardware_id=1d3d9b66e7d3e1ac (dropped rows measured on other hosts)
+2026-10-19 04:20:40,316 annstudy.coordinate INFO Tuning winners saved: results/tuned/tuned_tuning.parquet (150 rows)
+2026-10-19 04:20:44,095 annstudy.coordinate INFO Will retain winner indexes for 8 (N, D, index) triples that Stage C reuses.
+2026-10-19 04:20:44,198 annstudy.coordinate INFO Running 180 repeat builds for 60 winners at 16 threads, one at a time (build time and QPS must be T-threaded).
+2026-10-19 04:20:44,198 annstudy.coordinate INFO Winner 1/60 (0e84e0ad88cf4c9295e26cd9691399f2): 3 repeat builds + memory measurement
+2026-10-19 04:20:45,194 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 04:20:45,194 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-19 04:20:45,195 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 04:20:45,195 annstudy.coordinate INFO Winner 2/60 (1fab6f66e3bc40daa4158015adc1c1ba): 3 repeat builds + memory measurement
+2026-10-19 04:20:47,328 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 04:20:47,329 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-19 04:20:47,329 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 04:20:47,329 annstudy.coordinate INFO Winner 3/60 (2196783ff977489cb12759760b59fc65): 3 repeat builds + memory measurement
+2026-10-19 04:20:51,098 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 04:20:51,099 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 5.2 GB
+2026-10-19 04:20:51,101 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=16 est=5.2GB committed=5.2GB queued=2
+2026-10-19 04:25:08,635 annstudy.coordinate INFO [core 0] done 87483d2e85d54252b68193549bec96a7 in 257.5s
+2026-10-19 04:25:08,637 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=16 est=5.2GB committed=5.2GB queued=1
+2026-10-19 04:29:17,786 annstudy.coordinate INFO [core 0] done e890184173604e6dbd1c57c678be7d11 in 249.1s
+2026-10-19 04:29:17,792 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=16 est=5.2GB committed=5.2GB queued=0
+2026-10-19 04:33:20,322 annstudy.coordinate INFO [core 0] done 94fb73fb96e04946adeace547459e8ce in 242.5s
+2026-10-19 04:33:20,323 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 04:33:20,323 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 04:33:20,324 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 2.1 GB
+2026-10-19 04:33:20,326 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=1000000 D=384 params=None threads=16 est=2.1GB committed=2.1GB queued=0
+2026-10-19 04:33:24,228 annstudy.coordinate INFO [core 0] done 5a3968f875fb4c479e8f5ebc83984900 in 3.9s
+2026-10-19 04:33:24,374 annstudy.coordinate INFO Winner 4/60 (26583c8552b944d9a51d8061aac7a9a2): 3 repeat builds + memory measurement
+2026-10-19 04:33:27,541 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 04:33:27,541 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 04:33:27,541 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 04:33:27,541 annstudy.coordinate INFO Winner 5/60 (30807d7d274744908b1c131db9e822b8): 3 repeat builds + memory measurement
+2026-10-19 04:33:28,989 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 04:33:28,989 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 04:33:28,989 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 04:33:28,989 annstudy.coordinate INFO Winner 6/60 (3139dfc3d96f4cadb80a2f5245a9c411): 3 repeat builds + memory measurement
+2026-10-19 04:33:29,969 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 04:33:29,970 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 04:33:29,970 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 04:33:29,970 annstudy.coordinate INFO Winner 7/60 (3884cd4792fd4705b60017592055f9e5): 3 repeat builds + memory measurement
+2026-10-19 04:33:33,895 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 04:33:33,896 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 15.9 GB
+2026-10-19 04:33:33,898 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 2000} threads=16 est=15.9GB committed=15.9GB queued=2
+2026-10-19 04:43:58,142 annstudy.coordinate INFO [core 0] done d65b1b2e96e948f49514be2f8bdf3aa2 in 624.2s
+2026-10-19 04:43:58,145 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 2000} threads=16 est=15.9GB committed=15.9GB queued=1
+2026-10-19 04:54:34,119 annstudy.coordinate INFO [core 0] done 8c7a34c02f1e45e082c032b8558ae443 in 636.0s
+2026-10-19 04:54:34,122 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 2000} threads=16 est=15.9GB committed=15.9GB queued=0
+2026-10-19 05:04:36,170 annstudy.coordinate INFO [core 0] done 8ed59c0332f645ae80073e494e54acad in 602.0s
+2026-10-19 05:04:36,170 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 05:04:36,170 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 05:04:36,171 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 6.6 GB
+2026-10-19 05:04:36,173 annstudy.coordinate INFO [core 0] start memory ivf_flat N=1000000 D=1536 params=None threads=16 est=6.6GB committed=6.6GB queued=0
+2026-10-19 05:04:47,878 annstudy.coordinate INFO [core 0] done d959dec42f154c76bf923efe7edb5626 in 11.7s
+2026-10-19 05:04:47,879 annstudy.coordinate INFO Retaining data/indexes/stage_b/idx_d65b1b2e96e948f49514be2f8bdf3aa2.faiss for a later stage ((1000000, 1536, 'ivf_flat'))
+2026-10-19 05:04:47,879 annstudy.coordinate INFO Winner 8/60 (38cfee01d4304fefad77e491e26146eb): 3 repeat builds + memory measurement
+2026-10-19 05:04:51,862 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 05:04:51,862 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 5.1 GB
+2026-10-19 05:04:51,864 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=384 params={'nlist': 8000} threads=16 est=5.1GB committed=5.1GB queued=2
+2026-10-19 05:09:40,072 annstudy.coordinate INFO [core 0] done 735eb129077f469787415264c923ce41 in 288.2s
+2026-10-19 05:09:40,075 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=384 params={'nlist': 8000} threads=16 est=5.1GB committed=5.1GB queued=1
+2026-10-19 05:13:40,524 annstudy.coordinate INFO [core 0] done 6f415ae286904b09a8e2eda8a8af3afc in 240.4s
+2026-10-19 05:13:40,526 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=384 params={'nlist': 8000} threads=16 est=5.1GB committed=5.1GB queued=0
+2026-10-19 05:17:37,685 annstudy.coordinate INFO [core 0] done 546e62e387fe4c20b9d38492c4ae425f in 237.2s
+2026-10-19 05:17:37,686 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 05:17:37,686 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 05:17:37,686 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 2.0 GB
+2026-10-19 05:17:37,688 annstudy.coordinate INFO [core 0] start memory ivf_flat N=1000000 D=384 params=None threads=16 est=2.0GB committed=2.0GB queued=0
+2026-10-19 05:17:40,090 annstudy.coordinate INFO [core 0] done cd129b3782fb4915abbed9a9ee180515 in 2.4s
+2026-10-19 05:17:40,090 annstudy.coordinate INFO Retaining data/indexes/stage_b/idx_735eb129077f469787415264c923ce41.faiss for a later stage ((1000000, 384, 'ivf_flat'))
+2026-10-19 05:17:40,090 annstudy.coordinate INFO Winner 9/60 (3902b621dbcd4893ada7eeaee9b86951): 3 repeat builds + memory measurement
+2026-10-19 05:17:43,417 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:17:43,417 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 05:17:43,418 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:17:43,418 annstudy.coordinate INFO Winner 10/60 (3c1852cd8786467c9b21a70a9ad176d5): 3 repeat builds + memory measurement
+2026-10-19 05:17:47,441 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 05:17:47,441 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 1.0 GB
+2026-10-19 05:17:47,443 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=384 params={'nlist': 1265} threads=16 est=1.0GB committed=1.0GB queued=2
+2026-10-19 05:18:12,666 annstudy.coordinate INFO [core 0] done 8953c198367a4d74a56f2879a9dd1663 in 25.2s
+2026-10-19 05:18:12,668 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=384 params={'nlist': 1265} threads=16 est=1.0GB committed=1.0GB queued=1
+2026-10-19 05:18:38,489 annstudy.coordinate INFO [core 0] done e200719c535340b7a2d11819594550d5 in 25.8s
+2026-10-19 05:18:38,491 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=384 params={'nlist': 1265} threads=16 est=1.0GB committed=1.0GB queued=0
+2026-10-19 05:19:04,314 annstudy.coordinate INFO [core 0] done 49f9400ccb9c4a70835081648921ba42 in 25.8s
+2026-10-19 05:19:04,314 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 05:19:04,314 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 05:19:04,315 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.7 GB
+2026-10-19 05:19:04,317 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=384 params=None threads=16 est=0.7GB committed=0.7GB queued=0
+2026-10-19 05:19:05,217 annstudy.coordinate INFO [core 0] done 9b4bb57b2e2d407e906670f2646aad78 in 0.9s
+2026-10-19 05:19:05,238 annstudy.coordinate INFO Winner 11/60 (3ddc213cad0143af9b3f822c7faa93be): 3 repeat builds + memory measurement
+2026-10-19 05:19:09,315 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 05:19:09,315 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 19.1 GB
+2026-10-19 05:19:09,317 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 4000, 'm': 192, 'nbits': 8} threads=16 est=19.1GB committed=19.1GB queued=2
+2026-10-19 05:25:33,551 annstudy.coordinate INFO [core 0] done 67bd9859702e42888fd504b58d5f754a in 384.2s
+2026-10-19 05:25:33,554 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 4000, 'm': 192, 'nbits': 8} threads=16 est=19.1GB committed=19.1GB queued=1
+2026-10-19 05:32:17,351 annstudy.coordinate INFO [core 0] done e2d0c223a2a7455b9f773311f9492ac1 in 403.8s
+2026-10-19 05:32:17,354 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 4000, 'm': 192, 'nbits': 8} threads=16 est=19.1GB committed=19.1GB queued=0
+2026-10-19 05:38:36,794 annstudy.coordinate INFO [core 0] done fc75e8ef79094f0ebf68c36609451612 in 379.4s
+2026-10-19 05:38:36,795 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 05:38:36,795 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 05:38:36,795 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 6.8 GB
+2026-10-19 05:38:36,797 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=1000000 D=1536 params=None threads=16 est=6.8GB committed=6.8GB queued=0
+2026-10-19 05:38:47,602 annstudy.coordinate INFO [core 0] done 7a73c8a416434ea38d0721dfd977d685 in 10.8s
+2026-10-19 05:38:48,095 annstudy.coordinate INFO Winner 12/60 (4264fc4fe8694eb28d76ae4cdda0231d): 3 repeat builds + memory measurement
+2026-10-19 05:38:49,063 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:38:49,063 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-19 05:38:49,064 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:38:49,064 annstudy.coordinate INFO Winner 13/60 (43e05dc61f4a4b618ca3ee510fa72ed8): 3 repeat builds + memory measurement
+2026-10-19 05:38:50,566 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:38:50,566 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-19 05:38:50,566 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:38:50,566 annstudy.coordinate INFO Winner 14/60 (46afd31d936840769ac9a704c203eade): 3 repeat builds + memory measurement
+2026-10-19 05:38:53,109 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:38:53,110 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-19 05:38:53,110 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:38:53,110 annstudy.coordinate INFO Winner 15/60 (4c039f1a13f84beab031f43e3dd918da): 3 repeat builds + memory measurement
+2026-10-19 05:38:54,225 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:38:54,225 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-19 05:38:54,225 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:38:54,225 annstudy.coordinate INFO Winner 16/60 (4e09be20e86c424f8438d7df7f72987e): 3 repeat builds + memory measurement
+2026-10-19 05:38:56,433 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:38:56,433 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-19 05:38:56,433 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:38:56,433 annstudy.coordinate INFO Winner 17/60 (5005f0c5afe84aae8ab276b8d2507e46): 3 repeat builds + memory measurement
+2026-10-19 05:39:00,548 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 05:39:00,549 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 1.0 GB
+2026-10-19 05:39:00,550 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=16 est=1.0GB committed=1.0GB queued=2
+2026-10-19 05:39:13,459 annstudy.coordinate INFO [core 0] done 59f9530dbe8541e6aa24bb9acabecbc5 in 12.9s
+2026-10-19 05:39:13,461 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=16 est=1.0GB committed=1.0GB queued=1
+2026-10-19 05:39:28,475 annstudy.coordinate INFO [core 0] done c507417df51b464a8ee2048be89c2f1a in 15.0s
+2026-10-19 05:39:28,477 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=16 est=1.0GB committed=1.0GB queued=0
+2026-10-19 05:39:41,391 annstudy.coordinate INFO [core 0] done 51f7a9331b4141c990286fb076f81c5e in 12.9s
+2026-10-19 05:39:41,392 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 05:39:41,392 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 05:39:41,392 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 0.7 GB
+2026-10-19 05:39:41,398 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=384 params=None threads=16 est=0.7GB committed=0.7GB queued=0
+2026-10-19 05:39:42,299 annstudy.coordinate INFO [core 0] done 6e04b09ce00b40a0bd43d7fb314c1e8f in 0.9s
+2026-10-19 05:39:42,312 annstudy.coordinate INFO Winner 18/60 (58a851fe70ae4bdcb3035c27fd159b20): 3 repeat builds + memory measurement
+2026-10-19 05:39:44,707 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:39:44,707 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 05:39:44,707 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:39:44,707 annstudy.coordinate INFO Winner 19/60 (58deea86ed6a41d4ae3581be22a3d852): 3 repeat builds + memory measurement
+2026-10-19 05:39:46,893 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:39:46,893 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 0.0 GB
+2026-10-19 05:39:46,893 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:39:46,893 annstudy.coordinate INFO Winner 20/60 (5c108e2481e3409ca1dd30d3f61d70c5): 3 repeat builds + memory measurement
+2026-10-19 05:39:51,050 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 05:39:51,050 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 16.0 GB
+2026-10-19 05:39:51,052 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=16 est=16.0GB committed=16.0GB queued=2
+2026-10-19 05:41:58,936 annstudy.coordinate INFO [core 0] done 3553fac0890a4f609d368a3f0b8f1b22 in 127.9s
+2026-10-19 05:41:58,938 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=16 est=16.0GB committed=16.0GB queued=1
+2026-10-19 05:44:04,430 annstudy.coordinate INFO [core 0] done 7aaff34620de4b9ca7df953614b09c47 in 125.5s
+2026-10-19 05:44:04,433 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=16 est=16.0GB committed=16.0GB queued=0
+2026-10-19 05:46:01,803 annstudy.coordinate INFO [core 0] done a3e3683ba76c49d485fee4b9cf93003d in 117.4s
+2026-10-19 05:46:01,803 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 05:46:01,803 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 05:46:01,804 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 6.8 GB
+2026-10-19 05:46:01,805 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=1000000 D=1536 params=None threads=16 est=6.8GB committed=6.8GB queued=0
+2026-10-19 05:46:09,309 annstudy.coordinate INFO [core 0] done 13b0d3418e2f4741adc7ea9f23ecf787 in 7.5s
+2026-10-19 05:46:09,756 annstudy.coordinate INFO Winner 21/60 (5c33e764baae45c28993e64ede9fc608): 3 repeat builds + memory measurement
+2026-10-19 05:46:12,047 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 05:46:12,047 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 0.0 GB
+2026-10-19 05:46:12,047 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 05:46:12,047 annstudy.coordinate INFO Winner 22/60 (5da51fd77e744391a3117bc67de13765): 3 repeat builds + memory measurement
+2026-10-19 05:46:16,230 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 05:46:16,231 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 12.8 GB
+2026-10-19 05:46:16,233 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=1536 params={'M': 16, 'ef_construction': 200} threads=16 est=12.8GB committed=12.8GB queued=2
+2026-10-19 05:52:28,828 annstudy.coordinate INFO [core 0] done 3ced67cb5e464b1cb070533957b76f9e in 372.6s
+2026-10-19 05:52:28,831 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=1536 params={'M': 16, 'ef_construction': 200} threads=16 est=12.8GB committed=12.8GB queued=1
+2026-10-19 05:58:39,921 annstudy.coordinate INFO [core 0] done 3d99847b764e46a0bb972f7d4d33db66 in 371.1s
+2026-10-19 05:58:39,923 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=1536 params={'M': 16, 'ef_construction': 200} threads=16 est=12.8GB committed=12.8GB queued=0
+2026-10-19 06:04:52,838 annstudy.coordinate INFO [core 0] done a0b0cbe530ec483a977f1a7b4f597676 in 372.9s
+2026-10-19 06:04:52,838 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:04:52,838 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:04:52,839 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 6.6 GB
+2026-10-19 06:04:52,841 annstudy.coordinate INFO [core 0] start memory hnsw N=1000000 D=1536 params=None threads=16 est=6.6GB committed=6.6GB queued=0
+2026-10-19 06:05:02,445 annstudy.coordinate INFO [core 0] done 36747ce20efa49139fdfbb02d6059113 in 9.6s
+2026-10-19 06:05:02,445 annstudy.coordinate INFO Retaining data/indexes/stage_b/idx_3ced67cb5e464b1cb070533957b76f9e.faiss for a later stage ((1000000, 1536, 'hnsw'))
+2026-10-19 06:05:02,445 annstudy.coordinate INFO Winner 23/60 (607d1fb492a541099ef265bde7c1ac8a): 3 repeat builds + memory measurement
+2026-10-19 06:05:05,274 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:05:05,274 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 0.0 GB
+2026-10-19 06:05:06,076 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:05:06,077 annstudy.coordinate INFO Winner 24/60 (634a652cc8ab45df852ce03f0e921bb3): 3 repeat builds + memory measurement
+2026-10-19 06:05:06,982 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:05:06,982 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 0.0 GB
+2026-10-19 06:05:06,982 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:05:06,982 annstudy.coordinate INFO Winner 25/60 (6856ada5e9a440f783ddeaec74252308): 3 repeat builds + memory measurement
+2026-10-19 06:05:11,116 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:05:11,117 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 2.3 GB
+2026-10-19 06:05:11,119 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 2530} threads=16 est=2.3GB committed=2.3GB queued=2
+2026-10-19 06:07:36,168 annstudy.coordinate INFO [core 0] done ac5e813a1eec4b8fa617a330b98b86a9 in 145.0s
+2026-10-19 06:07:36,171 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 2530} threads=16 est=2.3GB committed=2.3GB queued=1
+2026-10-19 06:10:01,792 annstudy.coordinate INFO [core 0] done eebb90f26aa84fa390f77823d062bdab in 145.6s
+2026-10-19 06:10:01,799 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 2530} threads=16 est=2.3GB committed=2.3GB queued=0
+2026-10-19 06:12:26,525 annstudy.coordinate INFO [core 0] done 858f483533694bcea2d69b6605bcf787 in 144.7s
+2026-10-19 06:12:26,526 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:12:26,526 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:12:26,526 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 1.1 GB
+2026-10-19 06:12:26,532 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=1536 params=None threads=16 est=1.1GB committed=1.1GB queued=0
+2026-10-19 06:12:28,033 annstudy.coordinate INFO [core 0] done 1ab07876ebbb4ef7b3c32a11a7bdb30f in 1.5s
+2026-10-19 06:12:28,103 annstudy.coordinate INFO Winner 26/60 (6ca3c9b002ce477ab0e18d19e3a04066): 3 repeat builds + memory measurement
+2026-10-19 06:12:31,799 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:12:31,799 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 06:12:31,799 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:12:31,799 annstudy.coordinate INFO Winner 27/60 (70e9c24a53834536a6957a9d2f7ccfb8): 3 repeat builds + memory measurement
+2026-10-19 06:12:34,992 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:12:34,992 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 06:12:34,993 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:12:34,993 annstudy.coordinate INFO Winner 28/60 (717c49646df54c84a8a58c08879384e9): 3 repeat builds + memory measurement
+2026-10-19 06:12:38,617 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:12:38,617 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 06:12:38,618 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:12:38,618 annstudy.coordinate INFO Winner 29/60 (753d3b1b1e674c87992cf006e8e975c5): 3 repeat builds + memory measurement
+2026-10-19 06:12:40,916 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:12:40,916 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 06:12:40,916 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:12:40,917 annstudy.coordinate INFO Winner 30/60 (7a04b8bcf33640b3b43ea721a8ac7e9f): 3 repeat builds + memory measurement
+2026-10-19 06:12:41,674 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:12:41,674 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 06:12:41,674 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:12:41,675 annstudy.coordinate INFO Winner 31/60 (823ec70c0421449e82ba9388eddee710): 3 repeat builds + memory measurement
+2026-10-19 06:12:45,694 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:12:45,695 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 1.0 GB
+2026-10-19 06:12:45,696 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 1265, 'm': 48, 'nbits': 8} threads=16 est=1.0GB committed=1.0GB queued=2
+2026-10-19 06:12:56,504 annstudy.coordinate INFO [core 0] done ad5134c04abd44148aed1540c34a5510 in 10.8s
+2026-10-19 06:12:56,506 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 1265, 'm': 48, 'nbits': 8} threads=16 est=1.0GB committed=1.0GB queued=1
+2026-10-19 06:13:07,014 annstudy.coordinate INFO [core 0] done 6f68ab1a93f2439589889e855b09bad8 in 10.5s
+2026-10-19 06:13:07,016 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 1265, 'm': 48, 'nbits': 8} threads=16 est=1.0GB committed=1.0GB queued=0
+2026-10-19 06:13:17,526 annstudy.coordinate INFO [core 0] done db12775178bf445d9182e2ca09c0c941 in 10.5s
+2026-10-19 06:13:17,526 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:13:17,526 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:13:17,526 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 0.7 GB
+2026-10-19 06:13:17,528 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=384 params=None threads=16 est=0.7GB committed=0.7GB queued=0
+2026-10-19 06:13:18,729 annstudy.coordinate INFO [core 0] done 98d7360b6326459ba4097096c2e504f3 in 1.2s
+2026-10-19 06:13:18,740 annstudy.coordinate INFO Winner 32/60 (85fc80a5e8a64bfab43bd41660987de0): 3 repeat builds + memory measurement
+2026-10-19 06:13:23,015 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:13:23,015 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 2.4 GB
+2026-10-19 06:13:23,017 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 192, 'nbits': 8} threads=16 est=2.4GB committed=2.4GB queued=2
+2026-10-19 06:14:19,450 annstudy.coordinate INFO [core 0] done 5ca086f7538d47ae8999d3d044117678 in 56.4s
+2026-10-19 06:14:19,452 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 192, 'nbits': 8} threads=16 est=2.4GB committed=2.4GB queued=1
+2026-10-19 06:15:17,387 annstudy.coordinate INFO [core 0] done 2e98df491ae243d1837390ae2647ce77 in 57.9s
+2026-10-19 06:15:17,389 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 192, 'nbits': 8} threads=16 est=2.4GB committed=2.4GB queued=0
+2026-10-19 06:16:15,026 annstudy.coordinate INFO [core 0] done 061582d39c22452480e016a2a3e9a004 in 57.6s
+2026-10-19 06:16:15,026 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:16:15,026 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:16:15,027 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 1.1 GB
+2026-10-19 06:16:15,028 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=100000 D=1536 params=None threads=16 est=1.1GB committed=1.1GB queued=0
+2026-10-19 06:16:16,829 annstudy.coordinate INFO [core 0] done bc6dcf541bfc429cb4c169d7aee7dfb7 in 1.8s
+2026-10-19 06:16:16,870 annstudy.coordinate INFO Winner 33/60 (915309d776af4d5791a18f660d7c6a2e): 3 repeat builds + memory measurement
+2026-10-19 06:16:18,401 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:16:18,401 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 06:16:18,402 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:16:18,402 annstudy.coordinate INFO Winner 34/60 (96c1f0e15f0c4e88b2a4452c42e1ba0e): 3 repeat builds + memory measurement
+2026-10-19 06:16:19,840 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:16:19,840 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 06:16:19,841 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:16:19,841 annstudy.coordinate INFO Winner 35/60 (99176495f9884d618b217a05953bd7d7): 3 repeat builds + memory measurement
+2026-10-19 06:16:24,072 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:16:24,072 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 3.6 GB
+2026-10-19 06:16:24,074 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=384 params={'M': 32, 'ef_construction': 200} threads=16 est=3.6GB committed=3.6GB queued=2
+2026-10-19 06:20:21,855 annstudy.coordinate INFO [core 0] done f7aec4acb19243388055a90c5298ff7f in 237.8s
+2026-10-19 06:20:21,857 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=384 params={'M': 32, 'ef_construction': 200} threads=16 est=3.6GB committed=3.6GB queued=1
+2026-10-19 06:24:18,464 annstudy.coordinate INFO [core 0] done c7c275e633d4444c9ef615f63b5d87dc in 236.6s
+2026-10-19 06:24:18,466 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=384 params={'M': 32, 'ef_construction': 200} threads=16 est=3.6GB committed=3.6GB queued=0
+2026-10-19 06:28:11,716 annstudy.coordinate INFO [core 0] done 65de6b48d0e442128e6023086d09284e in 233.3s
+2026-10-19 06:28:11,717 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:28:11,718 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:28:11,718 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 2.0 GB
+2026-10-19 06:28:11,721 annstudy.coordinate INFO [core 0] start memory hnsw N=1000000 D=384 params=None threads=16 est=2.0GB committed=2.0GB queued=0
+2026-10-19 06:28:15,323 annstudy.coordinate INFO [core 0] done 2cb27536ca794b268cda7c599889dd0a in 3.6s
+2026-10-19 06:28:15,323 annstudy.coordinate INFO Retaining data/indexes/stage_b/idx_f7aec4acb19243388055a90c5298ff7f.faiss for a later stage ((1000000, 384, 'hnsw'))
+2026-10-19 06:28:15,323 annstudy.coordinate INFO Winner 36/60 (9fd7900654b048799cd62d335b5a2d3c): 3 repeat builds + memory measurement
+2026-10-19 06:28:17,707 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:28:17,708 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 0.0 GB
+2026-10-19 06:28:17,727 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:28:17,727 annstudy.coordinate INFO Winner 37/60 (a1ee968ecc8e449e84d23e797487072e): 3 repeat builds + memory measurement
+2026-10-19 06:28:20,496 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:28:20,496 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 0.0 GB
+2026-10-19 06:28:20,496 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:28:20,497 annstudy.coordinate INFO Winner 38/60 (a84e75f457fb45bf9775d98c5c0bf2f4): 3 repeat builds + memory measurement
+2026-10-19 06:28:23,408 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:28:23,408 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 0.0 GB
+2026-10-19 06:28:23,408 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:28:23,408 annstudy.coordinate INFO Winner 39/60 (ad845549f3304003a410ccd483329ddc): 3 repeat builds + memory measurement
+2026-10-19 06:28:27,724 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:28:27,724 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 5.2 GB
+2026-10-19 06:28:27,726 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 4000, 'm': 48, 'nbits': 8} threads=16 est=5.2GB committed=5.2GB queued=2
+2026-10-19 06:29:42,166 annstudy.coordinate INFO [core 0] done 036899bc22db431397ea39fa84e4995a in 74.4s
+2026-10-19 06:29:42,169 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 4000, 'm': 48, 'nbits': 8} threads=16 est=5.2GB committed=5.2GB queued=1
+2026-10-19 06:30:54,503 annstudy.coordinate INFO [core 0] done 40f968371f5d415b9eee9abc5fd45732 in 72.3s
+2026-10-19 06:30:54,505 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 4000, 'm': 48, 'nbits': 8} threads=16 est=5.2GB committed=5.2GB queued=0
+2026-10-19 06:32:09,245 annstudy.coordinate INFO [core 0] done e4c6cab1c86d4e54b89231344ec84a8c in 74.7s
+2026-10-19 06:32:09,246 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:32:09,246 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:32:09,246 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 2.1 GB
+2026-10-19 06:32:09,248 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=1000000 D=384 params=None threads=16 est=2.1GB committed=2.1GB queued=0
+2026-10-19 06:32:12,550 annstudy.coordinate INFO [core 0] done 315e0b611f794bc78aa4e2f4a675399b in 3.3s
+2026-10-19 06:32:12,673 annstudy.coordinate INFO Winner 40/60 (b8ec251e9c164b8fa2c0e5012b280b4b): 3 repeat builds + memory measurement
+2026-10-19 06:32:14,412 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:32:14,412 annstudy.coordinate INFO Memory budget for this pool: 46.1 GB; largest spec needs 0.0 GB
+2026-10-19 06:32:14,412 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:32:14,412 annstudy.coordinate INFO Winner 41/60 (bd7dd6b1111a4cd8ace2574d944b3ac4): 3 repeat builds + memory measurement
+2026-10-19 06:32:16,729 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:32:16,729 annstudy.coordinate INFO Memory budget for this pool: 46.1 GB; largest spec needs 0.0 GB
+2026-10-19 06:32:16,729 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:32:16,729 annstudy.coordinate INFO Winner 42/60 (bf0268f2e0dc4b78bf1cb05958b2929d): 3 repeat builds + memory measurement
+2026-10-19 06:32:18,511 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:32:18,512 annstudy.coordinate INFO Memory budget for this pool: 46.1 GB; largest spec needs 0.0 GB
+2026-10-19 06:32:18,512 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:32:18,512 annstudy.coordinate INFO Winner 43/60 (bf12ad29d8004c40aada1cd7e6706fb7): 3 repeat builds + memory measurement
+2026-10-19 06:32:20,321 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:32:20,321 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 06:32:20,322 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:32:20,322 annstudy.coordinate INFO Winner 44/60 (cbff6084ec60429abf4510e10f7d2d36): 3 repeat builds + memory measurement
+2026-10-19 06:32:22,624 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:32:22,624 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 06:32:22,625 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:32:22,625 annstudy.coordinate INFO Winner 45/60 (cd03c73146e24fb7a62c46fc6887dd24): 3 repeat builds + memory measurement
+2026-10-19 06:32:24,971 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:32:24,971 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 06:32:24,971 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:32:24,971 annstudy.coordinate INFO Winner 46/60 (da0c636d41f040509d4379405929ddff): 3 repeat builds + memory measurement
+2026-10-19 06:32:27,934 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 06:32:27,934 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 06:32:27,934 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 06:32:27,934 annstudy.coordinate INFO Winner 47/60 (dac964deb9714e329e17413a570e153d): 3 repeat builds + memory measurement
+2026-10-19 06:32:32,159 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:32:32,159 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 4.4 GB
+2026-10-19 06:32:32,161 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 2000, 'm': 48, 'nbits': 8} threads=16 est=4.4GB committed=4.4GB queued=2
+2026-10-19 06:33:01,576 annstudy.coordinate INFO [core 0] done 8fd87cbe0c754e81a15c613521ab4461 in 29.4s
+2026-10-19 06:33:01,578 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 2000, 'm': 48, 'nbits': 8} threads=16 est=4.4GB committed=4.4GB queued=1
+2026-10-19 06:33:33,094 annstudy.coordinate INFO [core 0] done 76aaea3e38a8438286a8615f858f47fa in 31.5s
+2026-10-19 06:33:33,097 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 2000, 'm': 48, 'nbits': 8} threads=16 est=4.4GB committed=4.4GB queued=0
+2026-10-19 06:34:01,316 annstudy.coordinate INFO [core 0] done b1076c88e2e349669d47c80836f8c31d in 28.2s
+2026-10-19 06:34:01,316 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:34:01,316 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:34:01,317 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 2.1 GB
+2026-10-19 06:34:01,318 annstudy.coordinate INFO [core 0] start memory ivf_pq_refine N=1000000 D=384 params=None threads=16 est=2.1GB committed=2.1GB queued=0
+2026-10-19 06:34:04,020 annstudy.coordinate INFO [core 0] done 8ac5fb21c0c24380854f5f097a03badc in 2.7s
+2026-10-19 06:34:04,137 annstudy.coordinate INFO Winner 48/60 (dbe6bfd9d9384337979089f7e2d12b99): 3 repeat builds + memory measurement
+2026-10-19 06:34:08,516 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:34:08,517 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 12.8 GB
+2026-10-19 06:34:08,518 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=1536 params={'M': 32, 'ef_construction': 200} threads=16 est=12.8GB committed=12.8GB queued=2
+2026-10-19 06:42:35,673 annstudy.coordinate INFO [core 0] done d969ab674edf43599afbaf11b86d5aef in 507.2s
+2026-10-19 06:42:35,676 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=1536 params={'M': 32, 'ef_construction': 200} threads=16 est=12.8GB committed=12.8GB queued=1
+2026-10-19 06:50:48,393 annstudy.coordinate INFO [core 0] done 3701739d693f48aa9495bfbeae5c34f9 in 492.7s
+2026-10-19 06:50:48,396 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=1536 params={'M': 32, 'ef_construction': 200} threads=16 est=12.8GB committed=12.8GB queued=0
+2026-10-19 06:58:48,153 annstudy.coordinate INFO [core 0] done dad46866ca204b549dffabf824dae925 in 479.8s
+2026-10-19 06:58:48,154 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:58:48,154 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:58:48,154 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 6.6 GB
+2026-10-19 06:58:48,156 annstudy.coordinate INFO [core 0] start memory hnsw N=1000000 D=1536 params=None threads=16 est=6.6GB committed=6.6GB queued=0
+2026-10-19 06:58:56,559 annstudy.coordinate INFO [core 0] done 77eee04f3f6d4cae9242dd3f71719d79 in 8.4s
+2026-10-19 06:58:56,559 annstudy.coordinate INFO Retaining data/indexes/stage_b/idx_d969ab674edf43599afbaf11b86d5aef.faiss for a later stage ((1000000, 1536, 'hnsw'))
+2026-10-19 06:58:56,560 annstudy.coordinate INFO Winner 49/60 (ddfbe45ee1ae4f878bd8def135a5de26): 3 repeat builds + memory measurement
+2026-10-19 06:59:01,009 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 06:59:01,009 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 2.3 GB
+2026-10-19 06:59:01,011 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 1265} threads=16 est=2.3GB committed=2.3GB queued=2
+2026-10-19 06:59:20,545 annstudy.coordinate INFO [core 0] done aed5ac716a0447619c3991471181b4f7 in 19.5s
+2026-10-19 06:59:20,548 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 1265} threads=16 est=2.3GB committed=2.3GB queued=1
+2026-10-19 06:59:39,462 annstudy.coordinate INFO [core 0] done 491cec38b0904d358297fa2e8843e8dd in 18.9s
+2026-10-19 06:59:39,464 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=100000 D=1536 params={'nlist': 1265} threads=16 est=2.3GB committed=2.3GB queued=0
+2026-10-19 06:59:58,678 annstudy.coordinate INFO [core 0] done 5284b0dcb5e14ec4b160f0e35fd5a452 in 19.2s
+2026-10-19 06:59:58,678 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 06:59:58,678 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 06:59:58,678 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 1.1 GB
+2026-10-19 06:59:58,680 annstudy.coordinate INFO [core 0] start memory ivf_flat N=100000 D=1536 params=None threads=16 est=1.1GB committed=1.1GB queued=0
+2026-10-19 07:00:00,181 annstudy.coordinate INFO [core 0] done 94a2b49aee2e4d1eaca117b4b8c98cf7 in 1.5s
+2026-10-19 07:00:00,229 annstudy.coordinate INFO Winner 50/60 (df2b02c7fbb54e808cfc829fcd3da160): 3 repeat builds + memory measurement
+2026-10-19 07:00:02,192 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 07:00:02,192 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 0.0 GB
+2026-10-19 07:00:02,192 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 07:00:02,192 annstudy.coordinate INFO Winner 51/60 (e31cfd0dc27648cc899047742d1e28d7): 3 repeat builds + memory measurement
+2026-10-19 07:00:03,244 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 07:00:03,244 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 0.0 GB
+2026-10-19 07:00:03,244 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 07:00:03,244 annstudy.coordinate INFO Winner 52/60 (e4634bb271b642b6a53e877189ff1157): 3 repeat builds + memory measurement
+2026-10-19 07:00:07,651 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 07:00:07,651 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 18.9 GB
+2026-10-19 07:00:07,653 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 4000} threads=16 est=18.9GB committed=18.9GB queued=2
+2026-10-19 07:04:29,459 annstudy.coordinate INFO [core 0] done 73df0f3169164d69aec628f2ed7000ef in 261.8s
+2026-10-19 07:04:29,461 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 4000} threads=16 est=18.9GB committed=18.9GB queued=1
+2026-10-19 07:11:41,432 annstudy.coordinate INFO [core 0] done 25e8d585b6c44fc183af3cc46b1d8bc9 in 432.0s
+2026-10-19 07:11:41,452 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 4000} threads=16 est=18.9GB committed=18.9GB queued=0
+2026-10-19 07:15:43,401 annstudy.coordinate INFO [core 0] done 50d98ee920f54dc3ab57448685e6fd9c in 241.9s
+2026-10-19 07:15:43,402 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 07:15:43,402 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 07:15:43,402 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 6.6 GB
+2026-10-19 07:15:43,404 annstudy.coordinate INFO [core 0] start memory ivf_flat N=1000000 D=1536 params=None threads=16 est=6.6GB committed=6.6GB queued=0
+2026-10-19 07:15:51,807 annstudy.coordinate INFO [core 0] done 1e4c42b95fa54d46b26319ead36c1921 in 8.4s
+2026-10-19 07:15:51,808 annstudy.coordinate INFO Retaining data/indexes/stage_b/idx_73df0f3169164d69aec628f2ed7000ef.faiss for a later stage ((1000000, 1536, 'ivf_flat'))
+2026-10-19 07:15:51,808 annstudy.coordinate INFO Winner 53/60 (e5a8ed45cdca4ff88f291d4b137f0624): 3 repeat builds + memory measurement
+2026-10-19 07:15:55,104 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 07:15:55,104 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 07:15:55,104 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 07:15:55,104 annstudy.coordinate INFO Winner 54/60 (e82c59fbffa14194ac57a86c5a53cbf3): 3 repeat builds + memory measurement
+2026-10-19 07:15:57,169 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 07:15:57,170 annstudy.coordinate INFO Memory budget for this pool: 46.2 GB; largest spec needs 0.0 GB
+2026-10-19 07:15:57,170 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 07:15:57,170 annstudy.coordinate INFO Winner 55/60 (ebeaf47c98a245b78f5825048a352dda): 3 repeat builds + memory measurement
+2026-10-19 07:15:59,203 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 07:15:59,204 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 07:15:59,204 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 07:15:59,204 annstudy.coordinate INFO Winner 56/60 (ed0771ad8e3946bb976a57318eab2bbe): 3 repeat builds + memory measurement
+2026-10-19 07:16:01,865 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 07:16:01,866 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 07:16:01,866 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 07:16:01,866 annstudy.coordinate INFO Winner 57/60 (f4d3bdf462ed482ab3f806959d97d2d9): 3 repeat builds + memory measurement
+2026-10-19 07:16:04,033 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-19 07:16:04,033 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 0.0 GB
+2026-10-19 07:16:04,033 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-19 07:16:04,033 annstudy.coordinate INFO Winner 58/60 (f7408cc1fdf9483683d215aa84e13667): 3 repeat builds + memory measurement
+2026-10-19 07:16:08,284 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 07:16:08,284 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 3.6 GB
+2026-10-19 07:16:08,286 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=384 params={'M': 16, 'ef_construction': 200} threads=16 est=3.6GB committed=3.6GB queued=2
+2026-10-19 07:18:27,623 annstudy.coordinate INFO [core 0] done fee22599fca7485fbc711ec271977a98 in 139.3s
+2026-10-19 07:18:27,625 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=384 params={'M': 16, 'ef_construction': 200} threads=16 est=3.6GB committed=3.6GB queued=1
+2026-10-19 07:20:48,881 annstudy.coordinate INFO [core 0] done 2460cd312fdc4a48a1b06122ce59ceff in 141.3s
+2026-10-19 07:20:48,883 annstudy.coordinate INFO [core 0] start sweep hnsw N=1000000 D=384 params={'M': 16, 'ef_construction': 200} threads=16 est=3.6GB committed=3.6GB queued=0
+2026-10-19 07:23:07,585 annstudy.coordinate INFO [core 0] done 05cd1488761f409cbe35356b853e37ca in 138.7s
+2026-10-19 07:23:07,585 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 07:23:07,585 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 07:23:07,586 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 2.0 GB
+2026-10-19 07:23:07,587 annstudy.coordinate INFO [core 0] start memory hnsw N=1000000 D=384 params=None threads=16 est=2.0GB committed=2.0GB queued=0
+2026-10-19 07:23:10,589 annstudy.coordinate INFO [core 0] done 8c11ae9b49104a988f87217de70e5607 in 3.0s
+2026-10-19 07:23:10,589 annstudy.coordinate INFO Retaining data/indexes/stage_b/idx_fee22599fca7485fbc711ec271977a98.faiss for a later stage ((1000000, 384, 'hnsw'))
+2026-10-19 07:23:10,589 annstudy.coordinate INFO Winner 59/60 (f7f6dfba189345d998898c2de40032e1): 3 repeat builds + memory measurement
+2026-10-19 07:23:15,127 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 07:23:15,127 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 12.8 GB
+2026-10-19 07:23:15,129 annstudy.coordinate INFO [core 0] start sweep flat N=1000000 D=1536 params={} threads=16 est=12.8GB committed=12.8GB queued=2
+2026-10-19 07:26:59,375 annstudy.coordinate INFO [core 0] done 338e91581e9244d28df18cb0d819c47d in 224.2s
+2026-10-19 07:26:59,376 annstudy.runner ERROR Insufficient disk: 9.2 GB free, need 12.3 GB at data/indexes
+2026-10-19 07:26:59,376 annstudy.coordinate ERROR Skipping 146cc15409a34a398c2a4b9e4be15388: insufficient disk.
+2026-10-19 07:26:59,376 annstudy.runner ERROR Insufficient disk: 9.2 GB free, need 12.3 GB at data/indexes
+2026-10-19 07:26:59,376 annstudy.coordinate ERROR Skipping bb49dbf53efb4a22a41321333c12ad49: insufficient disk.
+2026-10-19 07:26:59,676 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 07:26:59,676 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 07:26:59,677 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 6.6 GB
+2026-10-19 07:26:59,678 annstudy.coordinate INFO [core 0] start memory flat N=1000000 D=1536 params=None threads=16 est=6.6GB committed=6.6GB queued=0
+2026-10-19 07:27:36,631 annstudy.coordinate INFO [core 0] done 06fc422f114440fcb3196d0c1f3f1fa5 in 37.0s
+2026-10-19 07:27:37,012 annstudy.coordinate INFO Winner 60/60 (fd2ed77954df41328c0082215adfd89c): 3 repeat builds + memory measurement
+2026-10-19 07:27:41,548 annstudy.coordinate INFO 3 specs enumerated; 0 already done; 3 to run.
+2026-10-19 07:27:41,548 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 3.6 GB
+2026-10-19 07:27:41,549 annstudy.coordinate INFO [core 0] start sweep flat N=1000000 D=384 params={} threads=16 est=3.6GB committed=3.6GB queued=2
+2026-10-19 07:29:16,997 annstudy.coordinate INFO [core 0] done ca107069522f410594f9983164f63e5f in 95.4s
+2026-10-19 07:29:17,000 annstudy.coordinate INFO [core 0] start sweep flat N=1000000 D=384 params={} threads=16 est=3.6GB committed=3.6GB queued=1
+2026-10-19 07:30:52,449 annstudy.coordinate INFO [core 0] done 93f62f017f914ac19d950b89e9e84e32 in 95.4s
+2026-10-19 07:30:52,451 annstudy.coordinate INFO [core 0] start sweep flat N=1000000 D=384 params={} threads=16 est=3.6GB committed=3.6GB queued=0
+2026-10-19 07:32:26,413 annstudy.coordinate INFO [core 0] done 0b7404b8865c4405864ec63a9af175c6 in 94.0s
+2026-10-19 07:32:26,414 annstudy.coordinate INFO Measuring index RAM for 1 indexes.
+2026-10-19 07:32:26,414 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-19 07:32:26,414 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 2.0 GB
+2026-10-19 07:32:26,416 annstudy.coordinate INFO [core 0] start memory flat N=1000000 D=384 params=None threads=16 est=2.0GB committed=2.0GB queued=0
+2026-10-19 07:32:36,022 annstudy.coordinate INFO [core 0] done d594d988179f4552b2cc52455b5ea2a4 in 9.6s
+2026-10-19 07:32:36,213 annstudy.coordinate INFO Recorded 60 selected winners in results/raw/selected.parquet
+2026-10-19 07:32:38,835 annstudy.coordinate INFO Memory backfill: every tuned winner already has a memory row.
+2026-10-19 07:32:40,714 annstudy.coordinate INFO Re-measuring 60 winner builds on the test split.
+2026-10-19 07:32:40,714 annstudy.coordinate INFO 60 specs enumerated; 0 already done; 60 to run.
+2026-10-19 07:32:40,714 annstudy.coordinate INFO Memory budget for this pool: 46.5 GB; largest spec needs 19.1 GB
+2026-10-19 07:32:40,717 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 24, 'nbits': 8} threads=1 est=1.0GB committed=1.0GB queued=59
+2026-10-19 07:32:40,718 annstudy.coordinate INFO [core 1] start sweep ivf_flat N=500000 D=384 params={'nlist': 5657} threads=1 est=2.8GB committed=3.8GB queued=58
+2026-10-19 07:32:40,720 annstudy.coordinate INFO [core 2] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 8000, 'm': 96, 'nbits': 8} threads=1 est=5.2GB committed=9.0GB queued=57
+2026-10-19 07:32:40,721 annstudy.coordinate INFO [core 3] start sweep ivf_pq_refine N=500000 D=1536 params={'nlist': 2828, 'm': 192, 'nbits': 8} threads=1 est=9.8GB committed=18.8GB queued=56
+2026-10-19 07:32:40,722 annstudy.coordinate INFO [core 4] start sweep hnsw N=100000 D=1536 params={'M': 16, 'ef_construction': 200} threads=1 est=1.7GB committed=20.5GB queued=55
+2026-10-19 07:32:40,723 annstudy.coordinate INFO [core 5] start sweep hnsw N=500000 D=1536 params={'M': 32, 'ef_construction': 200} threads=1 est=6.6GB committed=27.2GB queued=54
+2026-10-19 07:32:40,725 annstudy.coordinate INFO [core 6] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 2000} threads=1 est=15.9GB committed=43.1GB queued=53
+2026-10-19 07:32:40,726 annstudy.coordinate INFO [core 7] start sweep ivf_pq_refine N=500000 D=384 params={'nlist': 2828, 'm': 48, 'nbits': 8} threads=1 est=2.8GB committed=45.9GB queued=52
+2026-10-19 07:33:08,671 annstudy.coordinate INFO [core 0] done d5de12466c1b41ab92e36d64544564f8 in 28.0s
+2026-10-19 07:33:08,674 annstudy.coordinate INFO [core 8] start sweep ivf_flat N=100000 D=384 params={'nlist': 1265} threads=1 est=1.0GB committed=45.9GB queued=51
+2026-10-19 07:35:09,136 annstudy.coordinate INFO [core 8] done ce82843811354725bdd60f4571fb07ac in 120.5s
+2026-10-19 07:35:09,138 annstudy.coordinate INFO [core 9] start sweep hnsw N=100000 D=384 params={'M': 16, 'ef_construction': 200} threads=1 est=0.8GB committed=45.8GB queued=50
+2026-10-19 07:35:09,141 annstudy.coordinate INFO [core 10] start sweep ivf_flat N=100000 D=128 params={'nlist': 632} threads=1 est=0.7GB committed=46.4GB queued=49
+2026-10-19 07:35:53,611 annstudy.coordinate INFO [core 7] done e433100362a449188191fcbeeb0f3a4d in 192.9s
+2026-10-19 07:35:53,615 annstudy.coordinate INFO [core 11] start sweep flat N=100000 D=768 params={} threads=1 est=1.1GB committed=44.7GB queued=48
+2026-10-19 07:35:53,616 annstudy.coordinate INFO [core 12] start sweep hnsw N=100000 D=768 params={'M': 16, 'ef_construction': 200} threads=1 est=1.1GB committed=45.8GB queued=47
+2026-10-19 07:35:53,618 annstudy.coordinate INFO [core 13] start sweep hnsw N=100000 D=128 params={'M': 16, 'ef_construction': 200} threads=1 est=0.6GB committed=46.4GB queued=46
+2026-10-19 07:36:05,932 annstudy.coordinate INFO [core 10] done d97f68095c1246b587e7890a4f21aafa in 56.8s
+2026-10-19 07:36:05,934 annstudy.coordinate INFO [core 14] start sweep flat N=100000 D=128 params={} threads=1 est=0.6GB committed=46.4GB queued=45
+2026-10-19 07:36:47,399 annstudy.coordinate INFO [core 9] done a0f72dd7c6a24c2392db78c17694bdc1 in 98.3s
+2026-10-19 07:36:47,404 annstudy.coordinate INFO [core 15] start sweep flat N=100000 D=384 params={} threads=1 est=0.8GB committed=46.4GB queued=44
+2026-10-19 07:36:59,722 annstudy.coordinate INFO [core 13] done 51601d51ac024865bd28c01e76cc46fe in 66.1s
+2026-10-19 07:37:10,539 annstudy.coordinate INFO [core 4] done 0a3aeebd6dd744b6827c0ec19c62103a in 269.8s
+2026-10-19 07:37:10,543 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=1 est=1.0GB committed=45.0GB queued=43
+2026-10-19 07:37:10,545 annstudy.coordinate INFO [core 8] start sweep hnsw N=500000 D=128 params={'M': 16, 'ef_construction': 200} threads=1 est=1.0GB committed=46.0GB queued=42
+2026-10-19 07:37:33,377 annstudy.coordinate INFO [core 14] done 0f1fa324a02542569c2a2eb514a2615f in 87.4s
+2026-10-19 07:37:33,380 annstudy.coordinate INFO [core 7] start sweep hnsw N=500000 D=128 params={'M': 64, 'ef_construction': 200} threads=1 est=1.0GB committed=46.4GB queued=41
+2026-10-19 07:38:23,838 annstudy.coordinate INFO [core 12] done cb892f7832ee415b92476e01cb34a12e in 150.2s
+2026-10-19 07:38:23,840 annstudy.coordinate INFO [core 10] start sweep ivf_pq_refine N=100000 D=384 params={'nlist': 1265, 'm': 48, 'nbits': 8} threads=1 est=1.0GB committed=46.3GB queued=40
+2026-10-19 07:38:33,747 annstudy.coordinate INFO [core 0] done 43df8786c55c4922bb42b4636548525c in 83.2s
+2026-10-19 07:38:33,749 annstudy.coordinate INFO [core 9] start sweep flat N=500000 D=128 params={} threads=1 est=1.0GB committed=46.3GB queued=39
+2026-10-19 07:39:05,871 annstudy.coordinate INFO [core 10] done 8f0b5389e75a404eb7a29189283ab21d in 42.0s
+2026-10-19 07:40:52,451 annstudy.coordinate INFO [core 1] done eca0b827e6414846b585432051393de5 in 491.7s
+2026-10-19 07:40:52,455 annstudy.coordinate INFO [core 13] start sweep hnsw N=500000 D=768 params={'M': 16, 'ef_construction': 200} threads=1 est=3.6GB committed=46.1GB queued=38
+2026-10-19 07:41:12,270 annstudy.coordinate INFO [core 15] done 90485ed2ec90461db02b086fee2a8003 in 264.9s
+2026-10-19 07:42:55,245 annstudy.coordinate INFO [core 8] done 5f8c5c8b44404d5d8c456fdc11e55dd5 in 344.7s
+2026-10-19 07:42:55,248 annstudy.coordinate INFO [core 4] start sweep flat N=100000 D=1536 params={} threads=1 est=1.7GB committed=46.0GB queued=37
+2026-10-19 07:45:03,482 annstudy.coordinate INFO [core 11] done f683b4f6d48945a3a8a02822bf9d33b3 in 549.9s
+2026-10-19 07:45:03,484 annstudy.coordinate INFO [core 14] start sweep ivf_pq_refine N=100000 D=768 params={'nlist': 632, 'm': 48, 'nbits': 8} threads=1 est=1.4GB committed=46.3GB queued=36
+2026-10-19 07:46:32,379 annstudy.coordinate INFO [core 14] done 8a767550039548b886cb95a62628f9f4 in 88.9s
+2026-10-19 07:46:32,381 annstudy.coordinate INFO [core 12] start sweep ivf_flat N=500000 D=128 params={'nlist': 5657} threads=1 est=1.3GB committed=46.2GB queued=35
+2026-10-19 07:46:57,607 annstudy.coordinate INFO [core 9] done 412fe51d20194020803d3ed1484334bd in 503.9s
+2026-10-19 07:46:57,610 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=500000 D=128 params={'nlist': 1414, 'm': 16, 'nbits': 8} threads=1 est=1.2GB committed=46.4GB queued=34
+2026-10-19 07:47:21,329 annstudy.coordinate INFO [core 7] done e53097745e4d41a99cd2afe4b2d31f3a in 587.9s
+2026-10-19 07:47:35,440 annstudy.coordinate INFO [core 0] done 4264feb900564039894912da2f2ca722 in 37.8s
+2026-10-19 07:47:35,443 annstudy.coordinate INFO [core 10] start sweep hnsw N=500000 D=384 params={'M': 16, 'ef_construction': 200} threads=1 est=2.0GB committed=46.2GB queued=33
+2026-10-19 07:49:56,556 annstudy.coordinate INFO [core 12] done 2f822343cd6e43799581c638b0facff0 in 204.2s
+2026-10-19 07:49:56,558 annstudy.coordinate INFO [core 1] start sweep ivf_flat N=100000 D=768 params={'nlist': 632} threads=1 est=1.4GB committed=46.4GB queued=32
+2026-10-19 07:51:47,048 annstudy.coordinate INFO [core 2] done e895ccb705024452b152b5936a843ca1 in 1146.3s
+2026-10-19 07:51:47,050 annstudy.coordinate INFO [core 15] start sweep ivf_flat N=1000000 D=384 params={'nlist': 8000} threads=1 est=5.1GB committed=46.3GB queued=31
+2026-10-19 07:53:12,016 annstudy.coordinate INFO [core 13] done 9c53917a22464dc29502af776678cc7d in 739.6s
+2026-10-19 07:53:12,018 annstudy.coordinate INFO [core 8] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 96, 'nbits': 8} threads=1 est=2.4GB committed=45.0GB queued=30
+2026-10-19 07:53:12,019 annstudy.coordinate INFO [core 11] start sweep ivf_pq_refine N=500000 D=128 params={'nlist': 1414, 'm': 32, 'nbits': 8} threads=1 est=1.2GB committed=46.3GB queued=29
+2026-10-19 07:54:58,002 annstudy.coordinate INFO [core 3] done 335231c8b03d46208170741fe515f485 in 1337.3s
+2026-10-19 07:54:58,004 annstudy.coordinate INFO [core 14] start sweep ivf_pq_refine N=500000 D=1536 params={'nlist': 2828, 'm': 96, 'nbits': 8} threads=1 est=9.8GB committed=46.2GB queued=28
+2026-10-19 07:55:30,430 annstudy.coordinate INFO [core 11] done 20fdf330fb0d454999602cceb24e6669 in 138.4s
+2026-10-19 07:56:11,561 annstudy.coordinate INFO [core 8] done 7f1bee7766914a81a0a36d41ce2bd96c in 179.5s
+2026-10-19 07:56:11,568 annstudy.coordinate INFO [core 9] start sweep ivf_flat N=100000 D=1536 params={'nlist': 2530} threads=1 est=2.3GB committed=45.0GB queued=27
+2026-10-19 07:56:40,990 annstudy.coordinate INFO [core 5] done 9bc0bb1f14f44686827a086b0ac05a5b in 1440.3s
+2026-10-19 07:56:40,992 annstudy.coordinate INFO [core 7] start sweep ivf_flat N=500000 D=768 params={'nlist': 5657} threads=1 est=5.1GB committed=43.4GB queued=26
+2026-10-19 07:56:40,993 annstudy.coordinate INFO [core 0] start sweep flat N=500000 D=384 params={} threads=1 est=2.0GB committed=45.5GB queued=25
+2026-10-19 07:56:42,496 annstudy.coordinate INFO [core 10] done 4c0f458732c64715970aca6f1c94e51a in 547.1s
+2026-10-19 07:56:42,499 annstudy.coordinate INFO [core 12] start sweep ivf_pq_refine N=100000 D=1536 params={'nlist': 632, 'm': 192, 'nbits': 8} threads=1 est=2.4GB committed=45.8GB queued=24
+2026-10-19 07:57:11,624 annstudy.coordinate INFO [core 1] done b13c417a613f491b91f261ff6e16d0aa in 435.1s
+2026-10-19 08:02:09,417 annstudy.coordinate INFO [core 4] done 9243636f09c44e1eaad7e48c61888f92 in 1154.2s
+2026-10-19 08:02:09,419 annstudy.coordinate INFO [core 2] start sweep ivf_pq_refine N=500000 D=384 params={'nlist': 1414, 'm': 24, 'nbits': 8} threads=1 est=2.6GB committed=45.3GB queued=23
+2026-10-19 08:03:27,466 annstudy.coordinate INFO [core 12] done 9e444d92c93e45e5b39bfbb2f0d1d8a0 in 405.0s
+2026-10-19 08:03:27,468 annstudy.coordinate INFO [core 13] start sweep ivf_flat N=500000 D=384 params={'nlist': 2828} threads=1 est=2.8GB committed=45.7GB queued=22
+2026-10-19 08:03:49,381 annstudy.coordinate INFO [core 2] done c42c41ff58e1478db8016210ec234be2 in 100.0s
+2026-10-19 08:03:49,383 annstudy.coordinate INFO [core 3] start sweep ivf_pq_refine N=500000 D=384 params={'nlist': 5657, 'm': 96, 'nbits': 8} threads=1 est=2.9GB committed=45.9GB queued=21
+2026-10-19 08:04:40,740 annstudy.coordinate INFO [core 9] done f1ec1df84c8440a18bc6c5c2c1826d1f in 509.2s
+2026-10-19 08:04:40,744 annstudy.coordinate INFO [core 11] start sweep ivf_flat N=100000 D=1536 params={'nlist': 1265} threads=1 est=2.3GB committed=45.9GB queued=20
+2026-10-19 08:06:16,238 annstudy.coordinate INFO [core 11] done 6010639d88fa48da9b0cc2daa95af640 in 95.5s
+2026-10-19 08:06:36,656 annstudy.coordinate INFO [core 13] done 37659656f2554c11bbd7027f2e091d66 in 189.2s
+2026-10-19 08:06:36,658 annstudy.coordinate INFO [core 8] start sweep ivf_pq_refine N=500000 D=768 params={'nlist': 2828, 'm': 96, 'nbits': 8} threads=1 est=5.2GB committed=46.0GB queued=19
+2026-10-19 08:06:47,166 annstudy.coordinate INFO [core 14] done f1cebc25029a479ab40a9ed8f41bbe74 in 709.2s
+2026-10-19 08:06:47,168 annstudy.coordinate INFO [core 5] start sweep ivf_flat N=500000 D=1536 params={'nlist': 2828} threads=1 est=9.7GB committed=45.9GB queued=18
+2026-10-19 08:12:03,554 annstudy.coordinate INFO [core 15] done 5c62d6fa45d045c1a927d7980a90534b in 1216.5s
+2026-10-19 08:12:03,556 annstudy.coordinate INFO [core 10] start sweep hnsw N=1000000 D=384 params={'M': 32, 'ef_construction': 200} threads=1 est=3.6GB committed=44.4GB queued=17
+2026-10-19 08:12:43,477 annstudy.coordinate INFO [core 8] done 8c29581145414f3390300b390ef4ef94 in 366.8s
+2026-10-19 08:12:43,479 annstudy.coordinate INFO [core 1] start sweep hnsw N=500000 D=1536 params={'M': 16, 'ef_construction': 200} threads=1 est=6.6GB committed=45.9GB queued=16
+2026-10-19 08:13:01,491 annstudy.coordinate INFO [core 3] done 19a98855e57d4874b4c00192811c4cd2 in 552.1s
+2026-10-19 08:13:22,802 annstudy.coordinate INFO [core 6] done ac2a994db07f4519b7991c696e84ca62 in 2442.1s
+2026-10-19 08:13:22,804 annstudy.coordinate INFO [core 4] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 4000, 'm': 192, 'nbits': 8} threads=1 est=19.1GB committed=46.2GB queued=15
+2026-10-19 08:13:43,815 annstudy.coordinate INFO [core 7] done fafa83ac227c42f284860ddf27bbbee8 in 1022.8s
+2026-10-19 08:13:43,816 annstudy.coordinate INFO [core 12] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 4000, 'm': 48, 'nbits': 8} threads=1 est=5.2GB committed=46.2GB queued=14
+2026-10-19 08:18:01,992 annstudy.coordinate INFO [core 5] done c6514f13252b4b779a1f005bc264f1a8 in 674.8s
+2026-10-19 08:18:01,994 annstudy.coordinate INFO [core 2] start sweep flat N=500000 D=1536 params={} threads=1 est=6.6GB committed=43.2GB queued=13
+2026-10-19 08:21:02,430 annstudy.coordinate INFO [core 0] done 67e443c540b54988801164c5e6aa40a7 in 1461.4s
+2026-10-19 08:21:02,433 annstudy.coordinate INFO [core 9] start sweep flat N=500000 D=768 params={} threads=1 est=3.6GB committed=44.7GB queued=12
+2026-10-19 08:21:30,055 annstudy.coordinate INFO [core 12] done a12c032061ee4bf082a427bff181d479 in 466.2s
+2026-10-19 08:21:30,057 annstudy.coordinate INFO [core 11] start sweep ivf_pq_refine N=500000 D=768 params={'nlist': 1414, 'm': 96, 'nbits': 8} threads=1 est=4.7GB committed=44.3GB queued=11
+2026-10-19 08:28:19,243 annstudy.coordinate INFO [core 11] done f342c6ab378b45e496601d84bcadc5c9 in 409.2s
+2026-10-19 08:28:19,247 annstudy.coordinate INFO [core 13] start sweep ivf_pq_refine N=1000000 D=384 params={'nlist': 2000, 'm': 48, 'nbits': 8} threads=1 est=4.4GB committed=44.0GB queued=10
+2026-10-19 08:30:56,852 annstudy.coordinate INFO [core 13] done f34d88222fae496d965532d782c49cba in 157.6s
+2026-10-19 08:30:56,854 annstudy.coordinate INFO [core 14] start sweep hnsw N=1000000 D=384 params={'M': 16, 'ef_construction': 200} threads=1 est=3.6GB committed=43.1GB queued=9
+2026-10-19 08:31:00,757 annstudy.coordinate INFO [core 1] done c3167c4da33348d59733a4b9467addd5 in 1097.3s
+2026-10-19 08:31:00,759 annstudy.coordinate INFO [core 15] start sweep ivf_flat N=500000 D=1536 params={'nlist': 1414} threads=1 est=8.9GB committed=45.4GB queued=8
+2026-10-19 08:36:48,411 annstudy.coordinate INFO [core 10] done acd31fb766434ab5959c07f4deb7664d in 1484.9s
+2026-10-19 08:36:48,413 annstudy.coordinate INFO [core 8] start sweep flat N=1000000 D=384 params={} threads=1 est=3.6GB committed=45.4GB queued=7
+2026-10-19 08:49:27,633 annstudy.coordinate INFO [core 14] done 038ca755b0724e86b70e23cd6b5a4650 in 1110.8s
+2026-10-19 08:58:34,296 annstudy.coordinate INFO [core 4] done bf45e56a16be457a9b18d9f26d3f54df in 2711.5s
+2026-10-19 08:58:34,299 annstudy.coordinate INFO [core 3] start sweep ivf_pq_refine N=1000000 D=1536 params={'nlist': 2000, 'm': 96, 'nbits': 8} threads=1 est=16.0GB committed=38.7GB queued=6
+2026-10-19 08:59:24,122 annstudy.coordinate INFO [core 15] done 4c6441f4a0ca475aa5908acd7ceebe3e in 1703.4s
+2026-10-19 08:59:24,124 annstudy.coordinate INFO [core 6] start sweep hnsw N=1000000 D=1536 params={'M': 16, 'ef_construction': 200} threads=1 est=12.8GB committed=42.6GB queued=5
+2026-10-19 09:08:12,997 annstudy.coordinate INFO [core 9] done 941eeb5ca4864b8895daee3e0d55a781 in 2830.6s
+2026-10-19 09:10:07,379 annstudy.coordinate INFO [core 3] done 419853455e8a44a68c7dcecdc0fa3a3b in 693.1s
+2026-10-19 09:10:07,383 annstudy.coordinate INFO [core 7] start sweep hnsw N=1000000 D=1536 params={'M': 32, 'ef_construction': 200} threads=1 est=12.8GB committed=35.8GB queued=4
+2026-10-19 09:10:07,385 annstudy.coordinate INFO [core 5] start sweep ivf_flat N=500000 D=1536 params={'nlist': 5657} threads=1 est=9.7GB committed=45.5GB queued=3
+2026-10-19 09:17:42,112 annstudy.coordinate INFO [core 8] done b6bfbb517975474d808266ac924c247c in 2453.7s
+2026-10-19 09:31:57,591 annstudy.coordinate INFO [core 5] done 93fe18da5d5e453ea0cdbd39e3466670 in 1310.2s
+2026-10-19 09:31:57,594 annstudy.coordinate INFO [core 0] start sweep ivf_pq_refine N=500000 D=1536 params={'nlist': 1414, 'm': 192, 'nbits': 8} threads=1 est=9.0GB committed=41.2GB queued=2
+2026-10-19 09:35:35,200 annstudy.coordinate INFO [core 6] done 45713242cb774fe3a4bc849f00446bee in 2171.1s
+2026-10-19 09:35:35,204 annstudy.coordinate INFO [core 12] start sweep flat N=1000000 D=1536 params={} threads=1 est=12.8GB committed=41.2GB queued=1
+2026-10-19 09:39:15,812 annstudy.coordinate INFO [core 0] done 7e056764430e4b46ae6440c82d4ba285 in 438.2s
+2026-10-19 09:45:20,754 annstudy.coordinate INFO [core 2] done b7038b1b76f84b31a145eab115a5e368 in 5238.8s
+2026-10-19 09:45:20,757 annstudy.coordinate INFO [core 11] start sweep ivf_flat N=1000000 D=1536 params={'nlist': 4000} threads=1 est=18.9GB committed=44.5GB queued=0
+2026-10-19 09:56:53,722 annstudy.coordinate INFO [core 7] done 1bd8ded6608f4f1b89e6ff672847cf07 in 2806.3s
+2026-10-19 10:16:07,947 annstudy.coordinate INFO [core 11] done cd30e6dc8857467cb3c1da6ea0bc532d in 1847.2s
+2026-10-19 12:08:49,914 annstudy.coordinate INFO [core 12] done 5dddf5044ed94cc095313f1b3fb0893c in 9194.7s
+2026-10-19 12:08:52,843 annstudy.tune INFO Sweep rows: kept 3252/3362 for hardware_id=1d3d9b66e7d3e1ac (dropped rows measured on other hosts)
+2026-10-19 12:08:57,078 annstudy.coordinate INFO Final tuned (test-measured) saved: results/tuned/tuned.parquet (150 rows)
+2026-10-19 12:08:58,928 annstudy.coordinate INFO Wrote reports/stage_B.md
+2026-10-25 04:39:26,238 annstudy.tune INFO Sweep rows: kept 3252/3362 for hardware_id=1d3d9b66e7d3e1ac (dropped rows measured on other hosts)
+2026-10-25 04:39:26,366 annstudy.coordinate INFO Tuning winners saved: results/tuned/tuned_tuning.parquet (150 rows)
+2026-10-25 04:39:27,807 annstudy.coordinate INFO Will retain winner indexes for 8 (N, D, index) triples that Stage C reuses.
+2026-10-25 04:39:27,913 annstudy.coordinate INFO Running 180 repeat builds for 60 winners at 16 threads, one at a time (build time and QPS must be T-threaded).
+2026-10-25 04:39:27,914 annstudy.coordinate INFO Winner 1/60 (0e84e0ad88cf4c9295e26cd9691399f2): 3 repeat builds + memory measurement
+2026-10-25 04:39:29,059 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:29,059 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:29,060 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:29,060 annstudy.coordinate INFO Winner 2/60 (1fab6f66e3bc40daa4158015adc1c1ba): 3 repeat builds + memory measurement
+2026-10-25 04:39:31,382 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:31,382 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:31,382 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:31,382 annstudy.coordinate INFO Winner 3/60 (2196783ff977489cb12759760b59fc65): 3 repeat builds + memory measurement
+2026-10-25 04:39:34,338 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:34,339 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:34,339 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:34,339 annstudy.coordinate INFO Winner 4/60 (26583c8552b944d9a51d8061aac7a9a2): 3 repeat builds + memory measurement
+2026-10-25 04:39:37,432 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:37,432 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:37,432 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:37,432 annstudy.coordinate INFO Winner 5/60 (30807d7d274744908b1c131db9e822b8): 3 repeat builds + memory measurement
+2026-10-25 04:39:38,875 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:38,875 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:38,875 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:38,875 annstudy.coordinate INFO Winner 6/60 (3139dfc3d96f4cadb80a2f5245a9c411): 3 repeat builds + memory measurement
+2026-10-25 04:39:39,886 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:39,886 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:39,886 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:39,886 annstudy.coordinate INFO Winner 7/60 (3884cd4792fd4705b60017592055f9e5): 3 repeat builds + memory measurement
+2026-10-25 04:39:40,889 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:40,889 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:40,894 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:40,894 annstudy.coordinate INFO Winner 8/60 (38cfee01d4304fefad77e491e26146eb): 3 repeat builds + memory measurement
+2026-10-25 04:39:42,291 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:42,292 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:42,292 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:42,292 annstudy.coordinate INFO Winner 9/60 (3902b621dbcd4893ada7eeaee9b86951): 3 repeat builds + memory measurement
+2026-10-25 04:39:45,460 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:45,460 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:45,460 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:45,460 annstudy.coordinate INFO Winner 10/60 (3c1852cd8786467c9b21a70a9ad176d5): 3 repeat builds + memory measurement
+2026-10-25 04:39:48,142 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:48,143 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:48,143 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:48,143 annstudy.coordinate INFO Winner 11/60 (3ddc213cad0143af9b3f822c7faa93be): 3 repeat builds + memory measurement
+2026-10-25 04:39:49,675 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:49,675 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:49,675 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:49,675 annstudy.coordinate INFO Winner 12/60 (4264fc4fe8694eb28d76ae4cdda0231d): 3 repeat builds + memory measurement
+2026-10-25 04:39:50,626 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:50,626 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:50,626 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:50,626 annstudy.coordinate INFO Winner 13/60 (43e05dc61f4a4b618ca3ee510fa72ed8): 3 repeat builds + memory measurement
+2026-10-25 04:39:52,193 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:52,193 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:52,193 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:52,193 annstudy.coordinate INFO Winner 14/60 (46afd31d936840769ac9a704c203eade): 3 repeat builds + memory measurement
+2026-10-25 04:39:54,594 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:54,595 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:54,595 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:54,595 annstudy.coordinate INFO Winner 15/60 (4c039f1a13f84beab031f43e3dd918da): 3 repeat builds + memory measurement
+2026-10-25 04:39:55,706 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:55,706 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:55,706 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:55,706 annstudy.coordinate INFO Winner 16/60 (4e09be20e86c424f8438d7df7f72987e): 3 repeat builds + memory measurement
+2026-10-25 04:39:57,845 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:39:57,846 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:39:57,846 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:39:57,846 annstudy.coordinate INFO Winner 17/60 (5005f0c5afe84aae8ab276b8d2507e46): 3 repeat builds + memory measurement
+2026-10-25 04:40:00,591 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:00,592 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:00,592 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:00,592 annstudy.coordinate INFO Winner 18/60 (58a851fe70ae4bdcb3035c27fd159b20): 3 repeat builds + memory measurement
+2026-10-25 04:40:02,857 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:02,857 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:02,857 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:02,857 annstudy.coordinate INFO Winner 19/60 (58deea86ed6a41d4ae3581be22a3d852): 3 repeat builds + memory measurement
+2026-10-25 04:40:04,936 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:04,936 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:04,936 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:04,936 annstudy.coordinate INFO Winner 20/60 (5c108e2481e3409ca1dd30d3f61d70c5): 3 repeat builds + memory measurement
+2026-10-25 04:40:06,652 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:06,652 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:06,652 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:06,652 annstudy.coordinate INFO Winner 21/60 (5c33e764baae45c28993e64ede9fc608): 3 repeat builds + memory measurement
+2026-10-25 04:40:08,779 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:08,779 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:08,779 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:08,779 annstudy.coordinate INFO Winner 22/60 (5da51fd77e744391a3117bc67de13765): 3 repeat builds + memory measurement
+2026-10-25 04:40:09,377 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:09,378 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:09,378 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:09,378 annstudy.coordinate INFO Winner 23/60 (607d1fb492a541099ef265bde7c1ac8a): 3 repeat builds + memory measurement
+2026-10-25 04:40:11,977 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:11,978 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:11,978 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:11,978 annstudy.coordinate INFO Winner 24/60 (634a652cc8ab45df852ce03f0e921bb3): 3 repeat builds + memory measurement
+2026-10-25 04:40:12,837 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:12,837 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:12,837 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:12,837 annstudy.coordinate INFO Winner 25/60 (6856ada5e9a440f783ddeaec74252308): 3 repeat builds + memory measurement
+2026-10-25 04:40:14,250 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:14,250 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:14,250 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:14,250 annstudy.coordinate INFO Winner 26/60 (6ca3c9b002ce477ab0e18d19e3a04066): 3 repeat builds + memory measurement
+2026-10-25 04:40:17,647 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:17,647 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:17,647 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:17,647 annstudy.coordinate INFO Winner 27/60 (70e9c24a53834536a6957a9d2f7ccfb8): 3 repeat builds + memory measurement
+2026-10-25 04:40:20,579 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:20,579 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:20,579 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:20,579 annstudy.coordinate INFO Winner 28/60 (717c49646df54c84a8a58c08879384e9): 3 repeat builds + memory measurement
+2026-10-25 04:40:23,899 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:23,899 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:23,900 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:23,900 annstudy.coordinate INFO Winner 29/60 (753d3b1b1e674c87992cf006e8e975c5): 3 repeat builds + memory measurement
+2026-10-25 04:40:26,086 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:26,086 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:26,086 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:26,086 annstudy.coordinate INFO Winner 30/60 (7a04b8bcf33640b3b43ea721a8ac7e9f): 3 repeat builds + memory measurement
+2026-10-25 04:40:26,868 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:26,869 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:26,869 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:26,869 annstudy.coordinate INFO Winner 31/60 (823ec70c0421449e82ba9388eddee710): 3 repeat builds + memory measurement
+2026-10-25 04:40:28,422 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:28,422 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:28,422 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:28,422 annstudy.coordinate INFO Winner 32/60 (85fc80a5e8a64bfab43bd41660987de0): 3 repeat builds + memory measurement
+2026-10-25 04:40:29,981 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:29,981 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:29,981 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:29,981 annstudy.coordinate INFO Winner 33/60 (915309d776af4d5791a18f660d7c6a2e): 3 repeat builds + memory measurement
+2026-10-25 04:40:31,376 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:31,376 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:31,376 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:31,376 annstudy.coordinate INFO Winner 34/60 (96c1f0e15f0c4e88b2a4452c42e1ba0e): 3 repeat builds + memory measurement
+2026-10-25 04:40:32,731 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:32,731 annstudy.coordinate INFO Memory budget for this pool: 46.7 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:32,732 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:32,732 annstudy.coordinate INFO Winner 35/60 (99176495f9884d618b217a05953bd7d7): 3 repeat builds + memory measurement
+2026-10-25 04:40:34,269 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:34,269 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:34,269 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:34,269 annstudy.coordinate INFO Winner 36/60 (9fd7900654b048799cd62d335b5a2d3c): 3 repeat builds + memory measurement
+2026-10-25 04:40:36,453 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:36,453 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:36,454 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:36,454 annstudy.coordinate INFO Winner 37/60 (a1ee968ecc8e449e84d23e797487072e): 3 repeat builds + memory measurement
+2026-10-25 04:40:39,027 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:39,028 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:39,028 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:39,028 annstudy.coordinate INFO Winner 38/60 (a84e75f457fb45bf9775d98c5c0bf2f4): 3 repeat builds + memory measurement
+2026-10-25 04:40:41,692 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:41,692 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:41,692 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:41,692 annstudy.coordinate INFO Winner 39/60 (ad845549f3304003a410ccd483329ddc): 3 repeat builds + memory measurement
+2026-10-25 04:40:41,979 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:41,979 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:41,979 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:41,979 annstudy.coordinate INFO Winner 40/60 (b8ec251e9c164b8fa2c0e5012b280b4b): 3 repeat builds + memory measurement
+2026-10-25 04:40:43,538 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:43,538 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:43,538 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:43,538 annstudy.coordinate INFO Winner 41/60 (bd7dd6b1111a4cd8ace2574d944b3ac4): 3 repeat builds + memory measurement
+2026-10-25 04:40:45,615 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:45,615 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:45,615 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:45,615 annstudy.coordinate INFO Winner 42/60 (bf0268f2e0dc4b78bf1cb05958b2929d): 3 repeat builds + memory measurement
+2026-10-25 04:40:47,199 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:47,200 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:47,200 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:47,200 annstudy.coordinate INFO Winner 43/60 (bf12ad29d8004c40aada1cd7e6706fb7): 3 repeat builds + memory measurement
+2026-10-25 04:40:48,818 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:48,818 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:48,818 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:48,818 annstudy.coordinate INFO Winner 44/60 (cbff6084ec60429abf4510e10f7d2d36): 3 repeat builds + memory measurement
+2026-10-25 04:40:50,866 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:50,867 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:50,867 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:50,867 annstudy.coordinate INFO Winner 45/60 (cd03c73146e24fb7a62c46fc6887dd24): 3 repeat builds + memory measurement
+2026-10-25 04:40:53,044 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:53,044 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:53,044 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:53,044 annstudy.coordinate INFO Winner 46/60 (da0c636d41f040509d4379405929ddff): 3 repeat builds + memory measurement
+2026-10-25 04:40:55,711 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:55,712 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:55,712 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:55,712 annstudy.coordinate INFO Winner 47/60 (dac964deb9714e329e17413a570e153d): 3 repeat builds + memory measurement
+2026-10-25 04:40:58,181 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:58,181 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:58,181 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:58,181 annstudy.coordinate INFO Winner 48/60 (dbe6bfd9d9384337979089f7e2d12b99): 3 repeat builds + memory measurement
+2026-10-25 04:40:59,246 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:40:59,246 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:40:59,246 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:40:59,246 annstudy.coordinate INFO Winner 49/60 (ddfbe45ee1ae4f878bd8def135a5de26): 3 repeat builds + memory measurement
+2026-10-25 04:41:00,002 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:00,003 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:00,003 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:00,003 annstudy.coordinate INFO Winner 50/60 (df2b02c7fbb54e808cfc829fcd3da160): 3 repeat builds + memory measurement
+2026-10-25 04:41:01,691 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:01,691 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:01,691 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:01,691 annstudy.coordinate INFO Winner 51/60 (e31cfd0dc27648cc899047742d1e28d7): 3 repeat builds + memory measurement
+2026-10-25 04:41:02,590 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:02,591 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:02,591 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:02,591 annstudy.coordinate INFO Winner 52/60 (e4634bb271b642b6a53e877189ff1157): 3 repeat builds + memory measurement
+2026-10-25 04:41:05,242 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:05,242 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:05,242 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:05,242 annstudy.coordinate INFO Winner 53/60 (e5a8ed45cdca4ff88f291d4b137f0624): 3 repeat builds + memory measurement
+2026-10-25 04:41:08,077 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:08,077 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:08,077 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:08,077 annstudy.coordinate INFO Winner 54/60 (e82c59fbffa14194ac57a86c5a53cbf3): 3 repeat builds + memory measurement
+2026-10-25 04:41:09,980 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:09,981 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:09,981 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:09,981 annstudy.coordinate INFO Winner 55/60 (ebeaf47c98a245b78f5825048a352dda): 3 repeat builds + memory measurement
+2026-10-25 04:41:11,854 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:11,854 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:11,854 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:11,854 annstudy.coordinate INFO Winner 56/60 (ed0771ad8e3946bb976a57318eab2bbe): 3 repeat builds + memory measurement
+2026-10-25 04:41:14,235 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:14,235 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:14,235 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:14,235 annstudy.coordinate INFO Winner 57/60 (f4d3bdf462ed482ab3f806959d97d2d9): 3 repeat builds + memory measurement
+2026-10-25 04:41:16,204 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:16,204 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:16,204 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:16,204 annstudy.coordinate INFO Winner 58/60 (f7408cc1fdf9483683d215aa84e13667): 3 repeat builds + memory measurement
+2026-10-25 04:41:17,225 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:41:17,226 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:41:17,226 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:41:17,226 annstudy.coordinate INFO Winner 59/60 (f7f6dfba189345d998898c2de40032e1): 3 repeat builds + memory measurement
+2026-10-25 04:41:19,894 annstudy.coordinate INFO 3 specs enumerated; 1 already done; 2 to run.
+2026-10-25 04:41:19,894 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 12.8 GB
+2026-10-25 04:41:20,046 annstudy.coordinate INFO [core 0] start sweep flat N=1000000 D=1536 params={} threads=16 est=12.8GB committed=12.8GB queued=1
+2026-10-25 04:46:07,314 annstudy.coordinate INFO [core 0] done 7b643ba0bdde4acc953181385c0e9ea9 in 287.3s
+2026-10-25 04:46:07,320 annstudy.coordinate INFO [core 0] start sweep flat N=1000000 D=1536 params={} threads=16 est=12.8GB committed=12.8GB queued=0
+2026-10-25 04:50:01,149 annstudy.coordinate INFO [core 0] done 024f1e4c5c0a47de92bfcf948c2fddf1 in 233.8s
+2026-10-25 04:50:01,150 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:50:01,150 annstudy.coordinate INFO Winner 60/60 (fd2ed77954df41328c0082215adfd89c): 3 repeat builds + memory measurement
+2026-10-25 04:50:04,646 annstudy.coordinate INFO 3 specs enumerated; 3 already done; 0 to run.
+2026-10-25 04:50:04,647 annstudy.coordinate INFO Memory budget for this pool: 46.6 GB; largest spec needs 0.0 GB
+2026-10-25 04:50:04,647 annstudy.coordinate WARNING No serialized indexes available for the memory pass.
+2026-10-25 04:50:04,665 annstudy.coordinate INFO Recorded 60 selected winners in results/raw/selected.parquet
+2026-10-25 04:59:24,202 annstudy.tune INFO Sweep rows: kept 3254/3364 for hardware_id=1d3d9b66e7d3e1ac (dropped rows measured on other hosts)
+2026-10-25 04:59:24,321 annstudy.coordinate INFO Tuning winners saved: results/tuned/tuned_tuning.parquet (150 rows)
+2026-10-25 04:59:38,139 annstudy.coordinate INFO Retention backfill: rebuilding 4 index(es) a later stage needs (~7.7 GB to retain).
+2026-10-25 04:59:38,140 annstudy.coordinate INFO   retain 1/4: hnsw N=500000 D=384 {'M': 16, 'ef_construction': 200} -> data/indexes/stage_b/idx_6ca3c9b002ce477ab0e18d19e3a04066.faiss
+2026-10-25 04:59:38,140 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-25 04:59:38,140 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 2.0 GB
+2026-10-25 04:59:38,283 annstudy.coordinate INFO [core 0] start sweep hnsw N=500000 D=384 params={'M': 16, 'ef_construction': 200} threads=16 est=2.0GB committed=2.0GB queued=0
+2026-10-25 05:01:11,967 annstudy.coordinate INFO [core 0] done 6ca3c9b002ce477ab0e18d19e3a04066 in 93.7s
+2026-10-25 05:01:11,967 annstudy.coordinate INFO   retain 2/4: ivf_flat N=500000 D=384 {'nlist': 5657} -> data/indexes/stage_b/idx_1fab6f66e3bc40daa4158015adc1c1ba.faiss
+2026-10-25 05:01:11,967 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-25 05:01:11,968 annstudy.coordinate INFO Memory budget for this pool: 46.4 GB; largest spec needs 2.8 GB
+2026-10-25 05:01:11,969 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=500000 D=384 params={'nlist': 5657} threads=16 est=2.8GB committed=2.8GB queued=0
+2026-10-25 05:02:05,698 annstudy.coordinate INFO [core 0] done 1fab6f66e3bc40daa4158015adc1c1ba in 53.7s
+2026-10-25 05:02:05,698 annstudy.coordinate INFO   retain 3/4: hnsw N=500000 D=1536 {'M': 16, 'ef_construction': 200} -> data/indexes/stage_b/idx_a1ee968ecc8e449e84d23e797487072e.faiss
+2026-10-25 05:02:05,698 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-25 05:02:05,700 annstudy.coordinate INFO Memory budget for this pool: 46.1 GB; largest spec needs 6.6 GB
+2026-10-25 05:02:05,702 annstudy.coordinate INFO [core 0] start sweep hnsw N=500000 D=1536 params={'M': 16, 'ef_construction': 200} threads=16 est=6.6GB committed=6.6GB queued=0
+2026-10-25 05:06:01,116 annstudy.coordinate INFO [core 0] done a1ee968ecc8e449e84d23e797487072e in 235.4s
+2026-10-25 05:06:01,116 annstudy.coordinate INFO   retain 4/4: ivf_flat N=500000 D=1536 {'nlist': 2828} -> data/indexes/stage_b/idx_4c039f1a13f84beab031f43e3dd918da.faiss
+2026-10-25 05:06:01,116 annstudy.coordinate INFO 1 specs enumerated; 0 already done; 1 to run.
+2026-10-25 05:06:01,117 annstudy.coordinate INFO Memory budget for this pool: 46.3 GB; largest spec needs 9.7 GB
+2026-10-25 05:06:01,118 annstudy.coordinate INFO [core 0] start sweep ivf_flat N=500000 D=1536 params={'nlist': 2828} threads=16 est=9.7GB committed=9.7GB queued=0
+2026-10-25 05:07:25,469 annstudy.coordinate INFO [core 0] done 4c039f1a13f84beab031f43e3dd918da in 84.4s

@@ -7,6 +7,14 @@ build/
 .venv/
 venv/
 
+# Local toolchains / conda env (regenerable; large)
+.tools/
+.conda/
+
+# Runner subprocess logs
+logs/runner/
+logs/failures.jsonl
+
 # Data (too large for git)
 data/emb/
 data/gt/
@@ -16,17 +24,15 @@ data/*.npy
 data/*.json
 data/*.f32
 
-# Derived results (regenerable from raw)
-results/tuned/
-results/summary/
+# Derived results are committed for provenance (small; regenerable from raw)
 
-# Figures (regenerable)
-figures/*.png
-figures/*.pdf
-figures/*.svg
+# Figures are committed (small; regenerable via `make analysis`)
 
 # OS / IDE
 .DS_Store
 *.swp
 .idea/
 .vscode/
+.env
+data/*
+

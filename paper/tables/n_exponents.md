@@ -1,0 +1,11 @@
+| quantity      | index_type    |   median_exponent |   n_D |   N_lo |    N_hi |
+|:--------------|:--------------|------------------:|------:|-------:|--------:|
+| build_seconds | flat          |              0.93 |     4 | 100000 | 1000000 |
+| build_seconds | hnsw          |              1.05 |     4 | 100000 | 1000000 |
+| build_seconds | ivf_flat      |              1.91 |     4 | 100000 | 1000000 |
+| build_seconds | ivf_pq_refine |              0.88 |     3 | 100000 | 1000000 |
+| latency_us    | flat          |              1.02 |     4 | 100000 | 1000000 |
+| latency_us    | hnsw          |              0.23 |     4 | 100000 | 1000000 |
+| latency_us    | ivf_flat      |              0.35 |     4 | 100000 | 1000000 |
+| latency_us    | ivf_pq        |              0.42 |     4 | 100000 | 1000000 |
+| latency_us    | ivf_pq_refine |              0.44 |     4 | 100000 | 1000000 |
