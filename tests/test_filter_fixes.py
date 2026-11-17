@@ -224,3 +224,48 @@ def test_lower_ci_selection_is_stricter():
     lo = find_cheapest_setting(sweep, [0.95], selection="lower_ci").iloc[0]
     assert pt["ef_search"] == 32   # just clears R on the point estimate
     assert lo["ef_search"] == 64   # its CI does not, so the next setting is chosen
+
+
+# --------------------------------------------------------------- Stage E searcher
+
+def test_prefix_searcher_truncates_like_the_stored_prefix_and_reranks_exactly():
+    import faiss
+
+    from annstudy.tradeoff import PrefixSearcher
+
+    full = _vecs(2000, 32)
+    pre = full[:, :8] / np.linalg.norm(full[:, :8], axis=1, keepdims=True)
+    flat8 = faiss.IndexFlatL2(8)
+    flat8.add(pre)
+    q = _vecs(5, 32, seed=9)
+    # no store: identical to searching the stored prefix with the stored prefix query
+    s = PrefixSearcher(flat8, 8)
+    q8 = q[:, :8] / np.linalg.norm(q[:, :8], axis=1, keepdims=True)
+    assert np.array_equal(s.search(q, 10)[1], flat8.search(q8, 10)[1])
+    # fp32 re-rank over ALL candidates recovers the exact full-width top-10
+    s = PrefixSearcher(flat8, 8, store=full, store_kind="fp32", k_prime=2000)
+    flat32 = faiss.IndexFlatL2(32)
+    flat32.add(full)
+    assert np.array_equal(s.search(q, 10)[1], flat32.search(q, 10)[1])
+
+
+def test_tradeoff_pareto_and_winners(tmp_path):
+    import pandas as pd
+
+    from annstudy.analysis.tradeoff import analyse
+
+    rows = []
+    for arm, b, lat, ok in (("a", 600, 300, True), ("b", 1700, 200, True),
+                            ("c", 1800, 250, True), ("d", 400, 100, False)):
+        rows.append({"arm_id": arm, "family": "hnsw", "D_index": 1536, "store": "none",
+                     "R": 0.95, "reachable": True, "meets_R_on_test": ok,
+                     "bytes_per_vec_total": b, "bytes_per_vec_index": b, "lat_p95_us": lat,
+                     "lat_p95_ci_lo": lat, "lat_p95_ci_hi": lat, "recall_test": 0.96,
+                     "ef_search": 64, "k_prime": None})
+    p = tmp_path / "r.parquet"
+    pd.DataFrame(rows).to_parquet(p)
+    win = analyse(str(p), output_dir=str(tmp_path), figures_dir=str(tmp_path))
+    fr = pd.read_csv(tmp_path / "tradeoff_frontier.csv")
+    assert list(fr["arm_id"]) == ["a", "b"]          # c dominated by b; d missed R on test
+    w = win[(win["accounting"] == "total")].set_index("budget_bytes")["winner"]
+    assert w[512] == "none" and w[1024] == "a" and w[2048] == "b"

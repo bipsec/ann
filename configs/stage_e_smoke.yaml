@@ -1,0 +1,16 @@
+stage: E_SMOKE
+description: "Driver validation for stage_e_tradeoff.yaml at N=100K; not a result-producing config."
+N: 100_000
+index_dir: /tmp/annstudy_e_smoke/indexes
+graph: {M: 16, ef_construction: 100}
+arms:
+  - {family: hnsw,        D: [128, 1536]}
+  - {family: hnsw,        D: [128], stores: [fp32, sq8]}
+  - {family: hnsw_sq8,    D: [1536]}
+  - {family: hnsw_sq4,    D: [1536]}
+  - {family: hnsw_rabitq, D: [1536], stores: [none, sq8]}
+ef_search: [16, 64, 256]
+k_prime: [50, 200]
+recall_targets: [0.90, 0.95]
+k: 10
+measurement: {selection: lower_ci, latency_passes: 1, warmup_queries: 20}

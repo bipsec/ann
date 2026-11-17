@@ -73,6 +73,7 @@ def run_all(results_dir="results/raw") -> list[Step]:
         crossover_model,
         figures,
         filter_proxy,
+        tradeoff,
         rule,
         scaling,
         winners,
@@ -112,6 +113,9 @@ def run_all(results_dir="results/raw") -> list[Step]:
         _step("stage_reports.stage_C", _stage_c_report,
               requires=[Path(results_dir) / "filter_runs.parquet"]),
         _step("stage_reports.stage_D", _stage_d_report),
+        # Stage E (truncate vs quantize at matched bytes), once its runs exist.
+        _step("tradeoff.analyse", tradeoff.analyse,
+              requires=[Path(results_dir) / "tradeoff_runs.parquet"]),
     ]
 
     _write_findings(steps)

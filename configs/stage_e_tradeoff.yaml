@@ -1,0 +1,33 @@
+stage: E
+description: >
+  Truncate vs quantize vs truncate-then-rerank at matched bytes per vector (the proposed new
+  headline). Every arm is scored against exact top-10 at D=1536, so truncation loss counts.
+  One graph configuration for every arm, so the comparison is about the stored representation.
+  Byte-matched pairs (vector payload, excluding the ~D-independent graph links):
+    1536 B: hnsw fp32 @384  vs  hnsw_sq8 @1536
+     768 B: hnsw_sq8 @768   vs  hnsw_sq4 @1536
+     512 B: hnsw fp32 @128  (vs hnsw_sq4 @1536 at 768 B, the nearest)
+     384 B: hnsw_sq8 @384   vs  hnsw_sq4 @768
+  plus RaBitQ (~1 bit/dim) and re-ranking ("funnel") arms that add a 1536-d store.
+  Run on the measurement host:  make stage-e   (builds first, then pinned shards)
+
+N: 500_000
+index_dir: data/indexes/stage_e
+graph: {M: 32, ef_construction: 200}
+
+arms:
+  - {family: hnsw,        D: [128, 384, 768, 1536]}
+  - {family: hnsw,        D: [128, 384], stores: [fp32, sq8]}     # truncate-then-rerank
+  - {family: hnsw_sq8,    D: [384, 768, 1536]}
+  - {family: hnsw_sq4,    D: [768, 1536]}
+  - {family: hnsw_rabitq, D: [1536], stores: [none, sq8]}
+
+ef_search: [16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024]
+k_prime: [20, 50, 100, 200]
+recall_targets: [0.90, 0.95, 0.99]
+k: 10
+
+measurement:
+  selection: lower_ci
+  latency_passes: 3
+  warmup_queries: 200

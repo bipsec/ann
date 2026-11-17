@@ -8,7 +8,7 @@ PY ?= ./.venv/bin/python
 CORES ?= 0-15
 
 .PHONY: test hardware acceptance budget paper stage-reports stage-c-plan stage-a stage-b stage-c stage-c-smoke consolidate-filters stage-d \
-	analysis pilot clean-raw all
+	stage-e stage-c-h2 analysis pilot clean-raw all
 
 hardware:
 	$(PY) -m annstudy.hardware
@@ -58,6 +58,14 @@ stage-c-smoke:
 
 consolidate-filters:
 	$(PY) -m annstudy.filter_runner --consolidate
+
+# Stage E: truncate vs quantize vs truncate-then-rerank at matched bytes (scripts/stage_e.sh).
+stage-e:
+	./scripts/stage_e.sh
+
+# Confound-free H2 rerun of the filter crossover (scripts/stage_c_h2.sh).
+stage-c-h2:
+	./scripts/stage_c_h2.sh
 
 # Single-threaded, pinned latency (the original target set neither; see logs/decisions.md).
 STAGE_D_CORE ?= 2
