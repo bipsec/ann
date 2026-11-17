@@ -59,8 +59,11 @@ stage-c-smoke:
 consolidate-filters:
 	$(PY) -m annstudy.filter_runner --consolidate
 
+# Single-threaded, pinned latency (the original target set neither; see logs/decisions.md).
+STAGE_D_CORE ?= 2
 stage-d:
-	$(PY) -m annstudy.update_runner --config configs/stage_d.yaml
+	OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 taskset -c $(STAGE_D_CORE) \
+		$(PY) -m annstudy.update_runner --config configs/stage_d.yaml
 
 analysis:
 	$(PY) -m annstudy.analysis.run_all

@@ -493,7 +493,8 @@ def run_pool(
 
 # ------------------------------------------------------------------------ tune/report
 
-def run_tune(results_dir: str, recall_targets: list[float]) -> pd.DataFrame:
+def run_tune(results_dir: str, recall_targets: list[float],
+             selection: str = "point") -> pd.DataFrame:
     """Pick cheapest settings on TUNING queries. Saved to results/tuned/tuned_tuning.parquet.
 
     The authoritative results/tuned/tuned.parquet is written later by finalize_tuned,
@@ -502,7 +503,7 @@ def run_tune(results_dir: str, recall_targets: list[float]) -> pd.DataFrame:
     from annstudy.tune import find_cheapest_setting, load_sweep_results
     sweep_df = load_sweep_results(str(Path(results_dir) / "sweeps"),
                                   hardware_id=current_hardware_id())
-    tuned = find_cheapest_setting(sweep_df, recall_targets)
+    tuned = find_cheapest_setting(sweep_df, recall_targets, selection=selection)
     out_dir = Path("results/tuned")
     out_dir.mkdir(parents=True, exist_ok=True)
     tuned.to_parquet(out_dir / "tuned_tuning.parquet", index=False)
@@ -579,14 +580,15 @@ def run_test_remeasure(
     run_pool(specs, cores, results_dir=results_dir, keep_indexes=False, skip_done=False)
 
 
-def finalize_tuned(results_dir: str, recall_targets: list[float]) -> pd.DataFrame:
+def finalize_tuned(results_dir: str, recall_targets: list[float],
+                   selection: str = "point") -> pd.DataFrame:
     """Join tuning winners with their test-query re-measurement into results/tuned/tuned.parquet."""
     from annstudy.tune import find_cheapest_setting, load_sweep_results
 
     sweep_df = load_sweep_results(str(Path(results_dir) / "sweeps"),
                                   hardware_id=current_hardware_id())
     tuning_winners = find_cheapest_setting(
-        sweep_df[sweep_df["query_split"] == "tuning"], recall_targets,
+        sweep_df[sweep_df["query_split"] == "tuning"], recall_targets, selection=selection,
     )
     test_rows = sweep_df[sweep_df["query_split"] == "test"].copy()
     builds = _load_builds(results_dir)
@@ -1276,7 +1278,9 @@ def main():
     tuned = None
     if args.phase in ("tune", "repeats", "memory", "retain", "remeasure", "finalize",
                       "all"):
-        tuned = run_tune(args.results_dir, recall_targets)
+        # measurement.selection: "point" (original) or "lower_ci" (conservative; see tune.py)
+        selection = cfg.get("measurement", {}).get("selection", "point")
+        tuned = run_tune(args.results_dir, recall_targets, selection=selection)
 
     if args.phase in ("repeats", "all"):
         run_repeat_builds(cfg, tuned, args.results_dir, cores, stage,
@@ -1297,7 +1301,8 @@ def main():
     # "finalize" re-joins already-measured rows into results/tuned/tuned.parquet without
     # re-measuring anything, which is what you want after fixing a join or a derived column.
     if args.phase in ("remeasure", "finalize", "all"):
-        finalize_tuned(args.results_dir, recall_targets)
+        finalize_tuned(args.results_dir, recall_targets,
+                       selection=cfg.get("measurement", {}).get("selection", "point"))
 
     if args.phase in ("report", "all"):
         write_stage_report(stage, args.results_dir, cells=cfg.get("cells"))

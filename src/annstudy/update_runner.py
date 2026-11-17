@@ -95,7 +95,6 @@ def run_stage_d(config_path="configs/stage_d.yaml", results_dir="results/raw",
     tuning_pos, test_pos = _load_split_positions()
     tuning_queries = np.ascontiguousarray(np.array(all_q[tuning_pos]))
     test_queries = np.ascontiguousarray(np.array(all_q[test_pos]))
-    gt_dists_tuning = gt_dists[tuning_pos]
     gt_dists_test = gt_dists[test_pos]
     passages_arr = np.array(passages[:N])
     passages_initial = np.ascontiguousarray(passages_arr[:initial_n])
@@ -105,10 +104,21 @@ def run_stage_d(config_path="configs/stage_d.yaml", results_dir="results/raw",
     out_dir = Path(results_dir) / "update_runs"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # The pre-tune index holds only the first initial_n vectors, so it must be scored against
+    # ground truth over that prefix. Scoring it against full-corpus GT (as originally done)
+    # counted the 50K not-yet-inserted vectors as misses, under-estimated recall, and pushed the
+    # pre-tune to maximum effort (HNSW recall 0.9998, IVF nprobe=512) where drift cannot show.
+    import faiss
+
+    from annstudy.updates import prefix_ground_truth
+    _, gt_dists_tuning_prefix = prefix_ground_truth(
+        passages_arr, tuning_queries, initial_n, threads=gt_threads, query_set="tuning")
+    faiss.omp_set_num_threads(1)  # measured latency is single-threaded
+
     for index_type in index_types:
         search_param = pretune_search_param(
             index_type, build_fns[index_type], passages_initial,
-            tuning_queries, gt_dists_tuning, k, R)
+            tuning_queries, gt_dists_tuning_prefix, k, R)
 
         df = run_update_study(
             index_type=index_type, build_fn=build_fns[index_type], search_params=search_param,

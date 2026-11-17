@@ -750,7 +750,7 @@ def run_filter_job(
     """
     from annstudy.hardware import snapshot
     from annstudy.indexes import get_search_grid
-    from annstudy.metrics import bootstrap_latency_percentile, latency_stats
+    from annstudy.metrics import bootstrap_latency_percentile, bootstrap_recall, latency_stats
 
     N, D, k = job["N"], job["D"], job["k"]
     strategy, correlation, target_S = job["strategy"], job["correlation"], job["target_S"]
@@ -828,8 +828,9 @@ def run_filter_job(
     for sp in grid:
         rec, times, sizes, extra = run(tuning_queries, get_tun, gt_tun, sp)
         stats = latency_stats(times)
+        _, rec_lo, _ = bootstrap_recall(rec, n_resamples=min(n_resamples, 500))
         sweep.append({
-            "search_param": sp, "recall": float(np.mean(rec)),
+            "search_param": sp, "recall": float(np.mean(rec)), "recall_lo": float(rec_lo),
             "lat_p95_us": stats["lat_p95_us"], "measured_S": float(np.mean(sizes)) / N,
             "ndis_mean": float(np.mean(extra["ndis"])),
         })
@@ -872,7 +873,10 @@ def run_filter_job(
 
     # --- cheapest setting reaching each R, re-measured on the test queries
     for R in recall_targets:
-        ok = [s for s in sweep if s["recall"] >= R]
+        # measurement.selection = "lower_ci": the tuning recall's bootstrap lower bound must
+        # clear R, so fewer winners miss R on the held-out queries (see tune.meets_target).
+        key = "recall_lo" if measurement.get("selection") == "lower_ci" else "recall"
+        ok = [s for s in sweep if s[key] >= R]
         row = dict(base, R=float(R), **fixed)
         row["run_id"] = uuid.uuid4().hex
         if not ok:

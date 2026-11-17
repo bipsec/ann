@@ -36,9 +36,29 @@ def load_sweep_results(
     return df
 
 
+SELECTION_MODES = ("point", "lower_ci")
+
+
+def meets_target(df: pd.DataFrame, R: float, selection: str = "point") -> pd.Series:
+    """Rows whose tuning recall reaches R under the selection rule.
+
+    ``point`` (the original rule) compares the point estimate, which over-selects settings
+    that only just clear R on 2,000 tuning queries: 17-19 of ~50 winners then missed R on the
+    held-out queries. ``lower_ci`` requires the lower end of the tuning recall's bootstrap
+    interval to clear R, trading a little extra effort for winners that hold up on test.
+    """
+    if selection == "point":
+        return df["recall_mean"] >= R
+    if selection == "lower_ci":
+        lo = df["recall_ci_lo"] if "recall_ci_lo" in df.columns else df["recall_mean"]
+        return lo.fillna(df["recall_mean"]) >= R
+    raise ValueError(f"selection must be one of {SELECTION_MODES}, got {selection!r}")
+
+
 def find_cheapest_setting(
     sweep_df: pd.DataFrame,
     recall_targets: list[float] | None = None,
+    selection: str = "point",
 ) -> pd.DataFrame:
     """For each (cell, index_type, R), find the cheapest configuration reaching R.
 
@@ -62,9 +82,9 @@ def find_cheapest_setting(
     group_cols = ["index_type", "N", "D"]
     for group_key, group_df in tuning.groupby(group_cols):
         for R in recall_targets:
-            meets_target = group_df[group_df["recall_mean"] >= R]
+            ok = group_df[meets_target(group_df, R, selection)]
 
-            if meets_target.empty:
+            if ok.empty:
                 row = {
                     col: group_key[i] for i, col in enumerate(group_cols)
                 }
@@ -74,7 +94,7 @@ def find_cheapest_setting(
                 rows.append(row)
                 continue
 
-            cheapest = meets_target.loc[meets_target["lat_p95_us"].idxmin()]
+            cheapest = ok.loc[ok["lat_p95_us"].idxmin()]
 
             row = {
                 col: group_key[i] for i, col in enumerate(group_cols)
@@ -87,6 +107,7 @@ def find_cheapest_setting(
             row["nprobe"] = cheapest.get("nprobe")
             row["k_factor"] = cheapest.get("k_factor")
             row["recall_tuning"] = cheapest["recall_mean"]
+            row["selection"] = selection
             row["lat_p95_us_tuning"] = cheapest["lat_p95_us"]
             row["qps_tuning"] = cheapest.get("qps")
             rows.append(row)

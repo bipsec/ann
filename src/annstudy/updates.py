@@ -12,7 +12,8 @@ logger = logging.getLogger(__name__)
 
 
 def prefix_ground_truth(passages, queries, n_vectors: int, k: int = 100,
-                        cache_dir: str = "data/gt/prefix", threads: int = 0):
+                        cache_dir: str = "data/gt/prefix", threads: int = 0,
+                        query_set: str = "test"):
     """Exact top-k over ``passages[:n_vectors]`` only. Cached per (n_vectors, D).
 
     Needed because an index part-way through an insert run holds a PREFIX of the corpus.
@@ -26,7 +27,10 @@ def prefix_ground_truth(passages, queries, n_vectors: int, k: int = 100,
     import faiss
 
     D = passages.shape[1]
-    path = Path(cache_dir) / f"gt_prefix_N{n_vectors}_D{D}.npz"
+    # Existing caches are for the test queries; other query sets get their own file so the
+    # tuning and test sets do not overwrite each other's cache on every call.
+    suffix = "" if query_set == "test" else f"_{query_set}"
+    path = Path(cache_dir) / f"gt_prefix_N{n_vectors}_D{D}{suffix}.npz"
     if path.exists():
         try:
             z = np.load(path)
@@ -35,11 +39,15 @@ def prefix_ground_truth(passages, queries, n_vectors: int, k: int = 100,
         except Exception as e:
             logger.warning(f"Ignoring unreadable prefix GT {path} ({e}); recomputing.")
 
-    if threads:
-        faiss.omp_set_num_threads(threads)
-    flat = faiss.IndexFlatL2(D)
-    flat.add(np.ascontiguousarray(passages[:n_vectors]))
-    dists, ids = flat.search(np.ascontiguousarray(queries), k)
+    prev = faiss.omp_get_max_threads()  # GT may use all cores; never leak that into timing
+    try:
+        if threads:
+            faiss.omp_set_num_threads(threads)
+        flat = faiss.IndexFlatL2(D)
+        flat.add(np.ascontiguousarray(passages[:n_vectors]))
+        dists, ids = flat.search(np.ascontiguousarray(queries), k)
+    finally:
+        faiss.omp_set_num_threads(prev)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(".tmp.npz")
     np.savez(tmp, ids=ids, distances=dists)
@@ -155,7 +163,7 @@ def run_update_study(
         "inserts_per_second": 0.0,
         "recall_at_fixed_params": rebuild_recall,
         "recall_vs_full_corpus_gt": rebuild_recall_full,
-        "lat_p95_us": 0.0,
+        "lat_p95_us": float("nan"),  # not measured for the rebuild reference (was 0.0)
         "retrained": False,
         "rebuild_reference_recall": rebuild_recall,
     }

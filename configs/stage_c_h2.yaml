@@ -63,6 +63,7 @@ canary:
   n_queries: 1000
 
 measurement:
+  selection: lower_ci        # tuning-recall lower CI bound must clear R (fewer test misses)
   latency_passes: 3
   warmup_queries: 200
   bootstrap_resamples: 1000

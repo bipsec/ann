@@ -205,3 +205,22 @@ def test_hnsw_repeat_builds_differ_and_seed0_is_default():
     assert blob(0) == default          # seed 0 reproduces every pre-existing index
     assert blob(1) != default          # repeats are genuinely different graphs
     assert blob(1) != blob(2)
+
+
+# ------------------------------------------------------------ conservative selection
+
+def test_lower_ci_selection_is_stricter():
+    import pandas as pd
+
+    from annstudy.tune import find_cheapest_setting
+
+    sweep = pd.DataFrame({
+        "query_split": "tuning", "index_type": "hnsw", "N": 1, "D": 1, "k": 10,
+        "build_run_id": "b", "ef_search": [32, 64], "nprobe": None, "k_factor": None,
+        "recall_mean": [0.951, 0.97], "recall_ci_lo": [0.946, 0.965],
+        "lat_p95_us": [100.0, 150.0], "qps": None,
+    })
+    pt = find_cheapest_setting(sweep, [0.95], selection="point").iloc[0]
+    lo = find_cheapest_setting(sweep, [0.95], selection="lower_ci").iloc[0]
+    assert pt["ef_search"] == 32   # just clears R on the point estimate
+    assert lo["ef_search"] == 64   # its CI does not, so the next setting is chosen
