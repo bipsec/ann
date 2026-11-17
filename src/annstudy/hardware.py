@@ -128,3 +128,33 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def data_host_line() -> str:
+    """Report provenance line naming the host the DATA came from, not the generating machine.
+
+    Reports used to print ``snapshot()`` — whichever machine ran the generator — as "Hardware
+    id", so regenerating on another box relabelled VM measurements as that box's. The data host
+    is the analysis-scoped id (``ANNSTUDY_ANALYSIS_HARDWARE_ID`` or this host), described from
+    ``results/hardware.json`` when that file is for the same host.
+    """
+    import json
+    from pathlib import Path
+
+    from annstudy.coordinate import current_hardware_id
+
+    data_id = current_hardware_id()
+    here = snapshot()
+    desc = None
+    p = Path("results/hardware.json")
+    if p.exists():
+        rec = json.loads(p.read_text())
+        if rec.get("hardware_id") == data_id:
+            desc = (f"{rec.get('cpu_model')}, {rec.get('physical_cores')} cores, "
+                    f"{rec.get('ram_total_gb')} GB")
+    if desc is None and here["hardware_id"] == data_id:
+        desc = f"{here['cpu_model']}, {here['physical_cores']} cores, {here['ram_total_gb']} GB"
+    line = f"- Data hardware id: `{data_id}`" + (f" ({desc})" if desc else "")
+    if here["hardware_id"] != data_id:
+        line += f"\n- Generated on: `{here['hardware_id']}` ({here['cpu_model']}; not the data host)"
+    return line

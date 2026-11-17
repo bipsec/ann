@@ -68,7 +68,15 @@ def _stage_d_report():
 
 
 def run_all(results_dir="results/raw") -> list[Step]:
-    from annstudy.analysis import crossover, figures, filter_proxy, rule, scaling, winners
+    from annstudy.analysis import (
+        crossover,
+        crossover_model,
+        figures,
+        filter_proxy,
+        rule,
+        scaling,
+        winners,
+    )
     from annstudy.filter_runner import consolidate_filter_runs
 
     SUMMARY.mkdir(parents=True, exist_ok=True)
@@ -83,6 +91,12 @@ def run_all(results_dir="results/raw") -> list[Step]:
         _step("scaling.fit_scaling_model", scaling.fit_scaling_model, requires=tuned_any),
         _step("consolidate_filter_runs", lambda: consolidate_filter_runs(results_dir)),
         _step("crossover.estimate_crossover", crossover.estimate_crossover,
+              requires=[filter_runs]),
+        _step("crossover_model.model_table", crossover_model.model_table,
+              requires=[filter_runs, SUMMARY / "crossover_h2.csv"]),
+        # The confound-free H2 campaign (stage_c_h2.yaml, timing protocol v2), kept separate.
+        _step("crossover.estimate_crossover[h2run]",
+              lambda: crossover.estimate_crossover(protocol="v2", tag="_h2run"),
               requires=[filter_runs]),
         _step("rule.fit_decision_rule", rule.fit_decision_rule,
               requires=[SUMMARY / "winners.csv"]),
@@ -316,14 +330,36 @@ def _crossover_verdicts() -> dict[str, tuple[str, str]]:
     if h2_path.exists():
         h2 = pd.read_csv(h2_path)
         if not h2.empty:
-            disjoint = int(h2["intervals_disjoint"].fillna(False).sum())
-            moved = int((h2["ratio_high_over_low"].fillna(1.0) != 1.0).sum())
-            detail = (f"{len(h2)} D-pairs compared; S* differs in {moved}, "
-                      f"with non-overlapping intervals in {disjoint}; "
-                      f"median ratio S*(D_high)/S*(D_low) = "
-                      f"{h2['ratio_high_over_low'].median():.3g}")
-            out["H2"] = ("supported" if disjoint > 0 else
-                         ("inconclusive" if moved > 0 else "not supported"), detail)
+            if "verdict" in h2.columns:
+                # Revised method (2026-11-16): per-pair verdict from the ratio's bootstrap
+                # distribution INCLUDING build and session-drift uncertainty, with a TOST
+                # equivalence margin. "8/8 disjoint query-only intervals" is not evidence.
+                n = h2["verdict"].value_counts()
+                by_index = "; ".join(
+                    f"{it}: " + ", ".join(f"{v}={c}" for v, c in
+                                          g["verdict"].value_counts().items())
+                    + f" (median ratio {g['ratio_high_over_low'].median():.2f})"
+                    for it, g in h2.groupby("index_type"))
+                detail = (f"{len(h2)} D-pairs; {by_index}. Caveat: the original Stage C "
+                          f"confounds D with session/load and uses per-D clusterings; the "
+                          f"confound-free rerun is configs/stage_c_h2.yaml")
+                shift, equiv = int(n.get("shift", 0)), int(n.get("equivalent", 0))
+                if shift and not equiv and shift == len(h2):
+                    status = "supported"
+                elif equiv == len(h2):
+                    status = "not supported"
+                else:
+                    status = "mixed (index-dependent)" if shift else "inconclusive"
+                out["H2"] = (status, detail)
+            else:
+                disjoint = int(h2["intervals_disjoint"].fillna(False).sum())
+                moved = int((h2["ratio_high_over_low"].fillna(1.0) != 1.0).sum())
+                detail = (f"{len(h2)} D-pairs compared; S* differs in {moved}, "
+                          f"with non-overlapping intervals in {disjoint}; "
+                          f"median ratio S*(D_high)/S*(D_low) = "
+                          f"{h2['ratio_high_over_low'].median():.3g}")
+                out["H2"] = ("supported" if disjoint > 0 else
+                             ("inconclusive" if moved > 0 else "not supported"), detail)
     if "H2" not in out:
         if found["D"].nunique() >= 2:
             spread = found.groupby("D")["crossover_S"].median()

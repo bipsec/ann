@@ -1262,7 +1262,7 @@ def _group_by_cell(jobs: list[dict]):
 def consolidate_filter_runs(results_dir="results/raw"):
     """Concatenate per-job filter_runs parquet into results/raw/filter_runs.parquet (M5)."""
     jobs_dir = Path(results_dir) / "filter_runs"
-    files = list(jobs_dir.glob("filter_*.parquet"))
+    files = sorted(jobs_dir.glob("filter_*.parquet"))  # sorted: deterministic row order
     if not files:
         logger.warning(f"No filter_runs files in {jobs_dir}")
         return None

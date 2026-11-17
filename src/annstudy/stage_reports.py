@@ -29,8 +29,8 @@ def _provenance(lines: list[str], source: str) -> None:
     lines.append("## Provenance\n")
     lines.append(f"- Date: {datetime.now(UTC).isoformat(timespec='seconds')}")
     lines.append(f"- Git commit: `{hw['git_commit']}`")
-    lines.append(f"- Hardware id: `{hw['hardware_id']}` ({hw['cpu_model']}, "
-                 f"{hw['physical_cores']} cores, {hw['ram_total_gb']} GB)")
+    from annstudy.hardware import data_host_line
+    lines.append(data_host_line())
     lines.append(f"- Source: `{source}`\n")
 
 

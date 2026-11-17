@@ -2,9 +2,10 @@
 
 ## Provenance
 
-- Date: 2026-11-05T01:52:00+00:00
-- Git commit: `fb49bad79afa291bc645e94b8e655c0428581d6c-dirty`
-- Hardware id: `1d3d9b66e7d3e1ac` (AMD EPYC-Milan Processor, 16 cores, 58.8 GB)
+- Date: 2026-11-17T00:12:04+00:00
+- Git commit: `1980cef6a1d63ed03322b38ca8ba5fa388306854-dirty`
+- Data hardware id: `1d3d9b66e7d3e1ac` (AMD EPYC-Milan Processor, 16 cores, 58.8 GB)
+- Generated on: `5a5f956b01cd41d6` (aarch64; not the data host)
 - Source: `results/raw/update_runs`
 
 33 rows across 3 index types (hnsw, ivf_flat, ivf_pq) at N=500,000.

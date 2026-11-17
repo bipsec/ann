@@ -93,6 +93,7 @@ def compute_filter_proxy(
     mode: str = "online",
     probe_ef: int = 64,
     output_dir: str | Path = SUMMARY,
+    allow_fallback: bool = False,
 ) -> pd.DataFrame:
     """Correlation proxy per (N, D, correlation, target_S) that Stage C measured.
 
@@ -122,9 +123,23 @@ def compute_filter_proxy(
             if not pick.empty:
                 base_index[(int(N), int(D))] = str(pick["base_index_path"].iloc[0])
 
+    # The base indexes live on the measurement host. Elsewhere the probe cannot run, and
+    # silently falling back to the idealized GT proxy would overwrite the committed online
+    # proxy (and the strategy-rule results built on it) with a different quantity.
+    if mode == "online" and not allow_fallback:
+        missing = sorted({p for p in base_index.values() if not Path(p).exists()})
+        if missing:
+            raise FileNotFoundError(
+                f"{len(missing)} probe base index(es) are not on this host (e.g. {missing[0]}); "
+                f"refusing to replace the online proxy with the idealized fallback. Run on the "
+                f"measurement host, or pass allow_fallback=True / --mode idealized explicitly.")
+
     with open(stage_c_config) as f:
         cfg = yaml.safe_load(f)
     filters_cfg = cfg["filters"]
+    # Test masks were generated with seed corr_seed + 100_000 (filter_runner.run_filter_job);
+    # the proxy used the default seed, so its negative-correlation masks were different draws.
+    test_seed = int(filters_cfg.get("correlated", {}).get("seed", 42)) + 100_000
 
     split = load_query_split("data/query_split.json")
     n_tune = len(split["tuning"])
@@ -157,7 +172,7 @@ def compute_filter_proxy(
         for n2, d2, corr, S in cells:
             if int(n2) != N or int(d2) != D:
                 continue
-            mask_fn = make_mask_fn(prep, corr, float(S), test_q)
+            mask_fn = make_mask_fn(prep, corr, float(S), test_q, seed=test_seed)
             lhr, meas_S = proxy_for_cell(neigh, mask_fn, N, m=m)
             rows.append({
                 "N": N, "D": D, "correlation": corr, "target_S": float(S), "m": m,

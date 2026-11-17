@@ -240,11 +240,23 @@ def _expected_index_bytes(spec: dict) -> int:
     return N * D * 4  # flat / hnsw / ivf_flat keep full vectors
 
 
+ANALYSIS_HOST_ENV = "ANNSTUDY_ANALYSIS_HARDWARE_ID"
+
+
 @lru_cache(maxsize=1)
 def current_hardware_id() -> str:
-    """This host's hardware id, cached (the snapshot shells out to git and psutil)."""
+    """The hardware id that host-scoped reads (tuning, winners, paper) select rows by.
+
+    Normally this host's id. ``ANNSTUDY_ANALYSIS_HARDWARE_ID`` overrides it so the analysis and
+    paper for the study host can be regenerated from another machine (e.g. a laptop or the
+    aarch64 box) instead of silently scoping to that machine's — empty — rows. Measurement rows
+    are always stamped with the real host id by ``hardware.snapshot()``; never set this while
+    measuring.
+    """
+    import os
+
     from annstudy.hardware import snapshot
-    return snapshot()["hardware_id"]
+    return os.environ.get(ANALYSIS_HOST_ENV) or snapshot()["hardware_id"]
 
 
 def _expected_train_bytes(spec: dict) -> int:
@@ -1132,8 +1144,8 @@ def write_stage_report(stage: str, results_dir: str = "results/raw", cells: dict
     lines.append("## Provenance\n")
     lines.append(f"- Date: {datetime.now(UTC).isoformat()}")
     lines.append(f"- Git commit: `{hw['git_commit']}`")
-    lines.append(f"- Hardware id: `{hw['hardware_id']}` ({hw['cpu_model']}, "
-                 f"{hw['physical_cores']} cores, {hw['ram_total_gb']} GB)")
+    from annstudy.hardware import data_host_line
+    lines.append(data_host_line())
     lines.append(f"- Source files: `{results_dir}/builds`, `{results_dir}/sweeps`, `{tuned_path}`\n")
 
     if not builds.empty:
