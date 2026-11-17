@@ -1,5 +1,22 @@
 # Remaining work — what is left to do
 
+> **Status update 2026-11-16 (post-study audit; see `logs/decisions.md` for every item).**
+> Done locally and committed on branch `study-complete`: repo moved to root and committed;
+> Stage C measurement bugs fixed (cache keys, empty masks, timed region, thread leak, shared
+> clustering, interleaving, canary, ndis counters); HNSW repeat builds now seeded (they were
+> byte-identical); crossover re-analysed (H2: HNSW shift 4/4, IVF inconclusive 3/3) with a cost
+> model predicting the direction in 6/7; scaling exponents with CIs (C1 done); Stage D pre-tune
+> bug fixed; conservative lower-CI selection added; new Stage E (truncate vs quantize) built and
+> smoke-tested; paper H2 text corrected. **Needs the VM (and your OK for > 2 h):**
+> 1. `git pull` the branch on the VM, `uv sync --extra dev --extra hnswlib`, `make test`.
+> 2. `make stage-e` (~1-1.5 h) and `make stage-c-h2` (~5-7 h; `CORES` = 8 cores).
+> 3. `make analysis && make paper && python -m annstudy.paper --check-only`.
+> 4. Re-run `make analysis` on the VM once anyway: `filter_proxy` (seed fix) only runs where
+>    the Stage B base indexes live.
+> Items below marked B1/B2/E2-E4/D1-D3 are unchanged; A1/A2/E1/F1-F3 are superseded by the
+> git-based workflow above.
+
+
 _Standalone checklist to conduct and consolidate later. Companion: [`FEEDBACK.md`](FEEDBACK.md)
 (results + what went wrong). Status legend: ☐ not started · ◐ partial · ✅ done this pass._
 _All measured work runs on the Linux VM (`hardware_id 1d3d9b66e7d3e1ac`); the generator must NOT be

@@ -588,10 +588,18 @@ def enumerate_filter_jobs(cfg: dict) -> list[dict]:
                         # enumerated once per cell rather than once per index type.
                         if strategy == "pre_filter_exact" and index_type != index_types[0]:
                             continue
+                        # The exact scan's cost grows linearly in S and is irrelevant far above
+                        # the crossover (an S=1 exact job at N=500K/D=1536 took ~3 h in Stage
+                        # C); ``exact_max_S`` caps it. It also does not use an index, so build
+                        # repeats are meaningless for it: one measurement per predicate.
+                        if (strategy == "pre_filter_exact" and cfg.get("exact_max_S") is not None
+                                and target_S > float(cfg["exact_max_S"])):
+                            continue
+                        reps = repeats[:1] if strategy == "pre_filter_exact" else repeats
                         safeties = (safety_factors if strategy == "post_filter_overfetch"
                                     else [None])
                         for safety in safeties:
-                            for rep_id in repeats:
+                            for rep_id in reps:
                                 job = {
                                     "N": int(N), "D": int(D),
                                     "index_type": ("exact" if strategy == "pre_filter_exact"

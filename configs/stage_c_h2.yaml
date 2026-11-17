@@ -51,6 +51,10 @@ negative_check:
   selectivities: [0.01]
 exhaustive_nprobe_for_negative: true
 
+# Exact scans above this S are far beyond every observed crossover and dominate runtime
+# (linear in S); in-index search still runs at S=1.0 for the "matches unfiltered" check.
+exact_max_S: 0.05
+
 recall_targets: [0.95, 0.99]
 k: 10
 
