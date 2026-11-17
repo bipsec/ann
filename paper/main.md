@@ -2,13 +2,13 @@
 
 **Draft — all four measurement stages complete:** Stage A (dimension), Stage B (scale), Stage C (filtering) and Stage D (updates), on top of Phase 1 data and a validated harness. Remaining gaps are stated explicitly in section 8 rather than estimated.
 
-_Generated 2026-11-05T01:52:17+00:00 by `annstudy-paper` from files under `results/`. Every number below is rendered from a result file; none are entered by hand. Regenerate with `make paper`._
+_Generated 2026-11-17T00:17:09+00:00 by `annstudy-paper` from files under `results/`. Every number below is rendered from a result file; none are entered by hand. Regenerate with `make paper`._
 
 ## Abstract
 
 Choosing an approximate nearest neighbour (ANN) index is usually posed as a recall-versus-throughput trade-off on a fixed dataset. We instead fix the requirement — recall@10 at least R — and ask which index, and which filtering strategy, is cheapest subject to it as the workload varies in corpus size N, embedding dimension D (obtained by truncating one Matryoshka embedding to 128, 384, 768, 1536 dimensions, so D is not confounded with the dataset), and filter selectivity S.
 
-The headline is on the filter axis, as measured on this grid. The selectivity S* at which in-index filtered search and exact scan of the filtered subset swap places **moves with dimension** — disjoint bootstrap intervals in 8 of 8 D-pairs, shifting to lower S as D rises (median ratio 0.76) — and it shifts about 8x more with query-filter correlation. Under anti-correlated predicates, approximate search at the swept effort does not reach recall@10 >= 0.90 anywhere in the grid, while exact scan of the subset always does.
+On the filter axis, the selectivity S* at which in-index filtered search and exact scan of the filtered subset swap places moves with dimension **in an index-dependent direction**. For HNSW it falls as D rises (median S*(D_high)/S*(D_low) = 0.65; the 95% interval excludes 1 in 4 of 4 pairs even allowing for session drift); for IVF-Flat no shift is resolved (3 pairs, median ratio 1.21). A first-order cost model that uses only each index's *unfiltered* latency-vs-D exponent predicts the direction in 6 of 7 pairs: a graph search pays far less per added dimension than a scan, an inverted-list scan does not. These filter results come from a campaign whose design confounds D with session load, so they are provisional pending a confound-free rerun (section 8). S* shifts about 4x with query-filter correlation, more than with D. Under anti-correlated predicates, HNSW filtered search reaches no recall target at any swept effort.
 
 Two negatives follow. Product quantization alone never reaches R=0.90 (ceiling 0.888 at 16x compression; exact re-ranking lifts it to 0.999), so none of the five conventional families meets a sub-raw memory budget at these targets — though a scalar-quantized graph index, added as a follow-up probe, reaches 0.27-0.35x raw while holding recall, and is faster than uncompressed HNSW below R=0.99. Unfiltered, HNSW is the cheapest index at every D and R (58-398x over exact scan at R=0.95; p95 latency grows only 1.6x from D=128 to D=1536), and inserting 11% more vectors costs almost no recall though HNSW ingests ~37x slower than IVF. Absolute latency drifts ~1.1x between sessions, so every comparison is drawn within a campaign and keyed to a hardware identity.
 
@@ -20,11 +20,11 @@ This study inverts the framing. For each workload cell (N, D, S, R, memory budge
 
 **Contributions**, ordered as the paper presents them.
 
-1. The filter-selectivity crossover S* measured as a function of dimension — the gap the survey identified — shifting to lower selectivity as D grows, against the D-independent crossover predicted by prior work.
-2. The finding that approximate filtered search fails outright under anti-correlated predicates, where only exact scan of the subset reaches the recall target.
+1. The filter-selectivity crossover S* measured across dimension on one corpus, with a first-order cost model that predicts the direction of its shift from unfiltered measurements alone: down with D for a graph index, roughly flat for an inverted-list index (provisional; section 5.7 states the confounds).
+2. A confirmation, on modern text embeddings and within one recall-constrained protocol, that anti-correlated predicates defeat filtered graph search at any swept effort, while exact scan of the subset always succeeds (the IVF sweep stops short of an exhaustive scan; section 5.8).
 3. A measured product-quantization recall ceiling on modern text embeddings — which rises with D rather than falling as the proposal predicted — and the finding that the sub-raw memory regime is unreachable for the five conventional families yet IS reached by scalar quantization, at 0.27-0.35x raw with no recall loss (section 5.3b).
 4. A recall-constrained cost surface over D at fixed N and corpus (unfiltered, HNSW is cheapest throughout), with empirically fitted N-scaling exponents, every figure measured on queries never used for parameter selection.
-5. A test of whether a small rule over query-time inputs plus a correlation proxy can pick the filter strategy — it does not beat a one-line selectivity switch, a useful negative, a reproducible resumable harness, and a measurement-validity account of between-session latency drift.
+5. A negative result: a small rule over query-time inputs plus a correlation proxy does not pick the filter strategy better than a one-line selectivity switch; plus a reproducible, resumable harness and a measurement-validity account of between-session latency drift.
 
 ## 2. Related work
 
@@ -34,7 +34,7 @@ Standard benchmarks — ANN-Benchmarks (Aumüller et al., 2020) and the more rec
 
 On filtering, the closest work to our intended headline is *Filtered ANN as a Phase Transition* (Mandarapu & Kunkunuru, 2026), which models the selectivity crossover between strategies as a phase boundary — but on SIFT1M at a fixed 128 dimensions, with D absent from the resulting formulas. Amanbayev et al. (2026) report that IVF-Flat beats HNSW at low selectivity on 768-d text embeddings, again at a single D. ACORN (Patel et al., 2024) and the arxiv-for-fanns benchmark (Iff et al., 2025) broaden filtered-ANN method coverage without isolating dimension. VADER (Chatzakis et al., 2026) shares our recall-as-a-constraint framing for filtered search, without the dimension axis. Two results inform how we read the dimension axis itself: Munyampirwa et al. (2024) show the HNSW hierarchy is largely redundant in high dimension (hub nodes carry navigation), and Herman (2026) predicts ANN recall from embedding statistics — both bear on why graph cost and the PQ ceiling move with D as they do.
 
-Our Phase 0 survey of 13 papers found none that measures how the filter-selectivity crossover moves with dimension on a single corpus; that gap motivated the study and was recorded as a gate decision before any measurement began ([`logs/gate_reports/gate_0.md`](../logs/gate_reports/gate_0.md)).
+Matryoshka embeddings have been used for ANN search before: the MRL paper itself evaluates adaptive (coarse-to-fine) retrieval, and AdANNS (Rege et al., 2023) builds IVF and OPQ indexes over different Matryoshka prefix widths. Neither asks which index is cheapest under a recall constraint, nor how filtering interacts with D. Our Phase 0 survey of 13 papers found none that measures how the filter-selectivity crossover moves with dimension on a single corpus ([`logs/gate_reports/gate_0.md`](../logs/gate_reports/gate_0.md)); the survey was keyword-driven and is a statement about what we found, not proof of absence.
 
 ## 3. Study design
 
@@ -61,7 +61,7 @@ Ambient D rises 12x from 128 to 1536 while estimated intrinsic dimension moves o
 
 Five index families, all FAISS: exact Flat; HNSW (M in {16, 32, 64}, efConstruction 200); IVF-Flat (nlist = c*sqrt(N), c in {2, 4, 8}); IVF-PQ (same nlist values, m in {D/16, D/8, D/4}, 8 bits per subquantizer); and IVF-PQ wrapped in exact re-ranking (IndexRefineFlat, k_factor in {4, 16}), reported separately because it retains full vectors and therefore has a completely different memory profile. Search effort is swept over efSearch in {16...1024} for HNSW and nprobe in {1...512} for IVF, capped at nlist.
 
-This gives 52 (cell, index) combinations per recall target and, at N=500,000, 426 recorded builds and 3,442 search-sweep rows in total across all cells.
+This gives 52 (cell, index) combinations per recall target and, at N=500,000, 441 recorded builds and 3,730 search-sweep rows in total across all cells.
 
 ### 3.4 Recall-constrained selection
 
@@ -295,34 +295,53 @@ These are measurements, and they differ from the values complexity arguments wou
 
 We report these as descriptive fits over three corpus sizes, not as scaling laws: three points constrain a power law only weakly. Their immediate use was operational — they corrected our own compute projection for later stages, which had assumed the theoretical values and was wrong in both directions.
 
-Full log-log fits `log y = a + b log N + c log D + d (log N)(log D)`. The D-exponent **c** is the quantity H1c refers to; it varies markedly across index types (no bootstrap CI columns yet — see limitations):
+How recall-constrained p95 latency scales with dimension at fixed corpus size: the exponent of D from a log-log fit across the four truncations, with a 95% bootstrap interval (query sampling and build variance; between-session drift is not in these intervals, so differences below ~0.1 are not meaningful). This exponent is the quantity H1c refers to, and it is also the input to the crossover model of section 5.7:
 
-| index_type    |    R | metric      |          a |         b |         c |            d |   n_points |
-|:--------------|-----:|:------------|-----------:|----------:|----------:|-------------:|-----------:|
-| flat          | 0.9  | p95_latency | -11.7211   |  1.29757  |  1.59502  | -0.0490919   |         10 |
-| flat          | 0.9  | build_time  | -14.2249   |  0.56879  |  0.215864 |  0.0662411   |         10 |
-| flat          | 0.95 | p95_latency | -11.7211   |  1.29757  |  1.59502  | -0.0490919   |         10 |
-| flat          | 0.95 | build_time  | -14.2249   |  0.56879  |  0.215864 |  0.0662411   |         10 |
-| flat          | 0.99 | p95_latency | -11.7211   |  1.29757  |  1.59502  | -0.0490919   |         10 |
-| flat          | 0.99 | build_time  | -14.2249   |  0.56879  |  0.215864 |  0.0662411   |         10 |
-| hnsw          | 0.9  | p95_latency |   2.4543   |  0.111241 |  0.274004 | -0.000595986 |         10 |
-| hnsw          | 0.9  | build_time  | -31.2694   |  2.34128  |  3.65187  | -0.217469    |         10 |
-| hnsw          | 0.95 | p95_latency |  -0.652332 |  0.382865 |  0.874435 | -0.0475958   |         10 |
-| hnsw          | 0.95 | build_time  | -37.1826   |  2.86578  |  4.50923  | -0.29356     |         10 |
-| hnsw          | 0.99 | p95_latency |  -3.90162  |  0.732217 |  1.34005  | -0.0879479   |         10 |
-| hnsw          | 0.99 | build_time  | -36.2811   |  2.77283  |  4.12615  | -0.258195    |         10 |
-| ivf_flat      | 0.9  | p95_latency |   2.98602  | -0.179093 | -0.160174 |  0.0918386   |         10 |
-| ivf_flat      | 0.9  | build_time  | -60.4987   |  4.80123  |  6.79707  | -0.503904    |         10 |
-| ivf_flat      | 0.95 | p95_latency |  -7.60295  |  0.745242 |  1.51728  | -0.0452511   |         10 |
-| ivf_flat      | 0.95 | build_time  | -44.954    |  3.40455  |  4.22604  | -0.272047    |         10 |
-| ivf_flat      | 0.99 | p95_latency |  13.4294   | -0.882314 | -1.75087  |  0.224402    |         10 |
-| ivf_flat      | 0.99 | build_time  | -71.4145   |  5.69499  |  8.74023  | -0.662877    |         10 |
-| ivf_pq_refine | 0.9  | p95_latency |  -3.21917  |  0.398963 |  0.881332 | -0.0113714   |          9 |
-| ivf_pq_refine | 0.9  | build_time  |  -6.79136  |  0.301097 |  0.11909  |  0.0642285   |          9 |
-| ivf_pq_refine | 0.95 | p95_latency |  -9.7235   |  0.919704 |  1.976    | -0.0892904   |          9 |
-| ivf_pq_refine | 0.95 | build_time  |  -3.6397   |  0.154729 | -0.710484 |  0.117105    |          9 |
-| ivf_pq_refine | 0.99 | p95_latency | -19.2574   |  1.77274  |  3.22974  | -0.184584    |          8 |
-| ivf_pq_refine | 0.99 | build_time  | -29.8507   |  2.19536  |  3.00661  | -0.169925    |          8 |
+| index_type   |    R |      N |   exponent |   ci95_lo |   ci95_hi |   n_points | levels           |
+|:-------------|-----:|-------:|-----------:|----------:|----------:|-----------:|:-----------------|
+| flat         | 0.9  | 100000 |   1.02609  |  1.0252   |  1.027    |          4 | 128,384,768,1536 |
+| flat         | 0.9  | 500000 |   0.963236 |  0.962699 |  0.963747 |          4 | 128,384,768,1536 |
+| flat         | 0.95 | 100000 |   1.02609  |  1.02519  |  1.02701  |          4 | 128,384,768,1536 |
+| flat         | 0.95 | 500000 |   0.963236 |  0.962676 |  0.963788 |          4 | 128,384,768,1536 |
+| flat         | 0.99 | 100000 |   1.02609  |  1.02514  |  1.02703  |          4 | 128,384,768,1536 |
+| flat         | 0.99 | 500000 |   0.963236 |  0.962698 |  0.963753 |          4 | 128,384,768,1536 |
+| hnsw         | 0.9  | 500000 |   0.322409 |  0.310511 |  0.334705 |          3 | 384,768,1536     |
+| hnsw         | 0.95 | 100000 |   0.341059 |  0.337481 |  0.344694 |          4 | 128,384,768,1536 |
+| hnsw         | 0.95 | 500000 |   0.201395 |  0.196134 |  0.20606  |          4 | 128,384,768,1536 |
+| hnsw         | 0.99 | 100000 |   0.300294 |  0.298256 |  0.302282 |          3 | 128,768,1536     |
+| hnsw         | 0.99 | 500000 |   0.197558 |  0.193247 |  0.201654 |          3 | 128,384,1536     |
+| ivf_flat     | 0.9  | 100000 |   1.08655  |  1.08174  |  1.09116  |          3 | 128,384,768      |
+| ivf_flat     | 0.95 | 100000 |   0.948365 |  0.945759 |  0.950919 |          3 | 128,768,1536     |
+| ivf_flat     | 0.95 | 500000 |   0.953502 |  0.951698 |  0.955148 |          3 | 128,768,1536     |
+
+Joint fit `log y = a + b log(N/500K) + c log(D/384) + d log(N/500K) log(D/384)` (logs centred at the reference cell, so b and c are local slopes there; descriptive, 10 cells):
+
+| index_type   |    R | metric      |         a |         b |        c |           d |   b_ci_lo |   b_ci_hi |   c_ci_lo |   c_ci_hi |     d_ci_lo |     d_ci_hi | interaction_identified   |   n_points | reference                |
+|:-------------|-----:|:------------|----------:|----------:|---------:|------------:|----------:|----------:|----------:|----------:|------------:|------------:|:-------------------------|-----------:|:-------------------------|
+| flat         | 0.9  | p95_latency | 10.9642   | 1.00544   | 0.950821 | -0.0490919  | 1.00493   |  1.00596  |  0.950195 |  0.951506 | -0.0497319  | -0.0484236  | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.9  | build_time  | -0.304019 | 0.962967  | 1.0851   |  0.0662411  | 0.928115  |  1.02465  |  1.00255  |  1.19669  | -0.00953238 |  0.16519    | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.9  | ram         | 20.473    | 0.981368  | 0.992648 |  0.0111485  | 0.981368  |  0.981368 |  0.992648 |  0.992648 |  0.0111485  |  0.0111485  | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.95 | p95_latency | 10.9642   | 1.00544   | 0.950821 | -0.0490919  | 1.00491   |  1.00591  |  0.950223 |  0.951513 | -0.0497598  | -0.0484288  | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.95 | build_time  | -0.304019 | 0.962967  | 1.0851   |  0.0662411  | 0.932921  |  1.02582  |  0.998731 |  1.19707  | -0.00924184 |  0.167711   | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.95 | ram         | 20.473    | 0.981368  | 0.992648 |  0.0111485  | 0.981368  |  0.981368 |  0.992648 |  0.992648 |  0.0111485  |  0.0111485  | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.99 | p95_latency | 10.9642   | 1.00544   | 0.950821 | -0.0490919  | 1.00492   |  1.00599  |  0.950104 |  0.951462 | -0.0498115  | -0.0484573  | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.99 | build_time  | -0.304019 | 0.962967  | 1.0851   |  0.0662411  | 0.928303  |  1.02526  |  0.997749 |  1.19378  | -0.0115542  |  0.168443   | True                     |         10 | N=500000,D=384 (centred) |
+| flat         | 0.99 | ram         | 20.473    | 0.981368  | 0.992648 |  0.0111485  | 0.981368  |  0.981368 |  0.992648 |  0.992648 |  0.0111485  |  0.0111485  | True                     |         10 | N=500000,D=384 (centred) |
+| hnsw         | 0.9  | p95_latency |  5.47272  | 0.119101  | 0.265193 |  0.068058   | 0.112777  |  0.124941 |  0.257751 |  0.272472 |  0.0617328  |  0.0748409  | True                     |          7 | N=500000,D=384 (centred) |
+| hnsw         | 0.9  | build_time  |  4.1684   | 1.08001   | 0.796544 | -0.139639   | 1.07122   |  1.08852  |  0.788125 |  0.808997 | -0.152735   | -0.129895   | True                     |          7 | N=500000,D=384 (centred) |
+| hnsw         | 0.9  | ram         | 20.5536   | 0.99146   | 0.93436  |  0.0412351  | 0.99146   |  0.99146  |  0.93436  |  0.93436  |  0.0412351  |  0.0412351  | True                     |          7 | N=500000,D=384 (centred) |
+| hnsw         | 0.95 | p95_latency |  5.85862  | 0.0996391 | 0.249866 | -0.0475958  | 0.0967025 |  0.102516 |  0.245571 |  0.253909 | -0.0510462  | -0.0444371  | True                     |         10 | N=500000,D=384 (centred) |
+| hnsw         | 0.95 | build_time  |  4.33303  | 1.11891   | 0.657033 | -0.29356    | 1.11387   |  1.12795  |  0.649224 |  0.663462 | -0.301334   | -0.289135   | True                     |         10 | N=500000,D=384 (centred) |
+| hnsw         | 0.95 | ram         | 20.6968   | 1.05695   | 0.789363 | -0.058989   | 1.05695   |  1.05695  |  0.789363 |  0.789363 | -0.058989   | -0.058989   | True                     |         10 | N=500000,D=384 (centred) |
+| hnsw         | 0.99 | p95_latency |  6.84284  | 0.155928  | 0.201748 | -0.0587109  | 0.153625  |  0.15838  |  0.197523 |  0.206131 | -0.0615688  | -0.0556933  | True                     |          7 | N=500000,D=384 (centred) |
+| hnsw         | 0.99 | build_time  |  4.54478  | 1.23756   | 0.772453 | -0.232488   | 1.23254   |  1.24576  |  0.762911 |  0.779231 | -0.242924   | -0.227878   | True                     |          7 | N=500000,D=384 (centred) |
+| hnsw         | 0.99 | ram         | 20.708    | 1.05307   | 0.746784 | -0.0922903  | 1.05307   |  1.05307  |  0.746784 |  0.746784 | -0.0922903  | -0.0922903  | True                     |          7 | N=500000,D=384 (centred) |
+| ivf_flat     | 0.9  | p95_latency |  6.9569   | 0.361891  | 0.956606 | -0.0875225  | 0.360194  |  0.363777 |  0.954642 |  0.958576 | -0.0904026  | -0.0846641  | True                     |          6 | N=500000,D=384 (centred) |
+| ivf_flat     | 0.9  | build_time  |  3.63785  | 1.87088   | 0.465204 | -0.220976   | 1.83525   |  1.9358   |  0.408295 |  0.551987 | -0.256855   | -0.16379    | True                     |          6 | N=500000,D=384 (centred) |
+| ivf_flat     | 0.9  | ram         | 20.4786   | 0.997957  | 0.990782 |  0.00174584 | 0.997957  |  0.997957 |  0.990782 |  0.990782 |  0.00174584 |  0.00174584 | True                     |          6 | N=500000,D=384 (centred) |
+| ivf_flat     | 0.95 | p95_latency |  7.73537  | 0.438468  | 0.962675 |  0.0106072  | 0.436897  |  0.440089 |  0.961152 |  0.964247 |  0.00879302 |  0.0123651  | True                     |          7 | N=500000,D=384 (centred) |
+| ivf_flat     | 0.95 | build_time  |  3.75152  | 1.92397   | 0.681348 | -0.261689   | 1.89385   |  1.96463  |  0.652424 |  0.6991   | -0.282231   | -0.245733   | True                     |          7 | N=500000,D=384 (centred) |
+| ivf_flat     | 0.95 | ram         | 20.4802   | 0.996043  | 0.992519 | -0.00154928 | 0.996043  |  0.996043 |  0.992519 |  0.992519 | -0.00154928 | -0.00154928 | True                     |          7 | N=500000,D=384 (centred) |
 
 ### 5.6 A decision rule — on the filter axis, where the answer changes
 
@@ -347,53 +366,65 @@ The fitted tree is in [`../results/summary/strategy_rule_tree.txt`](../results/s
 
 One caveat the rule inherits: its oracle labels come from the Stage C runs, which include the smallest correlated level (S=0.001) whose *measured* selectivity overshoots the target by 54-61% (section 5.8). Those cells' labels — and any rule split that depends on them — should be read against measured, not nominal, S, and will firm up once the Stage C rerun with finer correlated filters lands.
 
-### 5.7 Filtered search: where the crossover sits, and that it moves with dimension
+### 5.7 Filtered search: where the crossover sits, and how it moves with dimension
 
-For each (index, cell, correlation, recall target) we locate S*, the selectivity at which in-index filtered search and exact scan of the filtered subset swap places, by interpolating log-latency against log S between the two measured curves. Intervals propagate the per-row latency bootstrap. A crossover was located in 22 of 46 (index, cell, correlation, target) combinations; elsewhere one curve dominates across the whole measured S range.
+For each (index, cell, correlation, recall target) we locate S*, the selectivity at which in-index filtered search and exact scan of the filtered subset swap places, by interpolating log-latency against log *measured* selectivity between the two curves, using only rows that meet R on the held-out queries and never extrapolating beyond the measured range. Two intervals are shown: query sampling alone (`_q_`), and query sampling plus build-to-build variance plus an independent ±12% session-drift factor per curve (the median between-session drift measured in section 4.2). Conclusions rest on the second. A crossover was located in 20 of 46 (index, cell, correlation, target) combinations; elsewhere one curve dominates across the whole measured S range.
 
-| index_type   |       N |    D | correlation   |    R |   crossover_S |   crossover_S_lo |   crossover_S_hi |
-|:-------------|--------:|-----:|:--------------|-----:|--------------:|-----------------:|-----------------:|
-| hnsw         |  500000 |  384 | none          | 0.9  |    0.0119332  |       0.0118835  |       0.0119837  |
-| hnsw         |  500000 |  384 | none          | 0.95 |    0.0127548  |       0.0126864  |       0.0128006  |
-| hnsw         |  500000 | 1536 | none          | 0.95 |    0.0105856  |       0.0105673  |       0.0106039  |
-| hnsw         | 1000000 |  384 | none          | 0.95 |    0.0100355  |       0.0100192  |       0.0100563  |
-| ivf_flat     | 1000000 | 1536 | none          | 0.9  |    0.00113838 |       0.00113779 |       0.00113899 |
-| hnsw         |  500000 |  384 | positive      | 0.9  |    0.00101981 |       0.00101306 |       0.00102565 |
-| hnsw         |  500000 |  384 | positive      | 0.95 |    0.00126638 |       0.00125416 |       0.0012774  |
-| hnsw         |  500000 |  384 | positive      | 0.99 |    0.00251441 |       0.00247048 |       0.00256095 |
-| hnsw         |  500000 | 1536 | positive      | 0.95 |    0.00105266 |       0.00104743 |       0.00105878 |
-| hnsw         |  500000 | 1536 | positive      | 0.99 |    0.0015828  |       0.00156301 |       0.00160292 |
-| hnsw         | 1000000 |  384 | positive      | 0.99 |    0.00208224 |       0.00205291 |       0.00211017 |
-| hnsw         | 1000000 | 1536 | positive      | 0.99 |    0.00112451 |       0.00111489 |       0.00113333 |
-| ivf_flat     |  500000 |  384 | positive      | 0.9  |    0.00120843 |       0.00119823 |       0.00121834 |
-| ivf_flat     |  500000 |  384 | positive      | 0.95 |    0.00129028 |       0.0012771  |       0.00130263 |
-| ivf_flat     |  500000 |  384 | positive      | 0.99 |    0.00235542 |       0.00230691 |       0.00241556 |
-| ivf_flat     |  500000 | 1536 | positive      | 0.9  |    0.00131075 |       0.00129747 |       0.00132396 |
-| ivf_flat     |  500000 | 1536 | positive      | 0.95 |    0.00136723 |       0.00134919 |       0.00138513 |
-| ivf_flat     |  500000 | 1536 | positive      | 0.99 |    0.00162751 |       0.00160062 |       0.00165384 |
-| ivf_flat     | 1000000 |  384 | positive      | 0.9  |    0.00198682 |       0.00193573 |       0.00203641 |
-| ivf_flat     | 1000000 |  384 | positive      | 0.95 |    0.00203117 |       0.00195857 |       0.00209325 |
-| ivf_flat     | 1000000 |  384 | positive      | 0.99 |    0.00413867 |       0.00397833 |       0.00428426 |
-| ivf_flat     | 1000000 | 1536 | positive      | 0.99 |    0.00111699 |       0.00110208 |       0.00113076 |
+| index_type   |       N |    D | correlation   |    R |   crossover_S |   crossover_S_q_lo |   crossover_S_q_hi |   crossover_S_lo |   crossover_S_hi |   found_frac |
+|:-------------|--------:|-----:|:--------------|-----:|--------------:|-------------------:|-------------------:|-----------------:|-----------------:|-------------:|
+| hnsw         |  500000 |  384 | none          | 0.9  |    0.0186477  |         0.0185484  |         0.0187461  |       0.0175505  |       0.0198458  |       1      |
+| hnsw         |  500000 |  384 | none          | 0.95 |    0.0221351  |         0.022024   |         0.0222475  |       0.0206647  |       0.0237402  |       1      |
+| hnsw         |  500000 | 1536 | none          | 0.95 |    0.01206    |         0.0120229  |         0.0120969  |       0.011095   |       0.0130914  |       1      |
+| hnsw         | 1000000 |  384 | none          | 0.95 |    0.0101422  |         0.0100906  |         0.0101921  |       0.0100324  |       0.0113538  |       0.5885 |
+| hnsw         |  500000 |  384 | positive      | 0.9  |    0.00169006 |         0.00167075 |         0.00171074 |       0.0016091  |       0.00194356 |       0.7625 |
+| hnsw         |  500000 |  384 | positive      | 0.95 |    0.00256679 |         0.00254406 |         0.0025893  |       0.00225345 |       0.0029161  |       1      |
+| hnsw         |  500000 |  384 | positive      | 0.99 |    0.00503302 |         0.0049963  |         0.00507007 |       0.0044433  |       0.005694   |       1      |
+| hnsw         |  500000 | 1536 | positive      | 0.95 |    0.00189997 |         0.00188171 |         0.00191902 |       0.00171402 |       0.00210851 |       1      |
+| hnsw         |  500000 | 1536 | positive      | 0.99 |    0.00354859 |         0.00352026 |         0.00357708 |       0.00321178 |       0.00393523 |       1      |
+| hnsw         | 1000000 |  384 | positive      | 0.99 |    0.00349686 |         0.00347122 |         0.00352174 |       0.00314681 |       0.00390235 |       1      |
+| hnsw         | 1000000 | 1536 | positive      | 0.99 |    0.00204866 |         0.00202419 |         0.00207337 |       0.00184174 |       0.00227217 |       1      |
+| ivf_flat     |  500000 |  384 | positive      | 0.9  |    0.002679   |         0.00264764 |         0.00271036 |       0.00222757 |       0.00324686 |       1      |
+| ivf_flat     |  500000 |  384 | positive      | 0.95 |    0.00306705 |         0.00303265 |         0.00310109 |       0.00250014 |       0.00373809 |       1      |
+| ivf_flat     |  500000 |  384 | positive      | 0.99 |    0.00584227 |         0.0057892  |         0.00589717 |       0.00482845 |       0.00695104 |       1      |
+| ivf_flat     |  500000 | 1536 | positive      | 0.9  |    0.00324098 |         0.00320781 |         0.00327422 |       0.00282216 |       0.00373993 |       1      |
+| ivf_flat     |  500000 | 1536 | positive      | 0.95 |    0.00377211 |         0.00372678 |         0.00381942 |       0.00317444 |       0.00446717 |       1      |
+| ivf_flat     |  500000 | 1536 | positive      | 0.99 |    0.00469104 |         0.00463776 |         0.00474252 |       0.00398897 |       0.00554959 |       1      |
+| ivf_flat     | 1000000 |  384 | positive      | 0.9  |    0.00437004 |         0.0042879  |         0.00445261 |       0.00372618 |       0.00512559 |       1      |
+| ivf_flat     | 1000000 |  384 | positive      | 0.95 |    0.00456624 |         0.00449451 |         0.00463266 |       0.00380475 |       0.0054964  |       1      |
+| ivf_flat     | 1000000 |  384 | positive      | 0.99 |    0.0106346  |         0.0104323  |         0.0108382  |       0.00848538 |       0.0133945  |       1      |
 
-The headline numbers: for an uncorrelated predicate S* sits at a median of 0.0106 — in-index search is preferable above roughly 1.1% selectivity and exact scan below it. For a positively correlated predicate S* drops to 0.00137, a factor of 7.7 lower: when the filter admits vectors near the query, in-index search stays the better choice an order of magnitude further down the selectivity range. That is H2b, and it is the single most actionable number in this study — a system tuning a strategy switch on selectivity alone, without regard to correlation, will choose wrongly across a tenfold band.
+The headline numbers: for an uncorrelated predicate S* sits at a median of 0.0154 — in-index search is preferable above roughly 1.5% selectivity and exact scan below it. For a positively correlated predicate S* drops to 0.00352, a factor of 4.4 lower: when the filter admits vectors near the query, in-index search stays the better choice 4.4x further down the selectivity range. That is H2b — a larger effect than dimension's — and the practical one: a system that switches strategy on selectivity alone, without regard to correlation, will choose wrongly across a 4-fold band of S.
 
-**H2: does S\* move with dimension?** Comparing the lowest and highest measured D within each (N, index, correlation, target):
+**H2: does S\* move with dimension?** For each (N, index, correlation, target) we compare the lowest and highest measured D. A pair is a `shift` if the 95% interval of the ratio S*(D_high)/S*(D_low) excludes 1, `equivalent` if its 90% interval lies inside a pre-stated margin [0.8, 1.25] (a TOST at alpha = 0.05), and `inconclusive` otherwise:
 
-|       N | index_type   | correlation   |    R |   D_low |   D_high |   S_star_D_low |   S_star_D_high |   ratio_high_over_low | intervals_disjoint   |
-|--------:|:-------------|:--------------|-----:|--------:|---------:|---------------:|----------------:|----------------------:|:---------------------|
-|  500000 | hnsw         | none          | 0.95 |     384 |     1536 |     0.0127548  |      0.0105856  |              0.829933 | True                 |
-|  500000 | hnsw         | positive      | 0.95 |     384 |     1536 |     0.00126638 |      0.00105266 |              0.831234 | True                 |
-|  500000 | hnsw         | positive      | 0.99 |     384 |     1536 |     0.00251441 |      0.0015828  |              0.629492 | True                 |
-|  500000 | ivf_flat     | positive      | 0.9  |     384 |     1536 |     0.00120843 |      0.00131075 |              1.08467  | True                 |
-|  500000 | ivf_flat     | positive      | 0.95 |     384 |     1536 |     0.00129028 |      0.00136723 |              1.05964  | True                 |
-|  500000 | ivf_flat     | positive      | 0.99 |     384 |     1536 |     0.00235542 |      0.00162751 |              0.690967 | True                 |
-| 1000000 | hnsw         | positive      | 0.99 |     384 |     1536 |     0.00208224 |      0.00112451 |              0.540049 | True                 |
-| 1000000 | ivf_flat     | positive      | 0.99 |     384 |     1536 |     0.00413867 |      0.00111699 |              0.269892 | True                 |
+|       N | index_type   | correlation   |    R |   D_low |   D_high |   S_star_D_low |   S_star_D_high |   ratio_high_over_low |   ratio_ci95_lo |   ratio_ci95_hi | verdict      |
+|--------:|:-------------|:--------------|-----:|--------:|---------:|---------------:|----------------:|----------------------:|----------------:|----------------:|:-------------|
+|  500000 | hnsw         | none          | 0.95 |     384 |     1536 |     0.0221351  |      0.01206    |              0.544834 |        0.487352 |        0.608678 | shift        |
+|  500000 | hnsw         | positive      | 0.95 |     384 |     1536 |     0.00256679 |      0.00189997 |              0.740212 |        0.624619 |        0.873808 | shift        |
+|  500000 | hnsw         | positive      | 0.99 |     384 |     1536 |     0.00503302 |      0.00354859 |              0.705062 |        0.603227 |        0.831488 | shift        |
+|  500000 | ivf_flat     | positive      | 0.9  |     384 |     1536 |     0.002679   |      0.00324098 |              1.20977  |        0.953823 |        1.54448  | inconclusive |
+|  500000 | ivf_flat     | positive      | 0.95 |     384 |     1536 |     0.00306705 |      0.00377211 |              1.22988  |        0.95042  |        1.61376  | inconclusive |
+|  500000 | ivf_flat     | positive      | 0.99 |     384 |     1536 |     0.00584227 |      0.00469104 |              0.802948 |        0.637378 |        1.02606  | inconclusive |
+| 1000000 | hnsw         | positive      | 0.99 |     384 |     1536 |     0.00349686 |      0.00204866 |              0.585856 |        0.502349 |        0.681018 | shift        |
 
-S* differs in all 8 pairs, and the intervals are disjoint in 8 of them, which is the criterion the plan set in advance for treating the effect as more than noise. The median ratio S*(D_high)/S*(D_low) is 0.76: **the crossover moves to lower selectivity as dimension rises**, so at high D in-index filtered search remains preferable over a wider range of predicates than at low D. The mechanism is visible in section 5.1 — exact scan pays the full ambient width of the vector while a graph traversal does not, so raising D penalises the baseline more than the index.
+- **hnsw**: shift in 4 of 4 pairs; median ratio 0.65.
+- **ivf_flat**: inconclusive in 3 of 3 pairs; median ratio 1.21.
 
-This is the gap the Phase 0 survey identified: the closest prior work models the selectivity crossover as a phase boundary but at a single fixed dimension, with D absent from its formulas. On this corpus, D belongs in them.
+**Why the direction depends on the index.** Near the crossover, model each strategy's p95 as a local power law, exact scan ~ S^a D^c_ex and in-index search ~ S^b D^c_ix. Then S*(D_2)/S*(D_1) = (D_2/D_1)^((c_ix - c_ex)/(a - b)). We take c_ix and c_ex from the **unfiltered** recall-constrained measurements of section 5.5 (Flat for the exact scan) and a, b from the slopes of the filtered curves; nothing about where the crossovers fell enters the prediction:
+
+|       N | index_type   | correlation   |    R |   c_index_unfiltered |   c_exact_unfiltered |   predicted_ratio |   measured_ratio |   measured_ci95_lo |   measured_ci95_hi | direction_agrees   |
+|--------:|:-------------|:--------------|-----:|---------------------:|---------------------:|------------------:|-----------------:|-------------------:|-------------------:|:-------------------|
+|  500000 | hnsw         | none          | 0.95 |             0.484027 |             0.900259 |          0.768139 |         0.544834 |           0.487352 |           0.608678 | True               |
+|  500000 | hnsw         | positive      | 0.95 |             0.484027 |             0.900259 |          0.687668 |         0.740212 |           0.624619 |           0.873808 | True               |
+|  500000 | hnsw         | positive      | 0.99 |             0.338968 |             0.900259 |          0.610806 |         0.705062 |           0.603227 |           0.831488 | True               |
+|  500000 | ivf_flat     | positive      | 0.9  |             1.45532  |             0.900259 |          2.02034  |         1.20977  |           0.953823 |           1.54448  | True               |
+|  500000 | ivf_flat     | positive      | 0.95 |             1.09672  |             0.900259 |          1.32644  |         1.22988  |           0.95042  |           1.61376  | True               |
+|  500000 | ivf_flat     | positive      | 0.99 |             1.49927  |             0.900259 |          2.27606  |         0.802948 |           0.637378 |           1.02606  | False              |
+| 1000000 | hnsw         | positive      | 0.99 |             0.198057 |             0.970852 |          0.527666 |         0.585856 |           0.502349 |           0.681018 | True               |
+
+The model gets the direction right in 6 of 7 pairs. A graph search's cost grows far more slowly with D than a scan's (its traversal length is set by intrinsic dimension, which truncation barely moves; section 3.2), so raising D penalises the exact-scan baseline more and S* falls. IVF-Flat scans whole inverted lists, so its D-exponent is close to (or above) the scan's and the model predicts little or no shift — which is what we measure. The closed-form crossover of prior work has no D term; on this corpus it needs one, and its sign is a property of the index, not of the data.
+
+**What this does not yet establish.** The filtered campaign ran its cells one after another with 16, 6, 12 and 3 concurrent shards (`logs/stage_c_*.log`), and correlated predicates were built from a separate clustering at each D, so the two D values compared do not share a session, a machine load, or the same correlated subsets. The drift band above covers ordinary session drift but not those confounds. A confound-free rerun at N = 500,000 over all four D — one interleaved campaign, one shared clustering, fixed parallelism, repeat builds, a drift canary and distance-computation counters — is configured (`configs/stage_c_h2.yaml`, section 8) and will turn the pairwise comparison into a four-point dose-response against the model's predicted slope.
 
 ### 5.8 Adversarially correlated filters defeat approximate search at the swept effort
 
@@ -411,11 +442,11 @@ Reachability of each strategy by filter correlation, over all (cell, target) com
 | pre_filter_exact      | none          |                60 |          60 |             0 |
 | pre_filter_exact      | positive      |                36 |          36 |             0 |
 
-The negative-correlation rows are the strongest result in the filtered study. When the predicate admits only vectors *far* from the query, in-index filtered search and post-filter over-fetch reach recall@10 >= 0.90 in **0 of 216** attempts — that is, never, at any swept effort — while exact scan over the matching subset succeeds in all 36/36. Approximate search is not merely slower under adversarial correlation; within this grid it does not work at all.
+The negative-correlation rows confirm, under a recall constraint, a failure mode the filtered-search literature describes (ACORN; Amanbayev et al.'s query-filter correlation metric). When the predicate admits only vectors *far* from the query, in-index filtered search and post-filter over-fetch reach recall@10 >= 0.90 in **0 of 216** attempts — that is, never, at any swept effort — while exact scan over the matching subset succeeds in all 36/36. Approximate search is not merely slower under adversarial correlation; within this grid it does not work at all.
 
 The reason is structural rather than a tuning failure. A graph index reaches a neighbourhood by descending towards the query, and an IVF index probes the lists nearest the query; both concentrate effort exactly where an anti-correlated predicate admits nothing. Over-fetching does not rescue it, because the candidates retrieved are drawn from the same wrong region. For a workload whose filters can be anti-correlated with queries, the safe design is to scan the filtered subset exactly and to size the system for that cost.
 
-One boundary to state precisely: the IVF nprobe sweep caps at 512 while nlist is at least 1,414 at these N, so for IVF this is **the swept, non-exhaustive effort failing**, not a proof that an exhaustive nprobe = nlist scan would. An exhaustive anti-correlated IVF check is scheduled in the Stage C rerun. The HNSW result (no exhaustive dial short of full traversal) and the exact-scan success are unaffected by this caveat.
+One boundary to state precisely: the IVF nprobe sweep caps at 512 while nlist is at least 1,414 at these N, so for IVF this is **the swept, non-exhaustive effort failing**, not a proof that an exhaustive nprobe = nlist scan would; at nprobe = nlist IVF-Flat degenerates to an exact scan of the lists and must reach the target. The nprobe = nlist point is part of the scheduled rerun. The HNSW result (no exhaustive dial short of full traversal) and the exact-scan success are unaffected by this caveat.
 
 **A measurement caveat we must report.** The plan requires mean measured selectivity within 20% of target for each correlated level:
 
@@ -459,9 +490,9 @@ H1a-H2b are the **proposal's original RQ1-RQ3 predictions**, judged against the 
 |---|---|---|---|---|
 | H1a | HNSW:IVF-PQ memory ratio widens with dimension D | proposal RQ1 | **not supported** | at fixed 16x compression the HNSW:IVF-PQ bytes-per-vector ratio is arithmetically ~constant in D (HNSW's extra graph bytes are D-independent, so the ratio narrows slightly with D, not widens) |
 | H1b | IVF-PQ recall ceiling FALLS with D at fixed 16x compression | proposal RQ1 | **not supported** | proposal predicted the ceiling falls with D; measured it rises, 0.745 (D=128) -> 0.888 (D=1536) at 16x compression, still < 0.90 so IVF-PQ stays unreachable |
-| H1c | Fitted D-exponent of p95 latency differs by index type | proposal RQ1 | **supported** | D-exponent (c) of p95 latency spans 2.16 across indexes (no bootstrap CI columns — qualitative; gap C1) |
-| H2 | The filter-selectivity crossover S* (in-index vs pre-filter exact) moves with D | proposal RQ2 | **supported** | 8 D-pairs compared; S* differs in 8, with non-overlapping intervals in 8; median ratio S*(D_high)/S*(D_low) = 0.76 |
-| H2b | S* also depends on filter correlation (positive vs negative) | proposal RQ2 | **supported** | median S* by correlation: none: 0.01059, positive: 0.001367 |
+| H1c | Fitted D-exponent of p95 latency differs by index type | proposal RQ1 | **supported** | D-exponent of p95 at N=500K, R=0.95: hnsw 0.20 [0.20, 0.21], ivf_flat 0.95 [0.95, 0.96], flat 0.96 [0.96, 0.96] |
+| H2 | The filter-selectivity crossover S* (in-index vs pre-filter exact) moves with D | proposal RQ2 | **mixed (index-dependent)** | 7 D-pairs; hnsw: shift=4 (median ratio 0.65); ivf_flat: inconclusive=3 (median ratio 1.21). Caveat: the original Stage C confounds D with session/load and uses per-D clusterings; the confound-free rerun is configs/stage_c_h2.yaml |
+| H2b | S* also depends on filter correlation (positive vs negative) | proposal RQ2 | **supported** | median S* by correlation: none: 0.01535, positive: 0.003523 |
 | H3 | A small rule picks the cheapest FILTER STRATEGY from S, D, R and a correlation proxy | exploratory, post-hoc | **not supported** | [exploratory, post-hoc] rule top-1/regret 0.667/0.105 on 66 held-out cells vs baselines (top-1/regret): always exact scan 0.439/192.352; always in-index 0.379/0.115; 1% selectivity switch 0.530/0.071; same tree without proxy 0.727/16.493 (the index-choice rule only ties the heuristic: top-1 1.000 vs baseline 1.000 — it never sees the filter axis) |
 
 We draw attention to the shape of this table. H1b is not merely unsupported but **reversed** — the PQ ceiling rises with D rather than falling (section 5.2) — which we report as a finding, not hide. The filter-axis hypotheses (H2, H2b) are the supported headline; H3 asks whether a rule can exploit that axis. A paper that reported only the supported rows would be a different and less honest paper.
@@ -477,6 +508,12 @@ We draw attention to the shape of this table. H1b is not merely unsupported but 
 **Three corpus sizes.** The scaling exponents in section 5.5 are three-point fits. They are reported as descriptive and were used operationally, not as laws.
 
 **Tuning-to-test gap.** Section 3.4 reports the winners that miss their target on held-out queries. The shortfalls are small but non-zero, and they are a property of selecting on a 2,000-query sample, not of the indexes.
+
+**Filtered-campaign confounds.** Section 5.7: dimension is confounded with session and concurrent load in the filtered campaign, and correlated predicates differ across D. The H2 results are therefore provisional; the rerun that removes both is configured.
+
+**Build variance for HNSW.** FAISS HNSW builds with a fixed level-generator seed, and repeat builds of this study turned out to be byte-identical, so the three repeat builds per configuration carry no build-to-build variance for HNSW (they do for IVF, whose k-means sample is reseeded). Repeat builds are now seeded; HNSW intervals in this draft reflect query sampling only.
+
+**Non-random tuning split.** The 2,000 tuning queries are the lowest MS MARCO query ids of the 10,000 sampled, not a random subset. If id order correlates with query difficulty this biases selection; the held-out recall shortfalls of section 3.4 are the observable consequence and are reported per row.
 
 **Grid boundaries.** `reachable = false` always means 'within the swept grid'. For IVF-PQ we checked that recall saturates in nprobe before concluding the ceiling is intrinsic, but a wider grid — more subquantizers, more bits — could in principle change the conclusion at a memory cost that would defeat the purpose.
 
@@ -537,8 +574,7 @@ FIGURE 7. Filter-strategy decision tree (H3)
 
 All four stages (A-D) are complete; what remains are specific robustness checks and one rerun the filter headline depends on. Stated plainly, because the gap between what a harness can do and what has been run is where benchmark papers usually mislead:
 
-- **Stage C rerun (finer correlated filters).** The smallest correlated level (S=0.001) overshoots its target by 54-61% because whole k-means clusters (k=1000) are too coarse to form so small a subset (section 5.8). A rerun with more clusters and extra selectivity levels (`configs/stage_c_rerun.yaml`) is needed before the crossover S* and the strategy rule's labels at low S are final; the direction of every filter result is expected to hold, but the exact low-S numbers may move.
-- **Exhaustive anti-correlated IVF.** The nprobe sweep capped below nlist, so the anti-correlation result (section 5.8) is 'the swept effort fails', pending an nprobe = nlist check.
+- **Confound-free filtered rerun (`configs/stage_c_h2.yaml`).** One D-interleaved campaign at N = 500,000 over D in {128, 384, 768, 1536} at fixed parallelism, with one shared clustering (k = 10,000, so the smallest correlated level is reachable — the original k = 1000 overshot S = 0.001 by 54-61%), filter structures outside the timed region, three seeded builds per cell, dense S around the crossovers, a drift canary, distance-computation counters, and an nprobe = nlist point for anti-correlated IVF. H2 and the strategy rule's low-S labels are provisional until it has run.
 - **Beyond 4x compression.** Scalar quantization answered whether the sub-raw regime is reachable (section 5.3b: yes, at 0.5x). Locating the frontier — and whether anything meets 0.1x at R >= 0.90 — needs 4-bit SQ or finer PQ with re-ranking, and more cells than the two-cell probe used here.
 - **Online vs idealized correlation proxy.** The proxy is now computed from an approximate probe (section 5.6); the exact-GT variant is retained only as an upper bound.
 - **Update drift under distribution shift.** Stage D inserts a random sample of the same corpus, which cannot exhibit IVF centroid staleness (section 5.9); a shifted-distribution insert stream would.
@@ -597,4 +633,4 @@ Links and per-paper coverage notes in [`notes/related_work.md`](../notes/related
 | [`tables/ef_construction.md`](tables/ef_construction.md) | `results/summary/acceptance_ef_construction.csv` |
 | [`tables/scaling_fits.md`](tables/scaling_fits.md) | `results/summary/scaling_fits.csv` |
 
-Platform: `1d3d9b66e7d3e1ac`. Builds recorded: 426. Search-sweep rows: 3,442. Generated 2026-11-05T01:52:17+00:00.
+Platform: `1d3d9b66e7d3e1ac`. Builds recorded: 441. Search-sweep rows: 3,730. Generated 2026-11-17T00:17:09+00:00.

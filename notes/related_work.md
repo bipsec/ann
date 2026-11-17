@@ -19,6 +19,7 @@ Does any existing paper measure how the filter-selectivity crossover between fil
 | ACORN (Patel et al.) | 2024 | https://arxiv.org/abs/2403.04871 | No | No | Multiple | HNSW with predicate subgraph traversal | Yes — predicate-agnostic filtered HNSW | Dimension variation, cost modeling | Key filtered-graph method (2-1000x gains); compare against as optional baseline |
 | Filtered ANN as a Phase Transition (Mandarapu & Kunkunuru) | 2026 | https://arxiv.org/abs/2606.16341 | No — uses SIFT1M (128-d fixed) | No | SIFT1M, synthetic | Pre-filter, post-filter, in-filter strategies | Yes — models selectivity crossover as phase boundaries (s~k/K, s_c~0.83/M) | D as a parameter in crossover formulas | **Most relevant.** Models the exact crossover we study, but D does not appear; our study fills this gap |
 | VADER: Filtered Search with Declarative Recall (Chatzakis et al.) | 2026 | https://arxiv.org/abs/2609.38053 | No | No | Multiple | Filter-aware recall predictor + cost model | Yes — "declarative recall" target, filter-aware | D variation | Relevant framing: recall as a constraint with filter awareness; does not study dimension |
+| AdANNS (Rege et al.) | 2023 | https://arxiv.org/abs/2305.19435 | Yes — builds IVF/OPQ over different Matryoshka prefix widths (coarse search at low d, refine at high d) | Yes — one embedding, several prefix widths | ImageNet-1K/4K, Natural Questions (as reported; verify) | IVF, OPQ, DiskANN variants | No | Recall-constrained index selection; filtering; HNSW/SQ comparison at matched bytes | **Closest prior use of Matryoshka truncation for ANN.** Our "truncate vs quantize vs truncate+rerank" question must be positioned against it, and the MRL paper's own adaptive-retrieval section |
 | Down with the Hierarchy (Munyampirwa et al.) | 2024 | https://arxiv.org/abs/2412.01940 | Tests high-D datasets | Multiple datasets | High-D embeddings | HNSW, flat NSW | No | Filtering | Shows HNSW hierarchy is redundant in high D (hubs suffice); relevant to understanding D effects on graph topology |
 | Closed Forms and Synthetic Twins (Herman) | 2026 | https://arxiv.org/abs/2609.00364 | No | No | Multiple | Predicts recall from embedding statistics | No | Filtering, D-dependent index selection | Predicts ANN recall within 0.03 from label-free stats; methodology could extend to D-dependent prediction |
 
@@ -41,3 +42,12 @@ The closest work is **"Filtered ANN as a Phase Transition" (Mandarapu & Kunkunur
 3. **Filtering studied apart from D** — Multiple papers study filtered ANN (Amanbayev 2026, Iff 2026, ACORN, Phase Transition), but none vary D on one corpus.
 
 **The D × S headline is novel.** No prior work does the controlled interaction analysis. The recall-constrained framing and the decision rule are additional contributions not found in the literature.
+
+## Verification status (added 2026-11-16)
+
+This table was compiled by an agent during Phase 0. Before submission a human must open every
+link and confirm (a) the paper exists at that ID, (b) the authors/year, and (c) each claim in the
+"What it does NOT cover" and "Verdict" columns. Highest priority: the 2026 IDs
+(2602.11443, 2606.16341, 2609.38053, 2609.00364) and the AdANNS row added after the audit,
+because the novelty claim ("no prior work varies D under filtering on one corpus") rests on them.
+The Phase 0 search was keyword-driven; the paper now states it as "none found", not "none exists".

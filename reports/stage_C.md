@@ -2,8 +2,8 @@
 
 ## Provenance
 
-- Date: 2026-11-17T00:12:04+00:00
-- Git commit: `1980cef6a1d63ed03322b38ca8ba5fa388306854-dirty`
+- Date: 2026-11-17T00:14:18+00:00
+- Git commit: `9926a32657850224ce16e79dff0effa2ca0e0c54-dirty`
 - Data hardware id: `1d3d9b66e7d3e1ac` (AMD EPYC-Milan Processor, 16 cores, 58.8 GB)
 - Generated on: `5a5f956b01cd41d6` (aarch64; not the data host)
 - Source: `results/raw/filter_runs.parquet`

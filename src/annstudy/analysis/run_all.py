@@ -285,24 +285,27 @@ def _winner_verdicts() -> dict[str, tuple[str, str]]:
     except Exception as e:
         out["H1b"] = ("inconclusive", f"PQ-ceiling verdict unavailable: {e!r}")
 
-    # H1c: fitted D-exponent (c) of p95 latency differs by index type. No CI columns in
-    # scaling_fits.csv (gap), so this is qualitative: report the spread of c across indexes.
+    # H1c: the D-exponent of recall-constrained p95 latency differs by index type. Judged on
+    # the one-axis exponents at N=500K (4 dimensions, bootstrap CIs) — the old verdict compared
+    # raw uncentred joint-fit coefficients, i.e. slopes at N=1.
     try:
-        sf = SUMMARY / "scaling_fits.csv"
-        if not sf.exists():
-            out["H1c"] = ("inconclusive", "scaling_fits.csv not generated yet")
+        se = SUMMARY / "scaling_exponents.csv"
+        if not se.exists():
+            out["H1c"] = ("inconclusive", "scaling_exponents.csv not generated yet")
         else:
-            s = pd.read_csv(sf)
-            metric_col = "metric" if "metric" in s.columns else None
-            lat = s[s[metric_col].astype(str).str.contains("lat")] if metric_col else s
-            if "c" not in lat.columns or lat["c"].dropna().nunique() < 2:
-                out["H1c"] = ("inconclusive", "fewer than 2 index D-exponents available")
+            e = pd.read_csv(se)
+            e = e[(e["metric"] == "p95_latency") & (e["axis"] == "D")
+                  & (e["fixed_at"] == 500_000) & (e["R"] == 0.95)]
+            if e["index_type"].nunique() < 2:
+                out["H1c"] = ("inconclusive", "fewer than 2 index D-exponents at N=500K, R=0.95")
             else:
-                cvals = lat.groupby("index_type")["c"].mean() if "index_type" in lat else lat["c"]
-                spread = float(np.nanmax(cvals) - np.nanmin(cvals))
-                out["H1c"] = (("supported" if spread > 0.3 else "not supported"),
-                              f"D-exponent (c) of p95 latency spans {spread:.2f} across indexes "
-                              f"(no bootstrap CI columns — qualitative; gap C1)")
+                lo, hi = e.loc[e["exponent"].idxmin()], e.loc[e["exponent"].idxmax()]
+                separated = bool(lo["ci95_hi"] < hi["ci95_lo"])
+                detail = ("D-exponent of p95 at N=500K, R=0.95: " + ", ".join(
+                    f"{r.index_type} {r.exponent:.2f} [{r.ci95_lo:.2f}, {r.ci95_hi:.2f}]"
+                    for r in e.sort_values("exponent").itertuples()))
+                out["H1c"] = ("supported" if separated and hi["exponent"] - lo["exponent"] > 0.1
+                              else "not supported", detail)
     except Exception as e:
         out["H1c"] = ("inconclusive", f"D-exponent verdict unavailable: {e!r}")
 

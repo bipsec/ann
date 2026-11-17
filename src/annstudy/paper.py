@@ -59,6 +59,7 @@ def load_all(results_dir: str = "results/raw") -> dict:
         "winners": csv("winners.csv"),
         "cell_costs": csv("cell_costs.csv"),
         "scaling": csv("scaling_fits.csv"),
+        "scaling_exponents": csv("scaling_exponents.csv"),
         "rule": csv("rule_accuracy.csv"),
         "lodo": csv("rule_lodo_cv.csv"),
         "lid": csv("lid.csv"),
@@ -199,7 +200,8 @@ def tbl_crossover(crossover: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
     f = crossover[crossover["crossover_found"].fillna(False)]
     cols = ["index_type", "N", "D", "correlation", "R", "crossover_S",
-            "crossover_S_lo", "crossover_S_hi"]
+            "crossover_S_q_lo", "crossover_S_q_hi", "crossover_S_lo", "crossover_S_hi",
+            "found_frac"]
     return f[[c for c in cols if c in f.columns]].sort_values(
         ["correlation", "index_type", "N", "D", "R"])
 
@@ -210,7 +212,20 @@ def tbl_crossover_h2(path: str = "results/summary/crossover_h2.csv") -> pd.DataF
         return pd.DataFrame()
     d = pd.read_csv(p)
     cols = ["N", "index_type", "correlation", "R", "D_low", "D_high",
-            "S_star_D_low", "S_star_D_high", "ratio_high_over_low", "intervals_disjoint"]
+            "S_star_D_low", "S_star_D_high", "ratio_high_over_low", "ratio_ci95_lo",
+            "ratio_ci95_hi", "verdict"]
+    return d[[c for c in cols if c in d.columns]]
+
+
+def tbl_crossover_model(path: str = "results/summary/crossover_model.csv") -> pd.DataFrame:
+    """Predicted (from unfiltered D-exponents) vs measured S* ratio per H2 pair."""
+    p = Path(path)
+    if not p.exists():
+        return pd.DataFrame()
+    d = pd.read_csv(p)
+    cols = ["N", "index_type", "correlation", "R", "c_index_unfiltered", "c_exact_unfiltered",
+            "predicted_ratio", "measured_ratio", "measured_ci95_lo", "measured_ci95_hi",
+            "direction_agrees"]
     return d[[c for c in cols if c in d.columns]]
 
 
@@ -360,6 +375,7 @@ def write_paper(results_dir: str = "results/raw") -> Path:
     sq = tbl_sq_probe(tuned)
     xover = tbl_crossover(d["crossover"])
     xover_h2 = tbl_crossover_h2()
+    xmodel = tbl_crossover_model()
     freach = tbl_filter_reachability(d["filter_runs"])
     fsel = tbl_measured_selectivity(d["filter_runs"])
     udrift = tbl_update_drift(d["update_runs"])
@@ -370,6 +386,7 @@ def write_paper(results_dir: str = "results/raw") -> Path:
                      ("n_exponents", expo), ("build_time", build_t),
                      ("recall_achieved", recalls), ("scale_axis", scale),
                      ("sq_probe", sq), ("crossover", xover), ("crossover_h2", xover_h2),
+                     ("crossover_model", xmodel),
                      ("filter_reachability", freach), ("measured_selectivity", fsel),
                      ("update_drift", udrift),
                      ("lid", d["lid"]),
@@ -441,9 +458,6 @@ def write_paper(results_dir: str = "results/raw") -> Path:
 
     # ---------------- abstract (~200 words, leads with the filter findings)
     A("## Abstract\n")
-    _dis = int(xover_h2["intervals_disjoint"].fillna(False).sum()) if not xover_h2.empty else 0
-    _npair = len(xover_h2) if not xover_h2.empty else 0
-    _ratio = xover_h2["ratio_high_over_low"].median() if not xover_h2.empty else float("nan")
     _unc = (xover[xover["correlation"] == "none"]["crossover_S"].median()
             if not xover.empty else float("nan"))
     _pos = (xover[xover["correlation"] == "positive"]["crossover_S"].median()
@@ -454,14 +468,26 @@ def write_paper(results_dir: str = "results/raw") -> Path:
       f"subject to it as the workload varies in corpus size N, embedding dimension D (obtained "
       f"by truncating one Matryoshka embedding to {', '.join(str(x) for x in Ds)} dimensions, so "
       f"D is not confounded with the dataset), and filter selectivity S.\n")
-    if not xover.empty:
-        A(f"The headline is on the filter axis, as measured on this grid. The selectivity S* at "
-          f"which in-index filtered search and exact scan of the filtered subset swap places "
-          f"**moves with dimension** — disjoint bootstrap intervals in {_dis} of {_npair} "
-          f"D-pairs, shifting to lower S as D rises (median ratio {_ratio:.2f}) — and it shifts "
-          f"about {_unc / _pos:.0f}x more with query-filter correlation. Under anti-correlated "
-          f"predicates, approximate search at the swept effort does not reach recall@10 >= 0.90 "
-          f"anywhere in the grid, while exact scan of the subset always does.\n")
+    if not xover.empty and not xover_h2.empty and "verdict" in xover_h2.columns:
+        _h = xover_h2[xover_h2["index_type"] == "hnsw"]
+        _i = xover_h2[xover_h2["index_type"] == "ivf_flat"]
+        _hs = int((_h["verdict"] == "shift").sum())
+        _agree = (int(xmodel["direction_agrees"].sum()), len(xmodel)) if not xmodel.empty \
+            else (0, 0)
+        A(f"On the filter axis, the selectivity S* at which in-index filtered search and exact "
+          f"scan of the filtered subset swap places moves with dimension **in an "
+          f"index-dependent direction**. For HNSW it falls as D rises (median "
+          f"S*(D_high)/S*(D_low) = {_h['ratio_high_over_low'].median():.2f}; the 95% interval "
+          f"excludes 1 in {_hs} of {len(_h)} pairs even allowing for session drift); for "
+          f"IVF-Flat no shift is resolved ({len(_i)} pairs, median ratio "
+          f"{_i['ratio_high_over_low'].median():.2f}). A first-order cost model that uses only "
+          f"each index's *unfiltered* latency-vs-D exponent predicts the direction in "
+          f"{_agree[0]} of {_agree[1]} pairs: a graph search pays far less per added dimension "
+          f"than a scan, an inverted-list scan does not. These filter results come from a "
+          f"campaign whose design confounds D with session load, so they are provisional "
+          f"pending a confound-free rerun (section 8). S* shifts about {_unc / _pos:.0f}x with "
+          f"query-filter correlation, more than with D. Under anti-correlated predicates, HNSW "
+          f"filtered search reaches no recall target at any swept effort.\n")
     if pq_max is not None:
         _ing = f"~{ingest_ratio:.0f}x" if ingest_ratio else "tens of times"
         A(f"Two negatives follow. Product quantization alone never reaches R=0.90 (ceiling "
@@ -492,12 +518,14 @@ def write_paper(results_dir: str = "results/raw") -> Path:
       "truncation followed by renormalisation, so D=128 and D=1536 describe the same million "
       "passages under the same model. Dimension stops being confounded with dataset.\n")
     A("**Contributions**, ordered as the paper presents them.\n")
-    A("1. The filter-selectivity crossover S* measured as a function of dimension — the gap the "
-      "survey identified — shifting to lower selectivity as D grows, against the D-independent "
-      "crossover predicted by prior work.")
-    A("2. The finding that, at the swept search effort, approximate filtered search reaches no "
-      "recall target under anti-correlated predicates, where exact scan of the subset always "
-      "does (the IVF sweep stops short of an exhaustive scan; section 5.8).")
+    A("1. The filter-selectivity crossover S* measured across dimension on one corpus, with a "
+      "first-order cost model that predicts the direction of its shift from unfiltered "
+      "measurements alone: down with D for a graph index, roughly flat for an inverted-list "
+      "index (provisional; section 5.7 states the confounds).")
+    A("2. A confirmation, on modern text embeddings and within one recall-constrained protocol, "
+      "that anti-correlated predicates defeat filtered graph search at any swept effort, while "
+      "exact scan of the subset always succeeds (the IVF sweep stops short of an exhaustive "
+      "scan; section 5.8).")
     A("3. A measured product-quantization recall ceiling on modern text embeddings — which rises "
       "with D rather than falling as the proposal predicted — and the finding that the sub-raw "
       "memory regime is unreachable for the five conventional families yet IS reached by scalar "
@@ -537,10 +565,14 @@ def write_paper(results_dir: str = "results/raw") -> Path:
       "HNSW hierarchy is largely redundant in high dimension (hub nodes carry navigation), and "
       "Herman (2026) predicts ANN recall from embedding statistics — both bear on why graph cost "
       "and the PQ ceiling move with D as they do.\n")
-    A("Our Phase 0 survey of 13 papers found none that measures how the filter-selectivity "
-      "crossover moves with dimension on a single corpus; that gap motivated the study and was "
-      "recorded as a gate decision before any measurement began "
-      "([`logs/gate_reports/gate_0.md`](../logs/gate_reports/gate_0.md)).\n")
+    A("Matryoshka embeddings have been used for ANN search before: the MRL paper itself "
+      "evaluates adaptive (coarse-to-fine) retrieval, and AdANNS (Rege et al., 2023) builds "
+      "IVF and OPQ indexes over different Matryoshka prefix widths. Neither asks which index "
+      "is cheapest under a recall constraint, nor how filtering interacts with D. Our Phase 0 "
+      "survey of 13 papers found none that measures how the filter-selectivity crossover moves "
+      "with dimension on a single corpus "
+      "([`logs/gate_reports/gate_0.md`](../logs/gate_reports/gate_0.md)); the survey was "
+      "keyword-driven and is a statement about what we found, not proof of absence.\n")
 
     # ---------------- design
     A("## 3. Study design\n")
@@ -861,9 +893,21 @@ def write_paper(results_dir: str = "results/raw") -> Path:
           "they corrected our own compute projection for later stages, which had assumed the "
           "theoretical values and was wrong in both directions.\n")
     if d["scaling"] is not None and not d["scaling"].empty:
-        A("Full log-log fits `log y = a + b log N + c log D + d (log N)(log D)`. The D-exponent "
-          "**c** is the quantity H1c refers to; it varies markedly across index types (no "
-          "bootstrap CI columns yet — see limitations):\n")
+        expo = d.get("scaling_exponents")
+        if expo is not None and not expo.empty:
+            ex = expo[(expo["metric"] == "p95_latency") & (expo["axis"] == "D")]
+            A("How recall-constrained p95 latency scales with dimension at fixed corpus size: "
+              "the exponent of D from a log-log fit across the four truncations, with a 95% "
+              "bootstrap interval (query sampling and build variance; between-session drift is "
+              "not in these intervals, so differences below ~0.1 are not meaningful). This "
+              "exponent is the quantity H1c refers to, and it is also the input to the "
+              "crossover model of section 5.7:\n")
+            A(_md(ex[["index_type", "R", "fixed_at", "exponent", "ci95_lo", "ci95_hi",
+                      "n_points", "levels"]].rename(columns={"fixed_at": "N"})))
+            A("")
+        A("Joint fit `log y = a + b log(N/500K) + c log(D/384) + d log(N/500K) log(D/384)` "
+          "(logs centred at the reference cell, so b and c are local slopes there; descriptive, "
+          "10 cells):\n")
         A(_md(d["scaling"]))
         A("")
 
@@ -964,12 +1008,16 @@ def write_paper(results_dir: str = "results/raw") -> Path:
         A("_Strategy-rule results pending `make analysis` (Stage C filter runs + the correlation "
           "proxy); see section 6._\n")
 
-    A("### 5.7 Filtered search: where the crossover sits, and that it moves with dimension\n")
+    A("### 5.7 Filtered search: where the crossover sits, and how it moves with dimension\n")
     if not xover.empty:
         A(f"For each (index, cell, correlation, recall target) we locate S*, the selectivity at "
           f"which in-index filtered search and exact scan of the filtered subset swap places, "
-          f"by interpolating log-latency against log S between the two measured curves. "
-          f"Intervals propagate the per-row latency bootstrap. A crossover was located in "
+          f"by interpolating log-latency against log *measured* selectivity between the two "
+          f"curves, using only rows that meet R on the held-out queries and never "
+          f"extrapolating beyond the measured range. Two intervals are shown: query sampling "
+          f"alone (`_q_`), and query sampling plus build-to-build variance plus an independent "
+          f"±12% session-drift factor per curve (the median between-session drift measured in "
+          f"section 4.2). Conclusions rest on the second. A crossover was located in "
           f"{len(xover)} of {len(d['crossover'])} (index, cell, correlation, target) "
           f"combinations; elsewhere one curve dominates across the whole measured S range.\n")
         A(_md(xover))
@@ -982,29 +1030,52 @@ def write_paper(results_dir: str = "results/raw") -> Path:
               f"{unc.median() * 100:.1f}% selectivity and exact scan below it. For a positively "
               f"correlated predicate S* drops to {pos.median():.5f}, a factor of "
               f"{unc.median() / pos.median():.1f} lower: when the filter admits vectors near "
-              f"the query, in-index search stays the better choice an order of magnitude "
-              f"further down the selectivity range. That is H2b, and it is the single most "
-              f"actionable number in this study — a system tuning a strategy switch on "
-              f"selectivity alone, without regard to correlation, will choose wrongly across "
-              f"a tenfold band.\n")
+              f"the query, in-index search stays the better choice "
+              f"{unc.median() / pos.median():.1f}x further down the selectivity range. That is "
+              f"H2b — a larger effect than dimension's — and the practical one: a system that "
+              f"switches strategy on selectivity alone, without regard to correlation, will "
+              f"choose wrongly across a {unc.median() / pos.median():.0f}-fold band of S.\n")
     if not xover_h2.empty:
-        dis = int(xover_h2["intervals_disjoint"].fillna(False).sum())
-        A(f"**H2: does S\\* move with dimension?** Comparing the lowest and highest measured D "
-          f"within each (N, index, correlation, target):\n")
+        A("**H2: does S\\* move with dimension?** For each (N, index, correlation, target) we "
+          "compare the lowest and highest measured D. A pair is a `shift` if the 95% interval of "
+          "the ratio S*(D_high)/S*(D_low) excludes 1, `equivalent` if its 90% interval lies "
+          "inside a pre-stated margin [0.8, 1.25] (a TOST at alpha = 0.05), and `inconclusive` "
+          "otherwise:\n")
         A(_md(xover_h2))
         A("")
-        A(f"S* differs in all {len(xover_h2)} pairs, and the intervals are disjoint in {dis} of "
-          f"them, which is the criterion the plan set in advance for treating the effect as "
-          f"more than noise. The median ratio S*(D_high)/S*(D_low) is "
-          f"{xover_h2['ratio_high_over_low'].median():.2f}: **the crossover moves to lower "
-          f"selectivity as dimension rises**, so at high D in-index filtered search remains "
-          f"preferable over a wider range of predicates than at low D. The mechanism is "
-          f"visible in section 5.1 — exact scan pays the full ambient width of the vector "
-          f"while a graph traversal does not, so raising D penalises the baseline more than "
-          f"the index.\n")
-        A("This is the gap the Phase 0 survey identified: the closest prior work models the "
-          "selectivity crossover as a phase boundary but at a single fixed dimension, with D "
-          "absent from its formulas. On this corpus, D belongs in them.\n")
+        if "verdict" in xover_h2.columns:
+            for it, g in xover_h2.groupby("index_type"):
+                vc = g["verdict"].value_counts()
+                A(f"- **{it}**: " + ", ".join(f"{v} in {c}" for v, c in vc.items())
+                  + f" of {len(g)} pairs; median ratio {g['ratio_high_over_low'].median():.2f}.")
+            A("")
+    if not xmodel.empty:
+        A("**Why the direction depends on the index.** Near the crossover, model each "
+          "strategy's p95 as a local power law, exact scan ~ S^a D^c_ex and in-index search "
+          "~ S^b D^c_ix. Then S*(D_2)/S*(D_1) = (D_2/D_1)^((c_ix - c_ex)/(a - b)). We take "
+          "c_ix and c_ex from the **unfiltered** recall-constrained measurements of section 5.5 "
+          "(Flat for the exact scan) and a, b from the slopes of the filtered curves; nothing "
+          "about where the crossovers fell enters the prediction:\n")
+        A(_md(xmodel))
+        A("")
+        A(f"The model gets the direction right in {int(xmodel['direction_agrees'].sum())} of "
+          f"{len(xmodel)} pairs. A graph search's cost grows far more slowly with D than a scan's "
+          f"(its traversal length is set by intrinsic dimension, which truncation barely moves; "
+          f"section 3.2), so raising D penalises the exact-scan baseline more and S* falls. "
+          f"IVF-Flat scans whole inverted lists, so its D-exponent is close to (or above) the "
+          f"scan's and the model predicts little or no shift — which is what we measure. The "
+          f"closed-form crossover of prior work has no D term; on this corpus it needs one, and "
+          f"its sign is a property of the index, not of the data.\n")
+    A("**What this does not yet establish.** The filtered campaign ran its cells one after "
+      "another with 16, 6, 12 and 3 concurrent shards (`logs/stage_c_*.log`), and correlated "
+      "predicates were built from "
+      "a separate clustering at each D, so the two D values compared do not share a session, a "
+      "machine load, or the same correlated subsets. The drift band above covers ordinary "
+      "session drift but not those confounds. A confound-free rerun at N = 500,000 over all "
+      "four D — one interleaved campaign, one shared clustering, fixed parallelism, repeat "
+      "builds, a drift canary and distance-computation counters — is configured "
+      "(`configs/stage_c_h2.yaml`, section 8) and will turn the pairwise comparison into a "
+      "four-point dose-response against the model's predicted slope.\n")
 
     A("### 5.8 Adversarially correlated filters defeat approximate search at the swept effort\n")
     if not freach.empty:
@@ -1016,8 +1087,10 @@ def write_paper(results_dir: str = "results/raw") -> Path:
         if not neg.empty:
             ann = neg[neg["strategy"] != "pre_filter_exact"]
             exact = neg[neg["strategy"] == "pre_filter_exact"]
-            A(f"The negative-correlation rows are the strongest result in the filtered study. "
-              f"When the predicate admits only vectors *far* from the query, in-index filtered "
+            A(f"The negative-correlation rows confirm, under a recall constraint, a failure mode "
+              f"the filtered-search literature describes (ACORN; Amanbayev et al.'s query-filter "
+              f"correlation metric). When the predicate admits only vectors *far* from the query, "
+              f"in-index filtered "
               f"search and post-filter over-fetch reach recall@10 >= 0.90 in "
               f"**{int(ann['reachable'].sum())} of {int(ann['cells_x_targets'].sum())}** "
               f"attempts — that is, never, at any swept effort — while exact scan over the "
@@ -1034,8 +1107,9 @@ def write_paper(results_dir: str = "results/raw") -> Path:
               "to scan the filtered subset exactly and to size the system for that cost.\n")
             A("One boundary to state precisely: the IVF nprobe sweep caps at 512 while nlist is "
               "at least 1,414 at these N, so for IVF this is **the swept, non-exhaustive effort "
-              "failing**, not a proof that an exhaustive nprobe = nlist scan would. An exhaustive "
-              "anti-correlated IVF check is scheduled in the Stage C rerun. The HNSW result (no "
+              "failing**, not a proof that an exhaustive nprobe = nlist scan would; at nprobe = nlist "
+              "IVF-Flat degenerates to an exact scan of the lists and must reach the target. The "
+              "nprobe = nlist point is part of the scheduled rerun. The HNSW result (no "
               "exhaustive dial short of full traversal) and the exact-scan success are unaffected "
               "by this caveat.\n")
     if not fsel.empty:
@@ -1135,6 +1209,18 @@ def write_paper(results_dir: str = "results/raw") -> Path:
     A("**Tuning-to-test gap.** Section 3.4 reports the winners that miss their target on "
       "held-out queries. The shortfalls are small but non-zero, and they are a property of "
       "selecting on a 2,000-query sample, not of the indexes.\n")
+    A("**Filtered-campaign confounds.** Section 5.7: dimension is confounded with session and "
+      "concurrent load in the filtered campaign, and correlated predicates differ across D. "
+      "The H2 results are therefore provisional; the rerun that removes both is configured.\n")
+    A("**Build variance for HNSW.** FAISS HNSW builds with a fixed level-generator seed, and "
+      "repeat builds of this study turned out to be byte-identical, so the three repeat builds "
+      "per configuration carry no build-to-build variance for HNSW (they do for IVF, whose "
+      "k-means sample is reseeded). Repeat builds are now seeded; HNSW intervals in this draft "
+      "reflect query sampling only.\n")
+    A("**Non-random tuning split.** The 2,000 tuning queries are the lowest MS MARCO query ids "
+      "of the 10,000 sampled, not a random subset. If id order correlates with query "
+      "difficulty this biases selection; the held-out recall shortfalls of section 3.4 are the "
+      "observable consequence and are reported per row.\n")
     A("**Grid boundaries.** `reachable = false` always means 'within the swept grid'. For "
       "IVF-PQ we checked that recall saturates in nprobe before concluding the ceiling is "
       "intrinsic, but a wider grid — more subquantizers, more bits — could in principle change "
@@ -1189,15 +1275,13 @@ def write_paper(results_dir: str = "results/raw") -> Path:
     A("All four stages (A-D) are complete; what remains are specific robustness checks and one "
       "rerun the filter headline depends on. Stated plainly, because the gap between what a "
       "harness can do and what has been run is where benchmark papers usually mislead:\n")
-    A("- **Stage C rerun (finer correlated filters).** The smallest correlated level (S=0.001) "
-      "overshoots its target by 54-61% because whole k-means clusters (k=1000) are too coarse to "
-      "form so small a subset (section 5.8). A rerun with more clusters and extra selectivity "
-      "levels (`configs/stage_c_rerun.yaml`) is needed before the crossover S* and the strategy "
-      "rule's labels at low S are final; the direction of every filter result is expected to "
-      "hold, but the exact low-S numbers may move.")
-    A("- **Exhaustive anti-correlated IVF.** The nprobe sweep capped below nlist, so the "
-      "anti-correlation result (section 5.8) is 'the swept effort fails', pending an "
-      "nprobe = nlist check.")
+    A("- **Confound-free filtered rerun (`configs/stage_c_h2.yaml`).** One D-interleaved "
+      "campaign at N = 500,000 over D in {128, 384, 768, 1536} at fixed parallelism, with one "
+      "shared clustering (k = 10,000, so the smallest correlated level is reachable — the "
+      "original k = 1000 overshot S = 0.001 by 54-61%), filter structures outside the timed "
+      "region, three seeded builds per cell, dense S around the crossovers, a drift canary, "
+      "distance-computation counters, and an nprobe = nlist point for anti-correlated IVF. "
+      "H2 and the strategy rule's low-S labels are provisional until it has run.")
     A("- **Beyond 4x compression.** Scalar quantization answered whether the sub-raw regime is "
       "reachable (section 5.3b: yes, at 0.5x). Locating the frontier — and whether anything "
       "meets 0.1x at R >= 0.90 — needs 4-bit SQ or finer PQ with re-ranking, and more cells "
