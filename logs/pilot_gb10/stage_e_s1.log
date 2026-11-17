@@ -1,0 +1,42 @@
+2026-11-16 18:47:07,528 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 18:47:07,529 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 18:47:07,529 faiss.loader INFO Loading faiss.
+2026-11-16 18:47:07,549 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 18:47:07,583 __main__ INFO arm hnsw@384+none
+2026-11-16 18:47:17,357 __main__ INFO   hnsw@384+none ef=16 k'=None: recall=0.7120 p95=4807us
+2026-11-16 18:47:18,150 __main__ INFO   hnsw@384+none ef=24 k'=None: recall=0.7247 p95=481us
+2026-11-16 18:47:18,977 __main__ INFO   hnsw@384+none ef=32 k'=None: recall=0.7315 p95=479us
+2026-11-16 18:47:20,093 __main__ INFO   hnsw@384+none ef=48 k'=None: recall=0.7342 p95=653us
+2026-11-16 18:47:21,420 __main__ INFO   hnsw@384+none ef=64 k'=None: recall=0.7347 p95=792us
+2026-11-16 18:47:23,206 __main__ INFO   hnsw@384+none ef=96 k'=None: recall=0.7359 p95=1079us
+2026-11-16 18:47:25,359 __main__ INFO   hnsw@384+none ef=128 k'=None: recall=0.7364 p95=1371us
+2026-11-16 18:47:28,681 __main__ INFO   hnsw@384+none ef=192 k'=None: recall=0.7369 p95=2147us
+2026-11-16 18:47:32,978 __main__ INFO   hnsw@384+none ef=256 k'=None: recall=0.7372 p95=2795us
+2026-11-16 18:47:38,947 __main__ INFO   hnsw@384+none ef=384 k'=None: recall=0.7374 p95=3896us
+2026-11-16 18:47:46,651 __main__ INFO   hnsw@384+none ef=512 k'=None: recall=0.7375 p95=5078us
+2026-11-16 18:47:57,525 __main__ INFO   hnsw@384+none ef=768 k'=None: recall=0.7376 p95=7153us
+2026-11-16 18:48:11,863 __main__ INFO   hnsw@384+none ef=1024 k'=None: recall=0.7375 p95=9331us
+2026-11-16 18:48:12,360 __main__ INFO arm hnsw_sq8@768+none
+2026-11-16 18:48:14,202 __main__ INFO   hnsw_sq8@768+none ef=16 k'=None: recall=0.8291 p95=570us
+2026-11-16 18:48:15,423 __main__ INFO   hnsw_sq8@768+none ef=24 k'=None: recall=0.8411 p95=711us
+2026-11-16 18:48:16,863 __main__ INFO   hnsw_sq8@768+none ef=32 k'=None: recall=0.8452 p95=854us
+2026-11-16 18:48:18,738 __main__ INFO   hnsw_sq8@768+none ef=48 k'=None: recall=0.8502 p95=1143us
+2026-11-16 18:48:21,022 __main__ INFO   hnsw_sq8@768+none ef=64 k'=None: recall=0.8531 p95=1422us
+2026-11-16 18:48:24,067 __main__ INFO   hnsw_sq8@768+none ef=96 k'=None: recall=0.8555 p95=1963us
+2026-11-16 18:48:27,760 __main__ INFO   hnsw_sq8@768+none ef=128 k'=None: recall=0.8561 p95=2448us
+2026-11-16 18:48:32,711 __main__ INFO   hnsw_sq8@768+none ef=192 k'=None: recall=0.8568 p95=3352us
+2026-11-16 18:48:38,955 __main__ INFO   hnsw_sq8@768+none ef=256 k'=None: recall=0.8570 p95=4278us
+2026-11-16 18:48:47,749 __main__ INFO   hnsw_sq8@768+none ef=384 k'=None: recall=0.8572 p95=6063us
+2026-11-16 18:48:59,021 __main__ INFO   hnsw_sq8@768+none ef=512 k'=None: recall=0.8576 p95=7729us
+2026-11-16 18:49:15,164 __main__ INFO   hnsw_sq8@768+none ef=768 k'=None: recall=0.8577 p95=11004us
+2026-11-16 18:49:36,230 __main__ INFO   hnsw_sq8@768+none ef=1024 k'=None: recall=0.8577 p95=14221us
+2026-11-16 18:49:36,444 __main__ INFO Consolidated 15 tradeoff rows -> results/raw/tradeoff_runs.parquet
+2026-11-16 21:35:52,277 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 21:35:52,279 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 21:35:52,279 faiss.loader INFO Loading faiss.
+2026-11-16 21:35:52,297 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 21:35:52,328 __main__ INFO skip hnsw@384+none (done)
+2026-11-16 21:35:52,328 __main__ INFO skip hnsw_sq8@768+none (done)
+2026-11-16 21:35:52,404 __main__ INFO Consolidated 45 tradeoff rows -> results/raw/tradeoff_runs.parquet

@@ -1,0 +1,2 @@
+N,index_type,correlation,R,D_low,D_high,Ds,S_star_D_low,S_star_D_high,ratio_high_over_low,intervals_disjoint,verdict,ratio_ci95_lo,ratio_ci95_hi,ratio_ci90_lo,ratio_ci90_hi,n_valid_draws,slope_logS_logD,slope_ci95_lo,slope_ci95_hi,slope_n_draws
+500000,hnsw,none,0.95,128,1536,"128,384,768,1536",0.03466586847521723,0.012737846785332562,0.36744634839998025,True,shift,0.31727872377045147,0.4224857143901223,0.32447141705570126,0.4158381807560642,2000,-0.4118341952324316,-0.4682068121377325,-0.35808380281877394,2000

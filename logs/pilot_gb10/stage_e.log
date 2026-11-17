@@ -1,0 +1,25 @@
+=== 2026-11-16T18:29:26-06:00 Stage E: configs/stage_e_tradeoff.yaml, 8 shards on cores: 0 1 2 3 4 5 6 7 ===
+2026-11-16 18:29:26,651 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 18:29:26,651 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 18:29:26,651 faiss.loader INFO Loading faiss.
+2026-11-16 18:29:26,662 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 18:29:56,526 __main__ INFO built hnsw@128 in 30s, 784 B/vec
+2026-11-16 18:31:04,186 __main__ INFO built hnsw@384 in 67s, 1808 B/vec
+2026-11-16 18:33:06,203 __main__ INFO built hnsw@768 in 121s, 3344 B/vec
+2026-11-16 18:36:49,545 __main__ INFO built hnsw@1536 in 222s, 6416 B/vec
+2026-11-16 18:37:42,556 __main__ INFO built hnsw_sq8@384 in 51s, 656 B/vec
+2026-11-16 18:39:03,909 __main__ INFO built hnsw_sq8@768 in 81s, 1040 B/vec
+2026-11-16 18:41:29,743 __main__ INFO built hnsw_sq8@1536 in 145s, 1808 B/vec
+2026-11-16 18:43:15,342 __main__ INFO built hnsw_sq4@768 in 105s, 656 B/vec
+2026-11-16 18:46:29,470 __main__ INFO built hnsw_sq4@1536 in 194s, 1040 B/vec
+2026-11-16 18:47:05,979 __main__ INFO built hnsw_rabitq@1536 in 36s, 472 B/vec
+=== 2026-11-16T18:54:18-06:00 Stage E done ===
+=== 2026-11-16T21:35:38-06:00 Stage E: configs/stage_e_tradeoff.yaml, 8 shards on cores: 0 1 2 3 4 5 6 7 ===
+2026-11-16 21:35:38,433 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 21:35:38,433 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 21:35:38,433 faiss.loader INFO Loading faiss.
+2026-11-16 21:35:38,443 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 21:35:51,713 __main__ INFO Consolidated 45 tradeoff rows -> results/raw/tradeoff_runs.parquet
+=== 2026-11-16T21:35:52-06:00 Stage E done ===

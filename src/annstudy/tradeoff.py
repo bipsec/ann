@@ -343,8 +343,9 @@ def run_stage_e(config_path, results_dir="results/raw", shard=0, num_shards=1,
     done = 0
     for arm in arms:
         f = out / f"tradeoff_{cfg.get('stage', 'E')}_{arm['arm_id'].replace('@', '_').replace('+', '_')}_N{N}.parquet"
-        if f.exists():
-            logger.info(f"skip {arm['arm_id']} (done)")
+        from annstudy.hardware import done_on_this_host
+        if done_on_this_host(f):
+            logger.info(f"skip {arm['arm_id']} (done on this host)")
             continue
         logger.info(f"arm {arm['arm_id']}")
         rows = run_arm(cfg, arm, N, tun_q, test_q, gt_tun, gt_test, ref)

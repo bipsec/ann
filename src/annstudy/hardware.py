@@ -158,3 +158,26 @@ def data_host_line() -> str:
     if here["hardware_id"] != data_id:
         line += f"\n- Generated on: `{here['hardware_id']}` ({here['cpu_model']}; not the data host)"
     return line
+
+
+def done_on_this_host(path) -> bool:
+    """True only if ``path`` exists AND was written on this machine.
+
+    Resumable runners used to skip any job whose output file existed. Results travel between
+    hosts via git, so a job measured on another machine would have been silently skipped here,
+    leaving a campaign that mixes hosts. Latency is a host property: redo it.
+    """
+    from pathlib import Path
+
+    import pandas as pd
+
+    from annstudy.hardware import snapshot
+
+    p = Path(path)
+    if not p.exists():
+        return False
+    try:
+        hw = pd.read_parquet(p, columns=["hardware_id"])["hardware_id"]
+    except Exception:  # unreadable or no host column: treat as not done
+        return False
+    return bool(len(hw)) and bool((hw == snapshot()["hardware_id"]).all())

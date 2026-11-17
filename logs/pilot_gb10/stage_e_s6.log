@@ -1,0 +1,126 @@
+2026-11-16 18:47:07,288 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 18:47:07,288 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 18:47:07,288 faiss.loader INFO Loading faiss.
+2026-11-16 18:47:07,300 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 18:47:07,321 __main__ INFO arm hnsw@384+fp32
+2026-11-16 18:47:16,655 __main__ INFO   hnsw@384+fp32 ef=16 k'=20: recall=0.8637 p95=3733us
+2026-11-16 18:47:17,243 __main__ INFO   hnsw@384+fp32 ef=24 k'=20: recall=0.8856 p95=433us
+2026-11-16 18:47:17,880 __main__ INFO   hnsw@384+fp32 ef=32 k'=20: recall=0.8967 p95=420us
+2026-11-16 18:47:18,667 __main__ INFO   hnsw@384+fp32 ef=48 k'=20: recall=0.9030 p95=496us
+2026-11-16 18:47:19,705 __main__ INFO   hnsw@384+fp32 ef=64 k'=20: recall=0.9058 p95=667us
+2026-11-16 18:47:21,154 __main__ INFO   hnsw@384+fp32 ef=96 k'=20: recall=0.9087 p95=939us
+2026-11-16 18:47:22,980 __main__ INFO   hnsw@384+fp32 ef=128 k'=20: recall=0.9102 p95=1200us
+2026-11-16 18:47:25,514 __main__ INFO   hnsw@384+fp32 ef=192 k'=20: recall=0.9113 p95=1703us
+2026-11-16 18:47:29,258 __main__ INFO   hnsw@384+fp32 ef=256 k'=20: recall=0.9118 p95=2494us
+2026-11-16 18:47:34,667 __main__ INFO   hnsw@384+fp32 ef=384 k'=20: recall=0.9122 p95=3668us
+2026-11-16 18:47:41,358 __main__ INFO   hnsw@384+fp32 ef=512 k'=20: recall=0.9124 p95=4579us
+2026-11-16 18:47:51,014 __main__ INFO   hnsw@384+fp32 ef=768 k'=20: recall=0.9127 p95=6458us
+2026-11-16 18:48:03,475 __main__ INFO   hnsw@384+fp32 ef=1024 k'=20: recall=0.9127 p95=8075us
+2026-11-16 18:48:04,273 __main__ INFO   hnsw@384+fp32 ef=16 k'=50: recall=0.9054 p95=617us
+2026-11-16 18:48:05,075 __main__ INFO   hnsw@384+fp32 ef=24 k'=50: recall=0.9386 p95=488us
+2026-11-16 18:48:05,974 __main__ INFO   hnsw@384+fp32 ef=32 k'=50: recall=0.9561 p95=549us
+2026-11-16 18:48:07,067 __main__ INFO   hnsw@384+fp32 ef=48 k'=50: recall=0.9674 p95=670us
+2026-11-16 18:48:08,403 __main__ INFO   hnsw@384+fp32 ef=64 k'=50: recall=0.9735 p95=838us
+2026-11-16 18:48:10,163 __main__ INFO   hnsw@384+fp32 ef=96 k'=50: recall=0.9787 p95=1126us
+2026-11-16 18:48:12,311 __main__ INFO   hnsw@384+fp32 ef=128 k'=50: recall=0.9808 p95=1407us
+2026-11-16 18:48:15,020 __main__ INFO   hnsw@384+fp32 ef=192 k'=50: recall=0.9830 p95=1799us
+2026-11-16 18:48:18,459 __main__ INFO   hnsw@384+fp32 ef=256 k'=50: recall=0.9837 p95=2286us
+2026-11-16 18:48:23,225 __main__ INFO   hnsw@384+fp32 ef=384 k'=50: recall=0.9842 p95=3185us
+2026-11-16 18:48:28,823 __main__ INFO   hnsw@384+fp32 ef=512 k'=50: recall=0.9845 p95=3709us
+2026-11-16 18:48:36,401 __main__ INFO   hnsw@384+fp32 ef=768 k'=50: recall=0.9849 p95=4983us
+2026-11-16 18:48:46,239 __main__ INFO   hnsw@384+fp32 ef=1024 k'=50: recall=0.9849 p95=6390us
+2026-11-16 18:48:46,946 __main__ INFO   hnsw@384+fp32 ef=16 k'=100: recall=0.9078 p95=449us
+2026-11-16 18:48:47,716 __main__ INFO   hnsw@384+fp32 ef=24 k'=100: recall=0.9433 p95=445us
+2026-11-16 18:48:48,559 __main__ INFO   hnsw@384+fp32 ef=32 k'=100: recall=0.9623 p95=492us
+2026-11-16 18:48:49,546 __main__ INFO   hnsw@384+fp32 ef=48 k'=100: recall=0.9754 p95=592us
+2026-11-16 18:48:50,710 __main__ INFO   hnsw@384+fp32 ef=64 k'=100: recall=0.9822 p95=709us
+2026-11-16 18:48:52,216 __main__ INFO   hnsw@384+fp32 ef=96 k'=100: recall=0.9880 p95=937us
+2026-11-16 18:48:54,060 __main__ INFO   hnsw@384+fp32 ef=128 k'=100: recall=0.9905 p95=1171us
+2026-11-16 18:48:56,441 __main__ INFO   hnsw@384+fp32 ef=192 k'=100: recall=0.9932 p95=1555us
+2026-11-16 18:48:59,451 __main__ INFO   hnsw@384+fp32 ef=256 k'=100: recall=0.9942 p95=1963us
+2026-11-16 18:49:03,639 __main__ INFO   hnsw@384+fp32 ef=384 k'=100: recall=0.9952 p95=2736us
+2026-11-16 18:49:09,057 __main__ INFO   hnsw@384+fp32 ef=512 k'=100: recall=0.9957 p95=3536us
+2026-11-16 18:49:16,594 __main__ INFO   hnsw@384+fp32 ef=768 k'=100: recall=0.9961 p95=5000us
+2026-11-16 18:49:26,470 __main__ INFO   hnsw@384+fp32 ef=1024 k'=100: recall=0.9962 p95=6404us
+2026-11-16 18:49:27,364 __main__ INFO   hnsw@384+fp32 ef=16 k'=200: recall=0.9080 p95=505us
+2026-11-16 18:49:28,371 __main__ INFO   hnsw@384+fp32 ef=24 k'=200: recall=0.9437 p95=566us
+2026-11-16 18:49:29,496 __main__ INFO   hnsw@384+fp32 ef=32 k'=200: recall=0.9630 p95=641us
+2026-11-16 18:49:30,787 __main__ INFO   hnsw@384+fp32 ef=48 k'=200: recall=0.9762 p95=750us
+2026-11-16 18:49:32,299 __main__ INFO   hnsw@384+fp32 ef=64 k'=200: recall=0.9834 p95=890us
+2026-11-16 18:49:34,175 __main__ INFO   hnsw@384+fp32 ef=96 k'=200: recall=0.9899 p95=1133us
+2026-11-16 18:49:36,405 __main__ INFO   hnsw@384+fp32 ef=128 k'=200: recall=0.9925 p95=1372us
+2026-11-16 18:49:39,195 __main__ INFO   hnsw@384+fp32 ef=192 k'=200: recall=0.9954 p95=1748us
+2026-11-16 18:49:42,565 __main__ INFO   hnsw@384+fp32 ef=256 k'=200: recall=0.9967 p95=2148us
+2026-11-16 18:49:46,405 __main__ INFO   hnsw@384+fp32 ef=384 k'=200: recall=0.9977 p95=2517us
+2026-11-16 18:49:50,731 __main__ INFO   hnsw@384+fp32 ef=512 k'=200: recall=0.9981 p95=2763us
+2026-11-16 18:49:56,767 __main__ INFO   hnsw@384+fp32 ef=768 k'=200: recall=0.9986 p95=3837us
+2026-11-16 18:50:04,566 __main__ INFO   hnsw@384+fp32 ef=1024 k'=200: recall=0.9987 p95=4927us
+2026-11-16 18:50:11,325 __main__ INFO   hnsw@384+fp32 R=0.9: ef=24 k'=100 recall_test=0.9451 p95=314us 7952 B/vec
+2026-11-16 18:50:18,704 __main__ INFO   hnsw@384+fp32 R=0.95: ef=32 k'=100 recall_test=0.9610 p95=360us 7952 B/vec
+2026-11-16 18:50:37,259 __main__ INFO   hnsw@384+fp32 R=0.99: ef=128 k'=200 recall_test=0.9913 p95=954us 7952 B/vec
+2026-11-16 18:50:37,496 __main__ INFO arm hnsw_rabitq@1536+sq8
+2026-11-16 18:50:38,670 __main__ INFO   hnsw_rabitq@1536+sq8 ef=16 k'=20: recall=0.9009 p95=217us
+2026-11-16 18:50:39,102 __main__ INFO   hnsw_rabitq@1536+sq8 ef=24 k'=20: recall=0.9271 p95=263us
+2026-11-16 18:50:39,598 __main__ INFO   hnsw_rabitq@1536+sq8 ef=32 k'=20: recall=0.9392 p95=310us
+2026-11-16 18:50:40,222 __main__ INFO   hnsw_rabitq@1536+sq8 ef=48 k'=20: recall=0.9527 p95=403us
+2026-11-16 18:50:40,967 __main__ INFO   hnsw_rabitq@1536+sq8 ef=64 k'=20: recall=0.9572 p95=487us
+2026-11-16 18:50:41,966 __main__ INFO   hnsw_rabitq@1536+sq8 ef=96 k'=20: recall=0.9612 p95=675us
+2026-11-16 18:50:43,201 __main__ INFO   hnsw_rabitq@1536+sq8 ef=128 k'=20: recall=0.9635 p95=846us
+2026-11-16 18:50:44,903 __main__ INFO   hnsw_rabitq@1536+sq8 ef=192 k'=20: recall=0.9658 p95=1184us
+2026-11-16 18:50:47,027 __main__ INFO   hnsw_rabitq@1536+sq8 ef=256 k'=20: recall=0.9667 p95=1490us
+2026-11-16 18:50:49,982 __main__ INFO   hnsw_rabitq@1536+sq8 ef=384 k'=20: recall=0.9679 p95=2100us
+2026-11-16 18:50:53,818 __main__ INFO   hnsw_rabitq@1536+sq8 ef=512 k'=20: recall=0.9679 p95=2710us
+2026-11-16 18:50:59,469 __main__ INFO   hnsw_rabitq@1536+sq8 ef=768 k'=20: recall=0.9683 p95=3936us
+2026-11-16 18:51:07,017 __main__ INFO   hnsw_rabitq@1536+sq8 ef=1024 k'=20: recall=0.9687 p95=5165us
+2026-11-16 18:51:07,444 __main__ INFO   hnsw_rabitq@1536+sq8 ef=16 k'=50: recall=0.9148 p95=252us
+2026-11-16 18:51:07,933 __main__ INFO   hnsw_rabitq@1536+sq8 ef=24 k'=50: recall=0.9447 p95=292us
+2026-11-16 18:51:08,485 __main__ INFO   hnsw_rabitq@1536+sq8 ef=32 k'=50: recall=0.9587 p95=339us
+2026-11-16 18:51:09,157 __main__ INFO   hnsw_rabitq@1536+sq8 ef=48 k'=50: recall=0.9745 p95=425us
+2026-11-16 18:51:09,950 __main__ INFO   hnsw_rabitq@1536+sq8 ef=64 k'=50: recall=0.9799 p95=514us
+2026-11-16 18:51:10,978 __main__ INFO   hnsw_rabitq@1536+sq8 ef=96 k'=50: recall=0.9848 p95=688us
+2026-11-16 18:51:12,237 __main__ INFO   hnsw_rabitq@1536+sq8 ef=128 k'=50: recall=0.9879 p95=853us
+2026-11-16 18:51:13,946 __main__ INFO   hnsw_rabitq@1536+sq8 ef=192 k'=50: recall=0.9911 p95=1185us
+2026-11-16 18:51:16,096 __main__ INFO   hnsw_rabitq@1536+sq8 ef=256 k'=50: recall=0.9924 p95=1503us
+2026-11-16 18:51:19,124 __main__ INFO   hnsw_rabitq@1536+sq8 ef=384 k'=50: recall=0.9935 p95=2137us
+2026-11-16 18:51:23,032 __main__ INFO   hnsw_rabitq@1536+sq8 ef=512 k'=50: recall=0.9938 p95=2743us
+2026-11-16 18:51:28,750 __main__ INFO   hnsw_rabitq@1536+sq8 ef=768 k'=50: recall=0.9943 p95=3975us
+2026-11-16 18:51:36,368 __main__ INFO   hnsw_rabitq@1536+sq8 ef=1024 k'=50: recall=0.9946 p95=5200us
+2026-11-16 18:51:36,891 __main__ INFO   hnsw_rabitq@1536+sq8 ef=16 k'=100: recall=0.9149 p95=303us
+2026-11-16 18:51:37,481 __main__ INFO   hnsw_rabitq@1536+sq8 ef=24 k'=100: recall=0.9450 p95=346us
+2026-11-16 18:51:38,134 __main__ INFO   hnsw_rabitq@1536+sq8 ef=32 k'=100: recall=0.9590 p95=393us
+2026-11-16 18:51:38,909 __main__ INFO   hnsw_rabitq@1536+sq8 ef=48 k'=100: recall=0.9748 p95=481us
+2026-11-16 18:51:39,802 __main__ INFO   hnsw_rabitq@1536+sq8 ef=64 k'=100: recall=0.9804 p95=568us
+2026-11-16 18:51:40,921 __main__ INFO   hnsw_rabitq@1536+sq8 ef=96 k'=100: recall=0.9855 p95=733us
+2026-11-16 18:51:42,264 __main__ INFO   hnsw_rabitq@1536+sq8 ef=128 k'=100: recall=0.9885 p95=898us
+2026-11-16 18:51:44,056 __main__ INFO   hnsw_rabitq@1536+sq8 ef=192 k'=100: recall=0.9918 p95=1225us
+2026-11-16 18:51:46,288 __main__ INFO   hnsw_rabitq@1536+sq8 ef=256 k'=100: recall=0.9931 p95=1549us
+2026-11-16 18:51:49,398 __main__ INFO   hnsw_rabitq@1536+sq8 ef=384 k'=100: recall=0.9944 p95=2180us
+2026-11-16 18:51:53,386 __main__ INFO   hnsw_rabitq@1536+sq8 ef=512 k'=100: recall=0.9945 p95=2788us
+2026-11-16 18:51:59,182 __main__ INFO   hnsw_rabitq@1536+sq8 ef=768 k'=100: recall=0.9950 p95=4013us
+2026-11-16 18:52:06,862 __main__ INFO   hnsw_rabitq@1536+sq8 ef=1024 k'=100: recall=0.9954 p95=5231us
+2026-11-16 18:52:07,578 __main__ INFO   hnsw_rabitq@1536+sq8 ef=16 k'=200: recall=0.9149 p95=403us
+2026-11-16 18:52:08,366 __main__ INFO   hnsw_rabitq@1536+sq8 ef=24 k'=200: recall=0.9450 p95=450us
+2026-11-16 18:52:09,221 __main__ INFO   hnsw_rabitq@1536+sq8 ef=32 k'=200: recall=0.9590 p95=498us
+2026-11-16 18:52:10,202 __main__ INFO   hnsw_rabitq@1536+sq8 ef=48 k'=200: recall=0.9748 p95=591us
+2026-11-16 18:52:11,308 __main__ INFO   hnsw_rabitq@1536+sq8 ef=64 k'=200: recall=0.9804 p95=678us
+2026-11-16 18:52:12,649 __main__ INFO   hnsw_rabitq@1536+sq8 ef=96 k'=200: recall=0.9855 p95=849us
+2026-11-16 18:52:14,214 __main__ INFO   hnsw_rabitq@1536+sq8 ef=128 k'=200: recall=0.9885 p95=1012us
+2026-11-16 18:52:16,208 __main__ INFO   hnsw_rabitq@1536+sq8 ef=192 k'=200: recall=0.9918 p95=1330us
+2026-11-16 18:52:18,642 __main__ INFO   hnsw_rabitq@1536+sq8 ef=256 k'=200: recall=0.9931 p95=1650us
+2026-11-16 18:52:21,952 __main__ INFO   hnsw_rabitq@1536+sq8 ef=384 k'=200: recall=0.9945 p95=2273us
+2026-11-16 18:52:26,151 __main__ INFO   hnsw_rabitq@1536+sq8 ef=512 k'=200: recall=0.9947 p95=2890us
+2026-11-16 18:52:32,128 __main__ INFO   hnsw_rabitq@1536+sq8 ef=768 k'=200: recall=0.9952 p95=4103us
+2026-11-16 18:52:39,997 __main__ INFO   hnsw_rabitq@1536+sq8 ef=1024 k'=200: recall=0.9955 p95=5322us
+2026-11-16 18:52:44,735 __main__ INFO   hnsw_rabitq@1536+sq8 R=0.9: ef=16 k'=50 recall_test=0.9155 p95=247us 2008 B/vec
+2026-11-16 18:52:50,966 __main__ INFO   hnsw_rabitq@1536+sq8 R=0.95: ef=32 k'=50 recall_test=0.9575 p95=332us 2008 B/vec
+2026-11-16 18:53:12,302 __main__ INFO   hnsw_rabitq@1536+sq8 R=0.99: ef=192 k'=100 recall_test=0.9913 p95=1226us 2008 B/vec
+2026-11-16 18:53:12,513 __main__ INFO Consolidated 42 tradeoff rows -> results/raw/tradeoff_runs.parquet
+2026-11-16 21:35:52,039 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 21:35:52,041 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 21:35:52,041 faiss.loader INFO Loading faiss.
+2026-11-16 21:35:52,053 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 21:35:52,070 __main__ INFO skip hnsw@384+fp32 (done)
+2026-11-16 21:35:52,070 __main__ INFO skip hnsw_rabitq@1536+sq8 (done)
+2026-11-16 21:35:52,111 __main__ INFO Consolidated 45 tradeoff rows -> results/raw/tradeoff_runs.parquet

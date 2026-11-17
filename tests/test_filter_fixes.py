@@ -269,3 +269,18 @@ def test_tradeoff_pareto_and_winners(tmp_path):
     assert list(fr["arm_id"]) == ["a", "b"]          # c dominated by b; d missed R on test
     w = win[(win["accounting"] == "total")].set_index("budget_bytes")["winner"]
     assert w[512] == "none" and w[1024] == "a" and w[2048] == "b"
+
+
+# ------------------------------------------------------- host-aware resumability
+
+def test_done_on_this_host_ignores_other_hosts(tmp_path):
+    import pandas as pd
+
+    from annstudy.hardware import done_on_this_host, snapshot
+
+    p = tmp_path / "job.parquet"
+    assert not done_on_this_host(p)
+    pd.DataFrame({"hardware_id": ["some-other-host"]}).to_parquet(p)
+    assert not done_on_this_host(p)          # measured elsewhere: must be re-run here
+    pd.DataFrame({"hardware_id": [snapshot()["hardware_id"]]}).to_parquet(p)
+    assert done_on_this_host(p)

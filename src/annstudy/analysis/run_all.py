@@ -79,6 +79,7 @@ def run_all(results_dir="results/raw") -> list[Step]:
         winners,
     )
     from annstudy.filter_runner import consolidate_filter_runs
+    from annstudy.coordinate import current_hardware_id
 
     SUMMARY.mkdir(parents=True, exist_ok=True)
     FIGURES.mkdir(parents=True, exist_ok=True)
@@ -97,7 +98,8 @@ def run_all(results_dir="results/raw") -> list[Step]:
               requires=[filter_runs, SUMMARY / "crossover_h2.csv"]),
         # The confound-free H2 campaign (stage_c_h2.yaml, timing protocol v2), kept separate.
         _step("crossover.estimate_crossover[h2run]",
-              lambda: crossover.estimate_crossover(protocol="v2", tag="_h2run"),
+              lambda: crossover.estimate_crossover(protocol="v2", tag="_h2run",
+                                                   hardware_id=current_hardware_id()),
               requires=[filter_runs]),
         _step("rule.fit_decision_rule", rule.fit_decision_rule,
               requires=[SUMMARY / "winners.csv"]),
@@ -114,7 +116,8 @@ def run_all(results_dir="results/raw") -> list[Step]:
               requires=[Path(results_dir) / "filter_runs.parquet"]),
         _step("stage_reports.stage_D", _stage_d_report),
         # Stage E (truncate vs quantize at matched bytes), once its runs exist.
-        _step("tradeoff.analyse", tradeoff.analyse,
+        _step("tradeoff.analyse",
+              lambda: tradeoff.analyse(hardware_id=current_hardware_id()),
               requires=[Path(results_dir) / "tradeoff_runs.parquet"]),
     ]
 

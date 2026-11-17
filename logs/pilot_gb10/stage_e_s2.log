@@ -1,0 +1,45 @@
+2026-11-16 18:47:07,528 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 18:47:07,528 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 18:47:07,528 faiss.loader INFO Loading faiss.
+2026-11-16 18:47:07,549 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 18:47:07,583 __main__ INFO arm hnsw@768+none
+2026-11-16 18:47:15,006 __main__ INFO   hnsw@768+none ef=16 k'=None: recall=0.8282 p95=2352us
+2026-11-16 18:47:17,972 __main__ INFO   hnsw@768+none ef=24 k'=None: recall=0.8395 p95=4823us
+2026-11-16 18:47:20,019 __main__ INFO   hnsw@768+none ef=32 k'=None: recall=0.8455 p95=3133us
+2026-11-16 18:47:21,459 __main__ INFO   hnsw@768+none ef=48 k'=None: recall=0.8499 p95=879us
+2026-11-16 18:47:23,146 __main__ INFO   hnsw@768+none ef=64 k'=None: recall=0.8529 p95=1019us
+2026-11-16 18:47:25,919 __main__ INFO   hnsw@768+none ef=96 k'=None: recall=0.8551 p95=2702us
+2026-11-16 18:47:28,995 __main__ INFO   hnsw@768+none ef=128 k'=None: recall=0.8559 p95=1969us
+2026-11-16 18:47:33,244 __main__ INFO   hnsw@768+none ef=192 k'=None: recall=0.8568 p95=2821us
+2026-11-16 18:47:39,268 __main__ INFO   hnsw@768+none ef=256 k'=None: recall=0.8569 p95=4697us
+2026-11-16 18:47:46,732 __main__ INFO   hnsw@768+none ef=384 k'=None: recall=0.8571 p95=5030us
+2026-11-16 18:47:56,086 __main__ INFO   hnsw@768+none ef=512 k'=None: recall=0.8573 p95=6399us
+2026-11-16 18:48:09,499 __main__ INFO   hnsw@768+none ef=768 k'=None: recall=0.8574 p95=9007us
+2026-11-16 18:48:26,041 __main__ INFO   hnsw@768+none ef=1024 k'=None: recall=0.8575 p95=11015us
+2026-11-16 18:48:26,589 __main__ INFO arm hnsw_sq8@1536+none
+2026-11-16 18:48:29,057 __main__ INFO   hnsw_sq8@1536+none ef=16 k'=None: recall=0.9317 p95=907us
+2026-11-16 18:48:30,884 __main__ INFO   hnsw_sq8@1536+none ef=24 k'=None: recall=0.9597 p95=1147us
+2026-11-16 18:48:33,069 __main__ INFO   hnsw_sq8@1536+none ef=32 k'=None: recall=0.9712 p95=1388us
+2026-11-16 18:48:35,920 __main__ INFO   hnsw_sq8@1536+none ef=48 k'=None: recall=0.9820 p95=1868us
+2026-11-16 18:48:39,405 __main__ INFO   hnsw_sq8@1536+none ef=64 k'=None: recall=0.9876 p95=2310us
+2026-11-16 18:48:44,126 __main__ INFO   hnsw_sq8@1536+none ef=96 k'=None: recall=0.9909 p95=3216us
+2026-11-16 18:48:50,058 __main__ INFO   hnsw_sq8@1536+none ef=128 k'=None: recall=0.9927 p95=4076us
+2026-11-16 18:48:58,281 __main__ INFO   hnsw_sq8@1536+none ef=192 k'=None: recall=0.9943 p95=5755us
+2026-11-16 18:49:08,723 __main__ INFO   hnsw_sq8@1536+none ef=256 k'=None: recall=0.9948 p95=7404us
+2026-11-16 18:49:23,380 __main__ INFO   hnsw_sq8@1536+none ef=384 k'=None: recall=0.9953 p95=10425us
+2026-11-16 18:49:42,256 __main__ INFO   hnsw_sq8@1536+none ef=512 k'=None: recall=0.9956 p95=13435us
+2026-11-16 18:50:08,413 __main__ INFO   hnsw_sq8@1536+none ef=768 k'=None: recall=0.9958 p95=18544us
+2026-11-16 18:50:41,950 __main__ INFO   hnsw_sq8@1536+none ef=1024 k'=None: recall=0.9960 p95=23615us
+2026-11-16 18:50:57,857 __main__ INFO   hnsw_sq8@1536+none R=0.9: ef=16 k'=None recall_test=0.9368 p95=883us 1808 B/vec
+2026-11-16 18:51:17,610 __main__ INFO   hnsw_sq8@1536+none R=0.95: ef=24 k'=None recall_test=0.9604 p95=1101us 1808 B/vec
+2026-11-16 18:52:25,057 __main__ INFO   hnsw_sq8@1536+none R=0.99: ef=128 k'=None recall_test=0.9924 p95=3937us 1808 B/vec
+2026-11-16 18:52:25,298 __main__ INFO Consolidated 39 tradeoff rows -> results/raw/tradeoff_runs.parquet
+2026-11-16 21:35:52,277 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 21:35:52,279 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 21:35:52,279 faiss.loader INFO Loading faiss.
+2026-11-16 21:35:52,297 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 21:35:52,328 __main__ INFO skip hnsw@768+none (done)
+2026-11-16 21:35:52,328 __main__ INFO skip hnsw_sq8@1536+none (done)
+2026-11-16 21:35:52,404 __main__ INFO Consolidated 45 tradeoff rows -> results/raw/tradeoff_runs.parquet

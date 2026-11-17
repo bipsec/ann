@@ -1159,7 +1159,9 @@ def run_stage_c(
 
     out_dir = Path(results_dir) / "filter_runs"
     out_dir.mkdir(parents=True, exist_ok=True)
-    pending = [j for j in jobs if not (out_dir / f"filter_{job_key(j)}.parquet").exists()]
+    from annstudy.hardware import done_on_this_host
+    pending = [j for j in jobs
+               if not done_on_this_host(out_dir / f"filter_{job_key(j)}.parquet")]
     logger.info(f"Stage C: {len(jobs)} jobs in this shard, {len(pending)} pending.")
 
     if dry_run:

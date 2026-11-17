@@ -1,0 +1,69 @@
+2026-11-16 18:47:07,289 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 18:47:07,289 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 18:47:07,289 faiss.loader INFO Loading faiss.
+2026-11-16 18:47:07,301 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 18:47:07,321 __main__ INFO arm hnsw@384+sq8
+2026-11-16 18:47:17,320 __main__ INFO   hnsw@384+sq8 ef=16 k'=20: recall=0.8625 p95=3951us
+2026-11-16 18:47:17,927 __main__ INFO   hnsw@384+sq8 ef=24 k'=20: recall=0.8844 p95=401us
+2026-11-16 18:47:18,566 __main__ INFO   hnsw@384+sq8 ef=32 k'=20: recall=0.8956 p95=405us
+2026-11-16 18:47:19,448 __main__ INFO   hnsw@384+sq8 ef=48 k'=20: recall=0.9018 p95=553us
+2026-11-16 18:47:20,526 __main__ INFO   hnsw@384+sq8 ef=64 k'=20: recall=0.9046 p95=673us
+2026-11-16 18:47:22,035 __main__ INFO   hnsw@384+sq8 ef=96 k'=20: recall=0.9074 p95=973us
+2026-11-16 18:47:23,946 __main__ INFO   hnsw@384+sq8 ef=128 k'=20: recall=0.9090 p95=1244us
+2026-11-16 18:47:26,680 __main__ INFO   hnsw@384+sq8 ef=192 k'=20: recall=0.9100 p95=1849us
+2026-11-16 18:47:30,604 __main__ INFO   hnsw@384+sq8 ef=256 k'=20: recall=0.9105 p95=2620us
+2026-11-16 18:47:36,423 __main__ INFO   hnsw@384+sq8 ef=384 k'=20: recall=0.9109 p95=3900us
+2026-11-16 18:47:43,613 __main__ INFO   hnsw@384+sq8 ef=512 k'=20: recall=0.9111 p95=4845us
+2026-11-16 18:47:53,501 __main__ INFO   hnsw@384+sq8 ef=768 k'=20: recall=0.9113 p95=6605us
+2026-11-16 18:48:06,079 __main__ INFO   hnsw@384+sq8 ef=1024 k'=20: recall=0.9113 p95=8373us
+2026-11-16 18:48:06,965 __main__ INFO   hnsw@384+sq8 ef=16 k'=50: recall=0.9033 p95=615us
+2026-11-16 18:48:07,764 __main__ INFO   hnsw@384+sq8 ef=24 k'=50: recall=0.9362 p95=508us
+2026-11-16 18:48:08,673 __main__ INFO   hnsw@384+sq8 ef=32 k'=50: recall=0.9536 p95=567us
+2026-11-16 18:48:09,816 __main__ INFO   hnsw@384+sq8 ef=48 k'=50: recall=0.9645 p95=738us
+2026-11-16 18:48:11,172 __main__ INFO   hnsw@384+sq8 ef=64 k'=50: recall=0.9706 p95=864us
+2026-11-16 18:48:12,892 __main__ INFO   hnsw@384+sq8 ef=96 k'=50: recall=0.9758 p95=1108us
+2026-11-16 18:48:15,069 __main__ INFO   hnsw@384+sq8 ef=128 k'=50: recall=0.9779 p95=1347us
+2026-11-16 18:48:17,897 __main__ INFO   hnsw@384+sq8 ef=192 k'=50: recall=0.9800 p95=1860us
+2026-11-16 18:48:21,402 __main__ INFO   hnsw@384+sq8 ef=256 k'=50: recall=0.9806 p95=2315us
+2026-11-16 18:48:26,128 __main__ INFO   hnsw@384+sq8 ef=384 k'=50: recall=0.9812 p95=3177us
+2026-11-16 18:48:31,490 __main__ INFO   hnsw@384+sq8 ef=512 k'=50: recall=0.9815 p95=3557us
+2026-11-16 18:48:39,130 __main__ INFO   hnsw@384+sq8 ef=768 k'=50: recall=0.9818 p95=5023us
+2026-11-16 18:48:49,149 __main__ INFO   hnsw@384+sq8 ef=1024 k'=50: recall=0.9819 p95=6498us
+2026-11-16 18:48:49,916 __main__ INFO   hnsw@384+sq8 ef=16 k'=100: recall=0.9057 p95=504us
+2026-11-16 18:48:50,683 __main__ INFO   hnsw@384+sq8 ef=24 k'=100: recall=0.9407 p95=467us
+2026-11-16 18:48:51,524 __main__ INFO   hnsw@384+sq8 ef=32 k'=100: recall=0.9596 p95=505us
+2026-11-16 18:48:52,552 __main__ INFO   hnsw@384+sq8 ef=48 k'=100: recall=0.9722 p95=627us
+2026-11-16 18:48:53,760 __main__ INFO   hnsw@384+sq8 ef=64 k'=100: recall=0.9789 p95=750us
+2026-11-16 18:48:55,302 __main__ INFO   hnsw@384+sq8 ef=96 k'=100: recall=0.9846 p95=974us
+2026-11-16 18:48:57,046 __main__ INFO   hnsw@384+sq8 ef=128 k'=100: recall=0.9870 p95=1127us
+2026-11-16 18:48:59,504 __main__ INFO   hnsw@384+sq8 ef=192 k'=100: recall=0.9896 p95=1598us
+2026-11-16 18:49:02,573 __main__ INFO   hnsw@384+sq8 ef=256 k'=100: recall=0.9907 p95=1988us
+2026-11-16 18:49:06,856 __main__ INFO   hnsw@384+sq8 ef=384 k'=100: recall=0.9916 p95=2802us
+2026-11-16 18:49:12,139 __main__ INFO   hnsw@384+sq8 ef=512 k'=100: recall=0.9920 p95=3525us
+2026-11-16 18:49:19,861 __main__ INFO   hnsw@384+sq8 ef=768 k'=100: recall=0.9925 p95=5066us
+2026-11-16 18:49:29,891 __main__ INFO   hnsw@384+sq8 ef=1024 k'=100: recall=0.9924 p95=6501us
+2026-11-16 18:49:30,843 __main__ INFO   hnsw@384+sq8 ef=16 k'=200: recall=0.9058 p95=567us
+2026-11-16 18:49:31,878 __main__ INFO   hnsw@384+sq8 ef=24 k'=200: recall=0.9411 p95=591us
+2026-11-16 18:49:33,002 __main__ INFO   hnsw@384+sq8 ef=32 k'=200: recall=0.9602 p95=648us
+2026-11-16 18:49:34,342 __main__ INFO   hnsw@384+sq8 ef=48 k'=200: recall=0.9729 p95=787us
+2026-11-16 18:49:35,888 __main__ INFO   hnsw@384+sq8 ef=64 k'=200: recall=0.9798 p95=924us
+2026-11-16 18:49:37,789 __main__ INFO   hnsw@384+sq8 ef=96 k'=200: recall=0.9863 p95=1149us
+2026-11-16 18:49:40,001 __main__ INFO   hnsw@384+sq8 ef=128 k'=200: recall=0.9887 p95=1359us
+2026-11-16 18:49:42,817 __main__ INFO   hnsw@384+sq8 ef=192 k'=200: recall=0.9915 p95=1763us
+2026-11-16 18:49:45,721 __main__ INFO   hnsw@384+sq8 ef=256 k'=200: recall=0.9928 p95=1888us
+2026-11-16 18:49:49,308 __main__ INFO   hnsw@384+sq8 ef=384 k'=200: recall=0.9939 p95=2276us
+2026-11-16 18:49:53,667 __main__ INFO   hnsw@384+sq8 ef=512 k'=200: recall=0.9942 p95=2787us
+2026-11-16 18:49:59,791 __main__ INFO   hnsw@384+sq8 ef=768 k'=200: recall=0.9947 p95=3885us
+2026-11-16 18:50:07,700 __main__ INFO   hnsw@384+sq8 ef=1024 k'=200: recall=0.9947 p95=4995us
+2026-11-16 18:50:14,756 __main__ INFO   hnsw@384+sq8 R=0.9: ef=24 k'=100 recall_test=0.9428 p95=328us 3344 B/vec
+2026-11-16 18:50:22,467 __main__ INFO   hnsw@384+sq8 R=0.95: ef=32 k'=100 recall_test=0.9585 p95=375us 3344 B/vec
+2026-11-16 18:50:45,963 __main__ INFO   hnsw@384+sq8 R=0.99: ef=192 k'=200 recall_test=0.9908 p95=1217us 3344 B/vec
+2026-11-16 18:50:46,244 __main__ INFO Consolidated 33 tradeoff rows -> results/raw/tradeoff_runs.parquet
+2026-11-16 21:35:52,039 faiss.loader INFO Loading faiss with SVE support.
+2026-11-16 21:35:52,041 faiss.loader INFO Could not load library with SVE support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_sve'")
+2026-11-16 21:35:52,041 faiss.loader INFO Loading faiss.
+2026-11-16 21:35:52,053 faiss.loader INFO Successfully loaded faiss.
+2026-11-16 21:35:52,070 __main__ INFO skip hnsw@384+sq8 (done)
+2026-11-16 21:35:52,112 __main__ INFO Consolidated 45 tradeoff rows -> results/raw/tradeoff_runs.parquet
