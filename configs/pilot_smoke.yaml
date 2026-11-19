@@ -1,0 +1,25 @@
+stage: SMOKE
+description: "Phase 2 acceptance smoke: N=100K, D=384, flat/hnsw/ivf_flat"
+
+cells:
+  N: [100_000]
+  D: [384]
+
+indexes:
+  flat: {}
+  hnsw:
+    M: [32]
+    ef_construction: 200
+  ivf_flat:
+    c: [4]
+
+recall_targets: [0.90, 0.95, 0.99]
+
+k: 10
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1

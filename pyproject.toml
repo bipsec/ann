@@ -18,19 +18,30 @@ dependencies = [
     "matplotlib>=3.9",
     "tqdm>=4.66",
     "psutil>=6.0",
+    "tabulate>=0.9",
 ]
 
 [project.optional-dependencies]
 embed-api = ["openai>=1.40"]
 embed-local = ["sentence-transformers>=3.0", "torch>=2.4"]
 hnswlib = ["hnswlib>=0.8"]
+data-prep = ["ir_datasets>=0.5"]
 dev = ["pytest>=8.0", "pytest-cov", "ruff"]
 
 [project.scripts]
 annstudy-run = "annstudy.runner:main"
+annstudy-run-stage = "annstudy.coordinate:main"
+annstudy-run-filters = "annstudy.filter_runner:main"
+annstudy-update = "annstudy.update_runner:main"
+annstudy-analysis = "annstudy.analysis.run_all:main"
 annstudy-embed = "annstudy.embed:main"
 annstudy-gt = "annstudy.groundtruth:main"
 annstudy-tune = "annstudy.tune:main"
+annstudy-hardware = "annstudy.hardware:main"
+annstudy-acceptance = "annstudy.acceptance:main"
+annstudy-budget = "annstudy.budget:main"
+annstudy-paper = "annstudy.paper:main"
+annstudy-stage-reports = "annstudy.stage_reports:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/annstudy"]

@@ -1,0 +1,28 @@
+stage: SQ
+description: "Scalar-quantized index probe: 8-bit HNSW for the sub-raw memory regime (review item)"
+
+# One-to-two cells, per the reviewer: enough to test whether a scalar-quantized index can meet a
+# recall target inside a 0.5x / 0.1x raw-memory budget — the regime the original grid left empty.
+cells:
+  N: [500_000]
+  D: [384, 1536]
+
+indexes:
+  hnsw_sq: {}          # HNSW over 8-bit scalar-quantized storage (~D bytes/vector, 4x compression)
+  hnsw: {}             # uncompressed HNSW, measured in the SAME run as its SQ counterpart.
+                       # Absolute latency on this host drifts ~1.12x (median) between sessions,
+                       # so an SQ-vs-HNSW claim built from two different campaigns would be
+                       # comparing drift as much as compression. Paying for six extra specs
+                       # buys a within-campaign comparison.
+
+recall_targets: [0.90, 0.95, 0.99]
+memory_budgets: [null, 1.5, 0.5, 0.1]
+
+k: 10
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1

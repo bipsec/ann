@@ -71,6 +71,40 @@ def build_hnsw(
     return index, meta
 
 
+def build_hnsw_sq(
+    vectors: np.ndarray,
+    dim: int,
+    M: int,
+    ef_construction: int = 200,
+    nbits: int = 8,
+    seed: int = 0,
+) -> tuple:
+    """Build IndexHNSWSQ (HNSW over 8-bit scalar-quantized storage). Returns (index, metadata).
+
+    One byte per dimension (~D bytes/vector, 4x compression vs raw float32), so it can fit a
+    sub-raw memory budget while keeping a graph index's query profile — the missing point in the
+    memory-budget analysis (no scalar-quantized index was in the original grid).
+    """
+    import faiss
+
+    index = faiss.IndexHNSWSQ(dim, faiss.ScalarQuantizer.QT_8bit, M)
+    index.hnsw.efConstruction = ef_construction
+    vecs = np.ascontiguousarray(vectors)
+    _, train_sec = _time_it(lambda: index.train(vecs))  # SQ needs training
+    _, add_sec = _time_it(lambda: index.add(vecs))
+    meta = {
+        "index_type": "hnsw_sq",
+        "M": M,
+        "ef_construction": ef_construction,
+        "nbits": 8,
+        "train_seconds": train_sec,
+        "add_seconds": add_sec,
+        "build_seconds": train_sec + add_sec,
+        "train_size": len(vectors),
+    }
+    return index, meta
+
+
 def build_ivf_flat(
     vectors: np.ndarray,
     dim: int,
@@ -167,9 +201,13 @@ def build_ivf_pq_refine(
     base_index = faiss.IndexIVFPQ(quantizer, dim, nlist, m, nbits)
 
     _, train_sec = _time_it(lambda: base_index.train(train_vecs))
-    _, add_sec = _time_it(lambda: base_index.add(np.ascontiguousarray(vectors)))
 
+    # Wrap BEFORE adding. IndexRefineFlat keeps its own flat copy of every vector and its
+    # constructor asserts base_index->ntotal == refine_index->ntotal, so adding to the base
+    # first makes construction fail. Adding through the wrapper fills both. faiss tracks the
+    # sub-index in `referenced_objects`, so returning only the wrapper is safe.
     refine_index = faiss.IndexRefineFlat(base_index)
+    _, add_sec = _time_it(lambda: refine_index.add(np.ascontiguousarray(vectors)))
 
     meta = {
         "index_type": "ivf_pq_refine",
@@ -189,7 +227,7 @@ def get_build_grid(index_type: str, N: int, D: int) -> list[dict]:
     if index_type == "flat":
         return [{}]
 
-    if index_type == "hnsw":
+    if index_type in ("hnsw", "hnsw_sq"):
         return [
             {"M": M, "ef_construction": 200}
             for M in [16, 32, 64]
@@ -239,7 +277,7 @@ def get_search_grid(index_type: str, nlist: int | None = None, k: int = 10) -> l
     if index_type == "flat":
         return [{}]
 
-    if index_type == "hnsw":
+    if index_type in ("hnsw", "hnsw_sq"):
         ef_values = [16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024]
         return [
             {"ef_search": ef}
@@ -271,7 +309,7 @@ def set_search_params(index, index_type: str, params: dict) -> None:
     """Apply search parameters to an index."""
     import faiss
 
-    if index_type == "hnsw":
+    if index_type in ("hnsw", "hnsw_sq"):
         index.hnsw.efSearch = params["ef_search"]
     elif index_type in ("ivf_flat", "ivf_pq"):
         index.nprobe = params["nprobe"]
@@ -279,3 +317,9 @@ def set_search_params(index, index_type: str, params: dict) -> None:
         index.k_factor = params.get("k_factor", 1)
         base = faiss.downcast_index(index.base_index)
         base.nprobe = params["nprobe"]
+    elif index_type == "flat":
+        pass  # exact search has no tunable parameters
+    else:
+        raise ValueError(
+            f"Unknown index type: {index_type!r} — refusing to measure an untuned index."
+        )

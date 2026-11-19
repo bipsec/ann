@@ -2,11 +2,10 @@
 
 import hashlib
 import json
-import os
 import platform
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 
@@ -65,7 +64,7 @@ def snapshot() -> dict:
     library_versions = {pkg: _get_package_version(pkg) for pkg in packages}
 
     snap = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
         "cpu_model": cpu_model,
         "physical_cores": physical_cores,
         "logical_cores": logical_cores,
@@ -110,3 +109,22 @@ def load_snapshot(path: str = "results/hardware.json") -> dict:
     """Load an existing hardware snapshot."""
     with open(path) as f:
         return json.load(f)
+
+
+def main() -> None:
+    """CLI: write results/hardware.json for this host and check the RAM minimum."""
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Snapshot hardware and library versions.")
+    parser.add_argument("--output", default="results/hardware.json")
+    parser.add_argument("--min-ram-gb", type=int, default=64)
+    args = parser.parse_args()
+
+    snap = save_snapshot(args.output)
+    print(json.dumps(snap, indent=2))
+    check_ram_minimum(args.min_ram_gb)
+    print(f"\nWrote {args.output} (hardware_id={snap['hardware_id']})")
+
+
+if __name__ == "__main__":
+    main()

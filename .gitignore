@@ -7,6 +7,14 @@ build/
 .venv/
 venv/
 
+# Local toolchains / conda env (regenerable; large)
+.tools/
+.conda/
+
+# Runner subprocess logs
+logs/runner/
+logs/failures.jsonl
+
 # Data (too large for git)
 data/emb/
 data/gt/
@@ -30,3 +38,17 @@ figures/*.svg
 *.swp
 .idea/
 .vscode/
+# Secrets — never commit (API keys)
+.env
+
+# Local working artefacts (kept out of the repo)
+logs/*
+paper/*
+reports/*
+results/*
+data/*
+.venv/*
+REMAINING_WORK.md
+FEEDBACK.md
+ANN Index Selection Workshop Paper Plan and Methodology.md
+.sync-protect

@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-10-14T19:49:56.181783+00:00",
-  "cpu_model": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
-  "physical_cores": 4,
-  "logical_cores": 8,
-  "ram_total_gb": 7.1,
-  "os": "Linux 7.0.0-38-generic",
-  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
-  "git_commit": "e7204c9318faca2f50226676160db14a7ed8050a",
-  "hostname": "HS",
+  "timestamp": "2026-10-16T22:49:19.528339+00:00",
+  "cpu_model": "AMD EPYC-Milan Processor",
+  "physical_cores": 16,
+  "logical_cores": 16,
+  "ram_total_gb": 58.8,
+  "os": "Linux 7.0.0-28-generic",
+  "python": "3.14.3 (main, Mar 10 2026, 18:18:50) [Clang 21.1.4 ]",
+  "git_commit": "b99569a775536f56710597b90e2a9be951975c73-dirty",
+  "hostname": "statwiseai-1",
   "library_versions": {
     "faiss-cpu": "1.15.1",
     "numpy": "2.5.4",
@@ -20,8 +20,8 @@
     "torch": "not-installed",
     "sentence-transformers": "not-installed",
     "openai": "not-installed",
-    "hnswlib": "not-installed",
+    "hnswlib": "0.8.0",
     "tqdm": "4.70.1"
   },
-  "hardware_id": "bb807c69431ec3c8"
+  "hardware_id": "1d3d9b66e7d3e1ac"
 }

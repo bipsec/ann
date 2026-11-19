@@ -1,0 +1,31 @@
+stage: PILOT
+description: "Phase 3 pilot: Stage A at N=100K, all 4 D, one build variant per index"
+
+cells:
+  N: [100_000]
+  D: [128, 384, 768, 1536]
+
+indexes:
+  flat: {}
+  hnsw: {}
+  ivf_flat: {}
+  ivf_pq: {}
+  ivf_pq_refine: {}
+
+search_grids:
+  hnsw:
+    ef_search: [16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024]
+  ivf:
+    nprobe: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+
+recall_targets: [0.90, 0.95, 0.99]
+memory_budgets: [null, 1.5, 0.5, 0.1]
+
+k: 10
+
+measurement:
+  latency_passes: 3
+  warmup_queries: 200
+  bootstrap_resamples: 1000
+  bootstrap_ci: 0.95
+  threads_latency: 1

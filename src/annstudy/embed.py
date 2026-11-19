@@ -2,7 +2,6 @@
 
 import json
 import logging
-import os
 import time
 from pathlib import Path
 
@@ -188,6 +187,7 @@ def validate_embeddings(
 def main():
     """CLI entry point for embedding."""
     import argparse
+
     import yaml
 
     parser = argparse.ArgumentParser(description="Embed passages and queries")

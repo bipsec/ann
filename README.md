@@ -16,10 +16,13 @@ Read that log before trusting any number.
 | 0. Positioning | Complete; Gate 0 decided the D × S headline (`logs/gate_reports/gate_0.md`) |
 | 1. Data and ground truth | Complete and verified: 1M passages × {128, 384, 768, 1536} dims, 10k queries, 12 exact ground-truth files |
 | 2. Harness | Complete; 46 tests pass |
-| 3. Pilot and budget | Pilot runs at N=100K; budget in `logs/budget.md`, **Gate 3 pending** |
-| 4. Stages A–D | Not started — gated on Gate 3 |
-| 5. Analysis | Pipeline complete and regenerates in one command; waiting on stage data |
-| 6. Writing | Not started — gated on Gate 5 |
+| 3. Pilot and budget | Complete; Gate 3 approved (`logs/gate_reports/gate_3.md`) |
+| 4. Stages A–D | **Complete** — all four stages run on host `1d3d9b66e7d3e1ac`; reports in `reports/stage_{A,B,C,D}.md` |
+| 5. Analysis | Complete; regenerates in one command (`make analysis`); verdicts in `reports/findings.md` |
+| 6. Writing | Paper drafted at `paper/main.md` (all results, traceable); Gate 5 reviewed (`logs/gate_reports/gate_5.md`). Open items in `REMAINING_WORK.md` |
+
+See [`FEEDBACK.md`](FEEDBACK.md) for the results summary + what went wrong, and
+[`REMAINING_WORK.md`](REMAINING_WORK.md) for the remaining checklist.
 
 ## Requirements
 
@@ -97,14 +100,14 @@ make stage-d                     # update study at N=500K, D=768
 make analysis
 ```
 
-Stage C's latency must stay single-threaded, so parallelise it by sharding across pinned cores
-rather than by threads:
+Stage C's latency must stay single-threaded, so parallelism comes from sharding across pinned
+cores. The shard count cannot simply be the core count: each shard materialises the cell's
+corpus *and* loads a full index, which is 13.1 GB at N=1M/D=1536. `make stage-c` drives the
+cells in turn at a memory-safe width; inspect the plan first with:
 
 ```bash
-for i in $(seq 0 15); do
-  taskset -c $i ./.venv/bin/python -m annstudy.filter_runner --shard $i --num-shards 16 &
-done; wait
-./.venv/bin/python -m annstudy.filter_runner --consolidate
+make stage-c-plan     # per-cell job counts and how many shards fit in memory
+make stage-c          # runs them cell by cell, then consolidates
 ```
 
 ## Layout
